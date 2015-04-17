@@ -174,7 +174,7 @@
       
         
           <h1 id="iproute2介绍">iproute2介绍</h1><p>iprout2被建议用来取代ipconfig、netstat、route、arp等命令，使用netlink网络协议来<br>从用户态向内核进行通信，获取和设置相应的信息。</p>
-<h1 id="iproute2的组成">iproute2的组成</h1><p><a href="http://baturin.org/docs/iproute2/" target="_blank" rel="external">参考资料</a><br><a href="https://www.digitalocean.com/community/tutorials/how-to-use-iproute2-tools-to-manage-network-configuration-on-a-linux-vps" target="_blank" rel="external">参考资料</a><br>iproute2由一系列的命令格式组成，分别处理各种不同的事情，一般，查看信息使用一般的用户即可，设置信息需要root用户<br>由于iproute2支持的选项很多，整理了一些常用的备忘</p>
+<h1 id="iproute2的组成">iproute2的组成</h1><p><a href="http://baturin.org/docs/iproute2/" target="_blank" rel="external">参考资料1</a><br><a href="https://www.digitalocean.com/community/tutorials/how-to-use-iproute2-tools-to-manage-network-configuration-on-a-linux-vps" target="_blank" rel="external">参考资料2</a><br>iproute2由一系列的命令格式组成，分别处理各种不同的事情，一般，查看信息使用一般的用户即可，设置信息需要root用户<br>由于iproute2支持的选项很多，整理了一些常用的备忘</p>
 <h2 id="查看网络接口，地址和路由信息">查看网络接口，地址和路由信息</h2><ul>
 <li>显示网络信息<br><code>ip addr</code></li>
 <li>显示特定网络接口的信息<br><code>ip addr show eth0</code></li>
@@ -201,6 +201,7 @@
 </ul>
 </li>
 </ul>
+<p>最后，从<a href="http://www.iamle.com/archives/1750.html" target="_blank" rel="external">这个网站</a>找到两张非常好的图<br><img src="https://github.com/mtxrym/photo/raw/master/iproute2%20thought.png" alt="iproute2功能介绍"><br><img src="https://github.com/mtxrym/photo/raw/master/iproute2%20vs%20nettools.png" alt="iproute2和常用工具对比"></p>
 
         
       
