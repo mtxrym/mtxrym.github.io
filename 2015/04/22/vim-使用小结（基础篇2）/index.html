@@ -160,18 +160,29 @@
       
 
       
-        <p>最近把vim的tutor和文档大概过了一遍，发现了一些以往很少用到的特性，这里记录一下。</p>
+        <blockquote>
+<p>哪怕已经掌控一切，也要保持一份谦卑和敬畏</p>
+</blockquote>
+<p>最近把vim的tutor和文档大概过了一遍，发现了一些以往很少用到的特性，这里记录一下。</p>
 <h1 id="关于vim的寄存器">关于vim的寄存器</h1><ul>
-<li>默认寄存器</li>
-<li>寄存器0~9</li>
-<li>寄存器<code>a~z/A~Z</code></li>
-<li>寄存器<code>-</code> 和 <code>_</code></li>
-<li>寄存器<code>_d</code></li>
+<li>默认寄存器<br>  默认的x,c,s,d操作都通过默认寄存器完成，即<code>&quot;&quot;</code>，另外，无论是否指定寄存器，默认寄存器都会被写入(<code>_</code>寄存器例外)。</li>
+<li>寄存器0~9<br>  寄存器0中是yank的结果，不会被其他种类的改变所覆盖，使用<code>&quot;0</code>引用;寄存器1中放d后的内容，和后面的8个寄存器，表现的像一个FIFO队列, 可通过<code>:registers</code>查看。</li>
+<li>寄存器<code>a~z/A~Z</code><br>  有名寄存器，用户可以指定使用的寄存器，a~z表示覆盖使用，A~Z表示追加使用。</li>
+<li>寄存器<code>_</code><br>  通过使用<code>&quot;_</code>来进行修改,内容不会被放入寄存器。</li>
+<li>只读寄存器<br>  <code>&quot;;, &quot;., &quot;#</code>等有各自的用途。</li>
+<li>其他寄存器<br>  <code>&quot;/</code>可以表示上一个搜索的pattern。<br>  <code>&quot;+</code>表示使用系统的剪切板作为寄存器。</li>
 </ul>
 <h1 id="关于跳转的指令">关于跳转的指令</h1><ul>
-<li><h1 id="关于mark的功能和作用">关于mark的功能和作用</h1></li>
+<li><code>(/): jump to the previous/next sentence</code></li>
+<li><code>{\}: jump to the previous/next paragraph</code></li>
+<li><code>&#39;^: jump to the location of last insertion</code></li>
+<li><code>&#39;.: jump to the location of last change</code></li>
+<li><code>a/i: 两个非常好用的motion</code></li>
 </ul>
-<h2 id="局部marker">局部marker</h2><h2 id="全局marker">全局marker</h2>
+<h1 id="关于mark的功能和作用">关于mark的功能和作用</h1><h2 id="局部marker">局部marker</h2><p>局部marker可以在一个文件内部实现跳转，使用<code>m{a-z}</code>即可创建mask, 使用<code>&#39;{a-z}</code>即可跳到mark。</p>
+<h2 id="全局marker">全局marker</h2><p>全局marker可以在文件之间进行跳转，最为常用的是在<code>vimrc</code>文件中建立mark，随时可以跳过去查看和修改。全局的mark使用<code>m{A-Z}</code>建立。</p>
+<h1 id="recording">recording</h1><p>在vim中使用<code>q{register}(sequence)q</code>即可将命令序列sequence保存到register中，利用<code>@{register}</code>即可回放对应的命令序列。</p>
+
       
     </div>
 
@@ -191,6 +202,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/22/attitude/"></a>
             
           </div>
 
@@ -253,7 +266,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -291,7 +304,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于vim的寄存器"><span class="nav-number">1.</span> <span class="nav-text">关于vim的寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于跳转的指令"><span class="nav-number">2.</span> <span class="nav-text">关于跳转的指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于mark的功能和作用"><span class="nav-number">3.</span> <span class="nav-text">关于mark的功能和作用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#局部marker"><span class="nav-number">3.1.</span> <span class="nav-text">局部marker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局marker"><span class="nav-number">3.2.</span> <span class="nav-text">全局marker</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于vim的寄存器"><span class="nav-number">1.</span> <span class="nav-text">关于vim的寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于跳转的指令"><span class="nav-number">2.</span> <span class="nav-text">关于跳转的指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于mark的功能和作用"><span class="nav-number">3.</span> <span class="nav-text">关于mark的功能和作用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#局部marker"><span class="nav-number">3.1.</span> <span class="nav-text">局部marker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局marker"><span class="nav-number">3.2.</span> <span class="nav-text">全局marker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#recording"><span class="nav-number">4.</span> <span class="nav-text">recording</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
