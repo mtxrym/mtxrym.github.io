@@ -168,7 +168,7 @@
       
 
       
-        <p>一直不太明白Linux下buffer和cache的关系，下面的回答来自rebert love在quora上的两个回答，看了以后应该比较清楚了</p>
+        <p>一直不太明白Linux下buffer和cache的关系，下面的回答来自robert love在quora上的两个回答，看了以后应该比较清楚了</p>
 <h2 id="第一个答案">第一个答案</h2><ul>
 <li><code>The page cache caches pages of files to optimize file I/O. The buffer cache caches disk blocks to optimize block I/O.</code></li>
 <li><p><code>Prior to Linux kernel version 2.4, the two caches were distinct: Files were in the page cache, disk blocks were in the buffer cache. Given that most files are represented by a filesystem on a disk, data was represented twice, once in each of the caches. Many Unix systems follow a similar pattern.</code></p>
