@@ -18,7 +18,7 @@
 
 
 
-  <meta name="keywords" content="shell," />
+  <meta name="keywords" content="administrator,linux," />
 
 
 
@@ -29,7 +29,7 @@
 
 
 
-  <title> 工具推荐 // 细嗅蔷薇 </title>
+  <title> 一些重要的服务器性能参数 // 细嗅蔷薇 </title>
 </head>
 
 <body>
@@ -116,7 +116,7 @@
           
           
             
-              工具推荐
+              一些重要的服务器性能参数
             
           
         </h1>
@@ -124,14 +124,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-04-16
+          发表于 2015-04-29
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/shell/">shell</a>
+              <a href="/categories/linux/">linux</a>
 
               
               
@@ -139,7 +139,15 @@
               
 
             
-              <a href="/categories/shell/administrator/">administrator</a>
+              <a href="/categories/linux/summary/">summary</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/linux/summary/server/">server</a>
 
               
               
@@ -160,13 +168,30 @@
       
 
       
-        <h1 id="查看系统的状况和进程状况">查看系统的状况和进程状况</h1><ul>
-<li>htop<br>  比起top功能更为强大，并且更为直观，用于观测系统的整体情况。</li>
-<li>tree<br>  用于查看文件系统的情况，相当于ls -xx</li>
-<li>nload<br>  用于查看实时的网络流量</li>
-<li>sysstat<br>  iostat 和 sar都在这个包里面，iostat多用于检测硬盘的流量，IOPS等</li>
+        <p>读了下 《大规模分布式存储系统》，里面对于服务器性能的一些总结感觉很不错，也很实用，用来估算系统的性能，应该是需要掌握的，记录一下：</p>
+<ul>
+<li>访问L1 cache: 0.5 ns</li>
+<li>访问L2 cache: 7 ns</li>
+<li>分支预测失败: 5ns</li>
+<li>mutex加锁解锁: 100 ns</li>
+<li>内存访问: 100 ns</li>
+<li>千兆网络发送1M数据: 10 ms</li>
+<li>内存顺序读取1M数据: 0.25 ms</li>
+<li>机房内TTL: 0.5 ms</li>
+<li>跨机房TTL: 30~100 ms</li>
+<li>SATA寻道: 10 ms</li>
+<li>SATA顺序读1M数据: 20ms</li>
+<li>SSD访问延迟: 0.1~0.2 ms</li>
 </ul>
-<h1 id="TO_BE_CONTINUED…">TO BE CONTINUED…</h1>
+<p>另外，IOPS也是经常需要估计的指标：</p>
+<ul>
+<li>内存: 千万IOPS</li>
+<li>SSD: 35000 IOPS</li>
+<li>SAS: 180 IOPS</li>
+<li>SATA: 90 IOPS</li>
+</ul>
+<p>虽然，可能使用指令周期去衡量耗时更为精确一点，用时间去衡量对于目前的硬件环境来说，精度也是比较高的，一般可以直接用来估算系统性能或者资源消耗。</p>
+
       
     </div>
 
@@ -174,7 +199,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/shell/"> #shell </a>
+            <a href="/tags/administrator/"> #administrator </a>
+          
+            <a href="/tags/linux/"> #linux </a>
           
         </div>
       
@@ -183,13 +210,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/04/17/iproute2-用法整理/">iproute2 用法整理</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/16/hello/">hello</a>
+              <a href="/2015/04/25/svn-——-Getting-Started/">svn —— Getting Started</a>
             
           </div>
         </div>
@@ -284,7 +309,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查看系统的状况和进程状况"><span class="nav-number">1.</span> <span class="nav-text">查看系统的状况和进程状况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TO_BE_CONTINUED…"><span class="nav-number">2.</span> <span class="nav-text">TO BE CONTINUED…</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

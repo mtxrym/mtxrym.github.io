@@ -118,6 +118,122 @@
           
           
             
+              <a class="post-title-link" href="/2015/04/29/一些重要的服务器性能参数/">
+                一些重要的服务器性能参数
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-04-29
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/linux/">linux</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/linux/summary/">summary</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/linux/summary/server/">server</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>读了下 《大规模分布式存储系统》，里面对于服务器性能的一些总结感觉很不错，也很实用，用来估算系统的性能，应该是需要掌握的，记录一下：</p>
+<ul>
+<li>访问L1 cache: 0.5 ns</li>
+<li>访问L2 cache: 7 ns</li>
+<li>分支预测失败: 5ns</li>
+<li>mutex加锁解锁: 100 ns</li>
+<li>内存访问: 100 ns</li>
+<li>千兆网络发送1M数据: 10 ms</li>
+<li>内存顺序读取1M数据: 0.25 ms</li>
+<li>机房内TTL: 0.5 ms</li>
+<li>跨机房TTL: 30~100 ms</li>
+<li>SATA寻道: 10 ms</li>
+<li>SATA顺序读1M数据: 20ms</li>
+<li>SSD访问延迟: 0.1~0.2 ms</li>
+</ul>
+<p>另外，IOPS也是经常需要估计的指标：</p>
+<ul>
+<li>内存: 千万IOPS</li>
+<li>SSD: 35000 IOPS</li>
+<li>SAS: 180 IOPS</li>
+<li>SATA: 90 IOPS</li>
+</ul>
+<p>虽然，可能使用指令周期去衡量耗时更为精确一点，用时间去衡量对于目前的硬件环境来说，精度也是比较高的，一般可以直接用来估算系统性能或者资源消耗。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/administrator/"> #administrator </a>
+          
+            <a href="/tags/linux/"> #linux </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/04/25/svn-——-Getting-Started/">
                 svn —— Getting Started
               </a>
@@ -851,21 +967,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
