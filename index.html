@@ -118,6 +118,175 @@
           
           
             
+              <a class="post-title-link" href="/2015/05/10/ps-使用方法小结/">
+                ps 使用方法小结
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-05-10
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/05/08/debug-方法初探/">
+                debug 方法初探
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-05-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/linux/">linux</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/linux/debug/">debug</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/linux/debug/c-c/">c/c++</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>春风好媒妁，说动一树柳红</p>
+</blockquote>
+<p>程序的调试方法在程序开发中起到很重要的作用，除了进行code review之外，一些工具的使用可以帮助我们进行程序的debug操作。</p>
+<h2 id="pstack">pstack</h2><blockquote>
+<p>print a stack trace of running process</p>
+</blockquote>
+<p>pstack显示进程中每个线程的跟踪栈，给定进程pid即可。pstack是一个脚本工具，其核心实现就是使用了<code>gdb</code>以及<code>thread apply all bt</code>命令。<br>pstack 命令必须由相应进程的属主或 root 运行。<br>pid是pstack唯一允许使用的参数。</p>
+<h2 id="pstree">pstree</h2><blockquote>
+<p>display a tree of processes</p>
+</blockquote>
+<ul>
+<li><code>pstree -p :显示所有进程的进程号和进程ID</code></li>
+<li><code>pstree -a :显示所有进程的详细信息</code></li>
+</ul>
+<h2 id="strace">strace</h2><blockquote>
+<p>trace system calls and signals<br>strace跟踪程序使用的底层系统调用，可输出系统调用被执行的时间点以及各个调用耗时；<br>strace 命令可选的参数较多，也有很多很实用的用途,详细情况查阅<a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316692.html" target="_blank" rel="external">strace命令介绍</a></p>
+</blockquote>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/debug/"> #debug </a>
+          
+            <a href="/tags/linux/"> #linux </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/05/02/top-用法详情/">
                 top 用法详情
               </a>
@@ -1018,180 +1187,13 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/04/16/工具推荐/">
-                工具推荐
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-04-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/shell/">shell</a>
-
-              
-              
-                ， 
-              
-
-            
-              <a href="/categories/shell/administrator/">administrator</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="查看系统的状况和进程状况">查看系统的状况和进程状况</h1><ul>
-<li>htop<br>  比起top功能更为强大，并且更为直观，用于观测系统的整体情况。</li>
-<li>tree<br>  用于查看文件系统的情况，相当于ls -xx</li>
-<li>nload<br>  用于查看实时的网络流量</li>
-<li>sysstat<br>  iostat 和 sar都在这个包里面，iostat多用于检测硬盘的流量，IOPS等</li>
-</ul>
-<h1 id="TO_BE_CONTINUED…">TO BE CONTINUED…</h1>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/shell/"> #shell </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/04/16/hello/">
-                hello
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-04-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分类于
-            
-              <a href="/categories/jokes/">jokes</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
-<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
-<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="external">http://devdocs.io</a></p>
-<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
-<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
-<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite></footer></blockquote>
-<p><img src="https://github.com/mtxrym/photo/raw/master/%5Bcat%2C%20%5Bcat%5D%5D.png" alt="test photo"></p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/jokes/"> #jokes </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
+  <div class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+  </div>
+
 
         </div>
       </div>
@@ -1220,21 +1222,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
