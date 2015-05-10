@@ -175,7 +175,11 @@
 <h2 id="pstack">pstack</h2><blockquote>
 <p>print a stack trace of running process</p>
 </blockquote>
-<p>pstack显示进程中每个线程的跟踪栈，给定进程pid即可。pstack是一个脚本工具，其核心实现就是使用了<code>gdb</code>以及<code>thread apply all bt</code>命令。<br>pstack 命令必须由相应进程的属主或 root 运行。<br>pid是pstack唯一允许使用的参数。</p>
+<ul>
+<li>pstack显示进程中每个线程的跟踪栈，给定进程pid即可。</li>
+<li>pstack是一个脚本工具，其核心实现就是使用了<code>gdb</code>以及<code>thread apply all bt</code>命令。</li>
+<li>pstack 命令必须由相应进程的属主或 root 运行。</li>
+</ul>
 <h2 id="pstree">pstree</h2><blockquote>
 <p>display a tree of processes</p>
 </blockquote>
@@ -184,7 +188,7 @@
 <li><code>pstree -a :显示所有进程的详细信息</code></li>
 </ul>
 <h2 id="strace">strace</h2><blockquote>
-<p>trace system calls and signals<br>strace跟踪程序使用的底层系统调用，可输出系统调用被执行的时间点以及各个调用耗时；<br>strace 命令可选的参数较多，也有很多很实用的用途,详细情况查阅<a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316692.html" target="_blank" rel="external">strace命令介绍</a></p>
+<p>trace system calls and signals<br>strace跟踪程序使用的底层系统调用，可输出系统调用被执行的时间点以及各个调用耗时；strace 命令可选的参数较多，也有很多很实用的用途,详细情况查阅<a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316692.html" target="_blank" rel="external">strace命令介绍</a></p>
 </blockquote>
 
       
