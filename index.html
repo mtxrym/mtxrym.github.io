@@ -132,6 +132,33 @@
         </span>
 
         
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/linux/">linux</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/linux/administrator/">administrator</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/linux/administrator/ps/">ps</a>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -146,12 +173,47 @@
 
       
         
-          
+          <p>ps 命令是在linux平台开发中很重要的一个命令，可以用来查看系统进程状态等。</p>
+<h1 id="ps介绍">ps介绍</h1><p>ps命令给出的是当前系统进程的一个镜像，ps的参数主要有三个方面：</p>
+<ul>
+<li>UNIX 风格, 使用一个中划线来<code>-</code>来指明参数</li>
+<li>BSD 风格, 直接跟参数，不使用任何的中划线</li>
+<li>GNU 长参数风格, 使用两个中划线 <code>--</code> 来指明参数</li>
+</ul>
+<h1 id="ps常见用法">ps常见用法</h1><ul>
+<li>ps<br>显示和当前终端相关的进程</li>
+<li>ps -ax<br>显示所有的进程，包括和当前终端无关的进程</li>
+<li>ps -u<br>显示与某个用户相关的进程</li>
+<li>ps -aux<br>显示系统使用的CPU和内存的资源情况</li>
+<li>ps -aux —sort -pcpu | less<br>按照使用的CPU情况的降序排列</li>
+<li>ps -aux —sort -pmem | less<br>按照使用内存的降序排列</li>
+<li>ps -aux —sort -pcpu,+pmem<br>按照多个条件排序</li>
+<li>ps -C<br>根据名字筛选</li>
+<li>ps -f -C<br>显示详细信息</li>
+<li>ps -L<br>显示某个进程的所有线程信息</li>
+<li>ps -axjf<br>以拓扑形式显示进程</li>
+<li>ps -eo pid,user,args<br>指定输出哪些信息</li>
+<li>ps -U root -u root u<br>U指定实际用户，u指定effective用户</li>
+<li>watch -n 1 ‘ps -aux —sort -pmem, -pcpu’<br>更新显示ps结果信息</li>
+<li>ps -efl<br>显示nice信息</li>
+</ul>
+<h1 id="参考文献">参考文献</h1><p>[<a href="http://linoxide.com/how-tos/linux-ps-command-examples/" target="_blank" rel="external">http://linoxide.com/how-tos/linux-ps-command-examples/</a>]</p>
+
         
       
     </div>
 
     <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/administrator/"> #administrator </a>
+          
+            <a href="/tags/linux/"> #linux </a>
+          
+            <a href="/tags/ps/"> #ps </a>
+          
+        </div>
       
 
       
@@ -1235,14 +1297,14 @@
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
