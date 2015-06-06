@@ -118,6 +118,132 @@
           
           
             
+              <a class="post-title-link" href="/2015/04/17/iproute2-用法整理/">
+                iproute2 用法整理
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-04-17
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/administrator/">administrator</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/administrator/network/">network</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/administrator/network/Linux/">Linux</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="iproute2介绍">iproute2介绍</h1><p>iprout2被建议用来取代ipconfig、netstat、route、arp等命令，使用netlink网络协议来<br>从用户态向内核进行通信，获取和设置相应的信息。</p>
+<h1 id="iproute2的组成">iproute2的组成</h1><p><a href="http://baturin.org/docs/iproute2/" target="_blank" rel="external">参考资料1</a><br><a href="https://www.digitalocean.com/community/tutorials/how-to-use-iproute2-tools-to-manage-network-configuration-on-a-linux-vps" target="_blank" rel="external">参考资料2</a><br>iproute2由一系列的命令格式组成，分别处理各种不同的事情，一般，查看信息使用一般的用户即可，设置信息需要root用户<br>由于iproute2支持的选项很多，整理了一些常用的备忘</p>
+<h2 id="查看网络接口，地址和路由信息">查看网络接口，地址和路由信息</h2><ul>
+<li>显示网络信息<br><code>ip addr</code></li>
+<li>显示特定网络接口的信息<br><code>ip addr show eth0</code></li>
+<li>如果只显示接口本身的信息<br><code>ip link</code></li>
+<li>查询网络统计数据<br><code>ip -s link show eth0</code></li>
+<li>查询路由表<br><code>ip route show</code></li>
+</ul>
+<h2 id="设置网络信息">设置网络信息</h2><ul>
+<li>设置网络信息<br><code>ip link set eth0 up/down</code><br>  <code>ip link set eth0 multicast on/off</code><br>  <code>ip link set eth0 name/arp/mtu/txqueuelen</code></li>
+<li>设置地址信息<br>  <code>ip addr add *ip_address/net_prefix* brd + dev interface</code><br>  <code>ip addr del *ip_address/net_prefix* dev interface</code></li>
+<li><p>设置路由信息<br>  <code>ip route add|change|replace|delete</code></p>
+<h2 id="其他功能">其他功能</h2></li>
+<li><p>管理查看路由规则<br>  <code>ip rule show</code><br>  <code>ip rule list</code></p>
+</li>
+<li>管理arp相关信息<br>  <code>ip neigh show</code><br>  <code>ip neigh delete *ip addr*  dev eth0</code></li>
+<li>管理tune和tap等功能<br>  <code>*这部分我不懂。。。*</code></li>
+</ul>
+<h2 id="工具ss的使用">工具ss的使用</h2><p><a href="http://www.cyberciti.biz/files/ss.html" target="_blank" rel="external">参考资料</a></p>
+<ul>
+<li>和netstat兼容的功能<br>  <code>ss -t -a dumps all TCP sockets</code><br>  <code>ss -u -a dumps all UDP sockets</code><br>  <code>ss -w -a dumps all RAW sockets</code><br>  <code>ss -x -a dumps all UNIX sockets</code><br>  <code>-o shows TCP timers state.</code><br>  <code>-e shows some extended information</code></li>
+<li>引入的新的功能<ul>
+<li>通过状态进行过滤<br><code>ss exclue SYN-RECV</code></li>
+<li>通过地址和端口进行过滤<br><code>ss -o state fin-wait-1 \(sport = :http or sport = :https \) dst 193.233.7/24</code><br><code>ss -a -A all autobound</code></li>
+</ul>
+</li>
+</ul>
+<p>最后，从<a href="http://www.iamle.com/archives/1750.html" target="_blank" rel="external">这个网站</a>找到两张非常好的图</p>
+<ul>
+<li><p>iproute2 功能介绍<br><img src="https://github.com/mtxrym/photo/raw/master/iproute2%20thought.png" alt="iproute2功能介绍"></p>
+</li>
+<li><p>iproute2 和 nettool的比较<br><img src="https://github.com/mtxrym/photo/raw/master/iproute2%20vs%20nettools.png" alt="iproute2和常用工具对比"></p>
+</li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iproute2/"> #iproute2 </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/04/16/工具推荐/">
                 工具推荐
               </a>
@@ -313,21 +439,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
