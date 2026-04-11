@@ -1,0 +1,27 @@
+# {{ report_date }} 每日报告
+
+## 当日摘要
+{% for item in daily_summary %}
+- {{ item }}
+{% endfor %}
+
+## Papers Top {{ papers_top_n }}
+{% for paper in papers[:papers_top_n] %}
+{{ loop.index }}. **{{ paper.title }}**{% if paper.authors %} — {{ paper.authors|join(', ') }}{% endif %}
+   - 来源：{{ paper.source }}
+   - 链接：{{ paper.url }}
+   - 亮点：{{ paper.highlight }}
+{% endfor %}
+
+## Datasets Top {{ datasets_top_n }}
+{% for dataset in datasets[:datasets_top_n] %}
+{{ loop.index }}. **{{ dataset.name }}**
+   - 来源：{{ dataset.source }}
+   - 链接：{{ dataset.url }}
+   - 亮点：{{ dataset.highlight }}
+{% endfor %}
+
+## 关键趋势观察
+{% for trend in trend_observations %}
+- {{ trend }}
+{% endfor %}
