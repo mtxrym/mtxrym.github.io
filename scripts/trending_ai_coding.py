@@ -1,271 +1,375 @@
 #!/usr/bin/env python3
-"""AI Coding trending collector, analyzer and report generator."""
 
 from __future__ import annotations
 
 import argparse
 import json
+import sys
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
+from dataclasses import dataclass
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
 
-import feedparser
-import requests
-from jinja2 import Template
-from pydantic import BaseModel, Field, HttpUrl
-
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_RAW = ROOT / "outputs" / "raw"
-OUTPUT_REPORTS = ROOT / "outputs" / "reports"
-
-ARXIV_RSS = "https://rss.arxiv.org/rss/cs.AI"
-HF_TRENDING_DATASETS = "https://huggingface.co/api/datasets?sort=trendingScore&limit=30"
-
-AI_CODING_KEYWORDS = {
-    "code": 4,
-    "coding": 4,
-    "programming": 4,
-    "software": 3,
-    "agent": 3,
-    "repository": 3,
-    "benchmark": 2,
-    "developer": 2,
-    "autonomous": 2,
-    "llm": 2,
-    "bug": 2,
-    "debug": 2,
-    "test": 2,
-    "swe": 5,
-}
+SOURCES_FILE = ROOT / "config" / "sources.yaml"
+CACHE_FILE = ROOT / "cache" / "last_fetch.json"
+DEFAULT_TIMEOUT = 20
 
 
-class TrendItem(BaseModel):
-    title: str
-    url: HttpUrl
-    source: str
-    published_at: datetime
-    description: str = Field(default="")
-    tags: list[str] = Field(default_factory=list)
-    score: float = 0.0
+@dataclass
+class Source:
+    id: str
+    type: str
+    category: str
+    url: str
+    params: dict[str, Any]
+    fields: dict[str, Any]
 
 
-class AnalysisResult(BaseModel):
-    generated_at: datetime
-    total_items: int
-    selected_items: int
-    items: list[TrendItem]
+def parse_scalar(raw: str) -> Any:
+    value = raw.strip()
+    if not value:
+        return ""
+    if value in {"{}", "[]"}:
+        return {} if value == "{}" else []
+    if value.startswith('"') and value.endswith('"'):
+        return value[1:-1]
+    if value.startswith("'") and value.endswith("'"):
+        return value[1:-1]
+    if value in {"true", "True"}:
+        return True
+    if value in {"false", "False"}:
+        return False
+    if value in {"null", "None", "~"}:
+        return None
+    try:
+        return int(value)
+    except ValueError:
+        return value
 
 
-def ensure_dirs() -> None:
-    OUTPUT_RAW.mkdir(parents=True, exist_ok=True)
-    OUTPUT_REPORTS.mkdir(parents=True, exist_ok=True)
+def parse_sources_yaml(text: str) -> dict[str, list[dict[str, Any]]]:
+    data: dict[str, list[dict[str, Any]]] = {}
+    current_category: str | None = None
+    current_item: dict[str, Any] | None = None
+    current_block: str | None = None
 
-
-def now_str() -> str:
-    return datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-
-
-def fetch_arxiv() -> list[dict[str, Any]]:
-    feed = feedparser.parse(ARXIV_RSS)
-    entries: list[dict[str, Any]] = []
-    for item in feed.entries:
-        published = item.get("published_parsed")
-        published_dt = (
-            datetime(*published[:6], tzinfo=timezone.utc).isoformat()
-            if published
-            else datetime.now(timezone.utc).isoformat()
-        )
-        entries.append(
-            {
-                "title": item.get("title", ""),
-                "url": item.get("link", ""),
-                "source": "arxiv",
-                "published_at": published_dt,
-                "description": item.get("summary", ""),
-                "tags": [tag["term"] for tag in item.get("tags", []) if "term" in tag],
-            }
-        )
-    return entries
-
-
-def fetch_hf_datasets() -> list[dict[str, Any]]:
-    resp = requests.get(HF_TRENDING_DATASETS, timeout=20)
-    resp.raise_for_status()
-    rows = resp.json()
-    entries: list[dict[str, Any]] = []
-    for row in rows:
-        dataset_id = row.get("id") or row.get("_id") or "unknown"
-        tags = row.get("tags", []) or []
-        entries.append(
-            {
-                "title": dataset_id,
-                "url": f"https://huggingface.co/datasets/{dataset_id}",
-                "source": "huggingface-dataset",
-                "published_at": datetime.now(timezone.utc).isoformat(),
-                "description": row.get("description", "") or row.get("cardData", {}).get("description", ""),
-                "tags": [str(tag) for tag in tags],
-            }
-        )
-    return entries
-
-
-def save_json(path: Path, payload: dict[str, Any]) -> None:
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-
-
-def latest_file(pattern: str) -> Path:
-    matches = sorted(OUTPUT_RAW.glob(pattern))
-    if not matches:
-        raise FileNotFoundError(f"No files match: {pattern}")
-    return matches[-1]
-
-
-def load_items_from_raw(path: Path) -> list[TrendItem]:
-    data = json.loads(path.read_text(encoding="utf-8"))
-    raw_items = data.get("items", [])
-    items: list[TrendItem] = []
-    for raw in raw_items:
-        try:
-            items.append(TrendItem(**raw))
-        except Exception:
+    for raw_line in text.splitlines():
+        if not raw_line.strip() or raw_line.strip().startswith("#"):
             continue
+        indent = len(raw_line) - len(raw_line.lstrip(" "))
+        line = raw_line.strip()
+
+        if indent == 0 and line.endswith(":"):
+            current_category = line[:-1]
+            data[current_category] = []
+            current_item = None
+            current_block = None
+            continue
+
+        if line.startswith("- "):
+            if current_category is None:
+                continue
+            content = line[2:]
+            current_item = {}
+            data[current_category].append(current_item)
+            current_block = None
+            if ":" in content:
+                key, value = content.split(":", 1)
+                current_item[key.strip()] = parse_scalar(value)
+            continue
+
+        if current_item is None or ":" not in line:
+            continue
+
+        key, value = line.split(":", 1)
+        key = key.strip()
+        value = value.strip()
+
+        if indent == 4:
+            if value == "":
+                current_item[key] = {}
+                current_block = key
+            else:
+                current_item[key] = parse_scalar(value)
+                current_block = None
+        elif indent >= 6 and current_block:
+            block = current_item.get(current_block)
+            if isinstance(block, dict):
+                block[key] = parse_scalar(value)
+
+    return data
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Fetch trending AI coding sources")
+    parser.add_argument(
+        "--since",
+        help=(
+            "Only include items published after this time (ISO8601, e.g. "
+            "2026-04-10T00:00:00Z). If omitted, falls back to per-source cache timestamp."
+        ),
+    )
+    parser.add_argument(
+        "--max-items",
+        type=int,
+        default=30,
+        help="Maximum items to return for each source (default: 30).",
+    )
+    parser.add_argument(
+        "--sources",
+        nargs="*",
+        help="Optional list of source IDs to fetch. If omitted, fetches all sources.",
+    )
+    parser.add_argument(
+        "--no-cache-update",
+        action="store_true",
+        help="Do not write latest fetch timestamps into cache/last_fetch.json.",
+    )
+    return parser.parse_args()
+
+
+def parse_datetime(value: str | None) -> datetime | None:
+    if not value:
+        return None
+
+    cleaned = value.strip()
+    if not cleaned:
+        return None
+
+    if cleaned.endswith("Z"):
+        cleaned = cleaned[:-1] + "+00:00"
+
+    try:
+        dt = datetime.fromisoformat(cleaned)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except ValueError:
+        pass
+
+    try:
+        dt = parsedate_to_datetime(cleaned)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except (TypeError, ValueError):
+        return None
+
+
+def load_sources() -> list[Source]:
+    raw = parse_sources_yaml(SOURCES_FILE.read_text(encoding="utf-8"))
+    sources: list[Source] = []
+    for category, items in raw.items():
+        for item in items or []:
+            sources.append(
+                Source(
+                    id=item["id"],
+                    type=item["type"],
+                    category=item.get("category", category),
+                    url=item["url"],
+                    params=item.get("params", {}),
+                    fields=item.get("fields", {}),
+                )
+            )
+    return sources
+
+
+def load_cache() -> dict[str, str]:
+    if not CACHE_FILE.exists():
+        return {}
+    try:
+        return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+
+
+def save_cache(cache: dict[str, str]) -> None:
+    CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    CACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def build_url(url: str, params: dict[str, Any]) -> str:
+    if not params:
+        return url
+    parsed = urllib.parse.urlsplit(url)
+    existing = urllib.parse.parse_qs(parsed.query)
+    for key, value in params.items():
+        existing[key] = [str(value)]
+    query = urllib.parse.urlencode(existing, doseq=True)
+    return urllib.parse.urlunsplit((parsed.scheme, parsed.netloc, parsed.path, query, parsed.fragment))
+
+
+def http_get_json(url: str, params: dict[str, Any]) -> Any:
+    req = urllib.request.Request(
+        build_url(url, params),
+        headers={"User-Agent": "trending-ai-coding/1.0", "Accept": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=DEFAULT_TIMEOUT) as resp:
+        return json.loads(resp.read().decode("utf-8"))
+
+
+def http_get_text(url: str, params: dict[str, Any]) -> str:
+    req = urllib.request.Request(
+        build_url(url, params),
+        headers={"User-Agent": "trending-ai-coding/1.0"},
+    )
+    with urllib.request.urlopen(req, timeout=DEFAULT_TIMEOUT) as resp:
+        return resp.read().decode("utf-8", errors="ignore")
+
+
+def extract_path(obj: dict[str, Any], path: Any) -> Any:
+    if path is None:
+        return None
+    if not isinstance(path, str):
+        return path
+    cursor: Any = obj
+    for part in path.split("."):
+        if isinstance(cursor, dict) and part in cursor:
+            cursor = cursor[part]
+        else:
+            return None
+    return cursor
+
+
+def map_item(raw_item: dict[str, Any], source: Source) -> dict[str, Any]:
+    fields = source.fields
+    mapped = {
+        "source_id": source.id,
+        "source_type": source.type,
+        "category": source.category,
+        "title": extract_path(raw_item, fields.get("title")),
+        "link": extract_path(raw_item, fields.get("link")),
+        "time": extract_path(raw_item, fields.get("time")),
+        "summary": extract_path(raw_item, fields.get("summary")),
+        "heat": extract_path(raw_item, fields.get("heat")),
+    }
+    return mapped
+
+
+def fetch_pwc_api(source: Source) -> list[dict[str, Any]]:
+    payload = http_get_json(source.url, source.params)
+    if isinstance(payload, dict):
+        items = payload.get("results")
+        if items is None:
+            items = payload.get("items")
+        if items is None:
+            items = payload.get("data")
+        if isinstance(items, list):
+            return items
+    if isinstance(payload, list):
+        return payload
+    return []
+
+
+def fetch_hf_trending(source: Source) -> list[dict[str, Any]]:
+    payload = http_get_json(source.url, source.params)
+    if isinstance(payload, list):
+        return payload
+    if isinstance(payload, dict):
+        for key in ("items", "results", "datasets"):
+            value = payload.get(key)
+            if isinstance(value, list):
+                return value
+    return []
+
+
+def fetch_arxiv_rss(source: Source) -> list[dict[str, Any]]:
+    xml_text = http_get_text(source.url, source.params)
+    root = ET.fromstring(xml_text)
+    items: list[dict[str, Any]] = []
+    for item in root.findall("./channel/item"):
+        items.append(
+            {
+                "title": item.findtext("title"),
+                "link": item.findtext("link"),
+                "published": item.findtext("pubDate"),
+                "summary": item.findtext("description"),
+            }
+        )
     return items
 
 
-def score_item(item: TrendItem) -> float:
-    text = f"{item.title} {item.description} {' '.join(item.tags)}".lower()
-    relevance = sum(weight for keyword, weight in AI_CODING_KEYWORDS.items() if keyword in text)
-    recency_bonus = max(0.0, 5.0 - (datetime.now(timezone.utc) - item.published_at).days * 0.25)
-    source_bonus = 1.5 if item.source == "arxiv" else 1.0
-    return round(relevance + recency_bonus + source_bonus, 2)
+FETCHERS = {
+    "pwc_api": fetch_pwc_api,
+    "hf_trending": fetch_hf_trending,
+    "arxiv_rss": fetch_arxiv_rss,
+}
 
 
-def tag_item(item: TrendItem) -> list[str]:
-    text = f"{item.title} {item.description} {' '.join(item.tags)}".lower()
-    tags = [keyword for keyword in AI_CODING_KEYWORDS if keyword in text]
-    return sorted(set(tags))
+def should_keep(item: dict[str, Any], since: datetime | None) -> bool:
+    if since is None:
+        return True
+    item_dt = parse_datetime(str(item.get("time") or ""))
+    if item_dt is None:
+        return False
+    return item_dt > since
 
 
-def cmd_fetch(_: argparse.Namespace) -> None:
-    ensure_dirs()
-    arxiv_entries = fetch_arxiv()
-    dataset_entries = fetch_hf_datasets()
-    ts = now_str()
-
-    save_json(
-        OUTPUT_RAW / f"papers_{ts}.json",
-        {"fetched_at": datetime.now(timezone.utc).isoformat(), "source": "arxiv", "items": arxiv_entries},
-    )
-    save_json(
-        OUTPUT_RAW / f"datasets_{ts}.json",
-        {
-            "fetched_at": datetime.now(timezone.utc).isoformat(),
-            "source": "huggingface-dataset",
-            "items": dataset_entries,
-        },
-    )
-    print(f"Fetched {len(arxiv_entries)} papers and {len(dataset_entries)} datasets.")
+def resolve_since(cli_since: datetime | None, cache: dict[str, str], source_id: str) -> datetime | None:
+    if cli_since is not None:
+        return cli_since
+    return parse_datetime(cache.get(source_id))
 
 
-def cmd_analyze(args: argparse.Namespace) -> None:
-    ensure_dirs()
-    papers_file = Path(args.papers_file) if args.papers_file else latest_file("papers_*.json")
-    datasets_file = Path(args.datasets_file) if args.datasets_file else latest_file("datasets_*.json")
+def fetch_source(source: Source, since: datetime | None, max_items: int) -> tuple[list[dict[str, Any]], datetime | None]:
+    fetcher = FETCHERS.get(source.type)
+    if fetcher is None:
+        raise ValueError(f"Unsupported source type: {source.type} (source: {source.id})")
 
-    items = load_items_from_raw(papers_file) + load_items_from_raw(datasets_file)
-    selected: list[TrendItem] = []
-    for item in items:
-        item.tags = tag_item(item)
-        item.score = score_item(item)
-        if item.score >= args.min_score:
-            selected.append(item)
+    raw_items = fetcher(source)
+    mapped = [map_item(item, source) for item in raw_items if isinstance(item, dict)]
+    filtered = [item for item in mapped if should_keep(item, since)]
+    limited = filtered[:max_items]
 
-    selected.sort(key=lambda x: x.score, reverse=True)
-    result = AnalysisResult(
-        generated_at=datetime.now(timezone.utc),
-        total_items=len(items),
-        selected_items=len(selected),
-        items=selected,
-    )
-    output = OUTPUT_RAW / f"analysis_{now_str()}.json"
-    save_json(output, result.model_dump(mode="json"))
-    print(f"Analyzed {len(items)} items, selected {len(selected)} items -> {output}")
+    newest: datetime | None = None
+    for item in limited:
+        dt = parse_datetime(str(item.get("time") or ""))
+        if dt and (newest is None or dt > newest):
+            newest = dt
+    return limited, newest
 
 
-REPORT_TEMPLATE = """# AI Coding 趋势{{ period_cn }}（{{ report_date }}）
+def main() -> int:
+    args = parse_args()
 
-- 生成时间（UTC）：{{ generated_at }}
-- 总样本数：{{ total_items }}
-- 入选条目：{{ selected_items }}
+    if args.max_items <= 0:
+        raise SystemExit("--max-items must be > 0")
 
-## Top {{ top_n }}
-{% for item in items %}
-### {{ loop.index }}. {{ item.title }}
-- 来源：{{ item.source }}
-- 发布时间：{{ item.published_at }}
-- 分数：{{ item.score }}
-- 标签：{{ item.tags | join(', ') if item.tags else 'N/A' }}
-- 链接：{{ item.url }}
-- 摘要：{{ item.description | replace('\n', ' ') | truncate(200, True, '...') }}
+    cli_since = parse_datetime(args.since)
+    if args.since and cli_since is None:
+        raise SystemExit(f"Invalid --since value: {args.since}")
 
-{% endfor %}
-"""
+    sources = load_sources()
+    if args.sources:
+        source_set = set(args.sources)
+        sources = [s for s in sources if s.id in source_set]
 
+    cache = load_cache()
+    output: dict[str, list[dict[str, Any]]] = {}
 
-def cmd_report(args: argparse.Namespace) -> None:
-    ensure_dirs()
-    analysis_file = Path(args.analysis_file) if args.analysis_file else latest_file("analysis_*.json")
-    data = json.loads(analysis_file.read_text(encoding="utf-8"))
-    items = data.get("items", [])[: args.top_n]
-    period_cn = "日报" if args.period == "daily" else "周报"
-    report_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    for source in sources:
+        source_since = resolve_since(cli_since, cache, source.id)
+        try:
+            items, newest_time = fetch_source(source, source_since, args.max_items)
+            output[source.id] = items
+            if newest_time and not args.no_cache_update:
+                cache[source.id] = newest_time.isoformat().replace("+00:00", "Z")
+        except Exception as exc:  # pragma: no cover - depends on external network
+            print(f"[warn] failed source={source.id}: {exc}", file=sys.stderr)
+            output[source.id] = []
 
-    rendered = Template(REPORT_TEMPLATE).render(
-        period_cn=period_cn,
-        report_date=report_date,
-        generated_at=data.get("generated_at"),
-        total_items=data.get("total_items", 0),
-        selected_items=data.get("selected_items", 0),
-        items=items,
-        top_n=args.top_n,
-    )
+    if not args.no_cache_update:
+        save_cache(cache)
 
-    out_file = OUTPUT_REPORTS / f"{report_date}.md"
-    out_file.write_text(rendered, encoding="utf-8")
-    print(f"Report generated: {out_file}")
-
-
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="AI Coding trending workflow")
-    sub = parser.add_subparsers(dest="command", required=True)
-
-    fetch = sub.add_parser("fetch", help="Fetch trending papers and datasets")
-    fetch.set_defaults(func=cmd_fetch)
-
-    analyze = sub.add_parser("analyze", help="Analyze relevance and rank importance")
-    analyze.add_argument("--papers-file", help="Optional papers json path")
-    analyze.add_argument("--datasets-file", help="Optional datasets json path")
-    analyze.add_argument("--min-score", type=float, default=6.0, help="Min score for selection")
-    analyze.set_defaults(func=cmd_analyze)
-
-    report = sub.add_parser("report", help="Generate markdown daily/weekly report")
-    report.add_argument("--analysis-file", help="Optional analysis json path")
-    report.add_argument("--top-n", type=int, default=10, help="How many top entries to include")
-    report.add_argument(
-        "--period",
-        choices=["daily", "weekly"],
-        default="daily",
-        help="Report period label",
-    )
-    report.set_defaults(func=cmd_report)
-    return parser
-
-
-def main() -> None:
-    parser = build_parser()
-    args = parser.parse_args()
-    args.func(args)
+    json.dump(output, sys.stdout, ensure_ascii=False, indent=2)
+    sys.stdout.write("\n")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
