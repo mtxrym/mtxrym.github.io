@@ -164,3 +164,25 @@ outputs/
     YYYY-MM-DD.md            # 日报/周报 markdown
 requirements.txt             # Python 依赖
 ```
+
+## GitHub Pages 部署（可直接在线看页面）
+
+这个仓库已经添加了 GitHub Pages 自动部署工作流：`.github/workflows/deploy-pages.yml`。
+
+### 一次性配置
+
+1. 打开仓库 `Settings -> Pages`
+2. `Source` 选择 **GitHub Actions**
+3. 确认默认分支是 `main`（工作流监听 `main`）
+
+### 触发部署
+
+- 每次 `push` 到 `main` 会自动部署
+- 或手动在 `Actions -> Deploy GitHub Pages -> Run workflow` 触发
+
+### 访问地址
+
+- 个人主页仓库（`mtxrym.github.io`）部署后访问：
+  - `https://mtxrym.github.io/`
+
+> 说明：当前页面资源（如 `index.css`、`blog.json`）已使用相对路径，适合直接静态托管。
