@@ -142,24 +142,33 @@
         },800);
     },1500);
     $.getJSON("blog.json", function(blog){
-        if(blog.length == 0){
-            return document.getElementById("blog_section").style.display = "none";
+        if(!Array.isArray(blog) || blog.length === 0){
+            $("#blogs").append("<section><div class='blog_container'><div class='section_title'>No data yet</div><div class='about_section'>Feed will appear after scheduled collection finishes.</div></div></section>");
+            return;
         }
         for(var i = 0; i < blog.length; i++){
+            var item = blog[i] || {};
+            var href = item.external_url ? item.external_url : `./blog/${item.url_title || ""}/`;
+            var subTitle = item.sub_title || "No summary";
+            if(item.published_at){
+                subTitle += ` · ${item.published_at}`;
+            }
             $("#blogs").append(`
-            <a href="./blog/${blog[i].url_title}/" target="_blank">
+            <a href="${href}" target="_blank" rel="noopener noreferrer">
                 <section>
-                    <img src="${blog[i].top_image}">
+                    <img src="${item.top_image || "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80"}">
                     <div class="blog_container">
-                        <div class="section_title">${blog[i].title}</div>
+                        <div class="section_title">${item.title || "Untitled"}</div>
                         <div class="about_section">
-                            ${blog[i].sub_title}
+                            ${subTitle}
                         </div>
                     </div>
                 </section>
             </a>
             `);
         }
+    }).fail(function(){
+        $("#blogs").append("<section><div class='blog_container'><div class='section_title'>Feed load failed</div><div class='about_section'>Please refresh later.</div></div></section>");
     });
     </script>
 

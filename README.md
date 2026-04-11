@@ -127,34 +127,35 @@ pip install -r requirements.txt
 ### 2) 抓取趋势数据（papers + datasets）
 
 ```bash
-python scripts/trending_ai_coding.py fetch
+python scripts/trending_ai_coding.py --max-items 30
 ```
 
-### 3) 做 AI Coding 相关性筛选与排序
+> 说明：当前脚本无需子命令，正确用法如下：
+>
+> ```bash
+> python scripts/trending_ai_coding.py --max-items 30
+> ```
+
+### 3) 生成可供主页渲染的 `blog.json`
 
 ```bash
-python scripts/trending_ai_coding.py analyze --min-score 6
+python scripts/generate_blog_json.py --top-n 12 --max-items 30
 ```
 
-### 4) 生成日报 / 周报 Markdown
+### 4) 打开页面预览
 
-日报：
-
-```bash
-python scripts/trending_ai_coding.py report --period daily --top-n 10
-```
-
-周报：
+直接用静态服务器访问仓库根目录，例如：
 
 ```bash
-python scripts/trending_ai_coding.py report --period weekly --top-n 20
+python -m http.server 8000
 ```
 
 ## 目录说明
 
 ```text
 scripts/
-  trending_ai_coding.py      # 主入口，支持 fetch / analyze / report
+  trending_ai_coding.py      # 趋势抓取主脚本
+  generate_blog_json.py      # 生成主页展示用 blog.json
 outputs/
   raw/
     papers_*.json            # 原始论文抓取
@@ -186,3 +187,14 @@ requirements.txt             # Python 依赖
   - `https://mtxrym.github.io/`
 
 > 说明：当前页面资源（如 `index.css`、`blog.json`）已使用相对路径，适合直接静态托管。
+
+## 定时收集 + 页面展示（推荐）
+
+仓库已新增定时任务工作流 `.github/workflows/update-content.yml`，每 6 小时自动：
+
+1. 拉取外部趋势源（arXiv / PapersWithCode / HuggingFace）
+2. 计算 AI Coding 相关性与重要性
+3. 生成主页使用的 `blog.json`
+4. 自动提交到 `main` 分支
+
+由于 `main` 触发 Pages 部署，页面会自动刷新为最新数据。
