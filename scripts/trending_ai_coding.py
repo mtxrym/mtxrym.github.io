@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""Fetch trending AI papers/datasets from configured sources."""
 
 from __future__ import annotations
 
