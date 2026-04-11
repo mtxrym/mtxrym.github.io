@@ -1,0 +1,76 @@
+papers:
+  - id: pwc_trending_papers
+    type: pwc_api
+    category: papers
+    url: https://paperswithcode.com/api/v1/papers/
+    params:
+      ordering: "-stars"
+      page_size: 50
+    fields:
+      title: title
+      link: url_abs
+      time: published
+      summary: abstract
+      heat: stars
+
+  - id: arxiv_cs_se
+    type: arxiv_rss
+    category: papers
+    url: https://rss.arxiv.org/rss/cs.SE
+    fields:
+      title: title
+      link: link
+      time: published
+      summary: summary
+      heat: 0
+
+  - id: arxiv_cs_cl
+    type: arxiv_rss
+    category: papers
+    url: https://rss.arxiv.org/rss/cs.CL
+    fields:
+      title: title
+      link: link
+      time: published
+      summary: summary
+      heat: 0
+
+  - id: arxiv_cs_ai
+    type: arxiv_rss
+    category: papers
+    url: https://rss.arxiv.org/rss/cs.AI
+    fields:
+      title: title
+      link: link
+      time: published
+      summary: summary
+      heat: 0
+
+datasets:
+  - id: hf_datasets_trending
+    type: hf_trending
+    category: datasets
+    url: https://huggingface.co/api/trending
+    params:
+      type: dataset
+      limit: 50
+    fields:
+      title: id
+      link: url
+      time: lastModified
+      summary: description
+      heat: likes
+
+  - id: pwc_dataset_ranking
+    type: pwc_api
+    category: datasets
+    url: https://paperswithcode.com/api/v1/datasets/
+    params:
+      ordering: "-tasks_count"
+      page_size: 50
+    fields:
+      title: name
+      link: url_abs
+      time: created
+      summary: description
+      heat: tasks_count
