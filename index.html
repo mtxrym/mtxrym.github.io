@@ -1,175 +1,143 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mtxrym</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="index.css">
-<link rel="icon" href="https://avatars1.githubusercontent.com/u/5978133?v=4" type="image/png"></head>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Coding 数据看板</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
 <body>
-    <div id="loading">
-        <div id="spinner"></div>
-    </div>
-    <div id="profile">
-        <div id="profile_img" style="background: url(https://avatars1.githubusercontent.com/u/5978133?v=4) center;"></div>
-        <div id="username"><span style="display:none;">null</span>@mtxrym</div>
-        <div id="userbio" style="display: none;">undefined</div>
-        <div id="about">
-                <span style="display:none;"><i class="fas fa-users"></i> &nbsp; null</span>
-                <span style="display:none;"><i class="fas fa-envelope"></i> &nbsp; null</span>
-                <span style="display:none;"><i class="fas fa-link"></i> &nbsp; </span>
-                <span style="display:none;"><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp; null</span>
-                <span style="display:none;"><i class="fas fa-user-tie"></i> &nbsp;&nbsp; Available for hire</span></div>
-    </div>
-    <div id="display">
-        <div id="work">
-            <h1>Work.</h1>
-            <div class="projects" id="work_section">
-                        <a href="https://github.com/mtxrym/paper_about_ds" target="_blank">
-                        <section>
-                            <div class="section_title">paper_about_ds</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/mtxrym/cheetsheet" target="_blank">
-                        <section>
-                            <div class="section_title">cheetsheet</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/mtxrym/personal-vim-config" target="_blank">
-                        <section>
-                            <div class="section_title">personal-vim-config</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; VimL</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/mtxrym/photo" target="_blank">
-                        <section>
-                            <div class="section_title">photo</div>
-                            <div class="about_section">
-                            <span style="display:block;">interesting pictures, all from the internet</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/mtxrym/asm-learn" target="_blank">
-                        <section>
-                            <div class="section_title">asm-learn</div>
-                            <div class="about_section">
-                            <span style="display:block;">personal learn of asm and gdb</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Assembly</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/mtxrym/mtxrym.github.io" target="_blank">
-                        <section>
-                            <div class="section_title">mtxrym.github.io</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/mtxrym/mygithubpage" target="_blank">
-                        <section>
-                            <div class="section_title">mygithubpage</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a></div>
-        </div>
-        <div id="forks" style="display:none;">
-            <h1>Forks.</h1>
-            <div class="projects" id="forks_section"></div>
-        </div>
-        <div id="blog_section">
-            <h1>Blog.</h1>
-            <div id="blogs"></div>
-        </div>
-        <div id="footer">
-            <a href="https://github.com/imfunniee" target="_blank">made on earth by a human</a>
-        </div>
-    </div>
-    <script type="text/javascript">
-    setTimeout(function(){
-        document.getElementById("loading").classList.add("animated");
-        document.getElementById("loading").classList.add("fadeOut");
-        setTimeout(function(){
-        document.getElementById("loading").classList.remove("animated");
-        document.getElementById("loading").classList.remove("fadeOut");
-        document.getElementById("loading").style.display = "none";
-        },800);
-    },1500);
-    $.getJSON("blog.json", function(blog){
-        if(!Array.isArray(blog) || blog.length === 0){
-            $("#blogs").append("<section><div class='blog_container'><div class='section_title'>No data yet</div><div class='about_section'>Feed will appear after scheduled collection finishes.</div></div></section>");
-            return;
-        }
-        for(var i = 0; i < blog.length; i++){
-            var item = blog[i] || {};
-            var href = item.external_url ? item.external_url : `./blog/${item.url_title || ""}/`;
-            var subTitle = item.sub_title || "No summary";
-            if(item.published_at){
-                subTitle += ` · ${item.published_at}`;
-            }
-            $("#blogs").append(`
-            <a href="${href}" target="_blank" rel="noopener noreferrer">
-                <section>
-                    <img src="${item.top_image || "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80"}">
-                    <div class="blog_container">
-                        <div class="section_title">${item.title || "Untitled"}</div>
-                        <div class="about_section">
-                            ${subTitle}
-                        </div>
-                    </div>
-                </section>
-            </a>
-            `);
-        }
-    }).fail(function(){
-        $("#blogs").append("<section><div class='blog_container'><div class='section_title'>Feed load failed</div><div class='about_section'>Please refresh later.</div></div></section>");
-    });
-    </script>
+  <main class="container">
+    <header class="hero">
+      <p class="tag">GitHub Pages Home</p>
+      <h1>AI Coding 资讯收集与展示主页</h1>
+      <p class="intro">
+        这个页面直接展示仓库每天自动收集的 AI Coding 相关条目，包含来源、发布时间、分数与跳转链接。
+        你打开主页就能看到“数据是否在更新”。
+      </p>
+      <div class="actions">
+        <a href="./blog.json" target="_blank" rel="noopener noreferrer">查看原始 blog.json</a>
+        <a href="./outputs/reports/ai_coding_report_template.md" target="_blank" rel="noopener noreferrer">查看报告模板</a>
+      </div>
+    </header>
 
-</body></html>
+    <section class="stats" id="stats">
+      <article><h2 id="total-count">0</h2><p>收集条目</p></article>
+      <article><h2 id="source-count">0</h2><p>数据源</p></article>
+      <article><h2 id="latest-time">-</h2><p>最近发布时间</p></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title-row">
+        <h2>来源分布</h2>
+        <span id="refresh-note">等待加载…</span>
+      </div>
+      <div id="source-breakdown" class="chip-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title-row">
+        <h2>最新收集内容</h2>
+      </div>
+      <div id="feed" class="feed"></div>
+    </section>
+  </main>
+
+  <script>
+    const feed = document.getElementById('feed');
+    const sourceBreakdown = document.getElementById('source-breakdown');
+    const totalCount = document.getElementById('total-count');
+    const sourceCount = document.getElementById('source-count');
+    const latestTime = document.getElementById('latest-time');
+    const refreshNote = document.getElementById('refresh-note');
+
+    function toDisplayDate(raw) {
+      if (!raw) return '-';
+      const date = new Date(raw);
+      if (Number.isNaN(date.getTime())) return raw;
+      return date.toLocaleString('zh-CN', { hour12: false });
+    }
+
+    function parseScore(text) {
+      const match = (text || '').match(/score=([\d.]+)/);
+      return match ? Number(match[1]) : null;
+    }
+
+    function renderStats(items) {
+      totalCount.textContent = items.length;
+
+      const sources = {};
+      let latest = null;
+
+      items.forEach((item) => {
+        const source = item.source_id || 'unknown';
+        sources[source] = (sources[source] || 0) + 1;
+
+        const published = item.published_at ? new Date(item.published_at) : null;
+        if (published && !Number.isNaN(published.getTime())) {
+          if (!latest || published > latest) latest = published;
+        }
+      });
+
+      sourceCount.textContent = Object.keys(sources).length;
+      latestTime.textContent = latest ? latest.toLocaleString('zh-CN', { hour12: false }) : '-';
+      refreshNote.textContent = latest ? `最近数据时间：${latest.toLocaleString('zh-CN', { hour12: false })}` : '暂无可解析时间';
+
+      sourceBreakdown.innerHTML = '';
+      Object.entries(sources)
+        .sort((a, b) => b[1] - a[1])
+        .forEach(([source, count]) => {
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.textContent = `${source}: ${count}`;
+          sourceBreakdown.appendChild(chip);
+        });
+    }
+
+    function renderFeed(items) {
+      feed.innerHTML = '';
+      if (!Array.isArray(items) || items.length === 0) {
+        feed.innerHTML = '<div class="empty">暂无数据，等待下一次抓取任务完成。</div>';
+        return;
+      }
+
+      const sorted = [...items].sort((a, b) => parseScore(b.sub_title) - parseScore(a.sub_title));
+
+      sorted.forEach((item) => {
+        const card = document.createElement('article');
+        card.className = 'item';
+
+        const title = item.title || 'Untitled';
+        const subtitle = item.sub_title || '无摘要';
+        const source = item.source_host || item.source_id || 'unknown';
+        const publishedAt = toDisplayDate(item.published_at);
+        const target = item.external_url || `./blog/${item.url_title || ''}/`;
+
+        card.innerHTML = `
+          <a href="${target}" target="_blank" rel="noopener noreferrer">
+            <h3>${title}</h3>
+            <p class="meta">${subtitle}</p>
+            <p class="detail">来源：${source} · 发布时间：${publishedAt}</p>
+          </a>
+        `;
+
+        feed.appendChild(card);
+      });
+    }
+
+    fetch('./blog.json')
+      .then((resp) => {
+        if (!resp.ok) throw new Error('feed request failed');
+        return resp.json();
+      })
+      .then((items) => {
+        renderStats(items);
+        renderFeed(items);
+      })
+      .catch(() => {
+        refreshNote.textContent = '加载失败，请稍后刷新重试';
+        feed.innerHTML = '<div class="empty">读取 blog.json 失败，请检查发布产物是否包含该文件。</div>';
+      });
+  </script>
+</body>
+</html>
