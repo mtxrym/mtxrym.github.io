@@ -9,11 +9,10 @@
 <body>
   <main class="container">
     <header class="hero">
-      <p class="tag">GitHub Pages Home</p>
-      <h1>AI Coding 资讯收集与展示主页</h1>
+      <p class="tag">AI Coding Intelligence Hub</p>
+      <h1>AI Coding 资讯收集与展示中心</h1>
       <p class="intro">
-        这个页面直接展示仓库每天自动收集的 AI Coding 相关条目，包含来源、发布时间、分数与跳转链接。
-        你打开主页就能看到“数据是否在更新”。
+        升级后的主页提供实时筛选、收藏管理、采集健康状态与可视化分布，帮助你更快定位高价值条目，并跟踪数据是否持续更新。
       </p>
       <div class="actions">
         <a href="./blog.json" target="_blank" rel="noopener noreferrer">查看原始 blog.json</a>
@@ -22,17 +21,60 @@
     </header>
 
     <section class="stats" id="stats">
-      <article><h2 id="total-count">0</h2><p>收集条目</p></article>
-      <article><h2 id="source-count">0</h2><p>数据源</p></article>
+      <article><h2 id="total-count">0</h2><p>总条目</p></article>
+      <article><h2 id="visible-count">0</h2><p>当前展示</p></article>
+      <article><h2 id="source-count">0</h2><p>来源数</p></article>
       <article><h2 id="latest-time">-</h2><p>最近发布时间</p></article>
     </section>
 
-    <section class="panel">
+    <section class="panel collector-panel">
       <div class="panel-title-row">
-        <h2>来源分布</h2>
+        <h2>采集健康状态</h2>
         <span id="refresh-note">等待加载…</span>
       </div>
+      <div class="health-grid">
+        <div class="health-item"><span>采集状态</span><strong id="collect-status">-</strong></div>
+        <div class="health-item"><span>平均分数</span><strong id="avg-score">-</strong></div>
+        <div class="health-item"><span>已收藏条目</span><strong id="favorite-count">0</strong></div>
+      </div>
       <div id="source-breakdown" class="chip-list"></div>
+    </section>
+
+    <section class="panel controls-panel">
+      <div class="panel-title-row">
+        <h2>筛选与交互</h2>
+      </div>
+      <div class="controls-grid">
+        <label>
+          关键词搜索
+          <input id="search-input" type="search" placeholder="按标题/摘要搜索" />
+        </label>
+        <label>
+          来源筛选
+          <select id="source-filter">
+            <option value="all">全部来源</option>
+          </select>
+        </label>
+        <label>
+          类别筛选
+          <select id="category-filter">
+            <option value="all">全部类别</option>
+          </select>
+        </label>
+        <label>
+          排序方式
+          <select id="sort-select">
+            <option value="score_desc">按分数（高→低）</option>
+            <option value="date_desc">按时间（新→旧）</option>
+            <option value="title_asc">按标题（A→Z）</option>
+          </select>
+        </label>
+      </div>
+      <div class="toolbar">
+        <button id="favorites-toggle" type="button">只看收藏：关闭</button>
+        <button id="compact-toggle" type="button">紧凑视图：关闭</button>
+        <button id="clear-filters" type="button" class="ghost">重置筛选</button>
+      </div>
     </section>
 
     <section class="panel">
@@ -44,12 +86,36 @@
   </main>
 
   <script>
-    const feed = document.getElementById('feed');
-    const sourceBreakdown = document.getElementById('source-breakdown');
-    const totalCount = document.getElementById('total-count');
-    const sourceCount = document.getElementById('source-count');
-    const latestTime = document.getElementById('latest-time');
-    const refreshNote = document.getElementById('refresh-note');
+    const FEED_PATH = './blog.json';
+    const LAST_FETCH_PATH = './cache/last_fetch.json';
+    const FAVORITES_KEY = 'ai-coding-favorites';
+
+    const elements = {
+      feed: document.getElementById('feed'),
+      sourceBreakdown: document.getElementById('source-breakdown'),
+      totalCount: document.getElementById('total-count'),
+      visibleCount: document.getElementById('visible-count'),
+      sourceCount: document.getElementById('source-count'),
+      latestTime: document.getElementById('latest-time'),
+      refreshNote: document.getElementById('refresh-note'),
+      collectStatus: document.getElementById('collect-status'),
+      avgScore: document.getElementById('avg-score'),
+      favoriteCount: document.getElementById('favorite-count'),
+      searchInput: document.getElementById('search-input'),
+      sourceFilter: document.getElementById('source-filter'),
+      categoryFilter: document.getElementById('category-filter'),
+      sortSelect: document.getElementById('sort-select'),
+      favoritesToggle: document.getElementById('favorites-toggle'),
+      compactToggle: document.getElementById('compact-toggle'),
+      clearFilters: document.getElementById('clear-filters')
+    };
+
+    const state = {
+      items: [],
+      favorites: new Set(JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]')),
+      showFavoritesOnly: false,
+      compactView: false
+    };
 
     function toDisplayDate(raw) {
       if (!raw) return '-';
@@ -60,83 +126,254 @@
 
     function parseScore(text) {
       const match = (text || '').match(/score=([\d.]+)/);
-      return match ? Number(match[1]) : null;
+      return match ? Number(match[1]) : 0;
     }
 
-    function renderStats(items) {
-      totalCount.textContent = items.length;
+    function parseCategory(text) {
+      return (text || '').split('·')[0]?.trim() || 'unknown';
+    }
 
-      const sources = {};
+    function parseDate(raw) {
+      const date = new Date(raw || '');
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function getItemId(item) {
+      return item.external_url || item.url_title || item.title;
+    }
+
+    function saveFavorites() {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify([...state.favorites]));
+      elements.favoriteCount.textContent = String(state.favorites.size);
+    }
+
+    function buildFilters(items) {
+      const sources = [...new Set(items.map((item) => item.sourceLabel))].sort();
+      const categories = [...new Set(items.map((item) => item.category))].sort();
+
+      elements.sourceFilter.innerHTML = '<option value="all">全部来源</option>';
+      elements.categoryFilter.innerHTML = '<option value="all">全部类别</option>';
+
+      sources.forEach((source) => {
+        const option = document.createElement('option');
+        option.value = source;
+        option.textContent = source;
+        elements.sourceFilter.appendChild(option);
+      });
+
+      categories.forEach((category) => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        elements.categoryFilter.appendChild(option);
+      });
+    }
+
+    function renderStats(items, visibleItems, latestFetch) {
+      const sourceMap = {};
       let latest = null;
+      let totalScore = 0;
 
       items.forEach((item) => {
-        const source = item.source_id || 'unknown';
-        sources[source] = (sources[source] || 0) + 1;
-
-        const published = item.published_at ? new Date(item.published_at) : null;
-        if (published && !Number.isNaN(published.getTime())) {
-          if (!latest || published > latest) latest = published;
+        sourceMap[item.sourceLabel] = (sourceMap[item.sourceLabel] || 0) + 1;
+        totalScore += item.score;
+        if (item.publishedDate && (!latest || item.publishedDate > latest)) {
+          latest = item.publishedDate;
         }
       });
 
-      sourceCount.textContent = Object.keys(sources).length;
-      latestTime.textContent = latest ? latest.toLocaleString('zh-CN', { hour12: false }) : '-';
-      refreshNote.textContent = latest ? `最近数据时间：${latest.toLocaleString('zh-CN', { hour12: false })}` : '暂无可解析时间';
+      elements.totalCount.textContent = String(items.length);
+      elements.visibleCount.textContent = String(visibleItems.length);
+      elements.sourceCount.textContent = String(Object.keys(sourceMap).length);
+      elements.latestTime.textContent = latest ? latest.toLocaleString('zh-CN', { hour12: false }) : '-';
+      elements.avgScore.textContent = items.length ? (totalScore / items.length).toFixed(1) : '-';
+      elements.favoriteCount.textContent = String(state.favorites.size);
 
-      sourceBreakdown.innerHTML = '';
-      Object.entries(sources)
+      const now = Date.now();
+      const latestMs = latest ? latest.getTime() : 0;
+      const hoursDiff = latestMs ? (now - latestMs) / 36e5 : Infinity;
+      const status = hoursDiff <= 48 ? '正常更新' : '更新滞后';
+
+      elements.collectStatus.textContent = status;
+      elements.collectStatus.className = status === '正常更新' ? 'ok' : 'warn';
+
+      const latestFetchText = latestFetch?.last_fetch_at ? ` · 最近抓取：${toDisplayDate(latestFetch.last_fetch_at)}` : '';
+      elements.refreshNote.textContent = latest ? `最近数据时间：${toDisplayDate(latest.toISOString())}${latestFetchText}` : '暂无可解析时间';
+
+      elements.sourceBreakdown.innerHTML = '';
+      Object.entries(sourceMap)
         .sort((a, b) => b[1] - a[1])
         .forEach(([source, count]) => {
           const chip = document.createElement('span');
           chip.className = 'chip';
           chip.textContent = `${source}: ${count}`;
-          sourceBreakdown.appendChild(chip);
+          elements.sourceBreakdown.appendChild(chip);
         });
     }
 
-    function renderFeed(items) {
-      feed.innerHTML = '';
-      if (!Array.isArray(items) || items.length === 0) {
-        feed.innerHTML = '<div class="empty">暂无数据，等待下一次抓取任务完成。</div>';
+    function getVisibleItems() {
+      const keyword = elements.searchInput.value.trim().toLowerCase();
+      const source = elements.sourceFilter.value;
+      const category = elements.categoryFilter.value;
+      const sortBy = elements.sortSelect.value;
+
+      let visible = state.items.filter((item) => {
+        const matchesKeyword = !keyword
+          || item.title.toLowerCase().includes(keyword)
+          || item.subtitle.toLowerCase().includes(keyword);
+        const matchesSource = source === 'all' || item.sourceLabel === source;
+        const matchesCategory = category === 'all' || item.category === category;
+        const matchesFavorites = !state.showFavoritesOnly || state.favorites.has(item.id);
+
+        return matchesKeyword && matchesSource && matchesCategory && matchesFavorites;
+      });
+
+      visible.sort((a, b) => {
+        if (sortBy === 'date_desc') {
+          return (b.publishedDate?.getTime() || 0) - (a.publishedDate?.getTime() || 0);
+        }
+        if (sortBy === 'title_asc') {
+          return a.title.localeCompare(b.title, 'zh-CN');
+        }
+        return b.score - a.score;
+      });
+
+      return visible;
+    }
+
+    function toggleFavorite(id) {
+      if (state.favorites.has(id)) {
+        state.favorites.delete(id);
+      } else {
+        state.favorites.add(id);
+      }
+      saveFavorites();
+      render();
+    }
+
+    function createItemCard(item) {
+      const card = document.createElement('article');
+      card.className = `item ${state.compactView ? 'compact' : ''}`;
+
+      const titleWrap = document.createElement('div');
+      titleWrap.className = 'item-title-row';
+
+      const link = document.createElement('a');
+      link.href = item.target;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'item-main-link';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = item.title;
+      link.appendChild(h3);
+
+      const meta = document.createElement('p');
+      meta.className = 'meta';
+      meta.textContent = item.subtitle || '无摘要';
+      link.appendChild(meta);
+
+      const detail = document.createElement('p');
+      detail.className = 'detail';
+      detail.textContent = `来源：${item.sourceLabel} · 类别：${item.category} · 发布时间：${toDisplayDate(item.publishedRaw)}`;
+      link.appendChild(detail);
+
+      const scoreBadge = document.createElement('span');
+      scoreBadge.className = 'score-badge';
+      scoreBadge.textContent = `Score ${item.score.toFixed(1)}`;
+
+      const favButton = document.createElement('button');
+      favButton.type = 'button';
+      const isFav = state.favorites.has(item.id);
+      favButton.className = `fav-btn ${isFav ? 'active' : ''}`;
+      favButton.textContent = isFav ? '★ 已收藏' : '☆ 收藏';
+      favButton.addEventListener('click', () => toggleFavorite(item.id));
+
+      titleWrap.appendChild(scoreBadge);
+      titleWrap.appendChild(favButton);
+      card.appendChild(titleWrap);
+      card.appendChild(link);
+
+      return card;
+    }
+
+    function renderFeed(visibleItems) {
+      elements.feed.innerHTML = '';
+      if (!visibleItems.length) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = '当前筛选条件下没有匹配内容，请调整关键词、来源或收藏开关。';
+        elements.feed.appendChild(empty);
         return;
       }
 
-      const sorted = [...items].sort((a, b) => parseScore(b.sub_title) - parseScore(a.sub_title));
+      visibleItems.forEach((item) => elements.feed.appendChild(createItemCard(item)));
+    }
 
-      sorted.forEach((item) => {
-        const card = document.createElement('article');
-        card.className = 'item';
+    function render(latestFetch = null) {
+      const visibleItems = getVisibleItems();
+      renderStats(state.items, visibleItems, latestFetch);
+      renderFeed(visibleItems);
+    }
 
-        const title = item.title || 'Untitled';
-        const subtitle = item.sub_title || '无摘要';
-        const source = item.source_host || item.source_id || 'unknown';
-        const publishedAt = toDisplayDate(item.published_at);
-        const target = item.external_url || `./blog/${item.url_title || ''}/`;
+    function bindEvents(latestFetch) {
+      [elements.searchInput, elements.sourceFilter, elements.categoryFilter, elements.sortSelect]
+        .forEach((el) => el.addEventListener('input', () => render(latestFetch)));
 
-        card.innerHTML = `
-          <a href="${target}" target="_blank" rel="noopener noreferrer">
-            <h3>${title}</h3>
-            <p class="meta">${subtitle}</p>
-            <p class="detail">来源：${source} · 发布时间：${publishedAt}</p>
-          </a>
-        `;
+      elements.favoritesToggle.addEventListener('click', () => {
+        state.showFavoritesOnly = !state.showFavoritesOnly;
+        elements.favoritesToggle.textContent = `只看收藏：${state.showFavoritesOnly ? '开启' : '关闭'}`;
+        render(latestFetch);
+      });
 
-        feed.appendChild(card);
+      elements.compactToggle.addEventListener('click', () => {
+        state.compactView = !state.compactView;
+        elements.compactToggle.textContent = `紧凑视图：${state.compactView ? '开启' : '关闭'}`;
+        render(latestFetch);
+      });
+
+      elements.clearFilters.addEventListener('click', () => {
+        elements.searchInput.value = '';
+        elements.sourceFilter.value = 'all';
+        elements.categoryFilter.value = 'all';
+        elements.sortSelect.value = 'score_desc';
+        state.showFavoritesOnly = false;
+        elements.favoritesToggle.textContent = '只看收藏：关闭';
+        render(latestFetch);
       });
     }
 
-    fetch('./blog.json')
-      .then((resp) => {
+    Promise.all([
+      fetch(FEED_PATH).then((resp) => {
         if (!resp.ok) throw new Error('feed request failed');
         return resp.json();
-      })
-      .then((items) => {
-        renderStats(items);
-        renderFeed(items);
+      }),
+      fetch(LAST_FETCH_PATH)
+        .then((resp) => (resp.ok ? resp.json() : {}))
+        .catch(() => ({}))
+    ])
+      .then(([items, lastFetch]) => {
+        if (!Array.isArray(items)) throw new Error('feed format invalid');
+
+        state.items = items.map((item) => ({
+          ...item,
+          id: getItemId(item),
+          score: parseScore(item.sub_title),
+          category: parseCategory(item.sub_title),
+          subtitle: item.sub_title || '',
+          sourceLabel: item.source_host || item.source_id || 'unknown',
+          publishedRaw: item.published_at,
+          publishedDate: parseDate(item.published_at),
+          target: item.external_url || `./blog/${item.url_title || ''}/`
+        }));
+
+        buildFilters(state.items);
+        bindEvents(lastFetch || {});
+        render(lastFetch || {});
       })
       .catch(() => {
-        refreshNote.textContent = '加载失败，请稍后刷新重试';
-        feed.innerHTML = '<div class="empty">读取 blog.json 失败，请检查发布产物是否包含该文件。</div>';
+        elements.refreshNote.textContent = '加载失败，请稍后刷新重试';
+        elements.feed.innerHTML = '<div class="empty">读取 blog.json 失败，请检查发布产物是否包含该文件。</div>';
       });
   </script>
 </body>
