@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T06:13:07Z",
+  "generated_at": "2026-09-24T08:15:45Z",
   "policy": {
     "schedule": {
       "cron": "30 5,11,17,23 * * *",
@@ -16,7 +16,21 @@
       "popularity": 0.2,
       "freshness": 0.2,
       "impact": 0.1
+    },
+    "llm": {
+      "enabled": true,
+      "model": "deepseek-flash",
+      "model_label": "DeepSeek-V4.1-Flash",
+      "min_score": 60.0
     }
+  },
+  "llm": {
+    "enabled": true,
+    "model": "deepseek-flash",
+    "model_label": "DeepSeek-V4.1-Flash",
+    "reason": null,
+    "healthy": true,
+    "coverage": 30
   },
   "sources": [
     {
@@ -26,7 +40,7 @@
       "type": "arxiv_rss",
       "ok": true,
       "fetched": 35,
-      "relevant": 9,
+      "relevant": 16,
       "error": null
     },
     {
@@ -46,7 +60,7 @@
       "type": "arxiv_rss",
       "ok": true,
       "fetched": 240,
-      "relevant": 9,
+      "relevant": 18,
       "error": null
     },
     {
@@ -66,7 +80,7 @@
       "type": "hf_daily_papers",
       "ok": true,
       "fetched": 100,
-      "relevant": 4,
+      "relevant": 8,
       "error": null
     },
     {
@@ -76,7 +90,7 @@
       "type": "hf_datasets",
       "ok": true,
       "fetched": 40,
-      "relevant": 18,
+      "relevant": 29,
       "error": null
     },
     {
@@ -86,12 +100,12 @@
       "type": "hf_datasets",
       "ok": true,
       "fetched": 40,
-      "relevant": 15,
+      "relevant": 20,
       "error": null
     }
   ],
   "totals": {
-    "archive": 58,
+    "archive": 98,
     "displayed": 30,
     "sources_ok": 7,
     "sources_total": 7

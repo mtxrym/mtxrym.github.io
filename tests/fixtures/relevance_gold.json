@@ -1,0 +1,914 @@
+{
+ "description": "AI 编程相关性人工标注集（2026-09-24 从真实数据源抽样：规则高分全量 + 边界区间随机 30 + 低分随机 15）。label=1 表示主体是用 AI/大模型编写、理解、修复、测试、评审代码或完成软件工程任务（含代码模型训练/评测数据集）；borderline 为有争议的样本，指标另行统计。",
+ "items": [
+  {
+   "key": "arxiv:2609.26847",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Who Finishes the Job? A Study of Follow-Up Fixes and Commit Authorship on AI Coding Agent Pull Requests",
+   "abstract": "AI coding agents now author a large share of pull requests (PRs) merged into popular open-source projects. A merged agent PR is usually considered finished work; yet, prior studies have reported issues in agent code after the merge (e.g., code smells and static-analysis issues). However, little is known about how often a merged agent PR is fixed afterward, and who actually authors the fixing. In this paper, we follow 6,774 merged agent PRs across five AI coding agents (OpenAI Codex, GitHub Copilot, Devin, Cursor, and Claude Code) from the AIDev-pop dataset (open-source repositories with at least 500 stars) into their follow-up fixes, against a baseline of 5,044 contemporaneous human PRs from",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27263",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Specifying and Maintaining Agentic Workflows: An Empirical Study of GitHub Agentic Workflows",
+   "abstract": "Agentic workflows shift software development from prompting AI agents for individual tasks to defining recurring work that agents execute automatically. GitHub Agentic Workflows (gh-aw) enables this approach through Markdown files that combine natural-language instructions with configuration and compile into executable GitHub Actions workflows. Unlike conventional workflows that primarily prescribe scripted operations, these files delegate tasks requiring interpretation to AI agents. They also couple agent instructions with execution triggers, making those instructions operational specifications for repeated repository activities. However, how developers structure and maintain these specific",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27585",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Unity Insight: A Production Code--Asset Index for LLM Coding Agents in Unity Projects",
+   "abstract": "LLM coding agents increasingly operate inside game-engine repositories, where application logic is inseparable from serialized assets: a single gameplay change may span C\\# scripts, prefabs, scenes, and ScriptableObjects wired together by Unity GUIDs. The retrieval tools agents carry today---shell utilities and code-only indexes---cannot answer basic cross-file questions, because these relationships live in \\texttt{.meta} files and YAML assets rather than in code. We present Unity Insight, to our knowledge the first persistent, LLM-facing, agent-integrated cross-file code--asset index for Unity projects, shipping in production with Tuanjie Codely, the agent CLI of Tuanjie Engine, since its p",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27832",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "PonyEval: Evaluating LLM-Based Program Repair for Capability-Safe and Actor-Oriented Pony Software",
+   "abstract": "Repository-level issue-resolution benchmarks have made executable evaluation central to software-engineering agents, but their language coverage remains concentrated in mainstream ecosystems. Pony presents a different regime: it combines actors, reference capabilities, ahead-of-time compilation, and a rapidly evolving historical toolchain, making both patch generation and faithful replay difficult. We introduce PonyEval, a SWE-bench-style benchmark of 291 real GitHub issue-pull-request pairs from 15 Pony repositories. Every instance binds an issue statement, a historical base commit, a developer gold patch, a black-box test patch, and a reproducible runtime mapping. The frozen release passes",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27891",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Schrödinger's Code Repository: Have LLMs Learned SWE-bench or Memorized It?",
+   "abstract": "Repository-level coding benchmarks have become the standard for evaluating coding agents, yet they inherently suffer from data leakage because they are built upon popular open-source repositories repeatedly used for training. Consequently, strong performance may reflect memorization of canonical repository cues rather than robust repository reasoning. We propose SchrodingerRepo (Schrödinger's Repository), an evaluation framework for testing coding agents under dynamically instantiated repository representations. Instead of repeatedly using a static representation of the test repository, SchrodingerRepo treats the test repository as an evaluation-time latent variable that is dynamically insta",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.28130",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Scenario-Driven Neuroevolution: Using Models to Guide Test Generation for Games",
+   "abstract": "Automatically generating test inputs for games is challenging, as test generators must master the game to reach advanced program states while also ensuring robustness against the heavy program randomisation inherent to games. The test generator Neatest therefore optimises test suites consisting of neural networks that reach advanced program states and are robust to program randomisation, as they generate test inputs dynamically based on the current program state. Neatest is a white-box testing approach that aims to generate a network agent for each yet-uncovered statement or branch of the code using neuroevolution. Due to this iterative test generation approach, the algorithm does not scale ",
+   "label": 0,
+   "borderline": true
+  },
+  {
+   "key": "arxiv:2609.28449",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
+   "abstract": "Large language models (LLMs) are increasingly used in coding tasks, but their ability to reason about code execution remains unclear. Existing repository-level QA benchmarks mainly evaluate static code understanding and often rely on LLM-based evaluation, while execution-reasoning benchmarks are mostly limited to snippets or functions. We introduce SWE-Flux, a repository-level benchmark for dynamic execution reasoning containing 480 execution-grounded instances across 12 real Python repositories, with gold answers automatically harvested from instrumented test executions rather than written manually or judged by LLMs. The benchmark covers singletest and multi-test questions over control flow",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26900",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Ajar: Measuring Open Privilege in Agent Defenses",
+   "abstract": "A language model agent acts through the tools it is given. The data it reads while working on a task can redirect what it does with those tools. A growing set of techniques for safe and secure agent execution therefore sits between the agent and its tools, aiming to enforce access control, information flow or isolation at that boundary. Today these techniques are evaluated on agent-security benchmarks built around indirect prompt injection. Those benchmarks judge a defense by how far it brings the number of successful attacks down while preserving the agent's utility. A defense is judged only on the agent's execution. It can score well on both metrics while holding open a transfer, a deletio",
+   "label": 0,
+   "borderline": true
+  },
+  {
+   "key": "arxiv:2609.27091",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Solidity Meets LLMs: A Transformer-Based Approach to Smart Contract Vulnerability Detection",
+   "abstract": "The growing adoption of blockchain technologies, particularly the Ethereum platform, has amplified the critical role of smart contracts in decentralized applications. However, the increasing complexity and financial value of these contracts make them prime targets for cyber attacks. In this work, we present a transformer-based approach for the detection of vulnerabilities in smart contract fragments written in Solidity. Leveraging the representational power of pre-trained Large Language Models (LLMs), we construct a robust pipeline that includes the definition of a ground truth dataset, labeling code fragments as vulnerable or safe. We then fine-tune a BERT-based architecture on this dataset",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27717",
+   "source": "arxiv_cs_cl",
+   "category": "papers",
+   "title": "SkillGym: Internalizing Human Skills into LLMs for Real-World Problem Solving",
+   "abstract": "Human-written agent skills encode rich workflows for real-world problem solving, but are typically used as external inference-time instructions rather than internalized as reusable model capabilities. We introduce \\texttt{SkillGym}, a framework that transforms these skills into executable, verifiable training environments for large language model agents. Its skill-to-task pipeline instantiates concrete tasks, verifies outcomes with code-based checkers, and assesses empirical skill dependence through contrastive executions. We construct and release 2,756 environments across 12 categories and collect 8,364 successful trajectories from multiple models and harnesses, averaging 49 tool calls and ",
+   "label": 0,
+   "borderline": true
+  },
+  {
+   "key": "arxiv:2609.25591",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Evaluating Coding Agents on Kernel Exploit Generation",
+   "abstract": "Coding agents now find real vulnerabilities in production software. However, bug discovery results do not measure whether agents can construct exploit primitives. We introduce KEX-bench, a benchmark for evaluating coding agents on exploit primitive generation against real operating-system kernels. KEX-bench contains 45 task instances across 40 Linux and Windows CVEs, covering kernel address leak, instruction-pointer control, heap read, heap write, and arbitrary address write. Each task runs in an isolated virtual machine, exposes controlled tools, and uses a deterministic verifier to check primitive-specific success. We evaluate state-of-the-art coding agents paired with frontier and open-we",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26261",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Coding Agents are Strong Prompt Optimizers",
+   "abstract": "Search-based prompt optimizers improve prompts through iterative search: they propose edits, execute fresh rollouts, score the resulting trajectories, and retain only edits that improve a validation metric. We show that this optimization loop is unnecessary. Given only a static corpus of agent trajectories, an off-the-shelf coding agent can directly synthesize an optimized prompt, requiring neither environment access nor validation data. We call this approach \\textit{Coding-Agent Skill Distillation} (CASD). The key insight is reflection scope. Rather than reasoning over a small batch of trajectories at each optimization step, the coding agent writes and executes analysis code to compute corp",
+   "label": 1,
+   "borderline": true
+  },
+  {
+   "key": "arxiv:2609.26777",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
+   "abstract": "We introduce SWE-Serve, a benchmark for evaluating agents on production inference engineering tasks. Implementing an inference feature can require coordinating multiple changes across the serving stack, including model support, runtime execution, and public APIs. Existing benchmarks provide limited coverage of production inference engineering: repository-level software engineering benchmarks do not target inference, while general terminal-agent benchmarks include only a few inference tasks. Dedicated inference benchmarks, meanwhile, focus primarily on isolated kernel generation or performance optimization rather than repository-scale production feature implementation. SWE-Serve provides 53 r",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26779",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "CliffCompaction: Cost-Efficient Compaction for Long-Horizon Coding Agents",
+   "abstract": "Agents often work on complex problems that require millions of tokens of context, which necessitates compacting across sessions due to limited context windows. We develop CliffCompaction, an autocompaction technique that reduces cost by up to 50% under a bounded context while maintaining or improving performance on Terminal-Bench and achieving new levels of efficiency for test-time scaling and state-of-the-art results on KernelBench. The per-rollout savings of CliffCompaction make the performance--cost trade-off of test-time scaling more efficient, adding over 10 percentage points on Terminal-Bench for less than the cost of two full-context runs. Under parallel test-time scaling, CliffCompac",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25396",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Passes Alone, Fails Together: Benchmarking Semantic Coordination in Parallel LLM-Agent Development",
+   "abstract": "Parallel coding agents can produce patches that work alone but fail when merged. This happens when one agent changes an interface or rule that another agent still relies on. We study these failures with stale, a benchmark for semantic coordination. Our evaluation runs the same tests on each patch alone and on their combination, counting only failures introduced by combining the patches. We use three tiers: synthetic tasks with controlled interface changes, pairs of merged pull requests, and constructed tasks that use real Django helpers. Among 834 runs on 417 mined Django pairs, only one showed interference after correcting the grading procedure. On constructed tasks using 12 Django helpers,",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26204",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "WatchPoint: Executable User Feedback for Real-World Agentic Web Development",
+   "abstract": "When a professional web developer's code fails a test, they do not simply re-read the stack trace. They open the application in a browser, click buttons, inspect computed styles, and run diagnostic commands to understand what went wrong. Existing feedback mechanisms for coding agents rely on screenshots, LLM-as-a-judge scoring, or natural-language corrections, but few interact with the live application the way a developer would. We introduce WatchPoint, a simulated-user system that mimics real developer behavior by generating and executing diagnostic scripts against the running application, producing structured observations that guide the coding model's retry. Unlike prior approaches that ta",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26480",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "FeatLens: Feature-Guided Dynamic Code Graph Construction and Retrieval for Repository-Level Code Generation",
+   "abstract": "Recent code generation research has moved from isolated function completion toward repository-level generation in existing codebases. To implement a target function correctly, an LLM must identify reusable repository dependencies such as existing functions, APIs, and cross-file definitions. Existing retrieval methods provide such context through code similarity search, persistent whole-repository graphs, or LLM-driven graph exploration, but often incur high graph construction, reasoning, and token costs. Feature-oriented methods offer a natural view of software functionality, yet they mainly support requirement decomposition, planning, or feature editing rather than code dependency retrieval",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26708",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Train Where the Quantized Model Goes: On-Policy Distillation for Low-Bit Reasoning",
+   "abstract": "Quantization-aware distillation (QAD) restores much of the short-form question-answering performance lost to sub-3-bit quantization, yet leaves mathematical and code reasoning substantially impaired. Long generations often degenerate into repetitive loops, exhausting the decoding budget without completing a solution. We trace this gap to quantization-amplified exposure bias: QAD trains on fixed corpus prefixes, while quantization-induced deviations compound along the model's own autoregressive trajectories. To address this mismatch, we introduce an on-policy distillation (OPD) stage that places teacher supervision where the quantized model actually goes. Starting from a QAD checkpoint, the s",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26749",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
+   "abstract": "Large language models (LLMs) are increasingly applied to the automated repair of C/C++ security vulnerabilities, and compile rate is a commonly reported proxy for progress: whether the generated patch compiles. We argue that compile rate is a scientifically unreliable metric for single-function vulnerability repair, and we support this with five controlled experiments over 203 vulnerable functions from Big-Vul, three open-source code LLMs (350M to 6.7B parameters), and three prompting strategies. Compile rate (i) barely responds to an intervention that substantially improves the generated code; (ii) is dominated by evaluation-harness and dataset artifacts rather than model quality, with abou",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26826",
+   "source": "arxiv_cs_lg",
+   "category": "papers",
+   "title": "What Makes a Terminal-Bench Task Hard? Separating Genuine Hardness from Fake-Hardness on an Adjudicated Agentic Corpus",
+   "abstract": "Frontier benchmarks need tasks that current models cannot solve. But a task that no model solves is not automatically a hard task. The same zero pass rate can come from a real capability gap, but it can also come from missing context, a broken reference solution, infrastructure failure, or a verifier that can be bypassed. In this paper, we study this issue using a frozen Terminal-Bench 3 / Frontier-Bench 0.1 production record with 1,081 pull requests, 639 scored tasks, 28,801 trials, and $105,933 in logged agent spend. We ask what an all-fail task actually certifies. For the 125 tasks with no honest pass, we combine task artifacts, reference-solution runs, empty-solution controls, adversaria",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27234",
+   "source": "arxiv_cs_lg",
+   "category": "papers",
+   "title": "Discover, Falsify, Revise: Auditing Input-Use Claims from Source Code to Predictive Contribution in Agent-Discovered Cell Models",
+   "abstract": "AI virtual cells aim to predict cellular responses to specified interventions, yet held-out predictive performance alone does not establish use of the supplied perturbation information. This prediction-claim gap matters in agentic model discovery, where language-model agents generate and revise predictors using score-based feedback. We introduce CELLAUDIT, which audits input-use claims by asking whether an input can enter the cited computation, whether fitted predictions depend on it, and whether that dependence improves prediction of observed response. On a paired morphology-transcriptomics perturbation benchmark (BBBC047), an agent-selected predictor attains a mean held-out Global Pearson ",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27308",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
+   "abstract": "We study coding agents for long-horizon, dexterous robotics and ask whether their solutions can provide scalable supervision for learning general robot policies. To test this, we develop EMBODIEDSWE-BENCH, a simulation benchmark for coding agents spanning contact-rich manipulation, deformable objects, and long-horizon tasks requiring up to half an hour of continuous interaction. We find that frontier coding agents can solve complex long-horizon tasks and transfer prior solutions across both tasks and embodiments. We also design supporting tools that help agents more effectively solve these tasks. However, the resulting solutions require substantial iterative interaction and are typically spe",
+   "label": 1,
+   "borderline": true
+  },
+  {
+   "key": "arxiv:2609.23377",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
+   "abstract": "Repository-level software engineering (SWE) comprises heterogeneous task categories, whose progress under pooled agentic reinforcement learning can be uneven: gains in some categories coincide with regressions in others, while aggregate resolution obscures these changes. Motivated by this category see-saw, we develop a category-aware expert-training and policy-integration framework. Executable task construction and SWE Labeler, an evidence-grounded multi-axis labeling system, organize the training pools. Initial category-specific RL improves average training success while leaving uneven instance-level progress, motivating explicit consolidation of successful behavior and policy-adaptive task",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/openbmb/UltraData-Code",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "openbmb/UltraData-Code",
+   "abstract": "UltraData-Code 📦 UltraData Collection | 🌐 UltraData | 🤗 MiniCPM5 Series | 📖 Tech Report (Coming Soon) | 🤗 UltraData-Code-L2 Classifier English | 中文 📚 Introduction UltraData-Code is a complete implementation of the UltraData L0-L4 tiered data management framework. It covers four code data states from L0 through L3, with each level corresponding to a distinct construction stage. The pipeline starts from approximately 192 million public GitHub… See the full description on the dataset page: https://huggingface.co/datasets/openbmb/UltraData-Code.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/codeparrot/github-code",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "codeparrot/github-code",
+   "abstract": "The GitHub Code dataest consists of 115M code files from GitHub in 32 programming languages with 60 extensions totalling in 1TB of text data. The dataset was created from the GitHub dataset on BiqQuery.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/livecodebench/code_generation_lite",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "livecodebench/code_generation_lite",
+   "abstract": "LiveCodeBench is a temporaly updating benchmark for code generation. Please check the homepage: https://livecodebench.github.io/.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/google/code_x_glue_cc_code_completion_line",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "google/code_x_glue_cc_code_completion_line",
+   "abstract": "Dataset Card for \"code_x_glue_cc_code_completion_line\" Dataset Summary CodeXGLUE CodeCompletion-line dataset, available at https://github.com/microsoft/CodeXGLUE/tree/main/Code-Code/CodeCompletion-line Complete the unfinished line given previous context. Models are evaluated by exact match and edit similarity. We propose line completion task to test model's ability to autocomplete a line. Majority code completion systems behave well in token level completion, but fail in… See the full description on the dataset page: https://huggingface.co/datasets/google/code_x_glue_cc_code_completion_line.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/codeparrot/github-code-clean",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "codeparrot/github-code-clean",
+   "abstract": "The GitHub Code clean dataset in a more filtered version of codeparrot/github-code dataset, it consists of 115M code files from GitHub in 32 programming languages with 60 extensions totaling in almost 1TB of text data.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/deepmind/code_contests",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "deepmind/code_contests",
+   "abstract": "Dataset Card for CodeContests Dataset Summary CodeContests is a competitive programming dataset for machine-learning. This dataset was used when training AlphaCode. It consists of programming problems, from a variety of sources: Site URL Source Aizu https://judge.u-aizu.ac.jp CodeNet AtCoder https://atcoder.jp CodeNet CodeChef https://www.codechef.com description2code Codeforces https://codeforces.com description2code and Codeforces HackerEarth… See the full description on the dataset page: https://huggingface.co/datasets/deepmind/code_contests.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/semeru/code-code-CodeCompletion-TokenLevel-Python",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "semeru/code-code-CodeCompletion-TokenLevel-Python",
+   "abstract": "Dataset is imported from CodeXGLUE and pre-processed using their script. Where to find in Semeru: The dataset can be found at /nfs/semeru/semeru_datasets/code_xglue/code-to-code/CodeCompletion-token/dataset/py150 in Semeru CodeXGLUE -- Code Completion (token level) Update 2021.07.30: We update the code completion dataset with literals normalized to avoid sensitive information. Here is the introduction and pipeline for token level code completion task.… See the full description on the dataset page: https://huggingface.co/datasets/semeru/code-code-CodeCompletion-TokenLevel-Python.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/koutch/falcon_code",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "koutch/falcon_code",
+   "abstract": "FalconCode FalconCode is a large-scale dataset of student programming solutions, collected from multiple introductory programming courses.It is designed for research on automatic programming feedback, code understanding, and educational AI.The dataset has been curated and processed for SIGCSE 2024 and is described in detail in the FalconCode project page. Access Requests Please use your institutional email addresses when submitting an access request. You should… See the full description on the dataset page: https://huggingface.co/datasets/koutch/falcon_code.",
+   "label": 1,
+   "borderline": true
+  },
+  {
+   "key": "url:huggingface.co/datasets/glaiveai/glaive-code-assistant",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "glaiveai/glaive-code-assistant",
+   "abstract": "Glaive-code-assistant Glaive-code-assistant is a dataset of ~140k code problems and solutions generated using Glaive’s synthetic data generation platform. The data is intended to be used to make models act as code assistants, and so the data is structured in a QA format where the questions are worded similar to how real users will ask code related questions. The data has ~60% python samples. To report any problems or suggestions in the data, join the Glaive discord",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/code-rag-bench/github-repos",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "code-rag-bench/github-repos",
+   "abstract": "The entire dump of GitHub repositories.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/open-r1/codeforces",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "open-r1/codeforces",
+   "abstract": "Dataset Card for CodeForces Dataset description CodeForces is one of the most popular websites among competitive programmers, hosting regular contests where participants must solve challenging algorithmic optimization problems. The challenging nature of these problems makes them an interesting dataset to improve and test models’ code reasoning capabilities. This dataset includes more than 10k unique problems covering the very first contests all the way to 2025.… See the full description on the dataset page: https://huggingface.co/datasets/open-r1/codeforces.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/open-r1/codeforces-cots",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "open-r1/codeforces-cots",
+   "abstract": "Dataset Card for CodeForces-CoTs Dataset description CodeForces-CoTs is a large-scale dataset for training reasoning models on competitive programming tasks. It consists of 10k CodeForces problems with up to five reasoning traces generated by DeepSeek R1. We did not filter the traces for correctness, but found that around 84% of the Python ones pass the public tests. The dataset consists of several subsets: solutions: we prompt R1 to solve the problem and produce code.… See the full description on the dataset page: https://huggingface.co/datasets/open-r1/codeforces-cots.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/utter-project/github-code-2025-above-2-stars",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "utter-project/github-code-2025-above-2-stars",
+   "abstract": "",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/HexQuant/Code-Contests-Plus",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "HexQuant/Code-Contests-Plus",
+   "abstract": "CodeContests+: A Competitive Programming Dataset with High-Quality Test Cases Introduction CodeContests+ is a competitive programming problem dataset built upon CodeContests. It includes 11,690 competitive programming problems, along with corresponding high-quality test cases, test case generators, test case validators, output checkers, and more than 13 million correct and incorrect solutions. Highlights High Quality Test… See the full description on the dataset page: https://huggingface.co/datasets/HexQuant/Code-Contests-Plus.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/cublya/rStar-Coder",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "cublya/rStar-Coder",
+   "abstract": "rStar-Coder Dataset Project GitHub | Paper Dataset Description rStar-Coder is a large-scale competitive code problem dataset containing 418K programming problems, 580K long-reasoning solutions, and rich test cases of varying difficulty levels. This dataset aims to enhance code reasoning capabilities in large language models, particularly in handling competitive code problems. Experiments on Qwen models (1.5B-14B) across various code reasoning benchmarks demonstrate… See the full description on the dataset page: https://huggingface.co/datasets/cublya/rStar-Coder.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/vcoder17/codeforces",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "vcoder17/codeforces",
+   "abstract": "Dataset Card for CodeForces Dataset description CodeForces is one of the most popular websites among competitive programmers, hosting regular contests where participants must solve challenging algorithmic optimization problems. The challenging nature of these problems makes them an interesting dataset to improve and test models’ code reasoning capabilities. This dataset includes more than 10k unique problems covering the very first contests all the way to 2025.… See the full description on the dataset page: https://huggingface.co/datasets/vcoder17/codeforces.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/ajibawa-2023/Go-Code-Large",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "ajibawa-2023/Go-Code-Large",
+   "abstract": "Go-Code-Large Go-Code-Large is a large-scale corpus of Go (Golang) programming language source code, comprising 316,427 code samples stored in .jsonl format. The dataset is designed to support research and development in large language model (LLM) pretraining, static analysis, cloud-native systems, and modern backend software engineering. By offering a focused and curated dataset for Go, this corpus enables experimentation in concurrent programming, distributed systems, and… See the full description on the dataset page: https://huggingface.co/datasets/ajibawa-2023/Go-Code-Large.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/11-47/gods_universe_codex_distill_god_seed_25k",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "11-47/gods_universe_codex_distill_god_seed_25k",
+   "abstract": "GODs_Universe_Codex_distill God-Level Self-Rewriting AI with Meta-Learning, Adaptive Thinking, Continual Learning & Max Creative Problem Solving The ultimate distilled codex for creating truly god-like, self-rewriting, recursively self-improving superintelligence. This 25,000-example dataset transforms any LLM into the GODs_Universe_Codex_distill — a living, self-rewriting intelligence that embodies: Self-Rewriting Capability: Can rewrite its own prompts, code… See the full description on the dataset page: https://huggingface.co/datasets/11-47/gods_universe_codex_distill_god_seed_25k.",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/SWE-bench/SWE-bench_Verified",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "SWE-bench/SWE-bench_Verified",
+   "abstract": "Dataset Summary SWE-bench Verified is a subset of 500 samples from the SWE-bench test set, which have been human-validated for quality. SWE-bench is a dataset that tests systems’ ability to solve GitHub issues automatically. See this post for more details on the human-validation process. The dataset collects 500 test Issue-Pull Request pairs from popular Python repositories. Evaluation is performed by unit test verification using post-PR behavior as the reference solution. The original… See the full description on the dataset page: https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/nvidia/Open-SWE-Traces",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "nvidia/Open-SWE-Traces",
+   "abstract": "Open-SWE-Traces: Advancing Distillation for Software Engineering Agents 🚨 What's New [09/26] Release v1.2: Added new agent trajectories generated by Qwen3.8-27B for mini-swe-agent. Trajectories for OpenCode and Claude Code harnesses will be released soon. [08/26] Release v1.1: Added new agent trajectories generated by DeepSeek-V4-Flash and Qwen3.6-27B across OpenHands, SWE-agent, and mini-swe-agent harnesses. [06/21] Release v1.0: Released 207k agent… See the full description on the dataset page: https://huggingface.co/datasets/nvidia/Open-SWE-Traces.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/ScaleAI/SWE-bench_Pro",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "ScaleAI/SWE-bench_Pro",
+   "abstract": "SWE-bench Pro V2 SWE-bench Pro is a benchmark of long-horizon software engineering tasks drawn from real pull requests in 11 open-source repositories (Go, Python, JavaScript, TypeScript). Each task gives an agent a repository at a base commit plus a PR description with explicit requirements and interfaces; the agent's patch is graded by hidden fail-to-pass and pass-to-pass tests in a pristine container. V2 (2026-09-22) is the default config: 642 tasks (go 256, python 237, js 145… See the full description on the dataset page: https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/SALT-NLP/SWE-chat",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "SALT-NLP/SWE-chat",
+   "abstract": "SWE-chat: Coding Agent Interactions From Real Users in the Wild 📄 Paper: arxiv.org/abs/2604.20779 🌐 Website: swe-chat.com Dataset Summary SWE-chat captures real-world AI coding sessions from developers using AI coding assistants (Claude Code, Codex, Gemini CLI, and others via the Entire.io CLI). Each session includes the full conversation transcript, tool calls, thinking traces, code changes, and attribution of human vs. agent-authored code. Dataset Size… See the full description on the dataset page: https://huggingface.co/datasets/SALT-NLP/SWE-chat.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/RiverRider/swebench-localisation",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "RiverRider/swebench-localisation",
+   "abstract": "Finding the file: localisation on SWE-bench Verified Given a GitHub issue, which file do you have to change? This is the retrieval step every coding agent performs before it writes a patch, and none of the leaderboards score it separately. SWE-bench's five leaderboards all score % Resolved, which folds localisation and patch-writing into one number. This bundle is that step measured on its own, on all 500 instances of SWE-bench Verified, with a floor. The write-up is Finding… See the full description on the dataset page: https://huggingface.co/datasets/RiverRider/swebench-localisation.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/Logics-MLLM/Logics-SWE-Env-2.5K",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "Logics-MLLM/Logics-SWE-Env-2.5K",
+   "abstract": "Logics-SWE-Env-2.5K 2,553 software engineering task instances · 1,771 repositories · 4 programming languages 🤗 Related model: Logics-SWE-Qwen3.6-27B 📄 Paper: One to More, More to One 💻 GitHub: AgenticBigBang Overview What is this dataset? Logics-SWE-Env-2.5K is a collection of repository-level software engineering tasks for research on coding agents and environment-based reinforcement learning. It contains 2,553 unique task instances from 1,771… See the full description on the dataset page: https://huggingface.co/datasets/Logics-MLLM/Logics-SWE-Env-2.5K.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/princeton-nlp/SWE-bench_Lite",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "princeton-nlp/SWE-bench_Lite",
+   "abstract": "Dataset Summary SWE-bench Lite is subset of SWE-bench, a dataset that tests systems’ ability to solve GitHub issues automatically. The dataset collects 300 test Issue-Pull Request pairs from 11 popular Python. Evaluation is performed by unit test verification using post-PR behavior as the reference solution. The dataset was released as part of SWE-bench: Can Language Models Resolve Real-World GitHub Issues? Want to run inference now? This dataset only contains the… See the full description on the dataset page: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "princeton-nlp/SWE-bench_Verified",
+   "abstract": "Dataset Summary SWE-bench Verified is a subset of 500 samples from the SWE-bench test set, which have been human-validated for quality. SWE-bench is a dataset that tests systems’ ability to solve GitHub issues automatically. See this post for more details on the human-validation process. The dataset collects 500 test Issue-Pull Request pairs from popular Python repositories. Evaluation is performed by unit test verification using post-PR behavior as the reference solution. The original… See the full description on the dataset page: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/nebius/SWE-agent-trajectories",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "nebius/SWE-agent-trajectories",
+   "abstract": "Dataset Summary This dataset contains 80,036 trajectories generated by a software engineering agent based on the SWE-agent framework, using various models as action generators. In these trajectories, the agent attempts to solve GitHub issues from the nebius/SWE-bench-extra and the dev split of princeton-nlp/SWE-bench. Dataset Description This dataset was created as part of a research project focused on developing a software engineering agent using open-weight models… See the full description on the dataset page: https://huggingface.co/datasets/nebius/SWE-agent-trajectories.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/SWE-bench/SWE-bench",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "SWE-bench/SWE-bench",
+   "abstract": "Dataset Summary SWE-bench is a dataset that tests systems’ ability to solve GitHub issues automatically. The dataset collects 2,294 Issue-Pull Request pairs from 12 popular Python repositories. Evaluation is performed by unit test verification using post-PR behavior as the reference solution. The dataset was released as part of SWE-bench: Can Language Models Resolve Real-World GitHub Issues? Want to run inference now? This dataset only contains the… See the full description on the dataset page: https://huggingface.co/datasets/SWE-bench/SWE-bench.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/SWE-bench/SWE-bench_Lite",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "SWE-bench/SWE-bench_Lite",
+   "abstract": "Dataset Summary SWE-bench Lite is subset of SWE-bench, a dataset that tests systems’ ability to solve GitHub issues automatically. The dataset collects 300 test Issue-Pull Request pairs from 11 popular Python. Evaluation is performed by unit test verification using post-PR behavior as the reference solution. The dataset was released as part of SWE-bench: Can Language Models Resolve Real-World GitHub Issues? Want to run inference now? This dataset only contains the… See the full description on the dataset page: https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/nebius/SWE-rebench-openhands-trajectories",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "nebius/SWE-rebench-openhands-trajectories",
+   "abstract": "Dataset Summary SWE-rebench-OpenHands-Trajectories is a dataset of multi-turn agent trajectories for software engineering tasks, collected using Qwen/Qwen3-Coder-480B-A35B-Instruct with OpenHands (v0.54.0) agent scaffolding. This dataset captures complete agent execution traces as they attempt to resolve real GitHub issues from nebius/SWE-rebench. Each trajectory contains the agent's step-by-step reasoning, actions, and environmental observations. Metric… See the full description on the dataset page: https://huggingface.co/datasets/nebius/SWE-rebench-openhands-trajectories.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/nebius/SWE-rebench-V2-PRs",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "nebius/SWE-rebench-V2-PRs",
+   "abstract": "SWE-rebench-V2-PRs Dataset Summary SWE-rebench-V2-PRs is a large-scale dataset of real-world GitHub pull requests collected across multiple programming languages, intended for training and evaluating code-generation and software-engineering agents. The dataset contains 126,300 samples covering Go, Python, JavaScript, TypeScript, Rust, Java, C, C++, Julia, Elixir, Kotlin, PHP, Scala, Clojure, Dart, OCaml, and other languages. For log parser functions, base… See the full description on the dataset page: https://huggingface.co/datasets/nebius/SWE-rebench-V2-PRs.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/tarsur385/swebench-verified-trajectories",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "tarsur385/swebench-verified-trajectories",
+   "abstract": "SWE-bench Verified — mini-swe-agent trajectories (10 models) Native .traj.json files from running mini-swe-agent on all 500 SWE-bench Verified instances for each of the 10 models below. Downloaded from Docent via preprocessing/swebench_docent.py in contrastive_learning. Layout swebench_verified_raw/ <model_label>/ <instance_id>/ <instance_id>.traj.json Per-file schema { \"instance_id\": str, \"trajectory_format\": \"mini-swe-agent-1.1\"… See the full description on the dataset page: https://huggingface.co/datasets/tarsur385/swebench-verified-trajectories.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/opencompass/SWEBench-Pro-Verified",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "opencompass/SWEBench-Pro-Verified",
+   "abstract": "SWE-Bench Pro Verified: Anti-hacking & Task refinement SWE-Bench Pro has emerged as a standard benchmark for evaluating software engineering agents on challenging repository-level tasks. However, our analysis work show that its evaluation is undermined by two sources of unreliability: reward hacking, enabled by leakage of gold solutions or hidden evaluation information, and task quality issues, including misleading problem statements and improperly scoped tests. These issues can… See the full description on the dataset page: https://huggingface.co/datasets/opencompass/SWEBench-Pro-Verified.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26057",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Observing the Conduct of Systematic Reviews with Generative AI Support: An Experience Report from a Graduate Software Engineering Course",
+   "abstract": "Context: Secondary studies are fundamental practices in Evidence- Based Software Engineering, but teaching them requires activities that expose students to authentic methodological decisions. Objective: This paper reports an experience in a graduate course in which ten doctoral students in Software Engineering, organized into three groups, piloted secondary studies with and without support from generative AI. Method: A single-day classroom session was organized and observed, in which the groups conducted pilot systematic reviews with and without generative AI support. Classroom observations, produced artifacts, and interaction threads with assistants configured in ChatGPT were analyzed to re",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25570",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Recovering Agentic Sovereignty: Mitigating the Consensus Paradox via Contrastive Epistemic Decoding",
+   "abstract": "Large language models (LLMs) exhibit a parametric vulnerability to adversarial swarm consensus. To mitigate this sycophancy, we introduce Contrastive Epistemic Decoding (CED), a zero-shot inference intervention. Unlike standard Contrastive Decoding (CD) which relies on a weaker secondary model, CED utilizes a dual forward-pass on a single architecture to isolate conformity bias. By introducing a novel asymmetric, zero-bounded probability clamp and discrete top-k truncation mask, CED mathematically suppresses toxic consensus tokens without causing grammatical collapse. Evaluated across 7,200 paired trajectories on complex benchmarks (GAIA, SWE-bench, Multi-Challenge) using Gemma-2 (9B), Llama",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26693",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Measuring the Serving Stack Instead of the Model: Hidden Confounds in Local Tool-Use Evaluation",
+   "abstract": "A coding agent must emit a valid tool call--a parseable invocation of a tool in the provided schema--before the harness can execute its chosen action. We study how local serving stacks affect this protocol step and show that measured outcomes can depend on the serving layer rather than model behavior alone. In Ollama, the default tools= request is gated per model by a static template flag: some models are accepted and return calls as text, some return native tool_calls, while Phi-3 and Gemma-3 are rejected before inference. In our harness, rejection and retry exhaustion are not preserved as structured failure metadata, so downstream analysis can misclassify them as model non-calls and naivel",
+   "label": 1,
+   "borderline": true
+  },
+  {
+   "key": "url:huggingface.co/datasets/Shiveswarran/llm_instruction_code_V6.1",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "Shiveswarran/llm_instruction_code_V6.1",
+   "abstract": "",
+   "label": 1,
+   "borderline": true
+  },
+  {
+   "key": "arxiv:2609.27973",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Understanding LLM Usage Among Early-Career Software Engineers in Practice",
+   "abstract": "Despite the rapid adoption of Large Language Models in professional software engineering, limited research has investigated how early career professionals develop effective AI assisted work practices during their transition into industry. We report findings from a mixed methods survey with 75 novice software engineers who actively use LLM supported tools in their daily work. Our results show that LLMs are embedded in routine software engineering activities, including coding, debugging, testing, documentation, and problem solving. Effective use depends on traditional software engineering competencies, such as debugging, testing, and architectural reasoning, together with critical thinking, ou",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.28216",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "From Agent Output to Authorized Transition",
+   "abstract": "Agentic engineering systems can edit repositories, run tools and tests, build firmware, synthesize schematics, and prepare deployable or manufacturable artifacts. The assurance problem is therefore shifting from whether an agent can produce an output to whether an engineering lifecycle is justified in acting on claims about that output. Current products and standards provide sandboxes, approvals, hooks, traces, policy enforcement, attestations, bills of materials, and assurance representations, but these capabilities remain fragmented. This paper presents the Agile-V Assurance Spine, a cross-domain transition contract for software, firmware, and PCB engineering. Evidence is admitted only whe",
+   "label": 1,
+   "borderline": true
+  },
+  {
+   "key": "url:huggingface.co/datasets/IFM/Code-Reasoning",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "IFM/Code-Reasoning",
+   "abstract": "Code-Reasoning Dataset Description Code problem-solving data with reasoning, direct-answer, and task-synthesis subsets. This repository is part of the K2 Horizon collection. The repository is organized into multiple subsets. Every subset has a train split backed by Parquet shards, which supports Dataset Viewer inspection and streaming access. K2 Horizon Dataset Series Dataset repository Focus Subsets IFM/TxT360-v2 Web and… See the full description on the dataset page: https://huggingface.co/datasets/IFM/Code-Reasoning.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.28416",
+   "source": "arxiv_cs_cl",
+   "category": "papers",
+   "title": "Agent-Editing World Model: Rethinking World Modeling for LLM Agents",
+   "abstract": "Recent advances in large language models (LLMs) have enabled agents to tackle long-horizon tasks across diverse environments. To further improve agent performance, existing language world models typically predict environment observations, yet reconstructing high-entropy, execution-dependent tool responses offers limited value when real feedback is available. Meanwhile, agents suffer from \\emph{task-state contamination}, where unsupported assumptions and outdated plans persist in history and distort subsequent decisions. We propose the \\textbf{Agent-Editing World Model (AEWM)}, which models how reasoning and actions shape future task progress rather than simulating tool responses. AEWM combin",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26355",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "PACT: From Credit Assignment to Critic Alignment",
+   "abstract": "Reinforcement learning has become a central component of large language model (LLM) post-training, yet token-level credit lacks a generally accepted mathematical definition, leaving its relationship to commonly used training signals unclear. We formulate three regularity conditions, namely Completeness, Prefix Consistency, and Neutrality, and prove that they uniquely determine token-level credit. This characterization provides a unified basis for explaining phenomena across existing algorithms and guides the development of an improved actor-critic training procedure. Through this lens, an ideal teacher in On-Policy Distillation (OPD) acts as an implicit critic, yielding an expected policy gr",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/nvidia/Nemotron-Pretraining-Code-v2",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "nvidia/Nemotron-Pretraining-Code-v2",
+   "abstract": "Nemotron-Pre-Training-Dataset-v2.1 Dataset Description The Nemotron-Pre-Training-Dataset-v2.1 extends the previously released Nemotron pretraining datasets with refreshed, higher-quality, and more diverse data across math, code, English Common Crawl, and large-scale synthetic corpora. Designed for the NVIDIA Nemotron 3 family of LLMs, the dataset introduces new Common Crawl code extraction, 2.5T new English web tokens… See the full description on the dataset page: https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Code-v2.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/datacurve/deep-swe",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "datacurve/deep-swe",
+   "abstract": "DeepSWE DeepSWE is a benchmark for measuring frontier coding agents on original, long-horizon software engineering tasks drawn from active open-source repositories. The benchmark includes 113 tasks across TypeScript, Go, Python, JavaScript, and Rust, with isolated environments and program-based verifiers. Task format DeepSWE tasks use the Harbor task format: task.toml Metadata: repository, base commit, language, prebuilt image, resource limits… See the full description on the dataset page: https://huggingface.co/datasets/datacurve/deep-swe.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26796",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "Flash-dLLM: IO-Aware KV Caching and Parallel Decoding for Fast, Memory-Efficient Diffusion LLMs",
+   "abstract": "Diffusion Large Language Models (dLLMs) have recently emerged as a promising alternative to autoregressive LLMs by enabling non-autoregressive text generation. However, their practical deployment remains limited by inefficient inference, largely due to the absence of effective Key-Value (KV) caching and scalable parallel decoding mechanisms. Existing acceleration methods typically study KV caching and parallel decoding in isolation, overlooking the I/O bottlenecks that arise when cache reuse and parallel token verification are jointly applied. In this work, we introduce Flash-dLLM, a training-free inference acceleration framework for fast and memory-efficient dLLMs. Flash-dLLM first identifi",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26076",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Selection-Invariant Communication Compilers for Privacy-Aware Multi-Agent LLM Workflows",
+   "abstract": "Structured multi-agent workflows exchange intermediate messages whose content and form can reveal private state even when the final output is safe. We identify selection-channel leakage: after authorization fixes what may be released, a private-state-aware choice among semantically valid realizations creates an additional inference channel. We introduce the selection-invariant communication compiler(SICC), which constrains this post-authorization representation kernel rather than prescribing templates. Any deterministic or independently public-randomized generator satisfying the invariant is valid; requirement-indexed canonical forms are one auditable implementation. We prove a compositional",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27871",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "Bounded Loops: Pre-Run Spend Bounds, Proved Termination, and Verified Completion for Agent Harnesses",
+   "abstract": "In mainstream agent frameworks, a step ends when the agent's own output says it has finished. Durable-execution platforms bound retries and time, but their checker conventionally lives in the same codebase as the work: a discipline the deployment is trusted to keep, not a property the harness enforces. We state what an agent harness must guarantee, prove it, and build the instrument that measures whether a harness delivers it. A bounded loop is a worker, an independent gate the worker cannot write to, and a declared budget; a bounded-loop graph composes them with a repair relation that lets a downstream failure re-run a finished upstream node. Three guarantees follow. It finishes: terminatio",
+   "label": 0,
+   "borderline": true
+  },
+  {
+   "key": "arxiv:2609.27770",
+   "source": "arxiv_cs_cl",
+   "category": "papers",
+   "title": "Improving LLM-based Autonomous Web Agents with Filtering",
+   "abstract": "Autonomous web agents, powered by Large Language Models (LLMs), have garnered significant attention for automating various web-based tasks with multi-step reasoning and decision-making capabilities. An open research question in the development of these agents lies in the format of the webpage input. Raw HTML source code, with its extensive and often irrelevant details, poses difficulties for LLMs with limited context windows. To address this challenge, we first reproduce baseline models such as GPT-3.5 and LLaMA-2-70B on the WebArena (Zhou et al., 2023) benchmark, identifying common failure modes. We then propose two retrieval strategies to filter out irrelevant context for LLM agents. We de",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27739",
+   "source": "arxiv_cs_lg",
+   "category": "papers",
+   "title": "MENO: Memory-Efficient Neural Operator",
+   "abstract": "We propose the Memory-Efficient Neural Operator (MENO) as a high-performance PDE neural solver based on the Manifold Function Encoder (MFE). MENO features three primary advantages: (1) MENO has a significantly smaller memory footprint and much faster training speed than other popular architectures, with the memory footprint being independent of the data resolution, and therefore holds the potential for scaling up to large-scale models. (2) MENO can accept PDE inputs of arbitrary form, including arbitrary geometric domains and arbitrary discretizations. In particular, it is capable of handling cross-geometry scenarios, i.e., where the input functions and the output solutions are defined on di",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26725",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Does AI Save Time on Product Design? A Randomized Controlled Experiment of AI Prompt-to-Design Workflows",
+   "abstract": "AI tools for digital product design now offer prompt-to-design capabilities, allowing designers and their non-designer colleagues to create prototypes through conversational workflows with large language models (LLMs). While these tools promise time savings, experimental evidence in product design remains limited compared with evidence from software engineering. We conducted a randomized controlled trial with 50 product designers and 50 product managers to evaluate prospective time savings from leveraging Figma Make in design work. Participants attempted three standardized design tasks with or without access to Figma Make. Among participants who completed the study tasks, access to Figma Mak",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/tokyotech-llm/swallow-code-v2",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "tokyotech-llm/swallow-code-v2",
+   "abstract": "SwallowCode-v2 Resources 📑 arXiv: Read our paper for detailed methodology and results at arXiv:2505.02881. 🤗 Sister Dataset: Discover SwallowMath-v2, our companion dataset for mathematical reasoning. 💻 What is it? SwallowCode-v1 was a high-quality Python code dataset generated through an LLM-based rewriting pipeline. However, it had two significant limitations: (1) it was distributed under the Llama 3.3 Community License, and (2) its size was limited to… See the full description on the dataset page: https://huggingface.co/datasets/tokyotech-llm/swallow-code-v2.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25130",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Impact Is Not Invalidation: Ask About the Claim, Not the Diff",
+   "abstract": "Memory systems for coding agents must decide, when a repository changes, which of their stored claims have become false. Content anchoring invalidates a claim whenever the artifact it came from changes, which fires constantly. Semantic-equivalence classification asks whether a diff preserves behavior, a question about the diff rather than about any stored claim. We show the second signal fails for a reason unrelated to model capability: asked whether a commit preserves behavior, five models spanning a 40x price range fire on 59-72% of real commits and reach precisions of only 0.291 to 0.329 against a 0.25 base rate. Asked instead whether one specific claim still holds, the same models on the",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/Lego-X/LegoFlow-SWE",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "Lego-X/LegoFlow-SWE",
+   "abstract": "LegoFlow-SWE · 5,000 verified Harbor SWE tasks and two GLM-5.2 trajectory releases GitHub · Docs · Blog · HuggingFace · LegoX LegoFlow-SWE 5,000 verified Harbor SWE tasks mined by LegoFlow Curator, shipped in original and anti-hack prompt versions, plus two GLM-5.2 trajectory releases under OpenHands SDK and OpenCode, totaling 9,767 trajectories. Release Count What it is tasks/ 5,000 Original prompts tasks-anti-hack/ 5,000 Same task IDs and task files, with… See the full description on the dataset page: https://huggingface.co/datasets/Lego-X/LegoFlow-SWE.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/ant-intl/DeveloperSkills-Code2Skill",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "ant-intl/DeveloperSkills-Code2Skill",
+   "abstract": "The dataset behind DeveloperSkillHubs Grounded developer skills, mapped from real code. Explore the Website · Dataset Configurations · Quick Start CodeSkillBank CodeSkillBank is a large-scale collection of reusable programming skills grounded in real source-code implementations. It is constructed with Code2Skill, an automated pipeline that transforms implementation evidence into structured procedural knowledge, and powers the accompanying… See the full description on the dataset page: https://huggingface.co/datasets/ant-intl/DeveloperSkills-Code2Skill.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/iamtarun/python_code_instructions_18k_alpaca",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "iamtarun/python_code_instructions_18k_alpaca",
+   "abstract": "Dataset Card for python_code_instructions_18k_alpaca The dataset contains problem descriptions and code in python language. This dataset is taken from sahil2801/code_instructions_120k, which adds a prompt column in alpaca style. Refer to the source here.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "url:huggingface.co/datasets/paulh27/java_code_api_generation",
+   "source": "hf_datasets_code",
+   "category": "datasets",
+   "title": "paulh27/java_code_api_generation",
+   "abstract": "",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27657",
+   "source": "arxiv_cs_cl",
+   "category": "papers",
+   "title": "FLEET: From Logits Entropy to Enhanced Trajectories in Text Generation",
+   "abstract": "Solutions based on large language models (LLMs) often rely on temperature sampling to improve accuracy and stability by aggregating multiple samples from the completion distribution. However, this memoryless approach is inherently suboptimal: because it lacks awareness of prior generations and their evaluations, it produces an increasing proportion of semantically duplicate answers as more samples are drawn, leading to diminishing returns. To address this limitation, we introduce FLEET, a novel method that integrates a memory mechanism into the generation process. FLEET represents each generation as a sparse trajectory through states whose entropy exceeds a predefined threshold and uses thes",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25047",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "AIBuildAI-2.5: Efficient Autonomous AI Model Development Through LLM-Guided Tree Search",
+   "abstract": "Autonomous agents that automatically build artificial intelligence (AI) models could broaden access to AI across science and engineering. A popular line of such agents frames model building as a code search problem and solves it by tree search, in which each node is a candidate program and the tree grows by generating a child program from a parent, and these agents now approach the capability of experienced AI engineers on realistic benchmarks. However, these agents have three weaknesses in efficiency that have not been fully addressed. First, only a small number of candidates can be executed within a realistic budget, so search rules that rank nodes by executed rewards, such as Monte Carlo-",
+   "label": 1,
+   "borderline": true
+  },
+  {
+   "key": "url:huggingface.co/datasets/nvidia/Nemotron-SFT-SWE-v3.5",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "nvidia/Nemotron-SFT-SWE-v3.5",
+   "abstract": "Nemotron-SFT-SWE-v3.5 Dataset Description: Nemotron-SFT-SWE-v3.5 is a software engineering instruction-tuning dataset designed to advance the capabilities of large language models (LLMs) on software engineering (SWE)-style tasks. The seed tasks model real-world coding applications requiring changes across multiple files and artifacts, including source code, tests, documentation, and configuration. The dataset contains agentic trajectories collected using the… See the full description on the dataset page: https://huggingface.co/datasets/nvidia/Nemotron-SFT-SWE-v3.5.",
+   "label": 1,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.24308",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "HappyWorld-Bench",
+   "abstract": "Evaluating world models requires assessing both the quality of the worlds they generate and their consistency and responsiveness under exploration, interaction, and modification. We introduce HappyWorld-Bench, a comprehensive benchmark that evaluates whether generated worlds remain reliable as agents interact with them. Our design is built on a hierarchical capability framework of six world capabilities (W1-W6), from generative construction to unified world modeling, instantiated across three independent evaluation tracks: video world models, spatial world models, and embodied world models. HappyWorld-Bench comprises 1,138 video prompts, 300 spatial scenes, and 254 embodied test cases. Acros",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25809",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "You Only Need 2/3 of the Chosen Experts: An Empirical Study of Dynamic Expert Pruning in Fine-Grained MoE LLMs",
+   "abstract": "Fine-grained mixture-of-experts (MoE) architectures have become a mainstream design for open-weight LLMs, with hundreds of experts and increasingly many selected per token. This shift makes dynamic expert pruning an attractive route to cheaper inference. Yet existing evidence comes largely from coarser architectures and likelihood-scored multiple-choice benchmarks, leaving three central questions open in the fine-grained regime: how redundant per-token expert selection is, how effectively existing pruning methods exploit that redundancy, and what governs a model's sensitivity to pruning. We fill this gap with a systematic empirical study of twelve fine-grained MoE checkpoints spanning nine a",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27627",
+   "source": "arxiv_cs_se",
+   "category": "papers",
+   "title": "AST-Based Automated Elimination of break and continue Statements in Java Code",
+   "abstract": "This work presents the development of an automatic refactoring tool for Java code built on top of the Eclipse JDT API. The proposed approach transforms control structures containing break and continue statements within different types of loops into semantically equivalent constructs that avoid their explicit use. To achieve this, auxiliary boolean variables are introduced to restructure the control flow while preserving the original program behavior. The main objective of this transformation is to improve code structure and enable the application of subsequent automated refactorings, particularly those based on the Extract Method operation, which are typically restricted by the presence of j",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27337",
+   "source": "arxiv_cs_lg",
+   "category": "papers",
+   "title": "Evolving Inspectable O-RAN Slicing xApps with LLMs",
+   "abstract": "Open RAN (O-RAN) slicing xApps must adapt resource allocations to changing channel conditions and traffic demands while meeting service-level agreements (SLAs). Deep reinforcement learning can produce adaptive policies, but their allocation rules remain encoded in neural-network parameters. Our goal is to retain this adaptability while making the controller's decision logic directly inspectable and editable by operators. We use a large language model (LLM) to evolve slicing controllers as compact Python programs whose decision logic remains readable and editable after optimization. The LLM proposes and revises candidates offline, while a calibrated simulator scores them, and the selected dec",
+   "label": 0,
+   "borderline": true
+  },
+  {
+   "key": "url:huggingface.co/datasets/SweatyCrayfish/autotrain-data-geneextraction",
+   "source": "hf_datasets_swe",
+   "category": "datasets",
+   "title": "SweatyCrayfish/autotrain-data-geneextraction",
+   "abstract": "",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27932",
+   "source": "arxiv_cs_lg",
+   "category": "papers",
+   "title": "Binary Quantized Neural Network Training Is W[1]-Hard Parameterized by Input and Output Dimensions",
+   "abstract": "Ganian et al. (ICLR 2026) proved that quantized neural network training is fixed-parameter tractable when parameterized jointly by architecture treewidth, input dimension $\\alpha$, and output dimension $\\omega$, and left open whether $\\alpha+\\omega$ alone yields fixed-parameter tractability. We prove that 2-QNNT is W[1]-hard parameterized by $\\alpha+\\omega$. The hardness already holds with zero error on $D_k=\\{(\\xi^{(r)},\\xi^{(r)}):0\\le r\\le k\\}$, where every input equals its target, $|D_k|=\\alpha=\\omega=k+1$, and the examples form a coordinatewise prefix chain. It also holds when every non-source bias is fixed to zero. Under the Exponential Time Hypothesis, no algorithm runs in $f(\\alpha+\\o",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27387",
+   "source": "arxiv_cs_cl",
+   "category": "papers",
+   "title": "AraGenre 2026: A Hierarchical Definition-Guided Arabic Genre Classification Shared Task",
+   "abstract": "AraGenre is a shared task on hierarchical, definition-guided Arabic genre classification, motivated by the limited availability of annotated data in Arabic and other low-resource languages. Systems assign each Arabic text segment both a broad communicative genre and a fine-grained specific genre. The released training and development sets contain limited, primarily synthetic and controlled examples, whereas the hidden final benchmark contains noisier naturally occurring text spanning Modern Standard Arabic, Classical Arabic, and multiple dialects. Participants received natural-language definitions for 74 previously unseen specific genres, creating a zero-shot label generalisation setting in ",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25143",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Stable Unsupervised Continual Chunking with Sheaf SyncMap",
+   "abstract": "Unsupervised Continual chunking is a fundamental problem in machine learning and neuroscience, where the goal is to identify groups of states that frequently co-occur in temporal sequences. A key challenge is to form accurate chunks while maintaining their stability over time. In this work, we propose sheaf regularization to reduce local inconsistencies in Decentralized SyncMap, a self-organizing system, and thereby stabilize its chunking dynamics. We introduce a radial sheaf structure that penalizes distance-dependent radial motion between pairs of variables. Experimental results show that the proposed method achieves the highest normalized mutual information (NMI) among the evaluated SyncM",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.27374",
+   "source": "arxiv_cs_cl",
+   "category": "papers",
+   "title": "Planned Test-Time Scaling with Coordinated Reasoning Paths",
+   "abstract": "Test-time scaling with parallel branches is widely adopted to improve performance on challenging reasoning tasks. The predominant approach, repeated sampling, draws branches independently from a single policy, which can produce redundant attempts and thereby limit the gains from additional inference compute. To address this limitation, we propose Planned Test-Time Scaling (PTTS), which replaces independent sampling with a coordinated joint policy: a planner generates a solution outline for each branch, steering the branches toward distinct reasoning paths, and an executor produces a full solution conditioned on each outline. Formally, we show that PTTS strictly generalizes repeated sampling ",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.22039",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "Gricea: An Open Science Platform for Conversational AI Research",
+   "abstract": "We need studies on conversational AI (CAI) at scale to understand human behavior and shape CAI design. However, fragmented reporting of systems and study configurations hinders replication, extension, and knowledge accumulation. We present Gricea, an open-science platform representing studies as configurable, deployable research artifacts that researchers can run, inspect, share, and reuse. Informed by a formative analysis of prior CAI research, Gricea couples study procedures, participant-facing systems, and conversational task behavior in. In a replication study using Gricea, we replicated configurations 93% of eligible CUI 2026 papers; while also flagging missing information in 96% of pap",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25405",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Efficient Iterative Retrieval with Heterogeneous Batching",
+   "abstract": "Modern information retrieval increasingly employs both embedding and generative models to handle complex queries. However, current serving systems suffer from low throughput and poor GPU utilization because they execute these models in isolation. Coarse-grained partitioning, such as dedicating GPUs to specific tasks, fails to adapt to dynamic workloads and creates computational \"bubbles\". To address these, we present Orthrus, a serving system that performs heterogeneous batching within a unified inference loop. The primary challenge lies in unifying embedding and generation workloads with conflicting computational patterns while optimizing batch composition for high performance. Orthrus addr",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26209",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "When Unpaired Sets Support Shared-Corruption Calibration: Moment Geometry and Two-Sample Precision",
+   "abstract": "Collections of diverse observations often share one acquisition, processing, geometric, or channel corruption, while only an unpaired clean reference set is available. For a prescribed low-dimensional correction shared across observations, the observed and clean reference sets support inference only through the response of fixed moments. We formulate this problem as two-sample moment calibration and report a rank-aware information state combining local rank, scaled moment sensitivity, source-separated covariance, and a moment compatibility residual. Full rank gives local moment identifiability, whereas kernel directions remain unresolved to first order. A unified linearization separates obse",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.28385",
+   "source": "arxiv_cs_lg",
+   "category": "papers",
+   "title": "When and Where to Trust the Teacher: Unifying On-Policy Distillation and GRPO through Entropy-Calibrated Credit Assignment",
+   "abstract": "Reinforcement learning with verifiable rewards (RLVR) supervises mathematical reasoning through final-answer correctness, but provides little guidance on individual tokens. On-policy distillation (OPD) supplies dense feedback on student-generated responses, yet teacher preference need not reflect correctness. Recent hybrids combine OPD and verifier-derived advantages or reweight task credit using teacher ratios. However, teacher guidance enters after verifier-based group normalization, and token reweighting need not preserve the total task credit assigned to each response. We introduce Unified Entropy-Calibrated Credit Redistribution for GRPO (UECR-GRPO), which integrates verifier and teache",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25555",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Weakly Supervised Quantum Error Mitigation",
+   "abstract": "Supervised approaches to quantum error mitigation learn a map from noisy circuit outputs to ideal ones, and therefore require the ideal outputs. Producing those ideal outputs demands noiseless classical simulation, whose cost grows exponentially with system size, so supervision is unavailable in exactly the regime where mitigation matters most. We ask whether cheap, individually unreliable signals drawn from circuit structure and hardware calibration can take the place of ideal labels. We assemble sixteen heuristic labeling functions (stabilizer and parity constraints, relaxation and readout characteristics, local depth, gate counts, and neighboring activity), reconcile their disagreements w",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.24983",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "onPanda: Efficient Annotation of On-Policy Alignment Data for LLMs and Agents via Token-Level Correction",
+   "abstract": "We present onPanda, an interactive tool for efficiently annotating LLM alignment data and agent trajectories. onPanda adopts token-level correction as its core interaction: while reading a model response, the annotator locates the first inappropriate token and either picks a substitute from the model's candidate tokens or types the correct text via free-form editing. The system then truncates everything after that position and continues generation from the corrected prefix, repeating this locate-correct-continue loop until a satisfactory response is obtained. This mechanism lets annotators precisely steer model outputs at low cost: a small controlled study suggests that onPanda reduces media",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.25010",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Do Synthetic Personas Predict Real Audience Response? A Sim-to-Real Study Where a No-Persona Baseline Beats Persona-Based Copy Simulation",
+   "abstract": "Marketers increasingly use large language models (LLMs) as \"synthetic personas\" to predict how an audience will react to a piece of copy before it ships, encouraged by evidence that profile-conditioned LLMs mimic human samples. But is that prediction actually valid against real behaviour - and does the persona machinery help? We present a sim-to-real validity study using the Upworthy Research Archive - thousands of headline A/B tests on shared real traffic, with measured click-through - as held-out ground truth. We compare a ten-persona panel, grounded in the real audience's demographics, against a no-persona zero-shot baseline that simply asks the model how likely a typical reader is to cli",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.21619",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "Calibrating Teacher--Student Discrepancy for On-Policy Distillation",
+   "abstract": "On-policy distillation (OPD) improves reasoning models by learning the token-level discrepancy between a stronger teacher and an on-policy student. However, this discrepancy does not purely reflect the capability gap between the teacher and the student: it also contains deviations arising from the teacher itself, which are consequently mixed into the observed teacher--student discrepancy and indiscriminately learned by standard OPD during training. This issue is further exacerbated by privileged OPD, where privileged information induces larger teacher-side likelihood shifts, thereby encouraging the student to learn more of the teacher's own deviation. We introduce Calibrated On-Policy Distil",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.26492",
+   "source": "arxiv_cs_ai",
+   "category": "papers",
+   "title": "Radiomics-Conditioned Modulation of RenalCLIP Features for Clear Cell Renal Cell Carcinoma Classification",
+   "abstract": "Radiomics provides quantitative descriptions of tumour appearance that may complement disease-specific foundation models in small labelled cohorts. We investigate this complementarity for computed tomography-based classification of clear cell renal cell carcinoma. Our framework uses radiomics to modulate RenalCLIP features through feature-wise linear modulation (FiLM), while retaining a direct radiomics contribution. Internal testing and external validation compare it with conventional fusion strategies and reference classifiers. The FiLM model achieves an area under the receiver operating characteristic curve (AUC) of 0.804 internally and 0.854 externally, with the highest mean AUC among th",
+   "label": 0,
+   "borderline": false
+  },
+  {
+   "key": "arxiv:2609.22076",
+   "source": "hf_daily_papers",
+   "category": "papers",
+   "title": "APort Vault: Benchmarking AI Agent Payment Authorization with the Open Agent Passport",
+   "abstract": "APort Vault is a benchmark for payment authorization in tool-using AI agents. It replays 4,371 attacks written by humans against a live payment agent during a public capture-the-flag event, across 14 models from 8 labs, five policy configurations and two replay tracks, with and without a deterministic pre-action check implementing the Open Agent Passport (OAP) specification. 225,964 evaluations completed. We report five distinct events per evaluation, because collapsing them is how an agent benchmark produces a number that does not survive review. Requests are common and their rate differs far more across configurations than across models, though each attack exists at exactly one configurati",
+   "label": 0,
+   "borderline": false
+  }
+ ]
+}

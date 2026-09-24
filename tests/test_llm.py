@@ -1,0 +1,179 @@
+import json
+import os
+import unittest
+import urllib.error
+from dataclasses import replace
+from datetime import datetime, timezone
+from unittest import mock
+
+from src.feed import merge_entry, passes_relevance, select_items, to_blog_item, update_archive
+from src.llm import PROMPT_VERSION, DeepSeekClient, LLMConfig, Verdict, apply_verdict, judge, make_client, prune_cache
+from src.policy import UpdatePolicy, parse_policy
+
+NOW = datetime(2026, 9, 24, 6, 0, tzinfo=timezone.utc)
+
+
+def entry(key, title="A coding agent paper", relevance=40.0, category="papers"):
+    return {
+        "key": key,
+        "title": title,
+        "link": f"https://arxiv.org/abs/{key}",
+        "category": category,
+        "source_ids": ["arxiv_cs_se"],
+        "summary": "An LLM coding agent.",
+        "relevance": relevance,
+        "keywords": [],
+        "signals": [],
+        "published_at": "2026-09-24T04:00:00Z",
+    }
+
+
+class FakeTransport:
+    """按请求里的 id 回填分数；可指定哪些调用失败。"""
+
+    def __init__(self, scores, fail_calls=(), content_override=None):
+        self.scores = scores
+        self.fail_calls = set(fail_calls)
+        self.content_override = content_override
+        self.calls = []
+
+    def __call__(self, url, headers, body, timeout):
+        self.calls.append(body)
+        if len(self.calls) in self.fail_calls:
+            raise urllib.error.URLError("boom")
+        items = json.loads(body["messages"][1]["content"])["items"]
+        results = [
+            {
+                "id": it["id"],
+                "score": self.scores.get(it["title"], 10),
+                "topics": ["编程智能体", "不存在的标签"],
+                "summary_zh": "一句话总结",
+                "reason_zh": "理由",
+            }
+            for it in items
+        ]
+        content = self.content_override if self.content_override is not None else json.dumps({"results": results}, ensure_ascii=False)
+        return {"choices": [{"message": {"content": content}}], "usage": {"prompt_tokens": 100, "completion_tokens": 20}}
+
+
+def config(**kw):
+    return replace(LLMConfig(retries=0, batch_size=2, concurrency=1), **kw)
+
+
+class JudgeTest(unittest.TestCase):
+    def test_batches_cache_and_cleaning(self):
+        transport = FakeTransport({"good": 150, "bad": 12})
+        cfg = config()
+        client = DeepSeekClient(cfg, "key", transport)
+        cache = {}
+        entries = [entry("1", "good"), entry("2", "bad"), entry("3", "good")]
+
+        verdicts, report = judge(entries, cfg, client, cache, NOW)
+        self.assertEqual(len(transport.calls), 2)  # batch_size=2 → 2 次调用
+        self.assertEqual(report.judged, 3)
+        self.assertEqual(verdicts["1"].score, 100.0)  # 超出范围被截断
+        self.assertEqual(verdicts["2"].score, 12.0)
+        self.assertEqual(verdicts["1"].topics, ["编程智能体"])  # 未知标签被过滤
+        self.assertEqual(report.usage["prompt_tokens"], 200)
+        self.assertEqual(set(cache), {"1", "2", "3"})
+
+        # 第二次运行全部命中缓存，不再调用接口
+        verdicts, report = judge(entries, cfg, client, cache, NOW)
+        self.assertEqual(len(transport.calls), 2)
+        self.assertEqual(report.cached, 3)
+        self.assertEqual(report.judged, 0)
+
+    def test_cache_invalidated_by_model_or_prompt_version(self):
+        cache = {"1": {**Verdict(80, [], "", "", "old-model", PROMPT_VERSION, "2026-09-20").to_json()}}
+        transport = FakeTransport({"A coding agent paper": 70})
+        cfg = config()
+        _, report = judge([entry("1")], cfg, DeepSeekClient(cfg, "k", transport), cache, NOW)
+        self.assertEqual(report.judged, 1)
+        self.assertEqual(cache["1"]["model"], cfg.model)
+
+    def test_failed_batch_falls_back_without_verdict(self):
+        transport = FakeTransport({}, fail_calls={1})
+        cfg = config()
+        verdicts, report = judge([entry("1"), entry("2"), entry("3")], cfg, DeepSeekClient(cfg, "k", transport), {}, NOW)
+        self.assertEqual(report.failed, 2)
+        self.assertEqual(set(verdicts), {"3"})
+        self.assertEqual(len(report.errors), 1)
+
+    def test_malformed_output_counts_as_failure(self):
+        transport = FakeTransport({}, content_override="not json")
+        cfg = config()
+        verdicts, report = judge([entry("1")], cfg, DeepSeekClient(cfg, "k", transport), {}, NOW)
+        self.assertEqual(verdicts, {})
+        self.assertEqual(report.failed, 1)
+
+    def test_budget_limits_new_judgements(self):
+        transport = FakeTransport({})
+        cfg = config(max_items_per_run=2)
+        _, report = judge([entry(str(i)) for i in range(5)], cfg, DeepSeekClient(cfg, "k", transport), {}, NOW)
+        self.assertEqual(report.judged, 2)
+        self.assertEqual(report.skipped_budget, 3)
+
+    def test_request_body_thinking_modes(self):
+        body = DeepSeekClient(config(reasoning_effort="none"), "k")._request_body([])
+        self.assertEqual(body["thinking"], {"type": "disabled"})
+        self.assertEqual(body["response_format"], {"type": "json_object"})
+        body = DeepSeekClient(config(reasoning_effort="low"), "k")._request_body([])
+        self.assertEqual(body["thinking"], {"type": "enabled", "reasoning_effort": "low"})
+
+    def test_make_client_requires_key(self):
+        with mock.patch.dict(os.environ, {}, clear=True):
+            client, reason = make_client(LLMConfig())
+            self.assertIsNone(client)
+            self.assertIn("DEEPSEEK_API_KEY", reason)
+        with mock.patch.dict(os.environ, {"DEEPSEEK_API_KEY": "sk-test"}):
+            client, reason = make_client(LLMConfig())
+            self.assertIsNotNone(client)
+            self.assertIsNone(reason)
+            client, reason = make_client(LLMConfig(enabled=False))
+            self.assertIsNone(client)
+
+    def test_prune_cache(self):
+        cache = {"keep": {"judged_on": "2026-01-01"}, "recent": {"judged_on": "2026-09-20"}, "old": {"judged_on": "2026-08-01"}}
+        self.assertEqual(set(prune_cache(cache, {"keep"}, NOW, 14)), {"keep", "recent"})
+
+
+class PipelineIntegrationTest(unittest.TestCase):
+    def setUp(self):
+        self.policy = UpdatePolicy(min_relevance=35, window_days=7, max_items=10, max_datasets=2, retention_days=14)
+
+    def test_llm_threshold_overrides_rules(self):
+        high_rule_low_llm = entry("1", relevance=80)
+        apply_verdict(high_rule_low_llm, Verdict(30, [], "", "", "m", PROMPT_VERSION, "2026-09-24"))
+        low_rule_high_llm = entry("2", relevance=12)
+        apply_verdict(low_rule_high_llm, Verdict(85, ["训练数据"], "中文总结", "理由", "m", PROMPT_VERSION, "2026-09-24"))
+        self.assertFalse(passes_relevance(high_rule_low_llm, self.policy))
+        self.assertTrue(passes_relevance(low_rule_high_llm, self.policy))
+        self.assertEqual(low_rule_high_llm["rule_relevance"], 12)
+
+        archive = update_archive({}, {"1": high_rule_low_llm, "2": low_rule_high_llm}, self.policy, NOW, set())
+        self.assertEqual(list(archive), ["2"])
+        item = to_blog_item(select_items(archive, self.policy, NOW)[0])
+        self.assertEqual(item["relevance_source"], "llm")
+        self.assertEqual(item["summary_zh"], "中文总结")
+        self.assertEqual(item["topics"], ["训练数据"])
+        self.assertEqual(item["scores"]["relevance"], 85)
+
+    def test_merge_prefers_llm_verdict(self):
+        rules_only = entry("1", relevance=90)
+        judged = entry("1", relevance=90)
+        apply_verdict(judged, Verdict(40, [], "", "", "m", PROMPT_VERSION, "2026-09-24"))
+        self.assertEqual(merge_entry(rules_only, judged)["relevance"], 40)
+        self.assertEqual(merge_entry(judged, rules_only)["relevance"], 40)
+        self.assertEqual(merge_entry(entry("1", relevance=20), entry("1", relevance=50))["relevance"], 50)
+
+    def test_policy_llm_section(self):
+        policy = parse_policy({"llm": {"model": "deepseek-flash", "reasoning_effort": "low", "min_score": 70}})
+        self.assertEqual(policy.llm.reasoning_effort, "low")
+        self.assertEqual(policy.llm.min_score, 70)
+        self.assertEqual(policy.summary()["llm"]["model"], "deepseek-flash")
+        with self.assertRaises(ValueError):
+            parse_policy({"llm": {"reasoning_effort": "turbo"}})
+
+
+if __name__ == "__main__":
+    unittest.main()

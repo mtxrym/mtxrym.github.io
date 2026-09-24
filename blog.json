@@ -1,7 +1,7 @@
 [
   {
     "title": "Schrödinger's Code Repository: Have LLMs Learned SWE-bench or Memorized It?",
-    "sub_title": "papers · source=arxiv_cs_se · score=74.2",
+    "sub_title": "papers · source=arxiv_cs_se · score=76.7",
     "url_title": "schrödingers-code-repository-have-llms-learned-swe-bench-or-memorized-it",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.27891",
@@ -14,10 +14,10 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 74.2,
+    "score": 76.7,
     "scores": {
-      "relevance": 87.4,
-      "popularity": 32.4,
+      "relevance": 92.0,
+      "popularity": 33.4,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -26,6 +26,13 @@
       "coding agent",
       "repository-level"
     ],
+    "topics": [
+      "评测基准",
+      "代码理解与检索"
+    ],
+    "summary_zh": "提出SchrodingerRepo，检验LLM在SWE-bench上是真推理还是记忆仓库线索。",
+    "reason_zh": "针对代码智能体基准的数据泄漏与记忆问题，核心AI编程评测。",
+    "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
@@ -39,7 +46,7 @@
       "Haibing Guan"
     ],
     "author_count": 6,
-    "upvotes": 11,
+    "upvotes": 12,
     "likes": 0,
     "github_url": "https://github.com/cslsolow/Schrodinger-Repo",
     "github_stars": 4,
@@ -47,525 +54,8 @@
     "arxiv_id": "2609.27891"
   },
   {
-    "title": "CodeMidas: Scaling Agentic Coding RL Environments from Code Itself",
-    "sub_title": "papers · source=hf_daily_papers · score=73.3",
-    "url_title": "codemidas-scaling-agentic-coding-rl-environments-from-code-itself",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.22068",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-18T00:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 73.3,
-    "scores": {
-      "relevance": 93.1,
-      "popularity": 63.5,
-      "freshness": 50.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "agentic coding",
-      "coding agent",
-      "terminal-bench",
-      "codebase"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Training capable coding agents via reinforcement learning (RL) requires diverse tasks with reliable verifiers. Open-source codebases offer a rich source of such tasks, while existing methods typically rely on development artifacts such as issues and commits, limiting the range of tasks that can be extracted. To better scale RL environments, we present…",
-    "authors": [
-      "Bowen Ye",
-      "Lei Li",
-      "Shicheng Li",
-      "Zihao Yue",
-      "Linghao Zhang",
-      "Hanglong Lv"
-    ],
-    "author_count": 19,
-    "upvotes": 130,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.22068",
-    "arxiv_id": "2609.22068"
-  },
-  {
-    "title": "PonyEval: Evaluating LLM-Based Program Repair for Capability-Safe and Actor-Oriented Pony Software",
-    "sub_title": "papers · source=arxiv_cs_se · score=70.8",
-    "url_title": "ponyeval-evaluating-llm-based-program-repair-for-capability-safe-and-actor-orien",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27832",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 70.8,
-    "scores": {
-      "relevance": 94.5,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "program repair",
-      "swe-bench",
-      "swe-agent",
-      "repository-level"
-    ],
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Repository-level issue-resolution benchmarks have made executable evaluation central to software-engineering agents, but their language coverage remains concentrated in mainstream ecosystems. Pony presents a different regime: it combines actors, reference capabilities, ahead-of-time compilation, and a rapidly evolving historical toolchain, making both patch…",
-    "authors": [
-      "Bang Xie",
-      "Hao Liu",
-      "Zhenyu Shi",
-      "Zhiyuan Peng",
-      "Xin Yin",
-      "Chenhao Ying"
-    ],
-    "author_count": 11,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.27832"
-  },
-  {
-    "title": "Who Finishes the Job? A Study of Follow-Up Fixes and Commit Authorship on AI Coding Agent Pull Requests",
-    "sub_title": "papers · source=arxiv_cs_se · score=70.3",
-    "url_title": "who-finishes-the-job-a-study-of-follow-up-fixes-and-commit-authorship-on-ai-codi",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26847",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 70.3,
-    "scores": {
-      "relevance": 92.7,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "pull request",
-      "claude code",
-      "copilot"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "AI coding agents now author a large share of pull requests (PRs) merged into popular open-source projects. A merged agent PR is usually considered finished work; yet, prior studies have reported issues in agent code after the merge (e.g., code smells and static-analysis issues). However, little is known about how often a merged agent PR is fixed afterward…",
-    "authors": [
-      "Wannita Takerngsaksiri",
-      "Nhat Duong",
-      "Scott Barnett"
-    ],
-    "author_count": 3,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26847"
-  },
-  {
-    "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
-    "sub_title": "papers · source=hf_daily_papers · score=69.9",
-    "url_title": "one-to-more-more-to-one-category-aware-iterative-expert-training-for-software-en",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.23377",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-20T00:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 69.9,
-    "scores": {
-      "relevance": 88.3,
-      "popularity": 45.9,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "software engineering agent",
-      "swe-bench",
-      "repository-level"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Repository-level software engineering (SWE) comprises heterogeneous task categories, whose progress under pooled agentic reinforcement learning can be uneven: gains in some categories coincide with regressions in others, while aggregate resolution obscures these changes. Motivated by this category see-saw, we develop a category-aware expert-training and…",
-    "authors": [
-      "Jie Zhao",
-      "Ziyu Jiang",
-      "Suhang Zheng",
-      "Minghui Shan",
-      "Xiaoxiao Xu",
-      "Lin Qu"
-    ],
-    "author_count": 6,
-    "upvotes": 33,
-    "likes": 0,
-    "github_url": "https://github.com/alibaba/AgenticBigBang",
-    "github_stars": 39,
-    "hf_url": "https://huggingface.co/papers/2609.23377",
-    "arxiv_id": "2609.23377"
-  },
-  {
-    "title": "CliffCompaction: Cost-Efficient Compaction for Long-Horizon Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_ai · score=69.3",
-    "url_title": "cliffcompaction-cost-efficient-compaction-for-long-horizon-coding-agents",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26779",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 69.3,
-    "scores": {
-      "relevance": 87.6,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 55.0
-    },
-    "keywords": [
-      "coding agent",
-      "claude code",
-      "terminal-bench",
-      "codex"
-    ],
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Agents often work on complex problems that require millions of tokens of context, which necessitates compacting across sessions due to limited context windows. We develop CliffCompaction, an autocompaction technique that reduces cost by up to 50% under a bounded context while maintaining or improving performance on Terminal-Bench and achieving new levels of…",
-    "authors": [
-      "Trang Nguyen",
-      "Eulrang Cho",
-      "Bingqing Chen",
-      "Tim Dettmers"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26779"
-  },
-  {
-    "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
-    "sub_title": "papers · source=arxiv_cs_ai · score=64.5",
-    "url_title": "metrics-failure-in-llm-based-code-vulnerability-repair-an-empirical-study-and-a-",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26749",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 64.5,
-    "scores": {
-      "relevance": 80.9,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "vulnerability repair",
-      "code llm"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Large language models (LLMs) are increasingly applied to the automated repair of C/C++ security vulnerabilities, and compile rate is a commonly reported proxy for progress: whether the generated patch compiles. We argue that compile rate is a scientifically unreliable metric for single-function vulnerability repair, and we support this with five controlled…",
-    "authors": [
-      "Om Nepal",
-      "Sushant Aryal",
-      "Oluseyi Olukola",
-      "Nick Rahimi"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26749"
-  },
-  {
-    "title": "ScaleAI/SWE-bench_Pro",
-    "sub_title": "datasets · source=hf_datasets_swe · score=63.5",
-    "url_title": "scaleaiswe-bench-pro",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-09-22T18:44:38Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 63.5,
-    "scores": {
-      "relevance": 75.7,
-      "popularity": 45.3,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "swe-bench",
-      "pull request"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "SWE-bench Pro V2 SWE-bench Pro is a benchmark of long-horizon software engineering tasks drawn from real pull requests in 11 open-source repositories (Go, Python, JavaScript, TypeScript). Each task gives an agent a repository at a base commit plus a PR description with explicit requirements and interfaces; the agent's patch is graded by hidden fail-to-pass…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 183,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": ""
-  },
-  {
-    "title": "FeatLens: Feature-Guided Dynamic Code Graph Construction and Retrieval for Repository-Level Code Generation",
-    "sub_title": "papers · source=arxiv_cs_ai · score=62.4",
-    "url_title": "featlens-feature-guided-dynamic-code-graph-construction-and-retrieval-for-reposi",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26480",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 62.4,
-    "scores": {
-      "relevance": 84.8,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "code generation",
-      "repository-level",
-      "codebase"
-    ],
-    "signals": [],
-    "summary": "Recent code generation research has moved from isolated function completion toward repository-level generation in existing codebases. To implement a target function correctly, an LLM must identify reusable repository dependencies such as existing functions, APIs, and cross-file definitions. Existing retrieval methods provide such context through code…",
-    "authors": [
-      "Xutian Li",
-      "Bo Xiong",
-      "Yifeng Zhu",
-      "Kunze Li",
-      "Xianlin Zhao",
-      "Runbang Yan"
-    ],
-    "author_count": 9,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26480"
-  },
-  {
-    "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
-    "sub_title": "papers · source=arxiv_cs_ai · score=58.6",
-    "url_title": "swe-serve-benchmarking-agentic-engineering-for-production-inference-serving",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26777",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 58.6,
-    "scores": {
-      "relevance": 70.3,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "agentic engineering",
-      "repository-level"
-    ],
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "We introduce SWE-Serve, a benchmark for evaluating agents on production inference engineering tasks. Implementing an inference feature can require coordinating multiple changes across the serving stack, including model support, runtime execution, and public APIs. Existing benchmarks provide limited coverage of production inference engineering…",
-    "authors": [
-      "Jennifer Williams",
-      "Dave Farris",
-      "Jeff Farris",
-      "Jiantao Jiao"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26777"
-  },
-  {
-    "title": "nebius/SWE-agent-trajectories",
-    "sub_title": "datasets · source=hf_datasets_swe · score=58.4",
-    "url_title": "nebiusswe-agent-trajectories",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/nebius/SWE-agent-trajectories",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2024-12-23T12:42:05Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 58.4,
-    "scores": {
-      "relevance": 93.0,
-      "popularity": 39.7,
-      "freshness": 0.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "swe-agent",
-      "swe-bench",
-      "software engineering agent",
-      "github issue"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Dataset Summary This dataset contains 80,036 trajectories generated by a software engineering agent based on the SWE-agent framework, using various models as action generators. In these trajectories, the agent attempts to solve GitHub issues from the nebius/SWE-bench-extra and the dev split of princeton-nlp/SWE-bench. Dataset Description This dataset was…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 96,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": ""
-  },
-  {
-    "title": "nvidia/Open-SWE-Traces",
-    "sub_title": "datasets · source=hf_datasets_swe · score=58.0",
-    "url_title": "nvidiaopen-swe-traces",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-09-22T20:01:20Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 58.0,
-    "scores": {
-      "relevance": 65.7,
-      "popularity": 42.6,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "software engineering agent",
-      "swe-agent",
-      "claude code"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Open-SWE-Traces: Advancing Distillation for Software Engineering Agents 🚨 What's New [09/26] Release v1.2: Added new agent trajectories generated by Qwen3.8-27B for mini-swe-agent. Trajectories for OpenCode and Claude Code harnesses will be released soon. [08/26] Release v1.1: Added new agent trajectories generated by DeepSeek-V4-Flash and Qwen3.6-27B…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 134,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": ""
-  },
-  {
-    "title": "princeton-nlp/SWE-bench_Verified",
-    "sub_title": "datasets · source=hf_datasets_swe · score=58.0",
-    "url_title": "princeton-nlpswe-bench-verified",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2025-02-18T23:48:55Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 58.0,
-    "scores": {
-      "relevance": 87.2,
-      "popularity": 51.8,
-      "freshness": 0.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "swe-bench",
-      "github issue",
-      "pull request",
-      "unit test"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Dataset Summary SWE-bench Verified is a subset of 500 samples from the SWE-bench test set, which have been human-validated for quality. SWE-bench is a dataset that tests systems’ ability to solve GitHub issues automatically. See this post for more details on the human-validation process. The dataset collects 500 test Issue-Pull Request pairs from popular…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 387,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": ""
-  },
-  {
     "title": "Evaluating Coding Agents on Kernel Exploit Generation",
-    "sub_title": "papers · source=arxiv_cs_ai · score=56.5",
+    "sub_title": "papers · source=arxiv_cs_ai · score=76.5",
     "url_title": "evaluating-coding-agents-on-kernel-exploit-generation",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.25591",
@@ -577,9 +67,9 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 56.5,
+    "score": 76.5,
     "scores": {
-      "relevance": 55.1,
+      "relevance": 95.0,
       "popularity": 0.0,
       "freshness": 100.0,
       "impact": 90.0
@@ -587,6 +77,14 @@
     "keywords": [
       "coding agent"
     ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "安全与漏洞"
+    ],
+    "summary_zh": "提出 KEX-bench，评测编程智能体在真实内核 CVE 上生成利用原语的能力。",
+    "reason_zh": "面向编程智能体的安全漏洞利用生成评测基准，核心相关。",
+    "relevance_source": "llm",
     "signals": [
       "new_benchmark",
       "open_source_code",
@@ -610,79 +108,98 @@
     "arxiv_id": "2609.25591"
   },
   {
-    "title": "SWE-bench/SWE-bench_Verified",
-    "sub_title": "datasets · source=hf_datasets_swe · score=56.5",
-    "url_title": "swe-benchswe-bench-verified",
+    "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
+    "sub_title": "papers · source=arxiv_cs_ai · score=74.9",
+    "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.25804",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 74.9,
+    "scores": {
+      "relevance": 70.0,
+      "popularity": 61.9,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "swe-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "定义并度量长时程任务中智能体的品味，即做出良好决策的能力。",
+    "reason_zh": "长时程智能体决策能力评测，对编程智能体有明确应用。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "LLM agents increasingly work on long-horizon tasks, and the decisions they make along the way, such as which hypothesis to test or which implementation to build on, determine the outcome of the whole run. Making these decisions well is becoming a key capability for both engineering and research agents. We refer to the ability to make good long-horizon…",
+    "authors": [
+      "Wenbo Pan",
+      "Zhichao Liu",
+      "Shujie Liu",
+      "Jingying Zeng",
+      "Chin-Yew Lin",
+      "Xianfeng Tang"
+    ],
+    "author_count": 9,
+    "upvotes": 115,
+    "likes": 0,
+    "github_url": "https://github.com/wbopan/tastebench",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2609.25804",
+    "arxiv_id": "2609.25804"
+  },
+  {
+    "title": "ScaleAI/SWE-bench_Pro",
+    "sub_title": "datasets · source=hf_datasets_swe · score=73.7",
+    "url_title": "scaleaiswe-bench-pro",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified",
+    "external_url": "https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro",
     "source_id": "hf_datasets_swe",
     "source_ids": [
       "hf_datasets_swe"
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-08-16T04:23:43Z",
+    "published_at": "2026-09-22T18:44:38Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 56.5,
+    "score": 73.7,
     "scores": {
-      "relevance": 87.2,
-      "popularity": 44.3,
-      "freshness": 0.0,
+      "relevance": 96.0,
+      "popularity": 45.3,
+      "freshness": 63.0,
       "impact": 40.0
     },
     "keywords": [
       "swe-bench",
-      "github issue",
-      "pull request",
-      "unit test"
+      "pull request"
     ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "SWE-bench Pro 是来自真实 PR 的长周期软件工程任务基准，含隐藏测试验证。",
+    "reason_zh": "SWE-bench 系列核心编程智能体评测基准。",
+    "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
-    "summary": "Dataset Summary SWE-bench Verified is a subset of 500 samples from the SWE-bench test set, which have been human-validated for quality. SWE-bench is a dataset that tests systems’ ability to solve GitHub issues automatically. See this post for more details on the human-validation process. The dataset collects 500 test Issue-Pull Request pairs from popular…",
+    "summary": "SWE-bench Pro V2 SWE-bench Pro is a benchmark of long-horizon software engineering tasks drawn from real pull requests in 11 open-source repositories (Go, Python, JavaScript, TypeScript). Each task gives an agent a repository at a base commit plus a PR description with explicit requirements and interfaces; the agent's patch is graded by hidden fail-to-pass…",
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 163,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": ""
-  },
-  {
-    "title": "Logics-MLLM/Logics-SWE-Env-2.5K",
-    "sub_title": "datasets · source=hf_datasets_swe · score=55.2",
-    "url_title": "logics-mllmlogics-swe-env-25k",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/Logics-MLLM/Logics-SWE-Env-2.5K",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-09-23T01:47:50Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 55.2,
-    "scores": {
-      "relevance": 61.0,
-      "popularity": 24.0,
-      "freshness": 79.4,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "repository-level",
-      "github"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Logics-SWE-Env-2.5K 2,553 software engineering task instances · 1,771 repositories · 4 programming languages 🤗 Related model: Logics-SWE-Qwen3.6-27B 📄 Paper: One to More, More to One 💻 GitHub: AgenticBigBang Overview What is this dataset? Logics-SWE-Env-2.5K is a collection of repository-level software engineering tasks for research on coding agents and…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 3,
+    "likes": 183,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -690,7 +207,7 @@
   },
   {
     "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
-    "sub_title": "papers · source=hf_daily_papers · score=53.0",
+    "sub_title": "papers · source=hf_daily_papers · score=72.9",
     "url_title": "embodiedswe-coding-agents-for-long-horizon-dexterous-robotics",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.27308",
@@ -702,9 +219,9 @@
     "category": "papers",
     "published_at": "2026-09-23T00:00:00Z",
     "first_seen_at": "2026-09-24T04:49:30Z",
-    "score": 53.0,
+    "score": 72.9,
     "scores": {
-      "relevance": 48.2,
+      "relevance": 88.0,
       "popularity": 24.6,
       "freshness": 100.0,
       "impact": 40.0
@@ -712,6 +229,13 @@
     "keywords": [
       "coding agent"
     ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出 EmbodiedSWE-Bench，评测编码智能体解决长时程灵巧机器人任务。",
+    "reason_zh": "编码智能体用于机器人编程，核心相关。",
+    "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
@@ -733,52 +257,212 @@
     "arxiv_id": "2609.27308"
   },
   {
-    "title": "Unity Insight: A Production Code--Asset Index for LLM Coding Agents in Unity Projects",
-    "sub_title": "papers · source=arxiv_cs_se · score=52.1",
-    "url_title": "unity-insight-a-production-code-asset-index-for-llm-coding-agents-in-unity-proje",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27585",
-    "source_id": "arxiv_cs_se",
+    "title": "nvidia/Open-SWE-Traces",
+    "sub_title": "datasets · source=hf_datasets_swe · score=72.6",
+    "url_title": "nvidiaopen-swe-traces",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces",
+    "source_id": "hf_datasets_swe",
     "source_ids": [
-      "arxiv_cs_se"
+      "hf_datasets_swe"
     ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-22T20:01:20Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 52.1,
+    "score": 72.6,
     "scores": {
-      "relevance": 64.2,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
+      "relevance": 95.0,
+      "popularity": 42.6,
+      "freshness": 63.0,
+      "impact": 40.0
     },
     "keywords": [
-      "coding agent"
+      "software engineering agent",
+      "swe-agent",
+      "claude code"
     ],
-    "signals": [],
-    "summary": "LLM coding agents increasingly operate inside game-engine repositories, where application logic is inseparable from serialized assets: a single gameplay change may span C\\# scripts, prefabs, scenes, and ScriptableObjects wired together by Unity GUIDs. The retrieval tools agents carry today---shell utilities and code-only indexes---cannot answer basic…",
-    "authors": [
-      "Shenhua Gu",
-      "Hongqiang Zhu",
-      "Fan Zhang",
-      "Jinming Zhang",
-      "Hao Chen"
+    "topics": [
+      "编程智能体",
+      "训练数据",
+      "程序修复"
     ],
-    "author_count": 5,
+    "summary_zh": "NVIDIA发布的软件工程智能体轨迹数据集，用于蒸馏SWE智能体。",
+    "reason_zh": "编程智能体轨迹训练数据，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Open-SWE-Traces: Advancing Distillation for Software Engineering Agents 🚨 What's New [09/26] Release v1.2: Added new agent trajectories generated by Qwen3.8-27B for mini-swe-agent. Trajectories for OpenCode and Claude Code harnesses will be released soon. [08/26] Release v1.1: Added new agent trajectories generated by DeepSeek-V4-Flash and Qwen3.6-27B…",
+    "authors": [],
+    "author_count": 0,
     "upvotes": 0,
-    "likes": 0,
+    "likes": 134,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.27585"
+    "arxiv_id": ""
   },
   {
-    "title": "Coding Agents are Strong Prompt Optimizers",
-    "sub_title": "papers · source=arxiv_cs_ai · score=52.0",
-    "url_title": "coding-agents-are-strong-prompt-optimizers",
+    "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
+    "sub_title": "papers · source=hf_daily_papers · score=71.9",
+    "url_title": "one-to-more-more-to-one-category-aware-iterative-expert-training-for-software-en",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26261",
+    "external_url": "https://arxiv.org/abs/2609.23377",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-20T00:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 71.9,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 46.7,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "software engineering agent",
+      "swe-bench",
+      "repository-level"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "面向软件工程智能体的类别感知迭代专家训练与策略集成。",
+    "reason_zh": "直接针对SWE智能体训练，核心AI编程。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Repository-level software engineering (SWE) comprises heterogeneous task categories, whose progress under pooled agentic reinforcement learning can be uneven: gains in some categories coincide with regressions in others, while aggregate resolution obscures these changes. Motivated by this category see-saw, we develop a category-aware expert-training and…",
+    "authors": [
+      "Jie Zhao",
+      "Ziyu Jiang",
+      "Suhang Zheng",
+      "Minghui Shan",
+      "Xiaoxiao Xu",
+      "Lin Qu"
+    ],
+    "author_count": 6,
+    "upvotes": 35,
+    "likes": 0,
+    "github_url": "https://github.com/alibaba/AgenticBigBang",
+    "github_stars": 39,
+    "hf_url": "https://huggingface.co/papers/2609.23377",
+    "arxiv_id": "2609.23377"
+  },
+  {
+    "title": "CodeMidas: Scaling Agentic Coding RL Environments from Code Itself",
+    "sub_title": "papers · source=hf_daily_papers · score=71.7",
+    "url_title": "codemidas-scaling-agentic-coding-rl-environments-from-code-itself",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.22068",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-18T00:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 71.7,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 63.5,
+      "freshness": 50.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "agentic coding",
+      "coding agent",
+      "terminal-bench",
+      "codebase"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理",
+      "训练数据"
+    ],
+    "summary_zh": "CodeMidas 从代码本身自动构建可验证的智能体编程 RL 环境，扩展训练任务。",
+    "reason_zh": "编程智能体 RL 环境构建，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Training capable coding agents via reinforcement learning (RL) requires diverse tasks with reliable verifiers. Open-source codebases offer a rich source of such tasks, while existing methods typically rely on development artifacts such as issues and commits, limiting the range of tasks that can be extracted. To better scale RL environments, we present…",
+    "authors": [
+      "Bowen Ye",
+      "Lei Li",
+      "Shicheng Li",
+      "Zihao Yue",
+      "Linghao Zhang",
+      "Hanglong Lv"
+    ],
+    "author_count": 19,
+    "upvotes": 130,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.22068",
+    "arxiv_id": "2609.22068"
+  },
+  {
+    "title": "Logics-MLLM/Logics-SWE-Env-2.5K",
+    "sub_title": "datasets · source=hf_datasets_swe · score=71.2",
+    "url_title": "logics-mllmlogics-swe-env-25k",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/Logics-MLLM/Logics-SWE-Env-2.5K",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-23T01:47:50Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 71.2,
+    "scores": {
+      "relevance": 93.0,
+      "popularity": 24.0,
+      "freshness": 79.4,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "repository-level",
+      "github"
+    ],
+    "topics": [
+      "训练数据",
+      "编程智能体"
+    ],
+    "summary_zh": "Logics-SWE-Env-2.5K 提供 2553 个仓库级软件工程任务，用于编程智能体与环境强化学习。",
+    "reason_zh": "面向编程智能体训练的数据集，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Logics-SWE-Env-2.5K 2,553 software engineering task instances · 1,771 repositories · 4 programming languages 🤗 Related model: Logics-SWE-Qwen3.6-27B 📄 Paper: One to More, More to One 💻 GitHub: AgenticBigBang Overview What is this dataset? Logics-SWE-Env-2.5K is a collection of repository-level software engineering tasks for research on coding agents and…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 3,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": ""
+  },
+  {
+    "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
+    "sub_title": "papers · source=arxiv_cs_ai · score=69.5",
+    "url_title": "swe-serve-benchmarking-agentic-engineering-for-production-inference-serving",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26777",
     "source_id": "arxiv_cs_ai",
     "source_ids": [
       "arxiv_cs_ai"
@@ -787,39 +471,96 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 52.0,
+    "score": 69.5,
     "scores": {
-      "relevance": 61.0,
+      "relevance": 92.0,
       "popularity": 0.0,
       "freshness": 100.0,
-      "impact": 15.0
+      "impact": 35.0
     },
     "keywords": [
-      "coding agent"
+      "agentic engineering",
+      "repository-level"
     ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "提出SWE-Serve基准，评测智能体在生产推理服务工程中的表现。",
+    "reason_zh": "面向编程智能体的新评测基准，核心相关。",
+    "relevance_source": "llm",
     "signals": [
-      "sota"
+      "new_benchmark"
     ],
-    "summary": "Search-based prompt optimizers improve prompts through iterative search: they propose edits, execute fresh rollouts, score the resulting trajectories, and retain only edits that improve a validation metric. We show that this optimization loop is unnecessary. Given only a static corpus of agent trajectories, an off-the-shelf coding agent can directly…",
+    "summary": "We introduce SWE-Serve, a benchmark for evaluating agents on production inference engineering tasks. Implementing an inference feature can require coordinating multiple changes across the serving stack, including model support, runtime execution, and public APIs. Existing benchmarks provide limited coverage of production inference engineering…",
     "authors": [
-      "Agamdeep Singh",
-      "Srishti Gautam",
-      "Priyanshu Gupta",
-      "Nikita Mehrotra",
-      "Tanmay Bakshi",
-      "Sumit Gulwani"
+      "Jennifer Williams",
+      "Dave Farris",
+      "Jeff Farris",
+      "Jiantao Jiao"
     ],
-    "author_count": 6,
+    "author_count": 4,
     "upvotes": 0,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26261"
+    "arxiv_id": "2609.26777"
+  },
+  {
+    "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
+    "sub_title": "papers · source=arxiv_cs_ai · score=69.0",
+    "url_title": "metrics-failure-in-llm-based-code-vulnerability-repair-an-empirical-study-and-a-",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26749",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 69.0,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "vulnerability repair",
+      "code llm"
+    ],
+    "topics": [
+      "安全与漏洞",
+      "程序修复",
+      "评测基准"
+    ],
+    "summary_zh": "实证研究指出编译率作为LLM漏洞修复指标的失效，并提出变更感知筛选。",
+    "reason_zh": "直接针对LLM代码漏洞修复的评测指标问题。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Large language models (LLMs) are increasingly applied to the automated repair of C/C++ security vulnerabilities, and compile rate is a commonly reported proxy for progress: whether the generated patch compiles. We argue that compile rate is a scientifically unreliable metric for single-function vulnerability repair, and we support this with five controlled…",
+    "authors": [
+      "Om Nepal",
+      "Sushant Aryal",
+      "Oluseyi Olukola",
+      "Nick Rahimi"
+    ],
+    "author_count": 4,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.26749"
   },
   {
     "title": "Grounded Skill Synthesis from Code at Scale for Agentic Intelligence",
-    "sub_title": "papers · source=hf_daily_papers · score=51.9",
+    "sub_title": "papers · source=hf_daily_papers · score=68.8",
     "url_title": "grounded-skill-synthesis-from-code-at-scale-for-agentic-intelligence",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.05571",
@@ -831,9 +572,9 @@
     "category": "papers",
     "published_at": "2026-09-04T00:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 51.9,
+    "score": 68.8,
     "scores": {
-      "relevance": 48.2,
+      "relevance": 82.0,
       "popularity": 61.7,
       "freshness": 50.0,
       "impact": 55.0
@@ -841,6 +582,14 @@
     "keywords": [
       "github"
     ],
+    "topics": [
+      "编程智能体",
+      "代码理解与检索",
+      "训练数据"
+    ],
+    "summary_zh": "从大规模代码中合成可复用技能，为智能体提供可执行验证的程序性知识。",
+    "reason_zh": "从代码合成智能体技能，与 AI 编程密切相关。",
+    "relevance_source": "llm",
     "signals": [
       "open_source_code",
       "sota"
@@ -863,8 +612,56 @@
     "arxiv_id": "2609.05571"
   },
   {
+    "title": "WhatWorkedBench: Benchmarking Experimental Understanding in AI Agents",
+    "sub_title": "papers · source=arxiv_cs_lg · score=68.7",
+    "url_title": "whatworkedbench-benchmarking-experimental-understanding-in-ai-agents",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.27490",
+    "source_id": "arxiv_cs_lg",
+    "source_ids": [
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 68.7,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 28.6,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "提出 WhatWorkedBench，评测 AI 智能体通过实验理解代码组件变化的能力。",
+    "reason_zh": "智能体检查代码并预测配置，与 AI 编程评测相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "AI research agents need reliable knowledge of how their experiments change outcomes. We introduce WhatWorkedBench to measure experimental understanding, the accuracy of predictions about component changes after budgeted experimentation. Agents inspect code, select measurements, and submit a response surface, a table predicting scores for every configuration…",
+    "authors": [
+      "Jingjie Ning",
+      "Xueqi Li",
+      "Yibo Kong",
+      "Dongting Li"
+    ],
+    "author_count": 4,
+    "upvotes": 8,
+    "likes": 0,
+    "github_url": "https://github.com/EthanNing/WhatWorkedBench",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2609.27490",
+    "arxiv_id": "2609.27490"
+  },
+  {
     "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
-    "sub_title": "papers · source=arxiv_cs_se · score=51.6",
+    "sub_title": "papers · source=arxiv_cs_se · score=68.5",
     "url_title": "can-llms-reason-about-runtime-behavior-a-repository-level-dynamic-benchmark",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.28449",
@@ -877,9 +674,9 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 51.6,
+    "score": 68.5,
     "scores": {
-      "relevance": 56.3,
+      "relevance": 90.0,
       "popularity": 0.0,
       "freshness": 100.0,
       "impact": 35.0
@@ -887,6 +684,13 @@
     "keywords": [
       "repository-level"
     ],
+    "topics": [
+      "评测基准",
+      "代码理解与检索"
+    ],
+    "summary_zh": "提出SWE-Flux，仓库级动态执行推理基准，评测LLM对运行时行为的理解。",
+    "reason_zh": "面向代码LLM的仓库级执行推理评测基准，核心相关。",
+    "relevance_source": "llm",
     "signals": [
       "new_benchmark"
     ],
@@ -908,8 +712,264 @@
     "arxiv_id": "2609.28449"
   },
   {
+    "title": "PonyEval: Evaluating LLM-Based Program Repair for Capability-Safe and Actor-Oriented Pony Software",
+    "sub_title": "papers · source=arxiv_cs_se · score=68.5",
+    "url_title": "ponyeval-evaluating-llm-based-program-repair-for-capability-safe-and-actor-orien",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.27832",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 68.5,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 35.0
+    },
+    "keywords": [
+      "program repair",
+      "swe-bench",
+      "swe-agent",
+      "repository-level"
+    ],
+    "topics": [
+      "程序修复",
+      "评测基准"
+    ],
+    "summary_zh": "提出PonyEval，评测LLM对Pony语言的仓库级程序修复能力。",
+    "reason_zh": "LLM程序修复评测基准，核心AI编程。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark"
+    ],
+    "summary": "Repository-level issue-resolution benchmarks have made executable evaluation central to software-engineering agents, but their language coverage remains concentrated in mainstream ecosystems. Pony presents a different regime: it combines actors, reference capabilities, ahead-of-time compilation, and a rapidly evolving historical toolchain, making both patch…",
+    "authors": [
+      "Bang Xie",
+      "Hao Liu",
+      "Zhenyu Shi",
+      "Zhiyuan Peng",
+      "Xin Yin",
+      "Chenhao Ying"
+    ],
+    "author_count": 11,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.27832"
+  },
+  {
+    "title": "CliffCompaction: Cost-Efficient Compaction for Long-Horizon Coding Agents",
+    "sub_title": "papers · source=arxiv_cs_ai · score=68.0",
+    "url_title": "cliffcompaction-cost-efficient-compaction-for-long-horizon-coding-agents",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26779",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 68.0,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "coding agent",
+      "claude code",
+      "terminal-bench",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "提出CliffCompaction压缩技术，降低长程编程智能体上下文成本。",
+    "reason_zh": "编程智能体上下文管理，属相关支撑技术。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Agents often work on complex problems that require millions of tokens of context, which necessitates compacting across sessions due to limited context windows. We develop CliffCompaction, an autocompaction technique that reduces cost by up to 50% under a bounded context while maintaining or improving performance on Terminal-Bench and achieving new levels of…",
+    "authors": [
+      "Trang Nguyen",
+      "Eulrang Cho",
+      "Bingqing Chen",
+      "Tim Dettmers"
+    ],
+    "author_count": 4,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.26779"
+  },
+  {
+    "title": "RiverRider/swebench-localisation",
+    "sub_title": "datasets · source=hf_datasets_swe · score=66.8",
+    "url_title": "riverriderswebench-localisation",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/RiverRider/swebench-localisation",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-22T00:41:40Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 66.8,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 26.0,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-bench",
+      "coding agent",
+      "github issue",
+      "github"
+    ],
+    "topics": [
+      "代码理解与检索",
+      "评测基准"
+    ],
+    "summary_zh": "该数据集单独评测 SWE-bench Verified 上的文件定位步骤，即智能体写补丁前的检索。",
+    "reason_zh": "针对编程智能体定位环节的评测，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Finding the file: localisation on SWE-bench Verified Given a GitHub issue, which file do you have to change? This is the retrieval step every coding agent performs before it writes a patch, and none of the leaderboards score it separately. SWE-bench's five leaderboards all score % Resolved, which folds localisation and patch-writing into one number. This…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 3,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": ""
+  },
+  {
+    "title": "Who Finishes the Job? A Study of Follow-Up Fixes and Commit Authorship on AI Coding Agent Pull Requests",
+    "sub_title": "papers · source=arxiv_cs_se · score=66.5",
+    "url_title": "who-finishes-the-job-a-study-of-follow-up-fixes-and-commit-authorship-on-ai-codi",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26847",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 66.5,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "pull request",
+      "claude code",
+      "copilot"
+    ],
+    "topics": [
+      "开发者与工具研究",
+      "编程智能体"
+    ],
+    "summary_zh": "研究AI编程智能体提交的PR合并后由谁修复、修复频率如何。",
+    "reason_zh": "AI编程智能体PR的实证研究，属开发者工具研究。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "AI coding agents now author a large share of pull requests (PRs) merged into popular open-source projects. A merged agent PR is usually considered finished work; yet, prior studies have reported issues in agent code after the merge (e.g., code smells and static-analysis issues). However, little is known about how often a merged agent PR is fixed afterward…",
+    "authors": [
+      "Wannita Takerngsaksiri",
+      "Nhat Duong",
+      "Scott Barnett"
+    ],
+    "author_count": 3,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.26847"
+  },
+  {
+    "title": "FeatLens: Feature-Guided Dynamic Code Graph Construction and Retrieval for Repository-Level Code Generation",
+    "sub_title": "papers · source=arxiv_cs_ai · score=66.0",
+    "url_title": "featlens-feature-guided-dynamic-code-graph-construction-and-retrieval-for-reposi",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26480",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 66.0,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "code generation",
+      "repository-level",
+      "codebase"
+    ],
+    "topics": [
+      "代码生成",
+      "代码理解与检索"
+    ],
+    "summary_zh": "FeatLens用特征引导动态构建代码图并检索，提升仓库级代码生成。",
+    "reason_zh": "直接面向仓库级代码生成的检索增强方法。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Recent code generation research has moved from isolated function completion toward repository-level generation in existing codebases. To implement a target function correctly, an LLM must identify reusable repository dependencies such as existing functions, APIs, and cross-file definitions. Existing retrieval methods provide such context through code…",
+    "authors": [
+      "Xutian Li",
+      "Bo Xiong",
+      "Yifeng Zhu",
+      "Kunze Li",
+      "Xianlin Zhao",
+      "Runbang Yan"
+    ],
+    "author_count": 9,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.26480"
+  },
+  {
     "title": "What Makes a Terminal-Bench Task Hard? Separating Genuine Hardness from Fake-Hardness on an Adjudicated Agentic Corpus",
-    "sub_title": "papers · source=arxiv_cs_lg · score=51.0",
+    "sub_title": "papers · source=arxiv_cs_lg · score=66.0",
     "url_title": "what-makes-a-terminal-bench-task-hard-separating-genuine-hardness-from-fake-hard",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.26826",
@@ -921,9 +981,9 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 51.0,
+    "score": 66.0,
     "scores": {
-      "relevance": 62.1,
+      "relevance": 92.0,
       "popularity": 0.0,
       "freshness": 100.0,
       "impact": 0.0
@@ -932,6 +992,13 @@
       "terminal-bench",
       "pull request"
     ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "分析 Terminal-Bench 任务难度来源，区分真实能力差距与基准缺陷，提出裁定方法。",
+    "reason_zh": "直接研究编程智能体评测基准的可靠性，核心相关。",
+    "relevance_source": "llm",
     "signals": [],
     "summary": "Frontier benchmarks need tasks that current models cannot solve. But a task that no model solves is not automatically a hard task. The same zero pass rate can come from a real capability gap, but it can also come from missing context, a broken reference solution, infrastructure failure, or a verifier that can be bypassed. In this paper, we study this issue…",
     "authors": [
@@ -951,221 +1018,11 @@
     "arxiv_id": "2609.26826"
   },
   {
-    "title": "Specifying and Maintaining Agentic Workflows: An Empirical Study of GitHub Agentic Workflows",
-    "sub_title": "papers · source=arxiv_cs_se · score=48.5",
-    "url_title": "specifying-and-maintaining-agentic-workflows-an-empirical-study-of-github-agenti",
+    "title": "Coding Agents are Strong Prompt Optimizers",
+    "sub_title": "papers · source=arxiv_cs_ai · score=65.5",
+    "url_title": "coding-agents-are-strong-prompt-optimizers",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27263",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 48.5,
-    "scores": {
-      "relevance": 57.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "github"
-    ],
-    "signals": [],
-    "summary": "Agentic workflows shift software development from prompting AI agents for individual tasks to defining recurring work that agents execute automatically. GitHub Agentic Workflows (gh-aw) enables this approach through Markdown files that combine natural-language instructions with configuration and compile into executable GitHub Actions workflows. Unlike…",
-    "authors": [
-      "Jasem Khelifi",
-      "Issam Oukhay",
-      "Ali Ouni",
-      "Mohammed Sayagh",
-      "Mohamed Aymen Saied"
-    ],
-    "author_count": 5,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.27263"
-  },
-  {
-    "title": "SkillGym: Internalizing Human Skills into LLMs for Real-World Problem Solving",
-    "sub_title": "papers · source=arxiv_cs_cl · score=48.4",
-    "url_title": "skillgym-internalizing-human-skills-into-llms-for-real-world-problem-solving",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27717",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 48.4,
-    "scores": {
-      "relevance": 53.8,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [
-      "claude code",
-      "terminal-bench",
-      "codex"
-    ],
-    "signals": [
-      "sota"
-    ],
-    "summary": "Human-written agent skills encode rich workflows for real-world problem solving, but are typically used as external inference-time instructions rather than internalized as reusable model capabilities. We introduce \\texttt{SkillGym}, a framework that transforms these skills into executable, verifiable training environments for large language model agents.…",
-    "authors": [
-      "Zhilong Ge",
-      "Yuting Shao",
-      "Yutao Yang",
-      "Yuxuan Cai",
-      "Jie Zhou",
-      "Kai Chen"
-    ],
-    "author_count": 9,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.27717"
-  },
-  {
-    "title": "Solidity Meets LLMs: A Transformer-Based Approach to Smart Contract Vulnerability Detection",
-    "sub_title": "papers · source=arxiv_cs_se · score=46.0",
-    "url_title": "solidity-meets-llms-a-transformer-based-approach-to-smart-contract-vulnerability",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27091",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 46.0,
-    "scores": {
-      "relevance": 45.1,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "vulnerability detection"
-    ],
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "The growing adoption of blockchain technologies, particularly the Ethereum platform, has amplified the critical role of smart contracts in decentralized applications. However, the increasing complexity and financial value of these contracts make them prime targets for cyber attacks. In this work, we present a transformer-based approach for the detection of…",
-    "authors": [
-      "Djamel Eddine Hakim Ghorab",
-      "Farid Mokhati",
-      "Mostafa Anouar Ghorab"
-    ],
-    "author_count": 3,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.27091"
-  },
-  {
-    "title": "Scenario-Driven Neuroevolution: Using Models to Guide Test Generation for Games",
-    "sub_title": "papers · source=arxiv_cs_se · score=45.5",
-    "url_title": "scenario-driven-neuroevolution-using-models-to-guide-test-generation-for-games",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.28130",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 45.5,
-    "scores": {
-      "relevance": 51.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "test generation"
-    ],
-    "signals": [],
-    "summary": "Automatically generating test inputs for games is challenging, as test generators must master the game to reach advanced program states while also ensuring robustness against the heavy program randomisation inherent to games. The test generator Neatest therefore optimises test suites consisting of neural networks that reach advanced program states and are…",
-    "authors": [
-      "Gijs van Cuyck",
-      "Patric Feldmeier",
-      "Jan Tretmans",
-      "Gordon Fraser"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.28130"
-  },
-  {
-    "title": "Ajar: Measuring Open Privilege in Agent Defenses",
-    "sub_title": "papers · source=arxiv_cs_se · score=42.8",
-    "url_title": "ajar-measuring-open-privilege-in-agent-defenses",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26900",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 42.8,
-    "scores": {
-      "relevance": 37.6,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "claude code"
-    ],
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "A language model agent acts through the tools it is given. The data it reads while working on a task can redirect what it does with those tools. A growing set of techniques for safe and secure agent execution therefore sits between the agent and its tools, aiming to enforce access control, information flow or isolation at that boundary. Today these…",
-    "authors": [
-      "Reshabh K Sharma",
-      "Linxi Jiang",
-      "Shuo Chen",
-      "Zhiqiang Lin"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26900"
-  },
-  {
-    "title": "Train Where the Quantized Model Goes: On-Policy Distillation for Low-Bit Reasoning",
-    "sub_title": "papers · source=arxiv_cs_ai · score=42.5",
-    "url_title": "train-where-the-quantized-model-goes-on-policy-distillation-for-low-bit-reasonin",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26708",
+    "external_url": "https://arxiv.org/abs/2609.26261",
     "source_id": "arxiv_cs_ai",
     "source_ids": [
       "arxiv_cs_ai"
@@ -1174,66 +1031,34 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 42.5,
+    "score": 65.5,
     "scores": {
-      "relevance": 45.1,
+      "relevance": 88.0,
       "popularity": 0.0,
       "freshness": 100.0,
-      "impact": 0.0
+      "impact": 15.0
     },
     "keywords": [
-      "code reasoning",
-      "humaneval"
+      "coding agent"
     ],
-    "signals": [],
-    "summary": "Quantization-aware distillation (QAD) restores much of the short-form question-answering performance lost to sub-3-bit quantization, yet leaves mathematical and code reasoning substantially impaired. Long generations often degenerate into repetitive loops, exhausting the decoding budget without completing a solution. We trace this gap to…",
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "证明现成编程智能体可直接从轨迹语料合成优化提示，无需搜索循环。",
+    "reason_zh": "编程智能体用于提示优化，核心与AI编程工具相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "sota"
+    ],
+    "summary": "Search-based prompt optimizers improve prompts through iterative search: they propose edits, execute fresh rollouts, score the resulting trajectories, and retain only edits that improve a validation metric. We show that this optimization loop is unnecessary. Given only a static corpus of agent trajectories, an off-the-shelf coding agent can directly…",
     "authors": [
-      "Yuanteng Chen",
-      "Zhilei Liu",
-      "Peisong Wang",
-      "Yuantian Shao",
-      "Chuangyi Li",
-      "Weining Wang"
-    ],
-    "author_count": 10,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26708"
-  },
-  {
-    "title": "Discover, Falsify, Revise: Auditing Input-Use Claims from Source Code to Predictive Contribution in Agent-Discovered Cell Models",
-    "sub_title": "papers · source=arxiv_cs_lg · score=41.8",
-    "url_title": "discover-falsify-revise-auditing-input-use-claims-from-source-code-to-predictive",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27234",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 41.8,
-    "scores": {
-      "relevance": 43.5,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "signals": [],
-    "summary": "AI virtual cells aim to predict cellular responses to specified interventions, yet held-out predictive performance alone does not establish use of the supplied perturbation information. This prediction-claim gap matters in agentic model discovery, where language-model agents generate and revise predictors using score-based feedback. We introduce CELLAUDIT…",
-    "authors": [
-      "Mengran Li",
-      "Bo Li",
-      "Chengyang Zhang",
-      "Yang Yan",
-      "Jinfeng Xu",
-      "Zhenchao Tang"
+      "Agamdeep Singh",
+      "Srishti Gautam",
+      "Priyanshu Gupta",
+      "Nikita Mehrotra",
+      "Tanmay Bakshi",
+      "Sumit Gulwani"
     ],
     "author_count": 6,
     "upvotes": 0,
@@ -1241,11 +1066,11 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.27234"
+    "arxiv_id": "2609.26261"
   },
   {
     "title": "Passes Alone, Fails Together: Benchmarking Semantic Coordination in Parallel LLM-Agent Development",
-    "sub_title": "papers · source=arxiv_cs_ai · score=41.4",
+    "sub_title": "papers · source=arxiv_cs_ai · score=65.0",
     "url_title": "passes-alone-fails-together-benchmarking-semantic-coordination-in-parallel-llm-a",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.25396",
@@ -1257,9 +1082,9 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 41.4,
+    "score": 65.0,
     "scores": {
-      "relevance": 42.7,
+      "relevance": 90.0,
       "popularity": 0.0,
       "freshness": 100.0,
       "impact": 0.0
@@ -1268,6 +1093,14 @@
       "coding agent",
       "pull request"
     ],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "测试与验证"
+    ],
+    "summary_zh": "提出stale基准，评测并行编程智能体补丁合并时的语义协调失败。",
+    "reason_zh": "并行编程智能体协调评测基准，核心相关。",
+    "relevance_source": "llm",
     "signals": [],
     "summary": "Parallel coding agents can produce patches that work alone but fail when merged. This happens when one agent changes an interface or rule that another agent still relies on. We study these failures with stale, a benchmark for semantic coordination. Our evaluation runs the same tests on each patch alone and on their combination, counting only failures…",
     "authors": [
@@ -1282,5 +1115,372 @@
     "github_stars": 0,
     "hf_url": "",
     "arxiv_id": "2609.25396"
+  },
+  {
+    "title": "prithivMLmods/CodeCAD-HF-v2",
+    "sub_title": "datasets · source=hf_datasets_code · score=65.0",
+    "url_title": "prithivmlmodscodecad-hf-v2",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/prithivMLmods/CodeCAD-HF-v2",
+    "source_id": "hf_datasets_code",
+    "source_ids": [
+      "hf_datasets_code"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-22T18:59:46Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 65.0,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 22.0,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [],
+    "topics": [
+      "训练数据",
+      "代码生成"
+    ],
+    "summary_zh": "CodeCAD-HF-v2 是约6万条 OpenSCAD 参数化建模代码配对数据集，用于程序化3D模型生成。",
+    "reason_zh": "代码数据集，但面向CAD生成，偏特定领域。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "CodeCAD-HF-v2 (CodeCAD: A Parametric CAD Dataset for Programmatic 3D Model Generation) CodeCAD-HF-v2 is a curated Hugging Face Parquet release containing ~59,999 paired entries sub-sampled from the original CodeCAD v2 repository. CodeCAD v2 originally encompasses over 75,000 human-written OpenSCAD models (~10 million lines of parametric code) curated for…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": ""
+  },
+  {
+    "title": "Spec2COBOLRot: An Agentic-AI Degradation Loop for Realistic COBOL Corpus Generation",
+    "sub_title": "papers · source=arxiv_cs_se · score=64.0",
+    "url_title": "spec2cobolrot-an-agentic-ai-degradation-loop-for-realistic-cobol-corpus-generati",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26835",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 64.0,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "训练数据",
+      "代码生成",
+      "评测基准"
+    ],
+    "summary_zh": "提出智能体AI流水线，用规格生成加迭代退化，生成真实COBOL语料供基准测试。",
+    "reason_zh": "为代码模型生成训练/评测语料，属AI编程数据构建。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "COBOL remains widely deployed, yet representative corpora reflecting real production code are rarely available, limiting rigorous benchmarking of modernization approaches. We propose a systematic agentic AI pipeline for generating realistic COBOL programs, combining specification-driven generation with iterative degradation guided by patterns and complexity…",
+    "authors": [
+      "Jean-Baptiste Espinasse",
+      "Djamel Eddine Khelladi",
+      "Mathieu Acher"
+    ],
+    "author_count": 3,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.26835"
+  },
+  {
+    "title": "WatchPoint: Executable User Feedback for Real-World Agentic Web Development",
+    "sub_title": "papers · source=arxiv_cs_ai · score=64.0",
+    "url_title": "watchpoint-executable-user-feedback-for-real-world-agentic-web-development",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26204",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 64.0,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "开发者与工具研究"
+    ],
+    "summary_zh": "为编程智能体提供可执行用户反馈，用于真实Web开发调试。",
+    "reason_zh": "编程智能体的反馈与调试机制，核心相关。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "When a professional web developer's code fails a test, they do not simply re-read the stack trace. They open the application in a browser, click buttons, inspect computed styles, and run diagnostic commands to understand what went wrong. Existing feedback mechanisms for coding agents rely on screenshots, LLM-as-a-judge scoring, or natural-language…",
+    "authors": [
+      "Guanqun Yang",
+      "Wei Yang",
+      "Xueqing Liu"
+    ],
+    "author_count": 3,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.26204"
+  },
+  {
+    "title": "Measuring the Checker: Mutation Analysis for GPU-Kernel Benchmark Oracles",
+    "sub_title": "papers · source=hf_daily_papers · score=63.8",
+    "url_title": "measuring-the-checker-mutation-analysis-for-gpu-kernel-benchmark-oracles",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.22220",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-02T00:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 63.8,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 23.3,
+      "freshness": 63.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "fuzzing"
+    ],
+    "topics": [
+      "评测基准",
+      "测试与验证"
+    ],
+    "summary_zh": "用变异分析衡量LLM生成GPU内核基准测试的判定质量。",
+    "reason_zh": "代码生成评测基准的可靠性研究，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Benchmarks for LLM-generated GPU kernels decide correctness with a few random inputs and a loose floating-point tolerance, and their verdicts now feed leaderboards and reinforcement-learning rewards. Recent work agrees these checkers are weak and patches them by hand---extra input distributions, fuzzing recipes, tighter tolerances---with no way to measure…",
+    "authors": [
+      "Mingzhe Du",
+      "Anh Tuan Luu",
+      "Dong Huang",
+      "See-Kiong Ng"
+    ],
+    "author_count": 4,
+    "upvotes": 5,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.22220",
+    "arxiv_id": "2609.22220"
+  },
+  {
+    "title": "Unity Insight: A Production Code--Asset Index for LLM Coding Agents in Unity Projects",
+    "sub_title": "papers · source=arxiv_cs_se · score=63.0",
+    "url_title": "unity-insight-a-production-code-asset-index-for-llm-coding-agents-in-unity-proje",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.27585",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T04:33:52Z",
+    "score": 63.0,
+    "scores": {
+      "relevance": 86.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "代码理解与检索",
+      "编程智能体"
+    ],
+    "summary_zh": "为Unity项目构建代码-资产索引，提升LLM编程智能体检索能力。",
+    "reason_zh": "服务编程智能体的代码检索工具，高度相关。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "LLM coding agents increasingly operate inside game-engine repositories, where application logic is inseparable from serialized assets: a single gameplay change may span C\\# scripts, prefabs, scenes, and ScriptableObjects wired together by Unity GUIDs. The retrieval tools agents carry today---shell utilities and code-only indexes---cannot answer basic…",
+    "authors": [
+      "Shenhua Gu",
+      "Hongqiang Zhu",
+      "Fan Zhang",
+      "Jinming Zhang",
+      "Hao Chen"
+    ],
+    "author_count": 5,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.27585"
+  },
+  {
+    "title": "Lego-X/LegoFlow-SWE",
+    "sub_title": "datasets · source=hf_datasets_swe · score=62.4",
+    "url_title": "lego-xlegoflow-swe",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/Lego-X/LegoFlow-SWE",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-18T01:57:27Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 62.4,
+    "scores": {
+      "relevance": 94.0,
+      "popularity": 32.0,
+      "freshness": 25.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "github"
+    ],
+    "topics": [
+      "训练数据",
+      "编程智能体"
+    ],
+    "summary_zh": "LegoFlow-SWE 提供 5000 个已验证 SWE 任务及 GLM-5.2 智能体轨迹数据。",
+    "reason_zh": "编程智能体训练与评测数据集，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "LegoFlow-SWE · 5,000 verified Harbor SWE tasks and two GLM-5.2 trajectory releases GitHub · Docs · Blog · HuggingFace · LegoX LegoFlow-SWE 5,000 verified Harbor SWE tasks mined by LegoFlow Curator, shipped in original and anti-hack prompt versions, plus two GLM-5.2 trajectory releases under OpenHands SDK and OpenCode, totaling 9,767 trajectories. Release…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 4,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": ""
+  },
+  {
+    "title": "FDE-Bench: Evaluating LLM Agents for Deployment Environment Configuration",
+    "sub_title": "papers · source=arxiv_cs_se · score=62.0",
+    "url_title": "fde-bench-evaluating-llm-agents-for-deployment-environment-configuration",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.27571",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 62.0,
+    "scores": {
+      "relevance": 84.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "提出FDE-Bench，用136个部署配置任务评测LLM智能体。",
+    "reason_zh": "面向编程智能体的部署配置评测基准。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Deployment requires an agent to turn application code into a running system whose services connect, become ready, and remain observable. FDE-Bench evaluates this capability with 136 deployment-configuration tasks spanning Docker images, multi-service Compose stacks, and Kubernetes, in greenfield and diagnose-and-repair modes. Agents submit declarative…",
+    "authors": [
+      "Weihang Ding",
+      "Junfei Zhan",
+      "Yueting Li",
+      "Qirong Guo"
+    ],
+    "author_count": 4,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.27571"
+  },
+  {
+    "title": "Recursive self-improvement of AI research agents",
+    "sub_title": "papers · source=arxiv_cs_ai · score=61.4",
+    "url_title": "recursive-self-improvement-of-ai-research-agents",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.26457",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 61.4,
+    "scores": {
+      "relevance": 72.0,
+      "popularity": 27.1,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "研究AI研究智能体递归自我改进，其自身代码成为优化对象。",
+    "reason_zh": "智能体自我改写代码，属编程智能体但偏研究自动化。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "AI agents are beginning to automate research and development across the AI stack, from improving training efficiency to optimizing inference. A natural next step is to improve the research efficiency of the agents themselves. When an AI research agent's own code is the object of optimization, each accepted rewrite becomes the agent that the next round…",
+    "authors": [
+      "Dhruv Srikanth",
+      "Bingchen Zhao",
+      "Dixing Xu",
+      "Yuxiang Wu",
+      "Zhengyao Jiang"
+    ],
+    "author_count": 5,
+    "upvotes": 7,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.26457",
+    "arxiv_id": "2609.26457"
   }
 ]

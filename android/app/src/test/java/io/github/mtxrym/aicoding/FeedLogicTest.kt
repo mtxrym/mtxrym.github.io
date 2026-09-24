@@ -60,6 +60,30 @@ class FeedLogicTest {
     }
 
     @Test
+    fun parsesLlmFieldsAndPrefersTopics() {
+        val item = json.decodeFromString<FeedItem>(
+            """{"title": "X", "keywords": ["swe-bench"], "topics": ["评测基准", "编程智能体"], "summary_zh": "中文总结",
+                "reason_zh": "理由", "relevance_source": "llm"}""",
+        )
+        assertTrue(item.llmJudged)
+        assertEquals(listOf("评测基准", "编程智能体"), item.tags)
+        assertEquals("中文总结", item.summaryZh)
+        val legacy = json.decodeFromString<FeedItem>("""{"title": "Y", "keywords": ["swe-bench"]}""")
+        assertEquals(listOf("swe-bench"), legacy.tags)
+        assertEquals(false, legacy.llmJudged)
+
+        val status = json.decodeFromString<FeedStatus>(
+            """{"llm": {"enabled": true, "model": "deepseek-flash", "model_label": "DeepSeek-V4.1-Flash", "coverage": 30}}""",
+        )
+        assertEquals("DeepSeek-V4.1-Flash", status.llm.displayName)
+        assertEquals(30, status.llm.coverage)
+        assertEquals(false, json.decodeFromString<FeedStatus>("{}").llm.enabled)
+        // 中文总结和主题可被搜索
+        assertEquals(1, applyFilter(listOf(item), FeedFilter(query = "中文总结"), emptySet(), sourceLabels(null)).size)
+        assertEquals(1, applyFilter(listOf(item), FeedFilter(query = "编程智能体"), emptySet(), sourceLabels(null)).size)
+    }
+
+    @Test
     fun legacyFormatFallsBackToSubTitleAndRfcDates() {
         val items = parse(legacyFormat)
         assertEquals(19.1, items[0].effectiveScore, 0.001)

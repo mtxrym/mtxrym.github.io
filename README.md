@@ -25,6 +25,24 @@
 唯一的例外是抓取频率：GitHub 只认 [`.github/workflows/update-content.yml`](.github/workflows/update-content.yml) 里的 cron，
 改频率时两处要一起改（`tests/test_policy.py` 会检查两者一致，不一致时定时任务会在测试步骤失败）。
 
+## 大模型复核（DeepSeek-V4.1-Flash）
+
+关键词规则负责“召回”（宽松初筛），DeepSeek 负责“判定”：对候选条目逐条打 0–100 分、选中文主题标签、写中文一句话总结。
+
+| | 规则 | DeepSeek-V4.1-Flash（关闭思考） |
+| --- | --- | --- |
+| 非边界样本 F1 | 0.879（漏判 11 / 误收 2） | **1.000**（0 / 0） |
+| 全部样本准确率 | 82.2% | **98.0%** |
+
+评测集是 101 条人工标注的真实数据（[`tests/fixtures/relevance_gold.json`](tests/fixtures/relevance_gold.json)），用 `scripts/eval_relevance.py --llm` 复现。
+开启思考（`reasoning_effort: low`）准确率反而略低、token 翻倍，所以默认关闭。
+
+- **启用方式**：仓库 `Settings → Secrets and variables → Actions` 添加 `DEEPSEEK_API_KEY`。未配置时自动退回关键词规则，不影响更新。
+- **费用**：判定结果缓存在 `data/llm_cache.json`，同一条内容只调用一次；日常每次运行只判定新出现的几十条，首次全量约 150 条、3.5 万 token。
+- **容错**：单批调用失败只影响这一批（退回规则分），`status.json` 的 `llm.healthy` 会标记异常。
+- **配置**：`config/update_policy.yaml` 的 `llm` 一节（模型、推理强度、送审门槛 `candidate_min_relevance`、收录门槛 `min_score`、单次预算等）。
+  修改提示词请同时更新 `src/llm.py` 中的 `PROMPT_VERSION`，已缓存的判定会按新版本重新生成。
+
 数据源在 [`config/sources.yaml`](config/sources.yaml) 中维护：
 
 | 数据源 | 说明 |
@@ -37,13 +55,14 @@
 
 ```
 config/sources.yaml ──► src/sources.py   抓取并统一成 Record
-                        src/relevance.py 相关性：AI 信号 × 代码信号，标题加权
+                        src/relevance.py 相关性初筛：AI 信号 × 代码信号，标题加权
+                        src/llm.py       DeepSeek 复核：打分、主题、中文一句话总结（带缓存）
                         src/scoring.py   综合得分（0–100）
                         src/feed.py      去重合并 → 历史库滚动更新 → 选出展示条目
 config/update_policy.yaml ─┘
                               │
                               ▼
-        blog.json · data/status.json · data/archive.json ──► GitHub Pages / Android App
+        blog.json · data/status.json · data/archive.json · data/llm_cache.json ──► GitHub Pages / Android App
 ```
 
 `scripts/generate_blog_json.py` 串起整个流程：
@@ -59,6 +78,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 python -m unittest discover -s tests -t .      # 单元测试
+python scripts/eval_relevance.py --llm          # 识别准确率评测（需要 DEEPSEEK_API_KEY）
 python scripts/generate_blog_json.py            # 抓取并生成数据
 python scripts/generate_blog_json.py --dry-run  # 只打印结果，不写文件
 python scripts/trending_ai_coding.py --sources arxiv_cs_se   # 排查单个数据源
@@ -84,7 +104,7 @@ python -m http.server 8000                      # 预览网页：http://localhos
 index.html · index.css · app.js      网页
 manifest.webmanifest · sw.js · assets/   PWA
 blog.json                             展示数据（生成）
-data/status.json · data/archive.json  数据源状态、历史库（生成）
+data/status.json · data/archive.json · data/llm_cache.json  数据源状态、历史库、模型判定缓存（生成）
 config/update_policy.yaml             更新策略
 config/sources.yaml                   数据源
 src/                                  抓取、相关性、打分、合并逻辑
