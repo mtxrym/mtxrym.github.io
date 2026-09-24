@@ -29,7 +29,7 @@ jobs:
 
       - name: Validate data files
         run: |
-          python -c "import json; [json.load(open(p)) for p in ('blog.json', 'data/status.json', 'data/archive.json', 'data/llm_cache.json', 'manifest.webmanifest', 'tests/fixtures/relevance_gold.json')]"
+          python -c "import json; [json.load(open(p)) for p in ('blog.json', 'data/status.json', 'data/archive.json', 'data/llm_cache.json', 'data/digests.json', 'manifest.webmanifest', 'tests/fixtures/relevance_gold.json')]"
 
       - name: Check web scripts
         run: |

@@ -50,6 +50,7 @@ class UpdatePolicy:
                 "model": self.llm.model,
                 "model_label": self.llm.model_label,
                 "min_score": self.llm.min_score,
+                "digest": self.llm.digest_enabled,
             },
         }
 
@@ -89,6 +90,16 @@ def parse_llm(raw: dict[str, Any]) -> LLMConfig:
         retries=int(_positive("llm.retries", raw.get("retries", defaults.retries), allow_zero=True)),
         abstract_chars=int(_positive("llm.abstract_chars", raw.get("abstract_chars", defaults.abstract_chars))),
     )
+    digest = raw.get("digest") or {}
+    if not isinstance(digest, dict):
+        raise ValueError("update_policy.llm.digest 必须是映射")
+    config.digest_enabled = bool(digest.get("enabled", defaults.digest_enabled))
+    config.digest_use_fulltext = bool(digest.get("use_fulltext", defaults.digest_use_fulltext))
+    config.digest_max_chars = int(_positive("llm.digest.max_chars", digest.get("max_chars", defaults.digest_max_chars)))
+    config.digest_max_items_per_run = int(
+        _positive("llm.digest.max_items_per_run", digest.get("max_items_per_run", defaults.digest_max_items_per_run), allow_zero=True)
+    )
+    config.digest_concurrency = int(_positive("llm.digest.concurrency", digest.get("concurrency", defaults.digest_concurrency)))
     return config
 
 

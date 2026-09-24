@@ -73,3 +73,10 @@ llm:
   concurrency: 4
   timeout_seconds: 90
   retries: 2
+  # 论文解读：为展示中的论文生成结构化中文总结（问题 / 方法 / 结果 / 启示 / 局限），结果缓存在 data/digests.json
+  digest:
+    enabled: true
+    use_fulltext: true      # 读取 arXiv HTML 全文；没有 HTML 版本时退回完整摘要
+    max_chars: 32000        # 正文最多送入多少字符（超长时保留前 75% + 结论部分）
+    max_items_per_run: 40   # 单次运行最多新生成多少篇
+    concurrency: 3

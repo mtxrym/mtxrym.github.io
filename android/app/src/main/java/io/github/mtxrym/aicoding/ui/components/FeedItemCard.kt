@@ -69,6 +69,7 @@ fun FeedItemCard(
     onToggleFavorite: () -> Unit,
     onKeyword: (String) -> Unit,
     modifier: Modifier = Modifier,
+    digestLabel: String = "DeepSeek",
 ) {
     val context = LocalContext.current
     val status = LocalStatusColors.current
@@ -150,6 +151,15 @@ fun FeedItemCard(
                         color = MaterialTheme.colorScheme.onSurface,
                         lineHeight = 21.sp,
                     )
+                }
+
+                val digest = item.digest?.takeIf { it.isValid }
+                if (digest != null) {
+                    var digestOpen by rememberSaveable(item.id) { mutableStateOf(false) }
+                    Column(Modifier.animateContentSize()) {
+                        if (digestOpen) DigestPanel(digest, digestLabel)
+                        ToggleLink(if (digestOpen) "收起解读" else "论文解读", digestOpen, primary = true) { digestOpen = !digestOpen }
+                    }
                 }
 
                 if (item.summary.isNotBlank()) {
@@ -272,6 +282,80 @@ private fun Summary(text: String, collapsedByDefault: Boolean = false) {
                     contentDescription = null,
                     modifier = Modifier.size(16.dp),
                     tint = MaterialTheme.colorScheme.outline,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ToggleLink(label: String, open: Boolean, primary: Boolean = false, onClick: () -> Unit) {
+    val color = if (primary) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
+    Row(
+        Modifier
+            .padding(top = 6.dp)
+            .clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(label, style = MaterialTheme.typography.labelMedium, color = color, fontWeight = if (primary) FontWeight.SemiBold else null)
+        Icon(
+            if (open) Icons.Rounded.ExpandLess else Icons.Rounded.ExpandMore,
+            contentDescription = null,
+            modifier = Modifier.size(16.dp),
+            tint = color,
+        )
+    }
+}
+
+/** 论文解读面板：问题 / 方法 / 结果 / 启示 / 局限。 */
+@Composable
+private fun DigestPanel(digest: io.github.mtxrym.aicoding.data.Digest, modelLabel: String) {
+    Surface(
+        modifier = Modifier
+            .padding(top = 8.dp)
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(10.dp),
+        color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.25f)),
+    ) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("论文解读", style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.primary)
+                Text(
+                    "  $modelLabel · ${digest.basisLabel}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.outline,
+                )
+            }
+            DigestRow("问题", listOf(digest.problem))
+            DigestRow("方法", digest.method)
+            DigestRow("结果", digest.results)
+            DigestRow("启示", digest.takeaways)
+            DigestRow("局限", listOf(digest.limitations))
+        }
+    }
+}
+
+@Composable
+private fun DigestRow(label: String, values: List<String>) {
+    val lines = values.filter { it.isNotBlank() }
+    if (lines.isEmpty()) return
+    Row {
+        Text(
+            label,
+            modifier = Modifier.width(34.dp),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.outline,
+            fontWeight = FontWeight.Medium,
+            lineHeight = 20.sp,
+        )
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            lines.forEach { line ->
+                Text(
+                    if (lines.size > 1) "· $line" else line,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    lineHeight = 20.sp,
                 )
             }
         }

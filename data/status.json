@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T09:05:44Z",
+  "generated_at": "2026-09-24T09:10:13Z",
   "policy": {
     "schedule": {
       "cron": "30 5,11,17,23 * * *",
@@ -21,7 +21,8 @@
       "enabled": true,
       "model": "deepseek-flash",
       "model_label": "DeepSeek-V4.1-Flash",
-      "min_score": 60.0
+      "min_score": 60.0,
+      "digest": true
     }
   },
   "llm": {
@@ -30,7 +31,8 @@
     "model_label": "DeepSeek-V4.1-Flash",
     "reason": null,
     "healthy": true,
-    "coverage": 30
+    "coverage": 30,
+    "digests": 24
   },
   "sources": [
     {

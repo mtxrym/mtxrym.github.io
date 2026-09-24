@@ -279,7 +279,10 @@ def select_items(archive: dict[str, dict[str, Any]], policy: UpdatePolicy, now: 
 # ---------------------------------------------------------------------------
 
 
-def to_blog_item(entry: dict[str, Any]) -> dict[str, Any]:
+DIGEST_FIELDS = ("problem", "method", "results", "takeaways", "limitations", "basis")
+
+
+def to_blog_item(entry: dict[str, Any], digest: dict[str, Any] | None = None) -> dict[str, Any]:
     """首页 / App 使用的条目格式。保留旧字段（sub_title / url_title / top_image 等）以兼容旧版页面。"""
     scores = entry["scores"]
     primary = entry["source_ids"][0]
@@ -312,6 +315,8 @@ def to_blog_item(entry: dict[str, Any]) -> dict[str, Any]:
         "github_stars": entry.get("github_stars") or 0,
         "hf_url": entry.get("hf_url") or "",
         "arxiv_id": entry.get("arxiv_id") or "",
+        # 论文解读（结构化中文总结），没有时为 null
+        "digest": {k: digest[k] for k in DIGEST_FIELDS if k in digest} if digest else None,
     }
 
 

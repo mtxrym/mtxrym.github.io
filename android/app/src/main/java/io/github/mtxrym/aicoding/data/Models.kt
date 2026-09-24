@@ -34,6 +34,7 @@ data class FeedItem(
     @SerialName("summary_zh") val summaryZh: String = "",
     @SerialName("reason_zh") val reasonZh: String = "",
     @SerialName("relevance_source") val relevanceSource: String = "rules",
+    val digest: Digest? = null,
 ) {
     val llmJudged: Boolean get() = relevanceSource == "llm"
 
@@ -63,6 +64,21 @@ data class FeedItem(
         val LEGACY_SCORE = Regex("""score=([\d.]+)""")
         val LEGACY_SOURCE = Regex("""source=([\w-]+)""")
     }
+}
+
+/** 论文解读：问题 / 方法 / 结果 / 启示 / 局限。basis 为 fulltext（基于全文）或 abstract（基于摘要）。 */
+@Serializable
+data class Digest(
+    val problem: String = "",
+    val method: List<String> = emptyList(),
+    val results: List<String> = emptyList(),
+    val takeaways: List<String> = emptyList(),
+    val limitations: String = "",
+    val basis: String = "abstract",
+) {
+    val isValid: Boolean get() = problem.isNotBlank()
+    val basisLabel: String get() = if (basis == "fulltext") "基于全文" else "基于摘要"
+    val searchText: String get() = (listOf(problem, limitations) + method + results + takeaways).joinToString(" ")
 }
 
 @Serializable
