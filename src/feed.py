@@ -71,10 +71,6 @@ def _later(a: str | None, b: str | None) -> str | None:
     return max(filter(None, (a, b)), default=None)
 
 
-def _earlier(a: str | None, b: str | None) -> str | None:
-    return min(filter(None, (a, b)), default=None)
-
-
 # ---------------------------------------------------------------------------
 # 合并同一条内容的多个来源
 # ---------------------------------------------------------------------------
@@ -134,7 +130,8 @@ def merge_entry(base: dict[str, Any], other: dict[str, Any]) -> dict[str, Any]:
         merged["authors"] = other["authors"]
     ranks = [r for r in (base.get("trending_rank"), other.get("trending_rank")) if r]
     merged["trending_rank"] = min(ranks) if ranks else None
-    merged["published_at"] = _earlier(base.get("published_at"), other.get("published_at"))
+    # arXiv RSS 的日期是公开发布日，HF 给的是提交日；取较晚者，避免“NEW”条目显示一个月前的日期
+    merged["published_at"] = _later(base.get("published_at"), other.get("published_at"))
     merged["featured_at"] = _later(base.get("featured_at"), other.get("featured_at"))
     merged["keywords"] = list(dict.fromkeys([*(base.get("keywords") or []), *(other.get("keywords") or [])]))[:4]
     merged["signals"] = sorted(set(base.get("signals") or []) | set(other.get("signals") or []))

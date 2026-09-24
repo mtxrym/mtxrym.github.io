@@ -2,12 +2,17 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>AI Coding 资讯看板</title>
-  <meta name="description" content="自动追踪 arXiv、Papers with Code 与 Hugging Face 上与 AI 编程相关的论文和数据集，按相关性与重要性打分排序，每 6 小时更新。" />
+  <meta name="description" content="自动追踪 arXiv、Hugging Face 上与 AI 编程相关的论文和数据集，按相关性、热度、新鲜度与影响力打分排序，每天更新 4 次。" />
   <meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0c0e13" media="(prefers-color-scheme: dark)" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M12 10l-6 6 6 6M20 10l6 6-6 6' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <meta property="og:title" content="AI Coding 资讯看板" />
+  <meta property="og:description" content="AI 编程前沿论文与数据集，每日精选。" />
+  <meta property="og:image" content="https://mtxrym.github.io/assets/icon-512.png" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="index.css" />
   <script>
     // 尽早应用用户选择的主题，避免加载时闪烁
@@ -16,6 +21,7 @@
       if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
     } catch (e) { /* 忽略存储不可用 */ }
   </script>
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -27,56 +33,58 @@
         <span class="brand-name">AI Coding 资讯看板</span>
       </a>
       <div class="header-actions">
-        <span id="status-pill" class="status-pill" data-state="loading"><i aria-hidden="true"></i><span>加载中</span></span>
+        <a id="status-pill" class="status-pill" href="#sources" data-state="loading">
+          <i aria-hidden="true"></i><span>加载中</span>
+        </a>
+        <a class="app-link" href="https://github.com/mtxrym/mtxrym.github.io/releases/latest" target="_blank" rel="noopener noreferrer" title="下载 Android App">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5" /><path d="M10.5 18.5h3" /></svg>
+          <span>App</span>
+        </a>
         <a class="icon-btn github-link" href="https://github.com/mtxrym/mtxrym.github.io" target="_blank" rel="noopener noreferrer" aria-label="GitHub 仓库" title="GitHub 仓库">
           <svg viewBox="0 0 24 24" class="fill"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" /></svg>
         </a>
         <button id="theme-toggle" class="icon-btn" type="button" aria-label="切换深色/浅色主题" title="切换主题">
-          <svg viewBox="0 0 24 24" class="icon-moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
-          <svg viewBox="0 0 24 24" class="icon-sun"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
+          <svg viewBox="0 0 24 24" class="icon-moon" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
+          <svg viewBox="0 0 24 24" class="icon-sun" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
         </button>
       </div>
     </div>
   </header>
 
   <section class="hero wrap">
-    <p class="eyebrow">AI Coding Intelligence</p>
-    <h1>AI 编程前沿，<span class="nowrap">每日精选</span></h1>
+    <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>AI Coding Intelligence</p>
+    <h1>AI 编程前沿，<span class="accent-text">每日精选</span></h1>
     <p class="lede">
-      自动追踪 arXiv、Papers with Code 与 Hugging Face 上与 AI 编程相关的论文和数据集，按相关性与重要性打分排序。
+      自动追踪 arXiv 与 Hugging Face 上和 AI 编程相关的论文、数据集，按相关性、热度、新鲜度与影响力综合打分，每天花几分钟就能跟上进展。
     </p>
     <dl class="kpis">
-      <div class="kpi"><dt>收录条目</dt><dd id="kpi-total">–</dd></div>
-      <div class="kpi"><dt>覆盖来源</dt><dd id="kpi-sources">–</dd></div>
+      <div class="kpi"><dt>精选条目</dt><dd id="kpi-total">–</dd></div>
+      <div class="kpi"><dt>数据源</dt><dd id="kpi-sources">–</dd></div>
       <div class="kpi"><dt>平均得分</dt><dd id="kpi-avg">–</dd></div>
-      <div class="kpi"><dt>最近发布</dt><dd id="kpi-latest">–</dd></div>
+      <div class="kpi"><dt>最近更新</dt><dd id="kpi-updated">–</dd></div>
     </dl>
-    <p class="sync-note" id="sync-note">正在读取数据…</p>
+    <p class="policy-note" id="policy-note">正在读取数据…</p>
   </section>
 
   <div class="toolbar-shell">
     <div class="wrap toolbar">
       <label class="search">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
-        <input id="search-input" type="search" placeholder="搜索标题或来源" aria-label="搜索标题或来源" autocomplete="off" />
+        <input id="search-input" type="search" placeholder="搜索标题、摘要、作者或主题" aria-label="搜索标题、摘要、作者或主题" autocomplete="off" />
         <kbd aria-hidden="true">/</kbd>
       </label>
       <div class="toolbar-group">
-        <select id="category-filter" aria-label="类别筛选">
-          <option value="all">全部类别</option>
-        </select>
+        <div id="category-tabs" class="segmented" role="group" aria-label="类别"></div>
         <select id="sort-select" aria-label="排序方式">
           <option value="score_desc">按得分</option>
           <option value="date_desc">按时间</option>
-          <option value="title_asc">按标题</option>
+          <option value="popularity_desc">按热度</option>
         </select>
-        <div class="segmented" role="group" aria-label="显示范围">
-          <button id="show-all" type="button" aria-pressed="true">全部</button>
-          <button id="show-favorites" type="button" aria-pressed="false">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" /></svg>
-            收藏 <span id="favorite-count" class="count">0</span>
-          </button>
-        </div>
+        <button id="favorites-toggle" class="toggle-btn" type="button" aria-pressed="false" title="只看收藏">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" /></svg>
+          <span class="toggle-label">收藏</span>
+          <span id="favorite-count" class="count">0</span>
+        </button>
       </div>
       <button id="compact-toggle" class="icon-btn" type="button" aria-pressed="false" aria-label="紧凑视图" title="紧凑视图">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
@@ -88,485 +96,46 @@
   </div>
 
   <main class="wrap feed-section">
-    <div class="feed-head">
+    <div class="section-head">
       <h2>最新收集</h2>
       <span id="result-note" class="result-note"></span>
       <button id="clear-filters" type="button" class="link-btn" hidden>重置筛选</button>
     </div>
     <ol id="feed" class="feed" aria-live="polite">
-      <li class="item skeleton" aria-hidden="true"><span></span><span></span></li>
-      <li class="item skeleton" aria-hidden="true"><span></span><span></span></li>
-      <li class="item skeleton" aria-hidden="true"><span></span><span></span></li>
+      <li class="item skeleton" aria-hidden="true"><span></span><span></span><span></span></li>
+      <li class="item skeleton" aria-hidden="true"><span></span><span></span><span></span></li>
+      <li class="item skeleton" aria-hidden="true"><span></span><span></span><span></span></li>
     </ol>
   </main>
 
+  <section class="wrap sources-section" id="sources" aria-labelledby="sources-title">
+    <div class="section-head">
+      <h2 id="sources-title">数据源与更新策略</h2>
+      <span id="sources-summary" class="result-note"></span>
+    </div>
+    <div class="sources-grid">
+      <div class="panel policy-panel">
+        <h3>更新策略</h3>
+        <dl id="policy-list" class="policy-list"></dl>
+        <p class="panel-foot">在 <a href="https://github.com/mtxrym/mtxrym.github.io/blob/master/config/update_policy.yaml" target="_blank" rel="noopener noreferrer"><code>config/update_policy.yaml</code></a> 中维护</p>
+      </div>
+      <div class="panel table-panel">
+        <table class="sources-table">
+          <thead><tr><th scope="col">数据源</th><th scope="col">状态</th><th scope="col" class="num">本次抓取</th><th scope="col" class="num">相关</th></tr></thead>
+          <tbody id="sources-body"><tr><td colspan="4" class="muted">加载中…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <footer class="wrap site-footer">
-    <p>数据由 GitHub Actions 每 6 小时自动抓取并打分，来源：arXiv · Papers with Code · Hugging Face。</p>
+    <p>数据由 GitHub Actions 自动抓取并打分。来源：arXiv · Hugging Face Daily Papers · Hugging Face Datasets。</p>
     <p class="footer-links">
-      <a href="./blog.json" target="_blank" rel="noopener noreferrer">原始数据 blog.json</a>
+      <a href="./blog.json" target="_blank" rel="noopener noreferrer">blog.json</a>
+      <a href="./data/status.json" target="_blank" rel="noopener noreferrer">status.json</a>
+      <a href="https://github.com/mtxrym/mtxrym.github.io/releases/latest" target="_blank" rel="noopener noreferrer">Android App</a>
       <a href="https://github.com/mtxrym/mtxrym.github.io" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>
     </p>
   </footer>
-
-  <script>
-    const FEED_PATH = './blog.json';
-    const LAST_FETCH_PATH = './cache/last_fetch.json';
-    const FAVORITES_KEY = 'ai-coding-favorites';
-    const PREFS_KEY = 'ai-coding-prefs';
-    // arXiv 周末不发布新论文，留出足够余量再判定为“更新滞后”
-    const STALE_HOURS = 96;
-
-    const SOURCE_LABELS = {
-      arxiv_cs_se: 'arXiv · cs.SE',
-      arxiv_cs_cl: 'arXiv · cs.CL',
-      arxiv_cs_ai: 'arXiv · cs.AI',
-      pwc_trending_papers: 'Papers with Code',
-      pwc_dataset_ranking: 'PwC 数据集榜',
-      hf_datasets_trending: 'Hugging Face'
-    };
-    const CATEGORY_LABELS = { papers: '论文', datasets: '数据集' };
-
-    const ICONS = {
-      star: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" /></svg>',
-      external: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>'
-    };
-
-    const storage = {
-      get(key, fallback) {
-        try {
-          const raw = localStorage.getItem(key);
-          return raw ? JSON.parse(raw) : fallback;
-        } catch (e) {
-          return fallback;
-        }
-      },
-      set(key, value) {
-        try {
-          localStorage.setItem(key, JSON.stringify(value));
-        } catch (e) { /* 隐私模式等场景下忽略 */ }
-      }
-    };
-
-    const $ = (id) => document.getElementById(id);
-    const elements = {
-      feed: $('feed'),
-      sourceChips: $('source-chips'),
-      kpiTotal: $('kpi-total'),
-      kpiSources: $('kpi-sources'),
-      kpiAvg: $('kpi-avg'),
-      kpiLatest: $('kpi-latest'),
-      syncNote: $('sync-note'),
-      statusPill: $('status-pill'),
-      resultNote: $('result-note'),
-      searchInput: $('search-input'),
-      categoryFilter: $('category-filter'),
-      sortSelect: $('sort-select'),
-      showAll: $('show-all'),
-      showFavorites: $('show-favorites'),
-      favoriteCount: $('favorite-count'),
-      compactToggle: $('compact-toggle'),
-      clearFilters: $('clear-filters'),
-      themeToggle: $('theme-toggle')
-    };
-
-    const prefs = storage.get(PREFS_KEY, {});
-    const state = {
-      items: [],
-      maxScore: 0,
-      source: 'all',
-      favorites: new Set(storage.get(FAVORITES_KEY, [])),
-      showFavoritesOnly: false,
-      compactView: Boolean(prefs.compact)
-    };
-
-    function savePrefs(patch) {
-      Object.assign(prefs, patch);
-      storage.set(PREFS_KEY, prefs);
-    }
-
-    const rtf = new Intl.RelativeTimeFormat('zh-CN', { numeric: 'auto' });
-
-    function parseDate(raw) {
-      const date = new Date(raw || '');
-      return Number.isNaN(date.getTime()) ? null : date;
-    }
-
-    function formatDate(date) {
-      const sameYear = date.getFullYear() === new Date().getFullYear();
-      return date.toLocaleDateString('zh-CN', sameYear
-        ? { month: 'long', day: 'numeric' }
-        : { year: 'numeric', month: 'long', day: 'numeric' });
-    }
-
-    function formatDateTime(date) {
-      return date.toLocaleString('zh-CN', { hour12: false });
-    }
-
-    function relativeTime(date) {
-      const hours = (date.getTime() - Date.now()) / 36e5;
-      if (Math.abs(hours) < 1) return '刚刚';
-      if (Math.abs(hours) < 24) return rtf.format(Math.round(hours), 'hour');
-      const days = Math.round(hours / 24);
-      if (Math.abs(days) < 30) return rtf.format(days, 'day');
-      return formatDate(date);
-    }
-
-    function sourceLabel(id) {
-      return SOURCE_LABELS[id] || id;
-    }
-
-    function categoryLabel(id) {
-      return CATEGORY_LABELS[id] || id;
-    }
-
-    function parseScore(text) {
-      const match = (text || '').match(/score=([\d.]+)/);
-      return match ? Number(match[1]) : 0;
-    }
-
-    function normalize(raw) {
-      const sub = raw.sub_title || '';
-      const sourceId = raw.source_id || (sub.match(/source=([\w-]+)/) || [])[1] || raw.source_host || 'unknown';
-      return {
-        // 与旧版一致的 id 规则，保证已有收藏不丢失
-        id: raw.external_url || raw.url_title || raw.title,
-        title: raw.title || '（无标题）',
-        score: parseScore(sub),
-        category: (sub.split('·')[0] || '').trim() || 'unknown',
-        sources: [sourceId],
-        publishedRaw: raw.published_at,
-        publishedDate: parseDate(raw.published_at),
-        target: raw.external_url || `./blog/${raw.url_title || ''}/`
-      };
-    }
-
-    // 同一篇论文可能同时出现在多个 arXiv 分类里，合并为一条并保留全部来源
-    function dedupe(items) {
-      const byId = new Map();
-      items.forEach((item) => {
-        const existing = byId.get(item.id);
-        if (!existing) {
-          byId.set(item.id, item);
-          return;
-        }
-        item.sources.forEach((s) => {
-          if (!existing.sources.includes(s)) existing.sources.push(s);
-        });
-        existing.score = Math.max(existing.score, item.score);
-      });
-      return [...byId.values()];
-    }
-
-    function saveFavorites() {
-      storage.set(FAVORITES_KEY, [...state.favorites]);
-    }
-
-    function buildCategoryOptions(items) {
-      const categories = [...new Set(items.map((item) => item.category))].sort();
-      elements.categoryFilter.innerHTML = '<option value="all">全部类别</option>';
-      categories.forEach((category) => {
-        const option = document.createElement('option');
-        option.value = category;
-        option.textContent = categoryLabel(category);
-        elements.categoryFilter.appendChild(option);
-      });
-    }
-
-    function renderSourceChips() {
-      const counts = {};
-      state.items.forEach((item) => item.sources.forEach((s) => { counts[s] = (counts[s] || 0) + 1; }));
-
-      const entries = [['all', state.items.length], ...Object.entries(counts).sort((a, b) => b[1] - a[1])];
-      elements.sourceChips.innerHTML = '';
-      entries.forEach(([source, count]) => {
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'chip';
-        chip.setAttribute('aria-pressed', String(state.source === source));
-        chip.dataset.focusKey = `source:${source}`;
-        chip.textContent = source === 'all' ? '全部来源' : sourceLabel(source);
-        const badge = document.createElement('span');
-        badge.className = 'count';
-        badge.textContent = String(count);
-        chip.appendChild(badge);
-        chip.addEventListener('click', () => {
-          state.source = source;
-          render();
-        });
-        elements.sourceChips.appendChild(chip);
-      });
-    }
-
-    function renderOverview(meta) {
-      const items = state.items;
-      const sources = new Set(items.flatMap((item) => item.sources));
-      const latest = items.reduce((acc, item) => (
-        item.publishedDate && (!acc || item.publishedDate > acc) ? item.publishedDate : acc
-      ), null);
-      const avg = items.length ? items.reduce((sum, item) => sum + item.score, 0) / items.length : 0;
-
-      elements.kpiTotal.textContent = String(items.length);
-      elements.kpiSources.textContent = String(sources.size);
-      elements.kpiAvg.textContent = items.length ? avg.toFixed(1) : '–';
-      elements.kpiLatest.textContent = latest ? relativeTime(latest) : '–';
-      if (latest) elements.kpiLatest.title = formatDateTime(latest);
-
-      const hoursSinceLatest = latest ? (Date.now() - latest.getTime()) / 36e5 : Infinity;
-      const fresh = hoursSinceLatest <= STALE_HOURS;
-      setStatus(fresh ? 'ok' : 'warn', fresh ? '数据正常' : '更新滞后',
-        latest ? `最新条目发布于 ${formatDateTime(latest)}` : '没有可解析的发布时间');
-
-      const syncedAt = parseDate(meta.lastFetch?.last_fetch_at) || meta.lastModified;
-      elements.syncNote.textContent = syncedAt
-        ? `数据同步于 ${relativeTime(syncedAt)}（${formatDateTime(syncedAt)}）· 每 6 小时自动更新`
-        : '每 6 小时自动更新';
-    }
-
-    function setStatus(stateName, label, detail) {
-      elements.statusPill.dataset.state = stateName;
-      elements.statusPill.lastElementChild.textContent = label;
-      elements.statusPill.title = detail || '';
-    }
-
-    function hasActiveFilters() {
-      return Boolean(elements.searchInput.value.trim())
-        || state.source !== 'all'
-        || elements.categoryFilter.value !== 'all'
-        || state.showFavoritesOnly;
-    }
-
-    function getVisibleItems() {
-      const keyword = elements.searchInput.value.trim().toLowerCase();
-      const category = elements.categoryFilter.value;
-      const sortBy = elements.sortSelect.value;
-
-      const visible = state.items.filter((item) => {
-        const haystack = `${item.title} ${item.sources.map(sourceLabel).join(' ')}`.toLowerCase();
-        return (!keyword || haystack.includes(keyword))
-          && (state.source === 'all' || item.sources.includes(state.source))
-          && (category === 'all' || item.category === category)
-          && (!state.showFavoritesOnly || state.favorites.has(item.id));
-      });
-
-      visible.sort((a, b) => {
-        if (sortBy === 'date_desc') {
-          return (b.publishedDate?.getTime() || 0) - (a.publishedDate?.getTime() || 0) || b.score - a.score;
-        }
-        if (sortBy === 'title_asc') {
-          return a.title.localeCompare(b.title, 'zh-CN');
-        }
-        return b.score - a.score;
-      });
-
-      return visible;
-    }
-
-    function toggleFavorite(id) {
-      if (state.favorites.has(id)) {
-        state.favorites.delete(id);
-      } else {
-        state.favorites.add(id);
-      }
-      saveFavorites();
-      render();
-    }
-
-    function createItem(item, index, highlightTop) {
-      const li = document.createElement('li');
-      li.className = 'item';
-
-      const rank = document.createElement('span');
-      rank.className = `rank${highlightTop && index < 3 ? ' top' : ''}`;
-      rank.textContent = String(index + 1).padStart(2, '0');
-
-      const body = document.createElement('div');
-      body.className = 'item-body';
-
-      const link = document.createElement('a');
-      link.className = 'item-title';
-      link.href = item.target;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      // 最后一个词和外链图标绑在一起，避免图标单独换行
-      const splitAt = item.title.lastIndexOf(' ') + 1;
-      const tail = document.createElement('span');
-      tail.className = 'nowrap';
-      tail.textContent = item.title.slice(splitAt);
-      tail.insertAdjacentHTML('beforeend', ICONS.external);
-      link.append(item.title.slice(0, splitAt), tail);
-
-      const meta = document.createElement('div');
-      meta.className = 'item-meta';
-      item.sources.forEach((source) => {
-        const tag = document.createElement('span');
-        tag.className = 'tag';
-        tag.textContent = sourceLabel(source);
-        meta.appendChild(tag);
-      });
-      const category = document.createElement('span');
-      category.textContent = categoryLabel(item.category);
-      meta.appendChild(category);
-      if (item.publishedDate) {
-        const time = document.createElement('time');
-        time.dateTime = item.publishedDate.toISOString();
-        time.title = formatDateTime(item.publishedDate);
-        time.textContent = `${relativeTime(item.publishedDate)} · ${formatDate(item.publishedDate)}`;
-        meta.appendChild(time);
-      }
-
-      body.append(link, meta);
-
-      const aside = document.createElement('div');
-      aside.className = 'item-aside';
-
-      const score = document.createElement('div');
-      score.className = 'score';
-      score.title = `重要性得分 ${item.score.toFixed(1)}（本期最高 ${state.maxScore.toFixed(1)}）`;
-      const scoreValue = document.createElement('span');
-      scoreValue.className = 'score-value';
-      scoreValue.textContent = item.score.toFixed(1);
-      const meter = document.createElement('span');
-      meter.className = 'meter';
-      const fill = document.createElement('span');
-      fill.style.width = `${state.maxScore ? Math.max(4, (item.score / state.maxScore) * 100) : 0}%`;
-      meter.appendChild(fill);
-      score.append(scoreValue, meter);
-
-      const isFav = state.favorites.has(item.id);
-      const fav = document.createElement('button');
-      fav.type = 'button';
-      fav.className = 'fav-btn';
-      fav.setAttribute('aria-pressed', String(isFav));
-      fav.setAttribute('aria-label', isFav ? '取消收藏' : '收藏');
-      fav.title = isFav ? '取消收藏' : '收藏';
-      fav.innerHTML = ICONS.star;
-      fav.dataset.focusKey = `fav:${item.id}`;
-      fav.addEventListener('click', () => toggleFavorite(item.id));
-
-      aside.append(score, fav);
-      li.append(rank, body, aside);
-      return li;
-    }
-
-    function renderFeed(visibleItems) {
-      elements.feed.innerHTML = '';
-      elements.feed.classList.toggle('is-compact', state.compactView);
-
-      if (!visibleItems.length) {
-        const empty = document.createElement('li');
-        empty.className = 'empty';
-        empty.textContent = state.showFavoritesOnly && !state.favorites.size
-          ? '还没有收藏任何条目，点击条目右侧的星标即可收藏。'
-          : '没有匹配的内容，试试调整关键词或筛选条件。';
-        elements.feed.appendChild(empty);
-        return;
-      }
-
-      const highlightTop = elements.sortSelect.value === 'score_desc';
-      visibleItems.forEach((item, index) => elements.feed.appendChild(createItem(item, index, highlightTop)));
-    }
-
-    function render() {
-      // 列表会整体重建，记住焦点所在的按钮以便键盘操作不中断
-      const focusKey = document.activeElement?.dataset?.focusKey;
-      const visibleItems = getVisibleItems();
-      renderSourceChips();
-      renderFeed(visibleItems);
-
-      const filtered = hasActiveFilters();
-      elements.resultNote.textContent = filtered
-        ? `显示 ${visibleItems.length} / ${state.items.length} 条`
-        : `共 ${state.items.length} 条`;
-      elements.clearFilters.hidden = !filtered;
-      elements.favoriteCount.textContent = String(state.favorites.size);
-      elements.showAll.setAttribute('aria-pressed', String(!state.showFavoritesOnly));
-      elements.showFavorites.setAttribute('aria-pressed', String(state.showFavoritesOnly));
-      elements.compactToggle.setAttribute('aria-pressed', String(state.compactView));
-
-      if (focusKey) {
-        [...document.querySelectorAll('[data-focus-key]')]
-          .find((el) => el.dataset.focusKey === focusKey)
-          ?.focus();
-      }
-    }
-
-    function resetFilters() {
-      elements.searchInput.value = '';
-      elements.categoryFilter.value = 'all';
-      elements.sortSelect.value = 'score_desc';
-      state.source = 'all';
-      state.showFavoritesOnly = false;
-      render();
-    }
-
-    function currentTheme() {
-      if (document.documentElement.dataset.theme) return document.documentElement.dataset.theme;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    function bindEvents() {
-      [elements.searchInput, elements.categoryFilter, elements.sortSelect]
-        .forEach((el) => el.addEventListener('input', render));
-
-      elements.showAll.addEventListener('click', () => {
-        state.showFavoritesOnly = false;
-        render();
-      });
-      elements.showFavorites.addEventListener('click', () => {
-        state.showFavoritesOnly = true;
-        render();
-      });
-      elements.compactToggle.addEventListener('click', () => {
-        state.compactView = !state.compactView;
-        savePrefs({ compact: state.compactView });
-        render();
-      });
-      elements.clearFilters.addEventListener('click', resetFilters);
-
-      elements.themeToggle.addEventListener('click', () => {
-        const next = currentTheme() === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = next;
-        savePrefs({ theme: next });
-      });
-
-      document.addEventListener('keydown', (event) => {
-        const typing = /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement?.tagName || '');
-        if (event.key === '/' && !typing) {
-          event.preventDefault();
-          elements.searchInput.focus();
-        } else if (event.key === 'Escape' && document.activeElement === elements.searchInput) {
-          elements.searchInput.value = '';
-          elements.searchInput.blur();
-          render();
-        }
-      });
-    }
-
-    Promise.all([
-      fetch(FEED_PATH, { cache: 'no-cache' }).then(async (resp) => {
-        if (!resp.ok) throw new Error('feed request failed');
-        return { items: await resp.json(), lastModified: parseDate(resp.headers.get('Last-Modified')) };
-      }),
-      fetch(LAST_FETCH_PATH)
-        .then((resp) => (resp.ok ? resp.json() : {}))
-        .catch(() => ({}))
-    ])
-      .then(([feed, lastFetch]) => {
-        if (!Array.isArray(feed.items)) throw new Error('feed format invalid');
-
-        state.items = dedupe(feed.items.map(normalize));
-        state.maxScore = state.items.reduce((max, item) => Math.max(max, item.score), 0);
-
-        buildCategoryOptions(state.items);
-        renderOverview({ lastFetch: lastFetch || {}, lastModified: feed.lastModified });
-        bindEvents();
-        render();
-      })
-      .catch(() => {
-        setStatus('error', '加载失败', '读取 blog.json 失败');
-        elements.syncNote.textContent = '数据加载失败，请稍后刷新重试。';
-        elements.feed.innerHTML = '<li class="empty">读取 blog.json 失败，请检查发布产物是否包含该文件。</li>';
-      });
-  </script>
 </body>
 </html>
