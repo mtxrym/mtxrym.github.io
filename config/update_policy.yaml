@@ -52,3 +52,24 @@ scoring:
     freshness: 0.2    # 新鲜度，按发布天数指数衰减
     impact: 0.1       # 影响力信号（开源代码、新 benchmark、SOTA 结果）
   freshness_half_life_days: 3
+
+llm:
+  # 大模型复核：关键词规则负责“召回”（宽松初筛），模型负责“判定”（打分 + 主题 + 中文一句话总结）。
+  # 判定结果缓存在 data/llm_cache.json，同一条内容只调用一次；没有 API Key 或接口失败时自动退回规则。
+  # 在 101 条人工标注样本上：规则 F1 0.879，DeepSeek-V4.1-Flash（关闭思考）F1 1.000（scripts/eval_relevance.py）。
+  enabled: true
+  base_url: https://api.deepseek.com
+  model: deepseek-flash            # DeepSeek-V4.1-Flash
+  model_label: DeepSeek-V4.1-Flash
+  api_key_env: DEEPSEEK_API_KEY    # GitHub 仓库 Settings → Secrets → Actions 中配置
+  # 推理强度 none / low / high / max。实测 none 准确率最高、token 最少
+  reasoning_effort: none
+  # 规则分达到这个值才送给模型复核（≈ 至少命中一个代码相关词），更低的基本都是无关内容
+  candidate_min_relevance: 8
+  # 模型打分达到这个值才收录（模型判定过的条目用这个门槛，代替上面的 min_relevance）
+  min_score: 60
+  batch_size: 10
+  max_items_per_run: 200           # 单次运行最多新判定多少条，控制费用
+  concurrency: 4
+  timeout_seconds: 90
+  retries: 2

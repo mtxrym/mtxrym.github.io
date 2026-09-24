@@ -5,6 +5,7 @@
   blog.json            首页和 App 展示的条目（按综合得分排序）
   data/status.json     数据源健康状态 + 当前生效的更新策略摘要
   data/archive.json    滚动历史库（去重、首次收录时间、跨天窗口）
+  data/llm_cache.json  大模型判定缓存（同一条内容只判定一次）
 
 更新策略见 config/update_policy.yaml，数据源见 config/sources.yaml。
 内容没有变化时不会改写任何文件，避免产生无意义的提交。
@@ -29,10 +30,12 @@ from src.feed import (  # noqa: E402
     build_status,
     iso,
     merge_records,
+    passes_relevance,
     select_items,
     to_blog_item,
     update_archive,
 )
+from src.llm import PROMPT_VERSION, apply_verdict, judge, log, make_client, prune_cache  # noqa: E402
 from src.policy import UpdatePolicy, load_policy  # noqa: E402
 from src.sources import FetchOptions, Record, Source, fetch_source, load_sources  # noqa: E402
 
@@ -62,10 +65,62 @@ def dump_json(data: Any) -> str:
 
 
 def dump_archive(archive: dict[str, Any]) -> str:
-    """历史库每个条目占一行：文件更紧凑，git diff 也能精确到条目。"""
+    """历史库 / 缓存每个条目占一行：文件更紧凑，git diff 也能精确到条目。"""
+    header = "".join(f"  {json.dumps(k)}: {json.dumps(v, ensure_ascii=False)},\n" for k, v in archive.items() if k != "items")
     lines = [f"    {json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False, sort_keys=True)}" for k, v in archive["items"].items()]
     body = ",\n".join(lines)
-    return f'{{\n  "version": {archive["version"]},\n  "items": {{\n{body}\n  }}\n}}\n'
+    return f'{{\n{header}  "items": {{\n{body}\n  }}\n}}\n'
+
+
+def run_llm(
+    fresh: dict[str, dict[str, Any]],
+    archive_items: dict[str, dict[str, Any]],
+    policy: UpdatePolicy,
+    now: datetime,
+    cache_path: Path,
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """大模型复核：规则负责召回，模型负责判定。返回 (新缓存, 旧缓存文件内容, 状态摘要)。"""
+    config = policy.llm
+    old_cache_file = read_json(cache_path, {})
+    cache: dict[str, Any] = dict(old_cache_file.get("items", {}))
+    client, reason = make_client(config)
+
+    candidates = [e for e in fresh.values() if e["relevance"] >= config.candidate_min_relevance]
+    # 历史库里还没被模型判定过的条目（例如启用模型之前收录的）也一并复核
+    candidates += [e for k, e in archive_items.items() if e.get("relevance_source") != "llm" and k not in fresh]
+    verdicts, report = judge(candidates, config, client, cache, now)
+
+    for entry in [*fresh.values(), *archive_items.values()]:
+        verdict = verdicts.get(entry["key"])
+        if verdict is not None:
+            apply_verdict(entry, verdict)
+
+    if client is None:
+        log(f"未启用：{reason}，使用关键词规则")
+    else:
+        log(
+            f"{config.model}：候选 {report.candidates}，缓存命中 {report.cached}，新判定 {report.judged}，"
+            f"失败 {report.failed}，超出预算 {report.skipped_budget}，token {report.usage or '-'}"
+        )
+        for error in report.errors[:3]:
+            log(f"错误：{error}")
+
+    keep = set(fresh) | set(archive_items)
+    new_cache = {
+        "version": 1,
+        "model": config.model,
+        "prompt_version": PROMPT_VERSION,
+        "items": dict(sorted(prune_cache(cache, keep, now, policy.retention_days).items())),
+    }
+    summary = {
+        "enabled": client is not None,
+        "model": config.model,
+        "model_label": config.model_label,
+        "reason": reason,
+        # 失败状态只在出错 / 恢复时变化，避免每次运行都改写 status.json
+        "healthy": report.failed == 0,
+    }
+    return new_cache, old_cache_file, summary
 
 
 def fetch_all(sources: list[Source], policy: UpdatePolicy) -> tuple[list[Record], list[dict[str, Any]]]:
@@ -124,18 +179,22 @@ def main() -> int:
         return 1
 
     fresh = merge_records(records, policy, now)
-    for report in reports:
-        report["relevant"] = sum(
-            1 for e in fresh.values() if report["id"] in e["source_ids"] and e["relevance"] >= policy.min_relevance
-        )
 
     out_path = Path(args.output)
     data_dir = Path(args.data_dir)
     archive_path = data_dir / "archive.json"
     status_path = data_dir / "status.json"
+    cache_path = data_dir / "llm_cache.json"
 
     old_archive = read_json(archive_path, {})
-    archive_items = old_archive.get("items", {}) if old_archive.get("version") == ARCHIVE_VERSION else {}
+    archive_items = {
+        k: dict(v) for k, v in (old_archive.get("items", {}) if old_archive.get("version") == ARCHIVE_VERSION else {}).items()
+    }
+    new_cache, old_cache, llm_summary = run_llm(fresh, archive_items, policy, now, cache_path)
+
+    for report in reports:
+        report["relevant"] = sum(1 for e in fresh.values() if report["id"] in e["source_ids"] and passes_relevance(e, policy))
+
     ok_sources = {r["id"] for r in reports if r["ok"]}
     archive_items = update_archive(archive_items, fresh, policy, now, ok_sources)
 
@@ -145,7 +204,8 @@ def main() -> int:
         # 窗口内没有任何条目（例如长时间抓取不到新内容）时保留旧数据，页面会显示“更新滞后”而不是一片空白
         print("展示窗口内没有条目，保留现有 blog.json。", file=sys.stderr)
         items = previous_items
-    status = build_status(policy, reports, len(archive_items), items)
+    llm_summary["coverage"] = sum(1 for i in items if i.get("relevance_source") == "llm")
+    status = build_status(policy, reports, len(archive_items), items, llm_summary)
 
     if args.dry_run:
         print(dump_json({"status": status, "items": items}))
@@ -156,6 +216,7 @@ def main() -> int:
     unchanged = (
         previous_items == items
         and old_archive == new_archive
+        and old_cache == new_cache
         and {k: v for k, v in old_status.items() if k != "generated_at"} == status
     )
     if unchanged:
@@ -165,6 +226,7 @@ def main() -> int:
     data_dir.mkdir(parents=True, exist_ok=True)
     out_path.write_text(dump_json(items), encoding="utf-8")
     archive_path.write_text(dump_archive(new_archive), encoding="utf-8")
+    cache_path.write_text(dump_archive(new_cache), encoding="utf-8")
     status_path.write_text(dump_json({"generated_at": iso(now), **status}), encoding="utf-8")
     ok = sum(1 for r in reports if r["ok"])
     print(f"生成 {len(items)} 条 → {out_path}（历史库 {len(archive_items)} 条，数据源 {ok}/{len(reports)} 正常）", file=sys.stderr)

@@ -17,6 +17,7 @@ from src.scoring import (
 from src.sources import Record, parse_datetime
 
 ARCHIVE_VERSION = 2
+LLM_FIELDS = ("relevance", "relevance_source", "rule_relevance", "topics", "summary_zh", "reason_zh")
 ARCHIVE_SUMMARY_CHARS = 420
 BLOG_SUMMARY_CHARS = 360
 BLOG_AUTHOR_LIMIT = 6
@@ -120,8 +121,17 @@ def merge_entry(base: dict[str, Any], other: dict[str, Any]) -> dict[str, Any]:
     """把同一条内容的另一份记录并入 base（例如同一篇论文同时出现在 arXiv 与 HF Daily Papers）。"""
     merged = dict(base)
     merged["source_ids"] = list(dict.fromkeys([*base["source_ids"], *other["source_ids"]]))
-    for key in ("upvotes", "likes", "github_stars", "relevance", "author_count"):
+    for key in ("upvotes", "likes", "github_stars", "author_count"):
         merged[key] = max(base.get(key) or 0, other.get(key) or 0)
+    # 模型判定优先于规则分；都是规则分时取较高者
+    base_llm = base.get("relevance_source") == "llm"
+    other_llm = other.get("relevance_source") == "llm"
+    if other_llm and not base_llm:
+        for key in LLM_FIELDS:
+            if key in other:
+                merged[key] = other[key]
+    elif not base_llm:
+        merged["relevance"] = max(base.get("relevance") or 0, other.get("relevance") or 0)
     for key in ("github_url", "hf_url", "arxiv_id", "link", "title"):
         merged[key] = base.get(key) or other.get(key) or ""
     if len(other.get("summary") or "") > len(base.get("summary") or ""):
@@ -147,6 +157,13 @@ def merge_records(records: Iterable[Record], policy: UpdatePolicy, now: datetime
         key = entry["key"]
         entries[key] = merge_entry(entries[key], entry) if key in entries else entry
     return entries
+
+
+def passes_relevance(entry: dict[str, Any], policy: UpdatePolicy) -> bool:
+    """模型判定过的条目用模型门槛，否则用规则门槛。"""
+    if entry.get("relevance_source") == "llm":
+        return (entry.get("relevance") or 0) >= policy.llm.min_score
+    return (entry.get("relevance") or 0) >= policy.min_relevance
 
 
 # ---------------------------------------------------------------------------
@@ -179,7 +196,7 @@ def update_archive(
         result[key] = kept
 
     for key, entry in fresh.items():
-        if entry["relevance"] < policy.min_relevance:
+        if not passes_relevance(entry, policy):
             continue
         if key in result:
             updated = merge_entry(result[key], entry)
@@ -234,7 +251,7 @@ def select_items(archive: dict[str, dict[str, Any]], policy: UpdatePolicy, now: 
     window_start = iso(now - timedelta(days=policy.window_days))
     candidates = []
     for entry in archive.values():
-        if entry.get("relevance", 0) < policy.min_relevance:
+        if not passes_relevance(entry, policy):
             continue
         if (entry.get("first_seen_at") or "") < window_start:
             continue
@@ -281,6 +298,10 @@ def to_blog_item(entry: dict[str, Any]) -> dict[str, Any]:
         "score": scores["total"],
         "scores": {k: scores[k] for k in ("relevance", "popularity", "freshness", "impact")},
         "keywords": entry.get("keywords") or [],
+        "topics": entry.get("topics") or [],
+        "summary_zh": entry.get("summary_zh") or "",
+        "reason_zh": entry.get("reason_zh") or "",
+        "relevance_source": entry.get("relevance_source") or "rules",
         "signals": entry.get("signals") or [],
         "summary": truncate(entry.get("summary") or "", BLOG_SUMMARY_CHARS),
         "authors": (entry.get("authors") or [])[:BLOG_AUTHOR_LIMIT],
@@ -299,9 +320,11 @@ def build_status(
     source_reports: list[dict[str, Any]],
     archive_size: int,
     items: list[dict[str, Any]],
+    llm: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     return {
         "policy": policy.summary(),
+        "llm": llm or {"enabled": False, "reason": "未启用"},
         "sources": source_reports,
         "totals": {
             "archive": archive_size,

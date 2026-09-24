@@ -8,6 +8,8 @@ from typing import Any
 
 import yaml
 
+from src.llm import LLMConfig
+
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_FILE = ROOT / "config" / "update_policy.yaml"
 
@@ -30,6 +32,7 @@ class UpdatePolicy:
     stale_after_hours: int = 96
     weights: dict[str, float] = field(default_factory=lambda: dict(DEFAULT_WEIGHTS))
     freshness_half_life_days: float = 3.0
+    llm: LLMConfig = field(default_factory=LLMConfig)
 
     def summary(self) -> dict[str, Any]:
         """写进 data/status.json 给网页 / App 展示的策略摘要。"""
@@ -42,6 +45,12 @@ class UpdatePolicy:
             "retention_days": self.retention_days,
             "stale_after_hours": self.stale_after_hours,
             "weights": self.weights,
+            "llm": {
+                "enabled": self.llm.enabled,
+                "model": self.llm.model,
+                "model_label": self.llm.model_label,
+                "min_score": self.llm.min_score,
+            },
         }
 
 
@@ -59,6 +68,30 @@ def _positive(name: str, value: Any, *, allow_zero: bool = False) -> float:
     return number
 
 
+def parse_llm(raw: dict[str, Any]) -> LLMConfig:
+    defaults = LLMConfig()
+    effort = str(raw.get("reasoning_effort", defaults.reasoning_effort)).strip().lower()
+    if effort not in ("none", "low", "high", "max"):
+        raise ValueError(f"update_policy.llm.reasoning_effort 只能是 none / low / high / max，当前为 {effort!r}")
+    config = LLMConfig(
+        enabled=bool(raw.get("enabled", defaults.enabled)),
+        base_url=str(raw.get("base_url", defaults.base_url)).strip(),
+        model=str(raw.get("model", defaults.model)).strip(),
+        model_label=str(raw.get("model_label", defaults.model_label)).strip(),
+        api_key_env=str(raw.get("api_key_env", defaults.api_key_env)).strip(),
+        reasoning_effort=effort,
+        candidate_min_relevance=_positive("llm.candidate_min_relevance", raw.get("candidate_min_relevance", defaults.candidate_min_relevance), allow_zero=True),
+        min_score=_positive("llm.min_score", raw.get("min_score", defaults.min_score), allow_zero=True),
+        batch_size=int(_positive("llm.batch_size", raw.get("batch_size", defaults.batch_size))),
+        max_items_per_run=int(_positive("llm.max_items_per_run", raw.get("max_items_per_run", defaults.max_items_per_run), allow_zero=True)),
+        concurrency=int(_positive("llm.concurrency", raw.get("concurrency", defaults.concurrency))),
+        timeout_seconds=int(_positive("llm.timeout_seconds", raw.get("timeout_seconds", defaults.timeout_seconds))),
+        retries=int(_positive("llm.retries", raw.get("retries", defaults.retries), allow_zero=True)),
+        abstract_chars=int(_positive("llm.abstract_chars", raw.get("abstract_chars", defaults.abstract_chars))),
+    )
+    return config
+
+
 def parse_policy(raw: dict[str, Any] | None) -> UpdatePolicy:
     raw = raw or {}
     defaults = UpdatePolicy()
@@ -68,6 +101,7 @@ def parse_policy(raw: dict[str, Any] | None) -> UpdatePolicy:
     archive = _section(raw, "archive")
     health = _section(raw, "health")
     scoring = _section(raw, "scoring")
+    llm = _section(raw, "llm")
 
     weights = {**DEFAULT_WEIGHTS, **(scoring.get("weights") or {})}
     unknown = set(weights) - set(DEFAULT_WEIGHTS)
@@ -96,6 +130,7 @@ def parse_policy(raw: dict[str, Any] | None) -> UpdatePolicy:
             "scoring.freshness_half_life_days",
             scoring.get("freshness_half_life_days", defaults.freshness_half_life_days),
         ),
+        llm=parse_llm(llm),
     )
     if policy.retention_days < policy.window_days:
         raise ValueError("update_policy: archive.retention_days 不能小于 selection.window_days")
