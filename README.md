@@ -1,202 +1,95 @@
-# Daily AI Report Pipeline
+# AI Coding 资讯看板
 
-这个仓库新增了一个简化的日报能力，用于将抓取/整理后的结构化数据渲染为 Markdown，并通过通知适配层推送。
+自动追踪 arXiv 与 Hugging Face 上和 AI 编程相关的论文、数据集，按相关性 / 热度 / 新鲜度 / 影响力综合打分，
+通过 GitHub Actions 定时更新，发布为网页和 Android App。
 
-## 目录结构
+- 网页：<https://mtxrym.github.io/>（支持“添加到主屏幕”，离线可看）
+- Android App：[Releases](https://github.com/mtxrym/mtxrym.github.io/releases/latest) 下载 `ai-coding-feed.apk`（源码见 [`android/`](android/)）
+- 原始数据：[`blog.json`](https://mtxrym.github.io/blog.json)、[`data/status.json`](https://mtxrym.github.io/data/status.json)
 
-- `templates/daily_report.md.j2`：日报模板（固定结构：当日摘要 / Papers Top N / Datasets Top N / 关键趋势观察）。
-- `src/reporting.py`：模板渲染与 markdown 文件落盘。
-- `src/notifier.py`：推送适配层，当前支持 `stdout` 与 Slack Webhook。
-- `logs/`：错误与运行日志目录，避免静默失败。
+## 数据更新策略
+
+**所有策略参数都在 [`config/update_policy.yaml`](config/update_policy.yaml) 里维护**，改完不用动代码，下一次定时任务生效。
+网页和 App 会读取 `data/status.json` 中的策略摘要并展示出来。
+
+| 参数 | 当前值 | 说明 |
+| --- | --- | --- |
+| 抓取频率 | 每天 4 次（UTC 05:30 / 11:30 / 17:30 / 23:30） | 05:30 紧跟 arXiv 每日刷新（美东午夜，UTC 04:00–05:00）；其余三次跟进 HF 点赞热度；避开整点防止 GitHub 定时任务延迟 |
+| 展示窗口 | 最近 7 天首次收录 | 滚动窗口，arXiv 周末停更时页面也不会空 |
+| 展示上限 | 30 条，其中数据集最多 6 条 | |
+| 相关性门槛 | ≥ 35 / 100 | 低于门槛的内容不进历史库、不展示 |
+| 历史保留 | 14 天（按最后出现日期） | 用于跨天去重、记录首次收录时间 |
+| 滞后判定 | 96 小时没有新条目 | arXiv 周五、周六不发布，留足余量 |
+| 打分权重 | 相关性 50% · 热度 20% · 新鲜度 20% · 影响力 10% | 新鲜度半衰期 3 天 |
+
+唯一的例外是抓取频率：GitHub 只认 [`.github/workflows/update-content.yml`](.github/workflows/update-content.yml) 里的 cron，
+改频率时两处要一起改（`tests/test_policy.py` 会检查两者一致，不一致时定时任务会在测试步骤失败）。
+
+数据源在 [`config/sources.yaml`](config/sources.yaml) 中维护：
+
+| 数据源 | 说明 |
+| --- | --- |
+| arXiv cs.SE / cs.CL / cs.AI / cs.LG | 每日 RSS，读取完整列表后按相关性筛选，跳过 replace（旧论文新版本） |
+| Hugging Face Daily Papers | 社区精选论文，提供点赞数与代码仓库；与 arXiv 同一篇论文会自动合并 |
+| Hugging Face 数据集（code / swe） | 按 trendingScore 排序的数据集搜索 |
+
+## 流水线
+
+```
+config/sources.yaml ──► src/sources.py   抓取并统一成 Record
+                        src/relevance.py 相关性：AI 信号 × 代码信号，标题加权
+                        src/scoring.py   综合得分（0–100）
+                        src/feed.py      去重合并 → 历史库滚动更新 → 选出展示条目
+config/update_policy.yaml ─┘
+                              │
+                              ▼
+        blog.json · data/status.json · data/archive.json ──► GitHub Pages / Android App
+```
+
+`scripts/generate_blog_json.py` 串起整个流程：
+
+- 内容没有变化时不改写任何文件，不会产生空提交；
+- 部分数据源失败时照常生成，并在 `status.json` 中标记；
+- **所有**数据源都失败时以非零状态退出（GitHub 会发邮件提醒），保留旧数据不变。
 
 ## 本地运行
 
-> 需要 Python 3.10+，并安装 `jinja2`。
-# Trending AI Coding Tracker
-
-一个用于抓取、分析并生成 AI Coding 趋势报告的小工具。
-
-## 如何运行
-
-### 1) 安装依赖
-
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install jinja2
-```
-
-示例：渲染并输出日报。
-
-```python
-from src.reporting import render_daily_report, save_report
-from src.notifier import notify
-
-context = {
-    "report_date": "2026-04-11",
-    "daily_summary": [
-        "多模态模型在代码修复场景准确率继续提升",
-        "开源 agent 框架围绕评测与可观测性持续完善",
-        "企业开始关注低成本推理部署方案",
-    ],
-    "papers_top_n": 3,
-    "datasets_top_n": 3,
-    "papers": [
-        {
-            "title": "Paper A",
-            "authors": ["Alice", "Bob"],
-            "source": "arXiv",
-            "url": "https://arxiv.org/abs/xxxx.xxxxx",
-            "highlight": "提出更稳健的 agent 规划方法",
-        },
-    ],
-    "datasets": [
-        {
-            "name": "Dataset A",
-            "source": "Hugging Face",
-            "url": "https://huggingface.co/datasets/example",
-            "highlight": "新增真实任务级代码评测样本",
-        },
-    ],
-    "trend_observations": [
-        "agent coding benchmark 持续升温",
-        "模型评测从单点指标转向端到端任务成功率",
-    ],
-}
-
-markdown = render_daily_report(context)
-save_report(markdown, "outputs/daily_report.md")
-notify("stdout", markdown)
-# notify("slack", markdown, webhook_url="https://hooks.slack.com/services/...")
-```
-
-## 定时任务
-
-### 1) cron
-
-每日上午 9 点执行（示例）：
-
-```cron
-0 9 * * * cd /path/to/repo && /path/to/repo/.venv/bin/python your_job.py >> /path/to/repo/logs/cron.log 2>&1
-```
-
-建议在 `your_job.py` 中调用：
-1. 数据抓取/整理
-2. `render_daily_report`
-3. `save_report`
-4. `notify`
-
-### 2) GitHub Actions
-
-创建 `.github/workflows/daily-report.yml`（示例骨架）：
-
-```yaml
-name: Daily Report
-
-on:
-  schedule:
-    - cron: "0 1 * * *" # UTC 01:00
-  workflow_dispatch:
-
-jobs:
-  generate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install deps
-        run: pip install jinja2
-      - name: Run job
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: python your_job.py
-```
-
-## 失败重试与日志
-
-- `src/reporting.py` 与 `src/notifier.py` 内建重试机制（默认 3 次，间隔 1 秒）。
-- 失败会写入：
-  - `logs/reporting.log`
-  - `logs/notifier.log`
-- 当重试耗尽时抛出异常，避免静默失败。
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+
+python -m unittest discover -s tests -t .      # 单元测试
+python scripts/generate_blog_json.py            # 抓取并生成数据
+python scripts/generate_blog_json.py --dry-run  # 只打印结果，不写文件
+python scripts/trending_ai_coding.py --sources arxiv_cs_se   # 排查单个数据源
+python -m http.server 8000                      # 预览网页：http://localhost:8000
 ```
 
-### 2) 抓取趋势数据（papers + datasets）
+## GitHub Actions
 
-```bash
-python scripts/trending_ai_coding.py --max-items 30
-```
+| 工作流 | 触发 | 作用 |
+| --- | --- | --- |
+| `update-content.yml` | 定时（见上表）/ 手动 | 跑测试 → 生成数据 → 有变化时提交到 `master` |
+| `deploy-pages.yml` | 推送到 `master` / 数据更新完成后 / 手动 | 部署 GitHub Pages |
+| `android.yml` | `android/` 有改动 / 手动 | 单元测试 → 构建 APK → 发布 Release |
 
-> 说明：当前脚本无需子命令，正确用法如下：
->
-> ```bash
-> python scripts/trending_ai_coding.py --max-items 30
-> ```
+> 数据更新用 `GITHUB_TOKEN` 推送，这类推送不会触发其他工作流的 `push` 事件，
+> 所以部署工作流额外监听了 `workflow_run`，数据更新成功后自动部署。
 
-### 3) 生成可供主页渲染的 `blog.json`
+首次使用需在仓库 `Settings → Pages` 中把 `Source` 设为 **GitHub Actions**。
 
-```bash
-python scripts/generate_blog_json.py --top-n 12 --max-items 30
-```
-
-### 4) 打开页面预览
-
-直接用静态服务器访问仓库根目录，例如：
-
-```bash
-python -m http.server 8000
-```
-
-## 目录说明
+## 目录结构
 
 ```text
-scripts/
-  trending_ai_coding.py      # 趋势抓取主脚本
-  generate_blog_json.py      # 生成主页展示用 blog.json
-outputs/
-  raw/
-    papers_*.json            # 原始论文抓取
-    datasets_*.json          # 原始数据集抓取
-    analysis_*.json          # 分析与排序结果
-  reports/
-    YYYY-MM-DD.md            # 日报/周报 markdown
-requirements.txt             # Python 依赖
+index.html · index.css · app.js      网页
+manifest.webmanifest · sw.js · assets/   PWA
+blog.json                             展示数据（生成）
+data/status.json · data/archive.json  数据源状态、历史库（生成）
+config/update_policy.yaml             更新策略
+config/sources.yaml                   数据源
+src/                                  抓取、相关性、打分、合并逻辑
+scripts/                              命令行入口
+tests/                                单元测试
+android/                              Android App
+templates/ · src/reporting.py · src/notifier.py   Markdown 日报渲染与推送（stdout / Slack）
 ```
-
-## GitHub Pages 部署（可直接在线看页面）
-
-这个仓库已经添加了 GitHub Pages 自动部署工作流：`.github/workflows/deploy-pages.yml`。
-
-### 一次性配置
-
-1. 打开仓库 `Settings -> Pages`
-2. `Source` 选择 **GitHub Actions**
-3. 确认默认分支是 `master`（工作流同时监听 `main` / `master`）
-
-### 触发部署
-
-- 每次 `push` 到 `master` 会自动部署
-- 定时数据更新工作流（Update AI Coding Feed）成功结束后会通过 `workflow_run` 自动再部署一次
-- 或手动在 `Actions -> Deploy GitHub Pages -> Run workflow` 触发
-
-### 访问地址
-
-- 个人主页仓库（`mtxrym.github.io`）部署后访问：
-  - `https://mtxrym.github.io/`
-
-> 说明：当前页面资源（如 `index.css`、`blog.json`）已使用相对路径，适合直接静态托管。
-
-## 定时收集 + 页面展示（推荐）
-
-仓库已新增定时任务工作流 `.github/workflows/update-content.yml`，每 6 小时自动：
-
-1. 拉取外部趋势源（arXiv / PapersWithCode / HuggingFace）
-2. 计算 AI Coding 相关性与重要性
-3. 生成主页使用的 `blog.json`
-4. 自动提交到 `master` 分支
-
-> 注意：用 `GITHUB_TOKEN` 推送的提交不会触发其他工作流的 `push` 事件，
-> 因此部署工作流额外监听了 `workflow_run`，在数据更新完成后自动部署，页面才会刷新为最新数据。

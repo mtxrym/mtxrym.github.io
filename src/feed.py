@@ -240,7 +240,10 @@ def select_items(archive: dict[str, dict[str, Any]], policy: UpdatePolicy, now: 
             continue
         candidates.append({**entry, "scores": score_entry(entry, policy, now)})
 
-    candidates.sort(key=lambda e: (-e["scores"]["total"], e.get("published_at") or "", e["title"]))
+    # 得分降序；同分时新发布的在前，再按标题保证顺序稳定
+    candidates.sort(key=lambda e: e["title"])
+    candidates.sort(key=lambda e: e.get("published_at") or "", reverse=True)
+    candidates.sort(key=lambda e: e["scores"]["total"], reverse=True)
     selected: list[dict[str, Any]] = []
     datasets = 0
     for entry in candidates:
