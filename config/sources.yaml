@@ -1,76 +1,62 @@
-papers:
-  - id: pwc_trending_papers
-    type: pwc_api
-    category: papers
-    url: https://paperswithcode.com/api/v1/papers/
-    params:
-      ordering: "-stars"
-      page_size: 50
-    fields:
-      title: title
-      link: url_abs
-      time: published
-      summary: abstract
-      heat: stars
+# 数据源配置
+#
+# type 对应 src/sources.py 中的抓取器：
+#   arxiv_rss        arXiv 分类 RSS（每个工作日刷新一次）
+#   hf_daily_papers  Hugging Face Daily Papers（社区精选论文，带点赞数和代码仓库）
+#   hf_datasets      Hugging Face 数据集搜索（按 trendingScore 排序）
+#
+# prefiltered: true 表示查询本身已经限定在 AI 编程主题上，
+# 相关性打分时视为已具备 "AI" 信号，只需再匹配代码相关词。
+#
+# 已移除：Papers with Code API（2025 年停止服务，现在会跳转到 Hugging Face）。
 
+papers:
   - id: arxiv_cs_se
     type: arxiv_rss
-    category: papers
+    label: arXiv · cs.SE
     url: https://rss.arxiv.org/rss/cs.SE
-    fields:
-      title: title
-      link: link
-      time: published
-      summary: summary
-      heat: 0
 
   - id: arxiv_cs_cl
     type: arxiv_rss
-    category: papers
+    label: arXiv · cs.CL
     url: https://rss.arxiv.org/rss/cs.CL
-    fields:
-      title: title
-      link: link
-      time: published
-      summary: summary
-      heat: 0
 
   - id: arxiv_cs_ai
     type: arxiv_rss
-    category: papers
+    label: arXiv · cs.AI
     url: https://rss.arxiv.org/rss/cs.AI
-    fields:
-      title: title
-      link: link
-      time: published
-      summary: summary
-      heat: 0
+
+  - id: arxiv_cs_lg
+    type: arxiv_rss
+    label: arXiv · cs.LG
+    url: https://rss.arxiv.org/rss/cs.LG
+
+  - id: hf_daily_papers
+    type: hf_daily_papers
+    label: HF Daily Papers
+    url: https://huggingface.co/api/daily_papers
+    params:
+      limit: 100
 
 datasets:
-  - id: hf_datasets_trending
-    type: hf_trending
-    category: datasets
-    url: https://huggingface.co/api/trending
+  - id: hf_datasets_code
+    type: hf_datasets
+    label: HF 数据集 · code
+    url: https://huggingface.co/api/datasets
+    prefiltered: true
     params:
-      type: dataset
-      limit: 50
-    fields:
-      title: id
-      link: url
-      time: lastModified
-      summary: description
-      heat: likes
+      search: code
+      sort: trendingScore
+      direction: -1
+      limit: 40
 
-  - id: pwc_dataset_ranking
-    type: pwc_api
-    category: datasets
-    url: https://paperswithcode.com/api/v1/datasets/
+  - id: hf_datasets_swe
+    type: hf_datasets
+    label: HF 数据集 · SWE
+    url: https://huggingface.co/api/datasets
+    prefiltered: true
     params:
-      ordering: "-tasks_count"
-      page_size: 50
-    fields:
-      title: name
-      link: url_abs
-      time: created
-      summary: description
-      heat: tasks_count
+      search: swe
+      sort: trendingScore
+      direction: -1
+      limit: 40
