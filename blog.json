@@ -218,6 +218,76 @@
     }
   },
   {
+    "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
+    "sub_title": "papers · source=hf_daily_papers · score=74.3",
+    "url_title": "embodiedswe-coding-agents-for-long-horizon-dexterous-robotics",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.27308",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-23T00:00:00Z",
+    "first_seen_at": "2026-09-24T04:49:30Z",
+    "score": 74.3,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 31.4,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出 EmbodiedSWE-Bench，评测编码智能体解决长时程灵巧机器人任务。",
+    "reason_zh": "编码智能体用于机器人编程，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "We study coding agents for long-horizon, dexterous robotics and ask whether their solutions can provide scalable supervision for learning general robot policies. To test this, we develop EMBODIEDSWE-BENCH, a simulation benchmark for coding agents spanning contact-rich manipulation, deformable objects, and long-horizon tasks requiring up to half an hour of…",
+    "authors": [
+      "Haoxiang You",
+      "Zeyu Shen",
+      "Yilang Liu",
+      "Zhicheng Zheng",
+      "Lihan Zha",
+      "Kashu Yamazaki"
+    ],
+    "author_count": 19,
+    "upvotes": 2,
+    "likes": 0,
+    "github_url": "https://github.com/EmbodiedSWE/EmbodiedSWE",
+    "github_stars": 36,
+    "hf_url": "https://huggingface.co/papers/2609.27308",
+    "arxiv_id": "2609.27308",
+    "digest": {
+      "problem": "VLA 等机器人策略依赖昂贵的人类演示数据，难以扩展到长时程、接触密集的灵巧操作任务，缺少可规模化的监督来源。",
+      "method": [
+        "构建 EmbodiedSWE-Bench：28 个长时程灵巧任务，覆盖装配、打包、切割等，支持五种机器人本体。",
+        "让前沿 coding agent 直接对仿真器写代码求解，并评估跨任务、跨本体的解迁移与附加工具。",
+        "提出 EmbodiedSWE-Gen，把单个已验证解分层多样化，生成大量轨迹用于 VLA 微调。"
+      ],
+      "results": [
+        "前沿 agent 在 4 小时预算内可解约 80% 任务，最强模型成功率约 82%，最弱约 11%。",
+        "VLA 平均成功率随演示数从 10 条的 18% 升至 400 条的 69%，rubric 分从 0.32 升至 0.76。",
+        "仅用 500 条 agent 生成仿真演示微调的策略，在真实机器人四阶段拆灯任务上完成抓灯罩 100%、拧灯泡 20%。"
+      ],
+      "takeaways": [
+        "coding agent 可直接对仿真器写控制程序，作为长时程任务的求解器与数据教师。",
+        "用 agent 多样化生成演示，比纯脚本域随机化更能提升 VLA 的分布外泛化。"
+      ],
+      "limitations": "最难任务仍未被自主解决；解需大量迭代且常针对单个任务实例；工具增益较小；sim-to-real 仅单任务验证。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "ScaleAI/SWE-bench_Pro",
     "sub_title": "datasets · source=hf_datasets_swe · score=73.7",
     "url_title": "scaleaiswe-bench-pro",
@@ -262,76 +332,6 @@
     "hf_url": "",
     "arxiv_id": "",
     "digest": null
-  },
-  {
-    "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
-    "sub_title": "papers · source=hf_daily_papers · score=72.9",
-    "url_title": "embodiedswe-coding-agents-for-long-horizon-dexterous-robotics",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27308",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-23T00:00:00Z",
-    "first_seen_at": "2026-09-24T04:49:30Z",
-    "score": 72.9,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 24.6,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "提出 EmbodiedSWE-Bench，评测编码智能体解决长时程灵巧机器人任务。",
-    "reason_zh": "编码智能体用于机器人编程，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "We study coding agents for long-horizon, dexterous robotics and ask whether their solutions can provide scalable supervision for learning general robot policies. To test this, we develop EMBODIEDSWE-BENCH, a simulation benchmark for coding agents spanning contact-rich manipulation, deformable objects, and long-horizon tasks requiring up to half an hour of…",
-    "authors": [
-      "Haoxiang You",
-      "Zeyu Shen",
-      "Yilang Liu",
-      "Zhicheng Zheng",
-      "Lihan Zha",
-      "Kashu Yamazaki"
-    ],
-    "author_count": 19,
-    "upvotes": 2,
-    "likes": 0,
-    "github_url": "https://github.com/EmbodiedSWE/EmbodiedSWE",
-    "github_stars": 16,
-    "hf_url": "https://huggingface.co/papers/2609.27308",
-    "arxiv_id": "2609.27308",
-    "digest": {
-      "problem": "VLA 等机器人策略依赖昂贵的人类演示数据，难以扩展到长时程、接触密集的灵巧操作任务，缺少可规模化的监督来源。",
-      "method": [
-        "构建 EmbodiedSWE-Bench：28 个长时程灵巧任务，覆盖装配、打包、切割等，支持五种机器人本体。",
-        "让前沿 coding agent 直接对仿真器写代码求解，并评估跨任务、跨本体的解迁移与附加工具。",
-        "提出 EmbodiedSWE-Gen，把单个已验证解分层多样化，生成大量轨迹用于 VLA 微调。"
-      ],
-      "results": [
-        "前沿 agent 在 4 小时预算内可解约 80% 任务，最强模型成功率约 82%，最弱约 11%。",
-        "VLA 平均成功率随演示数从 10 条的 18% 升至 400 条的 69%，rubric 分从 0.32 升至 0.76。",
-        "仅用 500 条 agent 生成仿真演示微调的策略，在真实机器人四阶段拆灯任务上完成抓灯罩 100%、拧灯泡 20%。"
-      ],
-      "takeaways": [
-        "coding agent 可直接对仿真器写控制程序，作为长时程任务的求解器与数据教师。",
-        "用 agent 多样化生成演示，比纯脚本域随机化更能提升 VLA 的分布外泛化。"
-      ],
-      "limitations": "最难任务仍未被自主解决；解需大量迭代且常针对单个任务实例；工具增益较小；sim-to-real 仅单任务验证。",
-      "basis": "fulltext"
-    }
   },
   {
     "title": "nvidia/Open-SWE-Traces",
@@ -383,7 +383,7 @@
   },
   {
     "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
-    "sub_title": "papers · source=hf_daily_papers · score=72.5",
+    "sub_title": "papers · source=hf_daily_papers · score=72.6",
     "url_title": "one-to-more-more-to-one-category-aware-iterative-expert-training-for-software-en",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.23377",
@@ -395,10 +395,10 @@
     "category": "papers",
     "published_at": "2026-09-20T00:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 72.5,
+    "score": 72.6,
     "scores": {
       "relevance": 92.0,
-      "popularity": 49.3,
+      "popularity": 50.2,
       "freshness": 63.0,
       "impact": 40.0
     },
@@ -427,7 +427,7 @@
       "Lin Qu"
     ],
     "author_count": 6,
-    "upvotes": 43,
+    "upvotes": 46,
     "likes": 0,
     "github_url": "https://github.com/alibaba/AgenticBigBang",
     "github_stars": 40,
@@ -1069,6 +1069,52 @@
     }
   },
   {
+    "title": "antontuzovAI/swe-agent-successful-raw-1000",
+    "sub_title": "datasets · source=hf_datasets_swe · score=67.1",
+    "url_title": "antontuzovaiswe-agent-successful-raw-1000",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/antontuzovAI/swe-agent-successful-raw-1000",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-23T11:59:01Z",
+    "first_seen_at": "2026-09-24T20:34:29Z",
+    "score": 67.1,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 6.0,
+      "freshness": 79.4,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-agent",
+      "software engineering agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据"
+    ],
+    "summary_zh": "从 nebius/SWE-agent-trajectories 筛选出的 1000 条成功 SWE-Agent 软件工程轨迹数据集。",
+    "reason_zh": "编程智能体轨迹数据，直接用于训练/评测。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Raw SWE-Agent Trajectories This dataset contains raw software engineering agent trajectories filtered/streamed from: nebius/SWE-agent-trajectories Mode: successful trajectories only maximum requested samples: 1000 actual written samples: 1000 Parquet shards: 20 Important format note The trajectory column is stored as a JSON string. That means each row…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 1,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "Who Finishes the Job? A Study of Follow-Up Fixes and Commit Authorship on AI Coding Agent Pull Requests",
     "sub_title": "papers · source=arxiv_cs_se · score=66.5",
     "url_title": "who-finishes-the-job-a-study-of-follow-up-fixes-and-commit-authorship-on-ai-codi",
@@ -1463,6 +1509,75 @@
     }
   },
   {
+    "title": "Measuring the Checker: Mutation Analysis for GPU-Kernel Benchmark Oracles",
+    "sub_title": "papers · source=hf_daily_papers · score=64.2",
+    "url_title": "measuring-the-checker-mutation-analysis-for-gpu-kernel-benchmark-oracles",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.22220",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-02T00:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 64.2,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 25.4,
+      "freshness": 63.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "fuzzing"
+    ],
+    "topics": [
+      "评测基准",
+      "测试与验证"
+    ],
+    "summary_zh": "用变异分析衡量LLM生成GPU内核基准测试的判定质量。",
+    "reason_zh": "代码生成评测基准的可靠性研究，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Benchmarks for LLM-generated GPU kernels decide correctness with a few random inputs and a loose floating-point tolerance, and their verdicts now feed leaderboards and reinforcement-learning rewards. Recent work agrees these checkers are weak and patches them by hand---extra input distributions, fuzzing recipes, tighter tolerances---with no way to measure…",
+    "authors": [
+      "Mingzhe Du",
+      "Anh Tuan Luu",
+      "Dong Huang",
+      "See-Kiong Ng"
+    ],
+    "author_count": 4,
+    "upvotes": 6,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.22220",
+    "arxiv_id": "2609.22220",
+    "digest": {
+      "problem": "GPU kernel benchmark 的正确性检查器只用少量随机输入和宽松浮点容差判定，其结论却用于排行榜和 RL 奖励，检查器弱会导致模型学会“通过”而非写对。",
+      "method": [
+        "把 mutation analysis 引入数值型 oracle：124 条规则向 188 个已验证 CUDA 实现注入 10,303 个可编译故障。",
+        "只把有 kill witness 的 7,384 个 mutant 计入分母，并用 NVRTC 把单 mutant 编译从约 200s 降到 84ms。",
+        "用 kill matrix 给任意测试协议打分，并做 set cover 合成最小输入套件、审计已有加固方案。"
+      ],
+      "results": [
+        "官方 KernelBench 检查漏掉 16.9% 有 witness 的故障；precision 类漏 78.6%，synchronization 漏 27.8%，arithmetic 仅漏 8.7%。",
+        "KernelBench-Verified 的 +8.5 分中 +4.0 来自四个隐藏分布、+4.5 来自更紧容差；其常数缩放无法覆盖 shape/indexing 故障。",
+        "set cover 两输入套件达 98.0% 检测（held-out 94.8%），官方五输入为 83.1%；重建 fuzzing 方案误拒正确 kernel 107 次。"
+      ],
+      "takeaways": [
+        "评测 GPU kernel 生成时，应把检查器本身当作被测对象，用故障注入量化其覆盖，而非靠手写几个 bug 验证。",
+        "加严容差往往比增加输入分布更有效，但输入幅度存在合法浮点方差上限，需设 validity gate 避免误拒正确实现。"
+      ],
+      "limitations": "substrate 为 LLM 生成并经自动 gate 验证，非官方参考实现；部分 mutant 无法判定等价或 oracle 盲区，被排除在分母外。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Spec2COBOLRot: An Agentic-AI Degradation Loop for Realistic COBOL Corpus Generation",
     "sub_title": "papers · source=arxiv_cs_se · score=64.0",
     "url_title": "spec2cobolrot-an-agentic-ai-degradation-loop-for-realistic-cobol-corpus-generati",
@@ -1592,75 +1707,6 @@
     }
   },
   {
-    "title": "Measuring the Checker: Mutation Analysis for GPU-Kernel Benchmark Oracles",
-    "sub_title": "papers · source=hf_daily_papers · score=63.8",
-    "url_title": "measuring-the-checker-mutation-analysis-for-gpu-kernel-benchmark-oracles",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.22220",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-02T00:00:00Z",
-    "first_seen_at": "2026-09-24T08:15:45Z",
-    "score": 63.8,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 23.3,
-      "freshness": 63.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "fuzzing"
-    ],
-    "topics": [
-      "评测基准",
-      "测试与验证"
-    ],
-    "summary_zh": "用变异分析衡量LLM生成GPU内核基准测试的判定质量。",
-    "reason_zh": "代码生成评测基准的可靠性研究，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "Benchmarks for LLM-generated GPU kernels decide correctness with a few random inputs and a loose floating-point tolerance, and their verdicts now feed leaderboards and reinforcement-learning rewards. Recent work agrees these checkers are weak and patches them by hand---extra input distributions, fuzzing recipes, tighter tolerances---with no way to measure…",
-    "authors": [
-      "Mingzhe Du",
-      "Anh Tuan Luu",
-      "Dong Huang",
-      "See-Kiong Ng"
-    ],
-    "author_count": 4,
-    "upvotes": 5,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.22220",
-    "arxiv_id": "2609.22220",
-    "digest": {
-      "problem": "GPU kernel benchmark 的正确性检查器只用少量随机输入和宽松浮点容差判定，其结论却用于排行榜和 RL 奖励，检查器弱会导致模型学会“通过”而非写对。",
-      "method": [
-        "把 mutation analysis 引入数值型 oracle：124 条规则向 188 个已验证 CUDA 实现注入 10,303 个可编译故障。",
-        "只把有 kill witness 的 7,384 个 mutant 计入分母，并用 NVRTC 把单 mutant 编译从约 200s 降到 84ms。",
-        "用 kill matrix 给任意测试协议打分，并做 set cover 合成最小输入套件、审计已有加固方案。"
-      ],
-      "results": [
-        "官方 KernelBench 检查漏掉 16.9% 有 witness 的故障；precision 类漏 78.6%，synchronization 漏 27.8%，arithmetic 仅漏 8.7%。",
-        "KernelBench-Verified 的 +8.5 分中 +4.0 来自四个隐藏分布、+4.5 来自更紧容差；其常数缩放无法覆盖 shape/indexing 故障。",
-        "set cover 两输入套件达 98.0% 检测（held-out 94.8%），官方五输入为 83.1%；重建 fuzzing 方案误拒正确 kernel 107 次。"
-      ],
-      "takeaways": [
-        "评测 GPU kernel 生成时，应把检查器本身当作被测对象，用故障注入量化其覆盖，而非靠手写几个 bug 验证。",
-        "加严容差往往比增加输入分布更有效，但输入幅度存在合法浮点方差上限，需设 validity gate 避免误拒正确实现。"
-      ],
-      "limitations": "substrate 为 LLM 生成并经自动 gate 验证，非官方参考实现；部分 mutant 无法判定等价或 oracle 盲区，被排除在分母外。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "Unity Insight: A Production Code--Asset Index for LLM Coding Agents in Unity Projects",
     "sub_title": "papers · source=arxiv_cs_se · score=63.0",
     "url_title": "unity-insight-a-production-code-asset-index-for-llm-coding-agents-in-unity-proje",
@@ -1764,51 +1810,6 @@
     "author_count": 0,
     "upvotes": 0,
     "likes": 2,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
-  },
-  {
-    "title": "Lego-X/LegoFlow-SWE",
-    "sub_title": "datasets · source=hf_datasets_swe · score=62.4",
-    "url_title": "lego-xlegoflow-swe",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/Lego-X/LegoFlow-SWE",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-09-18T01:57:27Z",
-    "first_seen_at": "2026-09-24T08:15:45Z",
-    "score": 62.4,
-    "scores": {
-      "relevance": 94.0,
-      "popularity": 32.0,
-      "freshness": 25.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "github"
-    ],
-    "topics": [
-      "训练数据",
-      "编程智能体"
-    ],
-    "summary_zh": "LegoFlow-SWE 提供 5000 个已验证 SWE 任务及 GLM-5.2 智能体轨迹数据。",
-    "reason_zh": "编程智能体训练与评测数据集，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "LegoFlow-SWE · 5,000 verified Harbor SWE tasks and two GLM-5.2 trajectory releases GitHub · Docs · Blog · HuggingFace · LegoX LegoFlow-SWE 5,000 verified Harbor SWE tasks mined by LegoFlow Curator, shipped in original and anti-hack prompt versions, plus two GLM-5.2 trajectory releases under OpenHands SDK and OpenCode, totaling 9,767 trajectories. Release…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 4,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
