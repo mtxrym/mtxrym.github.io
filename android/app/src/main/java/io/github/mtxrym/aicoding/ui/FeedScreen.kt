@@ -176,6 +176,7 @@ fun FeedContent(state: FeedUiState, actions: FeedActions) {
                         policyNote = listOfNotNull(
                             policy?.schedule?.description?.takeIf { it.isNotBlank() },
                             policy?.windowDays?.takeIf { it > 0 }?.let { "展示最近 $it 天" },
+                            snapshot.status?.llm?.takeIf { it.enabled }?.let { "${it.displayName} 复核" },
                         ).joinToString(" · "),
                         modifier = Modifier.padding(top = 8.dp),
                     )

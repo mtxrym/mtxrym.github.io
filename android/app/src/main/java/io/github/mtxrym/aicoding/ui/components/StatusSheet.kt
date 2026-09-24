@@ -85,10 +85,22 @@ fun StatusContent(snapshot: FeedSnapshot?, run: WorkflowRun?) {
             if (status != null) {
                 val policy = status.policy
                 SectionTitle("更新策略")
+                InfoRow("识别方式") {
+                    val llm = status.llm
+                    Text(
+                        if (llm.enabled) {
+                            "${llm.displayName} 复核（${llm.coverage} 条）" + if (!llm.healthy) " · 本次部分调用失败" else ""
+                        } else {
+                            "关键词规则" + (llm.reason?.let { "（$it）" } ?: "")
+                        },
+                    )
+                }
                 InfoRow("抓取频率") { Text(policy.schedule.description.ifBlank { policy.schedule.cron }) }
                 InfoRow("展示窗口") { Text("最近 ${policy.windowDays} 天首次收录") }
                 InfoRow("展示上限") { Text("${policy.maxItems} 条（数据集最多 ${policy.maxDatasets} 条）") }
-                InfoRow("相关性门槛") { Text("≥ ${policy.minRelevance.toInt()} / 100") }
+                InfoRow("相关性门槛") {
+                    Text(if (status.llm.enabled) "模型打分 ≥ ${policy.llm.minScore.toInt()} / 100" else "≥ ${policy.minRelevance.toInt()} / 100")
+                }
                 InfoRow("滞后判定") { Text("${policy.staleAfterHours} 小时无新条目") }
                 InfoRow("打分权重") {
                     Text(WEIGHT_LABELS.joinToString(" · ") { (key, label) -> "$label ${((policy.weights[key] ?: 0.0) * 100).toInt()}%" })

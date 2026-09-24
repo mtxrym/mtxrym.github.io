@@ -30,7 +30,16 @@ data class FeedItem(
     @SerialName("github_url") val githubUrl: String = "",
     @SerialName("github_stars") val githubStars: Int = 0,
     @SerialName("hf_url") val hfUrl: String = "",
+    val topics: List<String> = emptyList(),
+    @SerialName("summary_zh") val summaryZh: String = "",
+    @SerialName("reason_zh") val reasonZh: String = "",
+    @SerialName("relevance_source") val relevanceSource: String = "rules",
 ) {
+    val llmJudged: Boolean get() = relevanceSource == "llm"
+
+    /** 优先展示大模型给的中文主题，没有时退回关键词。 */
+    val tags: List<String> get() = topics.ifEmpty { keywords }
+
     /** 与网页一致的 id 规则，收藏在两端含义相同。 */
     val id: String get() = externalUrl.ifBlank { urlTitle.ifBlank { title } }
 
@@ -69,6 +78,7 @@ data class ScoreParts(
 data class FeedStatus(
     @SerialName("generated_at") val generatedAt: String? = null,
     val policy: Policy = Policy(),
+    val llm: LlmStatus = LlmStatus(),
     val sources: List<SourceStatus> = emptyList(),
     val totals: Totals = Totals(),
 ) {
@@ -85,7 +95,24 @@ data class Policy(
     @SerialName("retention_days") val retentionDays: Int = 0,
     @SerialName("stale_after_hours") val staleAfterHours: Int = 96,
     val weights: Map<String, Double> = emptyMap(),
+    val llm: PolicyLlm = PolicyLlm(),
 )
+
+@Serializable
+data class PolicyLlm(@SerialName("min_score") val minScore: Double = 60.0)
+
+/** 大模型复核状态（status.json 的 llm 字段）。 */
+@Serializable
+data class LlmStatus(
+    val enabled: Boolean = false,
+    val model: String = "",
+    @SerialName("model_label") val modelLabel: String = "",
+    val reason: String? = null,
+    val healthy: Boolean = true,
+    val coverage: Int = 0,
+) {
+    val displayName: String get() = modelLabel.ifBlank { model }
+}
 
 @Serializable
 data class Schedule(val cron: String = "", val description: String = "")

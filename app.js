@@ -192,6 +192,10 @@ function normalize(raw) {
     authors: Array.isArray(raw.authors) ? raw.authors : [],
     authorCount: raw.author_count || (raw.authors || []).length,
     keywords: Array.isArray(raw.keywords) ? raw.keywords : [],
+    topics: Array.isArray(raw.topics) ? raw.topics : [],
+    summaryZh: raw.summary_zh || '',
+    reasonZh: raw.reason_zh || '',
+    llmJudged: raw.relevance_source === 'llm',
     upvotes: raw.upvotes || 0,
     likes: raw.likes || 0,
     githubUrl: raw.github_url || '',
@@ -224,7 +228,7 @@ function popularityOf(item) {
 }
 
 function searchText(item) {
-  return [item.title, item.summary, item.authors.join(' '), item.keywords.join(' '), item.sources.map(sourceLabel).join(' ')]
+  return [item.title, item.summaryZh, item.summary, item.authors.join(' '), item.topics.join(' '), item.keywords.join(' '), item.sources.map(sourceLabel).join(' ')]
     .join(' ')
     .toLowerCase();
 }
@@ -278,7 +282,9 @@ function renderOverview(meta) {
   const noteParts = [];
   if (policy.schedule?.description) noteParts.push(policy.schedule.description);
   if (policy.window_days) noteParts.push(`展示最近 ${policy.window_days} 天`);
-  if (policy.min_relevance !== undefined) noteParts.push(`相关性 ≥ ${policy.min_relevance}`);
+  const llm = status?.llm;
+  if (llm?.enabled) noteParts.push(`${llm.model_label || llm.model} 复核相关性`);
+  else if (policy.min_relevance !== undefined) noteParts.push(`相关性 ≥ ${policy.min_relevance}`);
   elements.policyNote.textContent = noteParts.length
     ? `更新策略：${noteParts.join(' · ')}`
     : '数据由 GitHub Actions 定时更新';
@@ -294,11 +300,16 @@ function renderSources() {
 
   const policy = status.policy || {};
   const weights = policy.weights || {};
+  const llm = status.llm || {};
+  const recognition = llm.enabled
+    ? `${llm.model_label || llm.model} 复核（展示中 ${llm.coverage ?? 0}/${state.items.length} 条）${llm.healthy === false ? ' · 本次部分调用失败' : ''}`
+    : `关键词规则${llm.reason ? `（${llm.reason}）` : ''}`;
   const rows = [
+    ['识别方式', recognition],
     ['抓取频率', policy.schedule?.description || policy.schedule?.cron || '–'],
     ['展示窗口', policy.window_days ? `最近 ${policy.window_days} 天首次收录` : '–'],
     ['展示上限', policy.max_items ? `${policy.max_items} 条（数据集最多 ${policy.max_datasets} 条）` : '–'],
-    ['相关性门槛', policy.min_relevance !== undefined ? `≥ ${policy.min_relevance} / 100` : '–'],
+    ['相关性门槛', llm.enabled && policy.llm ? `模型打分 ≥ ${policy.llm.min_score} / 100` : (policy.min_relevance !== undefined ? `≥ ${policy.min_relevance} / 100` : '–')],
     ['历史保留', policy.retention_days ? `${policy.retention_days} 天（用于去重）` : '–'],
     ['滞后判定', policy.stale_after_hours ? `${policy.stale_after_hours} 小时无新条目` : '–'],
     ['打分权重', SCORE_PARTS.map(([k, label]) => `${label} ${Math.round((weights[k] || 0) * 100)}%`).join(' · ')]
@@ -453,6 +464,9 @@ function createScore(item) {
       list.appendChild(row);
     });
     pop.appendChild(list);
+    const judge = el('p', 'score-pop-foot', item.llmJudged ? `相关性由 ${state.status?.llm?.model_label || '大模型'} 判定` : '相关性由关键词规则判定');
+    if (item.reasonZh) judge.appendChild(el('span', '', item.reasonZh));
+    pop.appendChild(judge);
     wrap.appendChild(pop);
   } else {
     wrap.title = `得分 ${item.score.toFixed(1)}`;
@@ -508,7 +522,7 @@ function createMeta(item) {
 
 function createFooter(item) {
   const foot = el('div', 'item-foot');
-  item.keywords.forEach((keyword) => {
+  (item.topics.length ? item.topics : item.keywords).forEach((keyword) => {
     const topic = el('button', 'topic', `#${keyword}`);
     topic.type = 'button';
     topic.title = `搜索“${keyword}”`;
@@ -549,12 +563,17 @@ function createItem(item, index, highlightTop) {
   const body = el('div', 'item-body');
   body.append(createTitle(item), createMeta(item));
 
+  const expanded = state.expanded.has(item.id);
+  if (item.summaryZh) body.appendChild(el('p', 'item-tldr', item.summaryZh));
   if (item.summary) {
-    const expanded = state.expanded.has(item.id);
-    const summary = el('p', `item-summary${expanded ? ' expanded' : ''}`, item.summary);
-    body.appendChild(summary);
-    if (item.summary.length > 120) {
-      const more = el('button', 'more-btn', expanded ? '收起' : '展开摘要');
+    // 有中文总结时英文摘要默认折叠
+    const collapsible = item.summaryZh ? true : item.summary.length > 120;
+    if (!item.summaryZh || expanded) {
+      body.appendChild(el('p', `item-summary${expanded ? ' expanded' : ''}${item.summaryZh ? ' is-original' : ''}`, item.summary));
+    }
+    if (collapsible) {
+      const label = item.summaryZh ? (expanded ? '收起原文' : '展开原文摘要') : (expanded ? '收起' : '展开摘要');
+      const more = el('button', 'more-btn', label);
       more.type = 'button';
       more.dataset.focusKey = `more:${item.id}`;
       more.setAttribute('aria-expanded', String(expanded));

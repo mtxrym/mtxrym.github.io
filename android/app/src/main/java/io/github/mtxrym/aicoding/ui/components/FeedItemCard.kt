@@ -142,17 +142,28 @@ fun FeedItemCard(
                     )
                 }
 
-                if (item.summary.isNotBlank()) {
-                    Summary(item.summary)
+                if (item.summaryZh.isNotBlank()) {
+                    Text(
+                        item.summaryZh,
+                        modifier = Modifier.padding(top = 8.dp),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        lineHeight = 21.sp,
+                    )
                 }
 
-                if (item.keywords.isNotEmpty()) {
+                if (item.summary.isNotBlank()) {
+                    // 有中文总结时，英文原文默认折叠
+                    Summary(item.summary, collapsedByDefault = item.summaryZh.isNotBlank())
+                }
+
+                if (item.tags.isNotEmpty()) {
                     FlowRow(
                         modifier = Modifier.padding(top = 8.dp),
                         horizontalArrangement = Arrangement.spacedBy(6.dp),
                         verticalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
-                        item.keywords.forEach { keyword ->
+                        item.tags.forEach { keyword ->
                             Surface(
                                 onClick = { onKeyword(keyword) },
                                 shape = CircleShape,
@@ -222,22 +233,24 @@ private fun FavoriteButton(favorite: Boolean, onToggle: () -> Unit, modifier: Mo
 }
 
 @Composable
-private fun Summary(text: String) {
+private fun Summary(text: String, collapsedByDefault: Boolean = false) {
     var expanded by rememberSaveable(text) { mutableStateOf(false) }
     Column(
         Modifier
-            .padding(top = 8.dp)
+            .padding(top = if (collapsedByDefault) 4.dp else 8.dp)
             .animateContentSize(),
     ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            maxLines = if (expanded) Int.MAX_VALUE else 3,
-            overflow = TextOverflow.Ellipsis,
-            lineHeight = 21.sp,
-        )
-        if (text.length > 120) {
+        if (!collapsedByDefault || expanded) {
+            Text(
+                text = text,
+                style = if (collapsedByDefault) MaterialTheme.typography.bodySmall else MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                maxLines = if (expanded) Int.MAX_VALUE else 3,
+                overflow = TextOverflow.Ellipsis,
+                lineHeight = if (collapsedByDefault) 19.sp else 21.sp,
+            )
+        }
+        if (collapsedByDefault || text.length > 120) {
             Row(
                 Modifier
                     .padding(top = 2.dp)
@@ -245,7 +258,12 @@ private fun Summary(text: String) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    if (expanded) "收起" else "展开摘要",
+                    when {
+                        collapsedByDefault && expanded -> "收起原文"
+                        collapsedByDefault -> "展开原文摘要"
+                        expanded -> "收起"
+                        else -> "展开摘要"
+                    },
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.outline,
                 )

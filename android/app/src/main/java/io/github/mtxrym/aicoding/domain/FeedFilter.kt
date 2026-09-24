@@ -66,7 +66,9 @@ fun applyFilter(
         .filter { item ->
             val matchesKeyword = keyword.isEmpty() || listOf(
                 item.title,
+                item.summaryZh,
                 item.summary,
+                item.topics.joinToString(" "),
                 item.authors.joinToString(" "),
                 item.keywords.joinToString(" "),
                 item.effectiveSources.joinToString(" ") { labels[it] ?: it },
