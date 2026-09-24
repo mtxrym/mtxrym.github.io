@@ -5,6 +5,13 @@ on:
     branches:
       - main
       - master
+  # 定时任务用 GITHUB_TOKEN 推送的提交不会触发 push 事件，
+  # 所以在数据更新工作流跑完后再部署一次，保证线上数据是最新的
+  workflow_run:
+    workflows:
+      - Update AI Coding Feed
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
@@ -18,6 +25,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -174,11 +174,12 @@ requirements.txt             # Python 依赖
 
 1. 打开仓库 `Settings -> Pages`
 2. `Source` 选择 **GitHub Actions**
-3. 确认默认分支是 `main`（工作流监听 `main`）
+3. 确认默认分支是 `master`（工作流同时监听 `main` / `master`）
 
 ### 触发部署
 
-- 每次 `push` 到 `main` 会自动部署
+- 每次 `push` 到 `master` 会自动部署
+- 定时数据更新工作流（Update AI Coding Feed）成功结束后会通过 `workflow_run` 自动再部署一次
 - 或手动在 `Actions -> Deploy GitHub Pages -> Run workflow` 触发
 
 ### 访问地址
@@ -195,6 +196,7 @@ requirements.txt             # Python 依赖
 1. 拉取外部趋势源（arXiv / PapersWithCode / HuggingFace）
 2. 计算 AI Coding 相关性与重要性
 3. 生成主页使用的 `blog.json`
-4. 自动提交到 `main` 分支
+4. 自动提交到 `master` 分支
 
-由于 `main` 触发 Pages 部署，页面会自动刷新为最新数据。
+> 注意：用 `GITHUB_TOKEN` 推送的提交不会触发其他工作流的 `push` 事件，
+> 因此部署工作流额外监听了 `workflow_run`，在数据更新完成后自动部署，页面才会刷新为最新数据。
