@@ -242,6 +242,7 @@ fun FeedContent(state: FeedUiState, actions: FeedActions) {
                         maxScore = maxScore,
                         onToggleFavorite = { actions.toggleFavorite(item.id) },
                         onKeyword = actions::setQuery,
+                        digestLabel = snapshot.status?.llm?.displayName?.ifBlank { null } ?: "DeepSeek",
                         modifier = Modifier
                             .padding(horizontal = 16.dp)
                             .animateItem(),

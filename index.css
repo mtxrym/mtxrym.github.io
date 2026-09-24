@@ -933,6 +933,90 @@ select:focus {
   display: block;
 }
 
+/* 论文解读 */
+.item-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.item-toggles .more-btn {
+  margin-top: 0;
+}
+
+.more-btn.is-primary {
+  color: var(--accent);
+}
+
+.more-btn.is-primary:hover {
+  color: var(--accent-hover);
+}
+
+.digest {
+  margin-top: 10px;
+  padding: 12px 14px 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface));
+}
+
+.digest-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin-bottom: 8px;
+}
+
+.digest-title {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--accent-ink);
+}
+
+.digest-basis {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.digest dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.digest-row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.digest-row dt {
+  color: var(--text-3);
+  font-weight: 550;
+}
+
+.digest-row dd {
+  margin: 0;
+  color: var(--text);
+}
+
+.digest-row ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.digest-row li + li {
+  margin-top: 2px;
+}
+
+.digest-row li::marker {
+  color: var(--text-3);
+}
+
 /* 大模型生成的中文一句话总结 */
 .item-tldr {
   margin: 9px 0 0;
@@ -1260,6 +1344,8 @@ a.meta-link:hover svg {
 .feed.is-compact .item-meta,
 .feed.is-compact .item-summary,
 .feed.is-compact .item-tldr,
+.feed.is-compact .item-toggles,
+.feed.is-compact .digest,
 .feed.is-compact .more-btn,
 .feed.is-compact .item-foot {
   display: none;

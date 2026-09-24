@@ -153,6 +153,7 @@ const state = {
   category: 'all',
   favorites: new Set(storage.get(FAVORITES_KEY, [])),
   expanded: new Set(),
+  digestOpen: new Set(),
   showFavoritesOnly: false,
   compactView: Boolean(prefs.compact)
 };
@@ -196,6 +197,7 @@ function normalize(raw) {
     summaryZh: raw.summary_zh || '',
     reasonZh: raw.reason_zh || '',
     llmJudged: raw.relevance_source === 'llm',
+    digest: raw.digest && raw.digest.problem ? raw.digest : null,
     upvotes: raw.upvotes || 0,
     likes: raw.likes || 0,
     githubUrl: raw.github_url || '',
@@ -228,7 +230,8 @@ function popularityOf(item) {
 }
 
 function searchText(item) {
-  return [item.title, item.summaryZh, item.summary, item.authors.join(' '), item.topics.join(' '), item.keywords.join(' '), item.sources.map(sourceLabel).join(' ')]
+  const digest = item.digest ? [item.digest.problem, ...(item.digest.method || []), ...(item.digest.results || []), ...(item.digest.takeaways || [])].join(' ') : '';
+  return [item.title, item.summaryZh, item.summary, digest, item.authors.join(' '), item.topics.join(' '), item.keywords.join(' '), item.sources.map(sourceLabel).join(' ')]
     .join(' ')
     .toLowerCase();
 }
@@ -420,6 +423,54 @@ function toggleFavorite(id) {
   render();
 }
 
+function toggleDigest(id) {
+  if (state.digestOpen.has(id)) state.digestOpen.delete(id);
+  else state.digestOpen.add(id);
+  render();
+}
+
+// 论文解读面板：问题 / 方法 / 结果 / 启示 / 局限
+function createDigest(item) {
+  const d = item.digest;
+  const panel = el('div', 'digest');
+  const head = el('div', 'digest-head');
+  head.append(
+    el('span', 'digest-title', '论文解读'),
+    el('span', 'digest-basis', `${state.status?.llm?.model_label || 'DeepSeek'} · ${d.basis === 'fulltext' ? '基于全文' : '基于摘要'}`)
+  );
+  panel.appendChild(head);
+  const list = el('dl');
+  const rows = [['问题', d.problem], ['方法', d.method], ['结果', d.results], ['启示', d.takeaways], ['局限', d.limitations]];
+  rows.forEach(([label, value]) => {
+    const values = (Array.isArray(value) ? value : [value]).filter(Boolean);
+    if (!values.length) return;
+    const row = el('div', `digest-row digest-${label}`);
+    row.appendChild(el('dt', '', label));
+    const dd = el('dd');
+    if (values.length === 1) {
+      dd.textContent = values[0];
+    } else {
+      const ul = el('ul');
+      values.forEach((v) => ul.appendChild(el('li', '', v)));
+      dd.appendChild(ul);
+    }
+    row.appendChild(dd);
+    list.appendChild(row);
+  });
+  panel.appendChild(list);
+  return panel;
+}
+
+function toggleButton(label, open, focusKey, onClick, primary = false) {
+  const button = el('button', `more-btn${primary ? ' is-primary' : ''}`, label);
+  button.type = 'button';
+  button.dataset.focusKey = focusKey;
+  button.setAttribute('aria-expanded', String(open));
+  button.insertAdjacentHTML('beforeend', ICONS.chevron);
+  button.addEventListener('click', onClick);
+  return button;
+}
+
 function toggleExpanded(id) {
   if (state.expanded.has(id)) state.expanded.delete(id);
   else state.expanded.add(id);
@@ -564,24 +615,25 @@ function createItem(item, index, highlightTop) {
   body.append(createTitle(item), createMeta(item));
 
   const expanded = state.expanded.has(item.id);
+  const digestOpen = state.digestOpen.has(item.id);
   if (item.summaryZh) body.appendChild(el('p', 'item-tldr', item.summaryZh));
-  if (item.summary) {
-    // 有中文总结时英文摘要默认折叠
-    const collapsible = item.summaryZh ? true : item.summary.length > 120;
-    if (!item.summaryZh || expanded) {
-      body.appendChild(el('p', `item-summary${expanded ? ' expanded' : ''}${item.summaryZh ? ' is-original' : ''}`, item.summary));
-    }
-    if (collapsible) {
-      const label = item.summaryZh ? (expanded ? '收起原文' : '展开原文摘要') : (expanded ? '收起' : '展开摘要');
-      const more = el('button', 'more-btn', label);
-      more.type = 'button';
-      more.dataset.focusKey = `more:${item.id}`;
-      more.setAttribute('aria-expanded', String(expanded));
-      more.insertAdjacentHTML('beforeend', ICONS.chevron);
-      more.addEventListener('click', () => toggleExpanded(item.id));
-      body.appendChild(more);
-    }
+
+  // 有中文总结时英文摘要默认折叠
+  const showAbstract = item.summary && (!item.summaryZh || expanded);
+  if (showAbstract) {
+    body.appendChild(el('p', `item-summary${expanded ? ' expanded' : ''}${item.summaryZh ? ' is-original' : ''}`, item.summary));
   }
+  if (item.digest && digestOpen) body.appendChild(createDigest(item));
+
+  const toggles = el('div', 'item-toggles');
+  if (item.digest) {
+    toggles.appendChild(toggleButton(digestOpen ? '收起解读' : '论文解读', digestOpen, `digest:${item.id}`, () => toggleDigest(item.id), true));
+  }
+  if (item.summary && (item.summaryZh || item.summary.length > 120)) {
+    const label = item.summaryZh ? (expanded ? '收起原文' : '原文摘要') : (expanded ? '收起' : '展开摘要');
+    toggles.appendChild(toggleButton(label, expanded, `more:${item.id}`, () => toggleExpanded(item.id)));
+  }
+  if (toggles.childElementCount) body.appendChild(toggles);
   const foot = createFooter(item);
   if (foot) body.appendChild(foot);
 

@@ -43,6 +43,15 @@
 - **配置**：`config/update_policy.yaml` 的 `llm` 一节（模型、推理强度、送审门槛 `candidate_min_relevance`、收录门槛 `min_score`、单次预算等）。
   修改提示词请同时更新 `src/llm.py` 中的 `PROMPT_VERSION`，已缓存的判定会按新版本重新生成。
 
+## 论文解读
+
+为展示中的论文生成结构化中文解读：**问题 / 方法 / 结果（带关键数字）/ 启示 / 局限**，网页和 App 中点击“论文解读”展开。
+
+- 优先读取 arXiv HTML 全文（去掉参考文献、目录，公式保留 LaTeX 源码，超长时保留前 75% + 结论部分）；没有 HTML 版本时退回完整摘要，界面上会标明“基于全文 / 基于摘要”
+- 只为展示中的论文生成，结果缓存在 `data/digests.json`，每篇只生成一次；首次 24 篇约 37 秒、16.5 万 token，之后每次只处理新上榜的论文
+- 质量抽检：24 篇解读中出现的 256 个数字全部能在原文中找到
+- 配置：`config/update_policy.yaml` 的 `llm.digest` 一节
+
 数据源在 [`config/sources.yaml`](config/sources.yaml) 中维护：
 
 | 数据源 | 说明 |
@@ -56,13 +65,14 @@
 ```
 config/sources.yaml ──► src/sources.py   抓取并统一成 Record
                         src/relevance.py 相关性初筛：AI 信号 × 代码信号，标题加权
-                        src/llm.py       DeepSeek 复核：打分、主题、中文一句话总结（带缓存）
+                        src/llm.py       DeepSeek 复核：打分、主题、中文一句话总结；论文解读（带缓存）
+                        src/fulltext.py  arXiv HTML 全文提取
                         src/scoring.py   综合得分（0–100）
                         src/feed.py      去重合并 → 历史库滚动更新 → 选出展示条目
 config/update_policy.yaml ─┘
                               │
                               ▼
-        blog.json · data/status.json · data/archive.json · data/llm_cache.json ──► GitHub Pages / Android App
+        blog.json · data/*.json（状态、历史库、判定缓存、论文解读）──► GitHub Pages / Android App
 ```
 
 `scripts/generate_blog_json.py` 串起整个流程：
@@ -104,7 +114,8 @@ python -m http.server 8000                      # 预览网页：http://localhos
 index.html · index.css · app.js      网页
 manifest.webmanifest · sw.js · assets/   PWA
 blog.json                             展示数据（生成）
-data/status.json · data/archive.json · data/llm_cache.json  数据源状态、历史库、模型判定缓存（生成）
+data/status.json · data/archive.json   数据源状态、历史库（生成）
+data/llm_cache.json · data/digests.json 模型判定缓存、论文解读缓存（生成）
 config/update_policy.yaml             更新策略
 config/sources.yaml                   数据源
 src/                                  抓取、相关性、打分、合并逻辑

@@ -58,6 +58,19 @@ reason_zh：不超过 30 个汉字，说明打分理由。
 每个输入 id 必须恰好出现一次。"""
 
 
+DIGEST_PROMPT_VERSION = "2026-09-24.1"
+
+DIGEST_PROMPT = """你是 AI 编程方向的论文解读编辑，读者是中文开发者。
+根据提供的论文内容（可能是截断的全文，也可能只有摘要）写结构化中文解读：
+- problem：要解决什么问题、为什么重要，不超过 80 字。
+- method：核心方法或贡献，2–3 条，每条不超过 60 字。
+- results：主要实验结果，1–3 条，尽量写出关键数字和对比对象，每条不超过 60 字。
+- takeaways：对开发者或 AI 编程工具的启示，1–2 条，每条不超过 60 字。
+- limitations：局限或需要注意的地方，不超过 60 字；原文没有相关信息就给空字符串。
+要求：只根据提供的内容写，不编造数字、结论或对比；模型名、基准名、专有名词保留英文；不要复述标题。
+只输出 JSON：{"problem": "...", "method": ["..."], "results": ["..."], "takeaways": ["..."], "limitations": "..."}"""
+
+
 @dataclass(slots=True)
 class LLMConfig:
     enabled: bool = True
@@ -74,6 +87,12 @@ class LLMConfig:
     timeout_seconds: int = 90
     retries: int = 2
     abstract_chars: int = 700
+    # 论文解读：只为展示中的论文生成，读取 arXiv 全文（没有 HTML 版本时用摘要）
+    digest_enabled: bool = True
+    digest_use_fulltext: bool = True
+    digest_max_chars: int = 32000
+    digest_max_items_per_run: int = 40
+    digest_concurrency: int = 3
 
 
 @dataclass(slots=True)
@@ -149,6 +168,9 @@ class DeepSeekClient:
             "response_format": {"type": "json_object"},
             "max_tokens": 300 + 220 * len(items),
         }
+        return self._thinking(body)
+
+    def _thinking(self, body: dict[str, Any]) -> dict[str, Any]:
         if self.config.reasoning_effort in ("", "none"):
             body["thinking"] = {"type": "disabled"}
             body["temperature"] = 0
@@ -156,23 +178,18 @@ class DeepSeekClient:
             body["thinking"] = {"type": "enabled", "reasoning_effort": self.config.reasoning_effort}
         return body
 
-    def classify_batch(self, items: list[dict[str, str]]) -> tuple[dict[str, dict[str, Any]], dict[str, int]]:
-        """返回 {id: 原始结果}, usage。失败时抛异常。"""
+    def chat_json(self, body: dict[str, Any], validate: Callable[[Any], Any]) -> tuple[Any, dict[str, int]]:
+        """发送请求并解析 JSON 输出；validate 负责校验 / 转换，不合格时抛 ValueError。429 / 5xx / 格式错误会重试。"""
         url = self.config.base_url.rstrip("/") + "/chat/completions"
         headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
-        body = self._request_body(items)
         last_error: Exception | None = None
         for attempt in range(self.config.retries + 1):
             try:
                 data = self.transport(url, headers, body, self.config.timeout_seconds)
                 content = data["choices"][0]["message"]["content"]
-                parsed = json.loads(content)
-                results = parsed.get("results") if isinstance(parsed, dict) else None
-                if not isinstance(results, list):
-                    raise ValueError("模型输出缺少 results 数组")
-                by_id = {str(r.get("id")): r for r in results if isinstance(r, dict)}
+                result = validate(json.loads(content))
                 usage = {k: int(v) for k, v in (data.get("usage") or {}).items() if isinstance(v, int)}
-                return by_id, usage
+                return result, usage
             except urllib.error.HTTPError as exc:
                 last_error = exc
                 # 401/403/400 等重试无意义；429 与 5xx 退避重试
@@ -183,6 +200,37 @@ class DeepSeekClient:
             if attempt < self.config.retries:
                 time.sleep(2 ** (attempt + 1))
         raise RuntimeError(f"DeepSeek 调用失败：{last_error}") from last_error
+
+    def classify_batch(self, items: list[dict[str, str]]) -> tuple[dict[str, dict[str, Any]], dict[str, int]]:
+        """返回 {id: 原始结果}, usage。失败时抛异常。"""
+
+        def validate(parsed: Any) -> dict[str, dict[str, Any]]:
+            results = parsed.get("results") if isinstance(parsed, dict) else None
+            if not isinstance(results, list):
+                raise ValueError("模型输出缺少 results 数组")
+            return {str(r.get("id")): r for r in results if isinstance(r, dict)}
+
+        return self.chat_json(self._request_body(items), validate)
+
+    def digest(self, title: str, text: str, basis: str) -> tuple[dict[str, Any], dict[str, int]]:
+        body = self._thinking(
+            {
+                "model": self.config.model,
+                "messages": [
+                    {"role": "system", "content": DIGEST_PROMPT},
+                    {"role": "user", "content": f"标题：{title}\n内容类型：{'论文正文（可能截断）' if basis == 'fulltext' else '论文摘要'}\n\n{text}"},
+                ],
+                "response_format": {"type": "json_object"},
+                "max_tokens": 1200,
+            }
+        )
+
+        def validate(parsed: Any) -> dict[str, Any]:
+            if not isinstance(parsed, dict) or not parsed.get("problem"):
+                raise ValueError("论文解读缺少 problem 字段")
+            return parsed
+
+        return self.chat_json(body, validate)
 
 
 def _clean_verdict(raw: dict[str, Any], config: LLMConfig, today: str) -> Verdict | None:
@@ -303,3 +351,115 @@ def make_client(config: LLMConfig, transport: Transport = http_post_json) -> tup
 
 def log(message: str) -> None:
     print(f"[llm]  {message}", file=sys.stderr)
+
+
+# ---------------------------------------------------------------------------
+# 论文解读
+# ---------------------------------------------------------------------------
+
+
+@dataclass(slots=True)
+class DigestReport:
+    candidates: int = 0
+    cached: int = 0
+    generated: int = 0
+    failed: int = 0
+    fulltext: int = 0
+    skipped_budget: int = 0
+    errors: list[str] = field(default_factory=list)
+    usage: dict[str, int] = field(default_factory=dict)
+
+
+def _clip_list(value: Any, limit: int, chars: int) -> list[str]:
+    items = value if isinstance(value, list) else [value] if value else []
+    return [str(v).strip()[:chars] for v in items if str(v).strip()][:limit]
+
+
+def clean_digest(raw: dict[str, Any], basis: str, config: LLMConfig, today: str) -> dict[str, Any]:
+    return {
+        "problem": str(raw.get("problem") or "").strip()[:160],
+        "method": _clip_list(raw.get("method"), 3, 120),
+        "results": _clip_list(raw.get("results"), 3, 120),
+        "takeaways": _clip_list(raw.get("takeaways"), 2, 120),
+        "limitations": str(raw.get("limitations") or "").strip()[:120],
+        "basis": basis,
+        "model": config.model,
+        "prompt_version": DIGEST_PROMPT_VERSION,
+        "generated_on": today,
+    }
+
+
+PaperFetcher = Callable[[dict[str, Any]], "tuple[str, str] | None"]
+
+
+def default_paper_fetcher(config: LLMConfig) -> PaperFetcher:
+    from src.fulltext import fetch_paper_text
+
+    def fetch(entry: dict[str, Any]) -> tuple[str, str] | None:
+        if entry.get("arxiv_id"):
+            paper = fetch_paper_text(entry["arxiv_id"], max_chars=config.digest_max_chars, use_fulltext=config.digest_use_fulltext)
+            time.sleep(1)  # 对 arXiv 保持礼貌的抓取频率
+            if paper:
+                return paper.text, paper.source
+        summary = entry.get("summary") or ""
+        return (summary, "abstract") if summary else None
+
+    return fetch
+
+
+def generate_digests(
+    entries: Iterable[dict[str, Any]],
+    config: LLMConfig,
+    client: DeepSeekClient | None,
+    cache: dict[str, dict[str, Any]],
+    now: datetime,
+    fetch: PaperFetcher | None = None,
+) -> tuple[dict[str, dict[str, Any]], DigestReport]:
+    """为论文生成结构化中文解读：优先读缓存；其余抓取正文后调用模型。返回 {key: digest}。"""
+    today = now.astimezone(timezone.utc).date().isoformat()
+    report = DigestReport()
+    digests: dict[str, dict[str, Any]] = {}
+    pending: list[dict[str, Any]] = []
+    for entry in entries:
+        if entry.get("category") != "papers":
+            continue
+        report.candidates += 1
+        cached = cache.get(entry["key"])
+        if cached and cached.get("model") == config.model and cached.get("prompt_version") == DIGEST_PROMPT_VERSION:
+            digests[entry["key"]] = cached
+            report.cached += 1
+        else:
+            pending.append(entry)
+
+    if client is None or not config.digest_enabled or not pending:
+        return digests, report
+    if len(pending) > config.digest_max_items_per_run:
+        report.skipped_budget = len(pending) - config.digest_max_items_per_run
+        pending = pending[: config.digest_max_items_per_run]
+
+    fetch = fetch or default_paper_fetcher(config)
+
+    def run(entry: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any] | None, dict[str, int], str | None]:
+        try:
+            paper = fetch(entry)
+            if paper is None:
+                return entry, None, {}, "无法获取论文内容"
+            text, basis = paper
+            raw, usage = client.digest(entry.get("title") or "", text, basis)
+            return entry, clean_digest(raw, basis, config, today), usage, None
+        except Exception as exc:  # noqa: BLE001 - 单篇失败不影响其他
+            return entry, None, {}, str(exc)[:200]
+
+    with ThreadPoolExecutor(max_workers=max(1, config.digest_concurrency)) as pool:
+        for entry, digest, usage, error in pool.map(run, pending):
+            for name, value in usage.items():
+                report.usage[name] = report.usage.get(name, 0) + value
+            if digest is None:
+                report.failed += 1
+                report.errors.append(f"{entry['key']}: {error}")
+                continue
+            digests[entry["key"]] = digest
+            cache[entry["key"]] = digest
+            report.generated += 1
+            report.fulltext += digest["basis"] == "fulltext"
+    return digests, report

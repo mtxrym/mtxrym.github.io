@@ -68,6 +68,7 @@ fun applyFilter(
                 item.title,
                 item.summaryZh,
                 item.summary,
+                item.digest?.searchText.orEmpty(),
                 item.topics.joinToString(" "),
                 item.authors.joinToString(" "),
                 item.keywords.joinToString(" "),

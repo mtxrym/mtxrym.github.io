@@ -51,7 +51,26 @@
     "github_url": "https://github.com/cslsolow/Schrodinger-Repo",
     "github_stars": 4,
     "hf_url": "https://huggingface.co/papers/2609.27891",
-    "arxiv_id": "2609.27891"
+    "arxiv_id": "2609.27891",
+    "digest": {
+      "problem": "仓库级编码基准（如 SWE-bench）基于公开热门仓库构建，存在数据泄漏，高分可能源于对仓库表面线索的记忆而非真实推理能力。",
+      "method": [
+        "提出 SchrodingerRepo 框架，将测试仓库视为评估时动态实例化的潜在变量，生成语义等价但线索被侵蚀的仓库视图。",
+        "包含四级变换：问题陈述重构、命名空间重映射、文件内布局重排、功能保持的代码重写。",
+        "通过可逆映射保证执行仍基于原仓库，最终补丁可还原到原始坐标进行评估。"
+      ],
+      "results": [
+        "SWE-bench Verified 上全变换使 Pass@1 下降 6.0–14.4 个百分点，其中 Namespace Mapping 降幅最大。",
+        "交互成本显著上升，81.6–83.6% 的额外动作用于探索，输入 token 消耗增加超 2.5 倍。",
+        "SWE-QA 上答案质量最多下降 4.64 分，动作数增加 18.15–43.02%。"
+      ],
+      "takeaways": [
+        "评估编码 agent 时需警惕基准数据泄漏，高分未必代表真实仓库推理能力。",
+        "命名空间等表面线索对 agent 影响最大，工具应增强对陌生仓库表示的鲁棒性。"
+      ],
+      "limitations": "Level 3/4 仅应用于 golden patch 相关文件与代码区域，未覆盖全仓库；部分模型仅在泄漏证据最强的 300 个实例上评估。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Evaluating Coding Agents on Kernel Exploit Generation",
@@ -105,7 +124,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.25591"
+    "arxiv_id": "2609.25591",
+    "digest": {
+      "problem": "现有漏洞发现基准无法衡量编码智能体能否把真实内核漏洞转化为可验证的利用原语，如地址泄漏、RIP 控制或任意写。",
+      "method": [
+        "提出 Kex-bench，含 45 个任务、40 个 Linux/Windows CVE，覆盖 5 类利用原语。",
+        "每个任务在隔离 VM 中运行，通过 MCP 暴露受控工具，并用确定性验证器判定原语成功。",
+        "区分 w/o PoC 与 w/ PoC 两种设置，并限制工具调用预算。"
+      ],
+      "results": [
+        "最强配置 w/o PoC 仅解 1/20 Windows（5.0%）和 14/25 Linux（56.0%）。",
+        "提供参考 PoC 后，最强配置解 31/45（68.9%）。",
+        "Codex/GPT-5.4 w/ PoC 五次重复：Linux 均值 40.8%，Windows 均值 24.0%。"
+      ],
+      "takeaways": [
+        "智能体能触发内核崩溃，但难以把状态塑造成验证器要求的精确原语。",
+        "参考 PoC 能降低触发成本，但适配验证器仍是主要瓶颈。"
+      ],
+      "limitations": "每配置仅一条轨迹，任务数少且平台与原语混杂，Linux/Windows 差距不能归因于操作系统。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
@@ -158,7 +196,26 @@
     "github_url": "https://github.com/wbopan/tastebench",
     "github_stars": 1,
     "hf_url": "https://huggingface.co/papers/2609.25804",
-    "arxiv_id": "2609.25804"
+    "arxiv_id": "2609.25804",
+    "digest": {
+      "problem": "LLM agent 在长程任务中沿途决策（选哪个假设、哪个实现）决定最终成败，但现有 benchmark 只测端到端成功率，无法衡量决策质量。",
+      "method": [
+        "提出用轨迹后见之明自动挖掘 decision fork：同一任务多次尝试分叉处，或单条轨迹中的绕路纠错点。",
+        "构建 Taste-Bench，502 道二选一 taste 题，覆盖工程与研究两域，标签由记录结果确定，无需人工标注。",
+        "用见过正确方向的 teacher 蒸馏推理到 student，并将判断作为 advice 注入任务上下文。"
+      ],
+      "results": [
+        "最佳模型 GPT-5.6 Sol 平均准确率仅 59.7%，GPT-5.5 为 59.5%，随机猜测为 25%。",
+        "时间跨度越长越难：14 模型均值从 in-prefix 的 62.3% 降至 more-work 的 21.0%。",
+        "增加 reasoning budget 几乎不提升准确率（GPT-5.6 Sol -0.2 点，Luna +2.2 点）；蒸馏后在未见任务和 SWE-bench Pro 上端到端提升。"
+      ],
+      "takeaways": [
+        "长程 agent 的决策质量可与端到端分数脱节，评估工具应单独衡量 fork 判断力。",
+        "让模型多想并不能弥补后见证据缺失，训练判断力比加大推理预算更有效。"
+      ],
+      "limitations": "标签依赖记录结果，可能混入执行质量与环境因素；仅覆盖工程与研究两域，且二选一题存在位置偏差。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "ScaleAI/SWE-bench_Pro",
@@ -203,7 +260,8 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": ""
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
@@ -254,7 +312,26 @@
     "github_url": "https://github.com/EmbodiedSWE/EmbodiedSWE",
     "github_stars": 16,
     "hf_url": "https://huggingface.co/papers/2609.27308",
-    "arxiv_id": "2609.27308"
+    "arxiv_id": "2609.27308",
+    "digest": {
+      "problem": "VLA 等机器人策略依赖昂贵的人类演示数据，难以扩展到长时程、接触密集的灵巧操作任务，缺少可规模化的监督来源。",
+      "method": [
+        "构建 EmbodiedSWE-Bench：28 个长时程灵巧任务，覆盖装配、打包、切割等，支持五种机器人本体。",
+        "让前沿 coding agent 直接对仿真器写代码求解，并评估跨任务、跨本体的解迁移与附加工具。",
+        "提出 EmbodiedSWE-Gen，把单个已验证解分层多样化，生成大量轨迹用于 VLA 微调。"
+      ],
+      "results": [
+        "前沿 agent 在 4 小时预算内可解约 80% 任务，最强模型成功率约 82%，最弱约 11%。",
+        "VLA 平均成功率随演示数从 10 条的 18% 升至 400 条的 69%，rubric 分从 0.32 升至 0.76。",
+        "仅用 500 条 agent 生成仿真演示微调的策略，在真实机器人四阶段拆灯任务上完成抓灯罩 100%、拧灯泡 20%。"
+      ],
+      "takeaways": [
+        "coding agent 可直接对仿真器写控制程序，作为长时程任务的求解器与数据教师。",
+        "用 agent 多样化生成演示，比纯脚本域随机化更能提升 VLA 的分布外泛化。"
+      ],
+      "limitations": "最难任务仍未被自主解决；解需大量迭代且常针对单个任务实例；工具增益较小；sim-to-real 仅单任务验证。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "nvidia/Open-SWE-Traces",
@@ -301,7 +378,8 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": ""
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
@@ -354,7 +432,26 @@
     "github_url": "https://github.com/alibaba/AgenticBigBang",
     "github_stars": 39,
     "hf_url": "https://huggingface.co/papers/2609.23377",
-    "arxiv_id": "2609.23377"
+    "arxiv_id": "2609.23377",
+    "digest": {
+      "problem": "仓库级 SWE 任务类别异质，池化 agentic RL 下各类别进展不均，部分类别提升伴随其他类别回退，聚合指标掩盖这种此消彼长。",
+      "method": [
+        "用 SWE Labeler 多轴标注把可执行任务划分为类别，构建分类训练池并路由教师。",
+        "同类专家交替 Agentic-miniRL 与 Refresh–Repair–Expand：刷新掌握度、复用成功轨迹做 Repair SFT、重选任务。",
+        "用 label-routed MOPD 将多专家蒸馏为单一学生，配合 ReLU 门控奖励外推保留改进方向。"
+      ],
+      "results": [
+        "最终 MOPD 策略在 Pro-618 平均解决率 58.04%，较基座提升 5.39 个百分点。",
+        "在 SWE-bench Multilingual 达 59.00%，较基座提升 2.78 个百分点。",
+        "两个基准上总体及三个任务类别均高于 Pooled RL 与 Balanced RL；Pro-618 上专家增益恢复仍不均衡。"
+      ],
+      "takeaways": [
+        "按可观测任务类别组织训练与评估，可暴露聚合分数掩盖的类别回退。",
+        "专家训练与整合无需外部模型提供轨迹或动作目标，可复用自身成功轨迹自改进。"
+      ],
+      "limitations": "Pro-618 为审计过滤后的 618 条子集；专家增益恢复在各类别间仍不均衡，单模型整合有待改进。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "CodeMidas: Scaling Agentic Coding RL Environments from Code Itself",
@@ -409,7 +506,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "https://huggingface.co/papers/2609.22068",
-    "arxiv_id": "2609.22068"
+    "arxiv_id": "2609.22068",
+    "digest": {
+      "problem": "训练编码 agent 的 RL 需要多样任务与可靠验证器，现有方法依赖 issue、commit、测试或文档等开发产物，限制了可提取任务的范围。",
+      "method": [
+        "以源代码为唯一任务输入，agent 自动识别已实现功能并生成行为规格与任务陈述。",
+        "基于原始代码执行构建测试，做执行一致性检查与断言审查，避免过严限制。",
+        "用对抗 rollout 查泄漏、审查验证器判定、按 rollout 成败过滤任务。"
+      ],
+      "results": [
+        "构建 5,545 个任务，来自 3,185 个代码库，覆盖 23 种语言、15 个领域。",
+        "GRPO 训练 MiMo-V2.5：DeepSWE 10.0%→21.7%，ProgramBench 4.5→21.5，Terminal-Bench v2.1 63.7%→72.2%。",
+        "高质量 5k 池优于未过滤 8k 样本，在 SWE-bench Pro、DeepSWE、CodeMidas Val 上分别高 0.59、4.59、4.49 个百分点。"
+      ],
+      "takeaways": [
+        "可从现有代码库自动挖掘带可执行验证器的 RL 任务，无需依赖 issue 或人工测试。",
+        "任务质量与过滤比单纯堆量更重要，小规模高质量数据可胜过更大未清洗数据。"
+      ],
+      "limitations": "任务依赖原代码执行建立期望值，验证器仍可能漏判；rollout 过滤需前沿模型多次尝试，成本较高。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Logics-MLLM/Logics-SWE-Env-2.5K",
@@ -455,7 +571,8 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": ""
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
@@ -505,7 +622,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26777"
+    "arxiv_id": "2609.26777",
+    "digest": {
+      "problem": "现有仓库级与终端 agent 基准很少覆盖生产推理工程，专用推理基准又只关注 kernel 生成或性能优化，无法衡量补丁在完整服务路径上的正确性。",
+      "method": [
+        "构建 SWE-Serve：基于 SGLang 近期合并改动，含 53 个仓库级任务，覆盖六大推理工程族。",
+        "任务在 CPU 或单张 H100 上执行，用隐藏 F2P/P2P 测试、E2E 服务测试和性能门限评分。",
+        "用 no-op/oracle 对照、对抗性探测、人工裁定、闭卷执行与轨迹审计保证有效性。"
+      ],
+      "results": [
+        "11 个模型 31 种配置中最佳配置达 75% 平均 pass@1，模型间跨度 40 个百分点（75% 到 35%）。",
+        "19 个含 E2E 覆盖的任务中，E2E 测试拒绝约三分之一通过其他所有测试的补丁。",
+        "从评分中移除 E2E 测试使平均通过率提高 23.4 个百分点，11 个模型最佳配置全部上升。"
+      ],
+      "takeaways": [
+        "本地测试全绿不等于生产正确，评估推理代码应加入端到端服务测试与性能门限。",
+        "选型不能只看 pass@1：相同 64% 的配置成本差 7.6 倍、耗时差 3.9 倍。"
+      ],
+      "limitations": "任务仅源自 SGLang 近期合并改动，硬件限于 CPU 或单张 H100，结论未必推广到其他推理系统。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
@@ -556,7 +692,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26749"
+    "arxiv_id": "2609.26749",
+    "digest": {
+      "problem": "LLM 修复 C/C++ 漏洞时普遍用 compile rate 和 CodeBLEU 衡量进展，但这些代理指标在单函数修复场景下的有效性缺乏检验，可能误导研究方向。",
+      "method": [
+        "用 Big-Vul 203 个漏洞函数、3 个开源代码 LLM（350M–6.7B）和 3 种提示策略做五组受控实验，逐一暴露 compile rate 的失效模式。",
+        "构建迭代 stub 注入的隔离函数编译 harness，并识别 Big-Vul 预处理剥离返回类型的数据缺陷。",
+        "提出 change-aware 的 diff_F1 屏幕，只对编辑区域打分，作为深入执行验证前的廉价筛查。"
+      ],
+      "results": [
+        "约 64% 的编译失败不归因于模型，而是隔离评估与数据集预处理伪影，该比例在不同规模模型间几乎不变。",
+        "同一补丁仅改一个编译器标准 flag，compile rate 就变化 1.8–2.7 倍且无回归；compile rate 对三个模型的排序与相似度指标相反。",
+        "未改动的漏洞函数副本在 whole-function CodeBLEU 上超过所有模型；以 compile rate 为优化目标会奖励删除式非修复。"
+      ],
+      "takeaways": [
+        "报告 compile rate 时必须同时给出 harness 与工具链配置，并加入 no-op 和退化补丁基线。",
+        "评估漏洞修复应转向 change-aware、执行验证的指标，diff_F1 可作补充诊断但非修复质量度量。"
+      ],
+      "limitations": "diff_F1 对部分删除式作弊补丁仍给较高分，且它本身不是修复质量指标，只适合作为深入分析前的筛查。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Grounded Skill Synthesis from Code at Scale for Agentic Intelligence",
@@ -609,7 +764,26 @@
     "github_url": "https://github.com/ant-intl/Code2Skill",
     "github_stars": 51,
     "hf_url": "https://huggingface.co/papers/2609.05571",
-    "arxiv_id": "2609.05571"
+    "arxiv_id": "2609.05571",
+    "digest": {
+      "problem": "现有技能合成方法依赖执行轨迹或静态文档，前者与生成模型和任务分布耦合、易过时，后者缺乏可执行证据，难以规模化并验证。",
+      "method": [
+        "提出 Code2Skill 全自动流水线，从 GitHub 仓库源码中合成可复用技能。",
+        "按原子操作、复合工作流、重复模式三类生成技能记录，含适用条件、步骤、不变量与失败处理。",
+        "用源码盲重建加源码感知比对做一致性校验，保留 provenance 供检索与维护。"
+      ],
+      "results": [
+        "应用于 19,769 个 GitHub 仓库，构建 CodeSkillBank，含 1,006,822 条通过记录。",
+        "八个基准宏平均分从 42.90 提升至 47.90，72 次评估中 57 次改善。",
+        "统一接口下七个基准均优于 Trace2Skill、ExpeL、SkillRL-Bank，平均 49.5 对 31.0/27.9/32.8。"
+      ],
+      "takeaways": [
+        "可从现有代码库批量挖掘可复用过程知识，作为模型参数与推理算力之外的新扩展维度。",
+        "技能在规划或评审阶段注入收益最大，紧凑摘要可显著降低上下文开销。"
+      ],
+      "limitations": "重建一致性检查不能替代基于测试或形式化属性的验证；实验默认仅随机采样 10% 检索记录。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "WhatWorkedBench: Benchmarking Experimental Understanding in AI Agents",
@@ -657,7 +831,26 @@
     "github_url": "https://github.com/EthanNing/WhatWorkedBench",
     "github_stars": 1,
     "hf_url": "https://huggingface.co/papers/2609.27490",
-    "arxiv_id": "2609.27490"
+    "arxiv_id": "2609.27490",
+    "digest": {
+      "problem": "AI 研究 agent 需要可靠预测实验改动对结果的影响，但现有基准多评估优化结果，缺少对条件效应预测能力的量化衡量。",
+      "method": [
+        "提出 WhatWorkedBench：agent 查看代码、在预算内选测量，提交完整响应面预测表。",
+        "用穷举 CPU 执行给出每个组件条件效应的参考，覆盖 36 任务、30 数据源、8 类工作流。",
+        "共享估计器比较测量选择与数值推断，并加入代码等价性约束。"
+      ],
+      "results": [
+        "B=8 时 pair-effect ridge 在 22 个四因子源中 15 个选中最优，3 个严格重建。",
+        "同一 Flash 观测下 GP 将效应恢复从 0.632 提升到 0.698，另一队列从 0.621 到 0.720。",
+        "B=20 时编码代码等价性将六因子 GP 恢复从 0.248 提升到 0.462。"
+      ],
+      "takeaways": [
+        "优化选点成功不等于理解组件效应，评估 agent 需同时看效应重建与选择。",
+        "在相同观测上换更强推断（如 GP）或利用程序等价性可显著提升预测。"
+      ],
+      "limitations": "任务限于 4/6 个二元选项的确定性工作流，agent 实验存在 HTTP 429 与超时导致的交付缺失。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
@@ -709,7 +902,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.28449"
+    "arxiv_id": "2609.28449",
+    "digest": {
+      "problem": "LLM 被广泛用于编码任务，但其对代码运行时行为的推理能力尚不明确；现有仓库级基准多评估静态理解，执行推理基准又局限于代码片段或函数。",
+      "method": [
+        "提出 SWE-Flux，含 480 个执行实例、覆盖 12 个真实 Python 仓库的仓库级动态执行推理基准。",
+        "用双层分类法覆盖单测试与多测试，含控制流、循环、状态、数据流、异常、不变量七类行为。",
+        "答案由插桩测试执行自动采集，非人工编写或 LLM 评判，并提供输入扰动生成新变体。"
+      ],
+      "results": [
+        "最佳模型准确率仅 37.71%；数据流最难，SOTA 模型仅 6%。",
+        "人工检查最强模型 299 个错误答案，93% 为实质性语义失败而非格式错误。",
+        "扰动管线对 58 个实例中 52 个成功生成变体（89.7%），使 GPT-5.4 从 100% 降至 43.1%。"
+      ],
+      "takeaways": [
+        "编码 agent 需具备跨函数、跨文件的运行时行为推理能力，仅靠静态代码理解不足。",
+        "数据流、过程间执行与套件级聚合是当前模型明显短板，可作为工具改进重点。"
+      ],
+      "limitations": "仅覆盖 Python 仓库，基准规模 480 实例，评估模型数量有限。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "PonyEval: Evaluating LLM-Based Program Repair for Capability-Safe and Actor-Oriented Pony Software",
@@ -763,7 +975,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.27832"
+    "arxiv_id": "2609.27832",
+    "digest": {
+      "problem": "仓库级 issue 修复基准集中于主流语言，Pony 这类具备 actor、引用能力与历史工具链的长尾生态缺乏可执行评测。",
+      "method": [
+        "构建 PonyEval：291 个真实 GitHub issue–PR 实例，覆盖 15 个仓库、2015–2026 提交。",
+        "每个实例绑定 base commit、gold patch、黑盒测试补丁与运行时映射，通过 fail-to-pass 双态门控准入。",
+        "重建 72 个历史运行时镜像覆盖 289 个 base commit，并在五类异构节点验证可用性。"
+      ],
+      "results": [
+        "288/291（98.97%）实例的 oracle 来自开发者或官方 PR 测试，仅 3 个为生成测试。",
+        "五模型条件解决率 10.21%–24.68%，Kimi-K3 最高 24.68%，GLM-5.2 18.55%，GPT-5.6-sol 18.21%。",
+        "应用率近 100%，但编译通过率降至 38.40%–79.22%，语义解决率大幅下降。"
+      ],
+      "takeaways": [
+        "长尾语言的修复评测必须绑定历史编译器与运行时，否则编译性与语义都会失真。",
+        "补丁能应用不等于能编译或通过测试，工具链应把编译与行为验证作为独立反馈环节。"
+      ],
+      "limitations": "实例高度集中于 ponylang/ponyc（211/291，72.51%），仓库分布不均衡；结果仅基于各模型实际产出的补丁，未外推到全部 291 个任务。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "CliffCompaction: Cost-Efficient Compaction for Long-Horizon Coding Agents",
@@ -816,7 +1047,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26779"
+    "arxiv_id": "2609.26779",
+    "digest": {
+      "problem": "长周期编码 agent 的上下文常达百万 token，受限于上下文窗口需压缩，但现有摘要式压缩会累积信息损失、破坏 KV-cache 并推高成本。",
+      "method": [
+        "规则式自动压缩：上下文达阈值时触发，只截断或丢弃内容，绝不改写或重述，保持信息忠实。",
+        "丢弃旧压缩块，每次只压缩最近活跃会话，避免 summary-of-summary 造成的上下文漂移。",
+        "按长度丢弃长工具结果、将工具调用压缩为签名，保留系统提示、任务描述与最近 K 轮。"
+      ],
+      "results": [
+        "Terminal-Bench 2.0 上 Kimi K2.6 在 32K/16K 达 61.42%，高于全上下文 59.16%；16K 下优于原生摘要 55.45%。",
+        "Terminal-Bench 2.1 上 GLM 5.3 Flash 在约 45K 达 76.69%，高于 Claude Code 自动压缩 70.97% 与默认 200K 的 73.03%。",
+        "KernelBench 上 200 步达 2.23×、400 步达 3.58× 加速，优于专用搜索算法与训练过的 agent。"
+      ],
+      "takeaways": [
+        "压缩应优先保真而非保量：只截断不改写，可避免摘要链式漂移，适合长周期 agent。",
+        "压缩会失效 KV-cache 并触发 re-prefill，应低频触发、让上下文自然增长以摊薄开销。"
+      ],
+      "limitations": "收益依赖 scaffold 与任务，仅对中长周期任务明显；未与训练式上下文管理或外部记忆方法对比。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "RiverRider/swebench-localisation",
@@ -863,7 +1113,8 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": ""
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "Who Finishes the Job? A Study of Follow-Up Fixes and Commit Authorship on AI Coding Agent Pull Requests",
@@ -914,7 +1165,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26847"
+    "arxiv_id": "2609.26847",
+    "digest": {
+      "problem": "合并后的 AI agent PR 常被视为完成的工作，但此前研究显示 agent 代码合并后仍存在问题；合并后是否被修复、由谁修复尚不清楚。",
+      "method": [
+        "追踪 AIDev-pop 中 6,774 个已合并 agent PR 的后续修复，并以同仓库 5,044 个人类 PR 为基线。",
+        "用启发式规则提取候选修复，再经人工标注与 LLM judge 验证（Cohen's κ=0.78，Direct-fix 精度 90%）。",
+        "在 PR 与 commit 两级归属修复作者，并比较有/无后续修复的合并时信号。"
+      ],
+      "results": [
+        "30 天内 22.9% 的 agent 合并有候选修复、4.5% 有已验证修复；同仓库同窗口下 agent 被修复几率是人类 1.62 倍（verified）。",
+        "agent 合并的已验证修复中 69.6% 来自同一 agent，人类合并的修复 89.1% 来自人类。",
+        "已验证修复 PR 的 commit 平均 87.4% 由 agent 编写，76.4% 的 PR 全部 commit 均为 agent 编写。"
+      ],
+      "takeaways": [
+        "agent 基本能自行修复自己的合并，但合并后仍需修复的概率略高于人类，评估 agent 贡献应跟踪合并之后。",
+        "合并时信号几乎无法预测后续修复，仓库内 PR 的 commit 数量是较明显线索（10 倍 commit 对应 6.1 倍修复几率）。"
+      ],
+      "limitations": "Claude Code 样本量小（多数 PR 落在 30 天观察窗之外），部分结论基于 LLM judge 而非全部人工验证。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "FeatLens: Feature-Guided Dynamic Code Graph Construction and Retrieval for Repository-Level Code Generation",
@@ -965,7 +1235,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26480"
+    "arxiv_id": "2609.26480",
+    "digest": {
+      "problem": "仓库级代码生成需识别可复用依赖（函数、API、跨文件定义），但现有检索方法图构建与推理开销高，特征方法又只支持需求分解而非依赖检索。",
+      "method": [
+        "构建特征索引，将自然语言特征描述映射到函数级代码实体",
+        "按任务动态构建种子图，用个性化PageRank做语义-结构图推理筛选紧凑推理图",
+        "检索阶段不调用LLM，替代全仓库图维护与LLM探索"
+      ],
+      "results": [
+        "DevEval/EvoCodeBench上DR@15达0.501/0.460，优于BM25、UniXcoder、RepoGraph、CodexGraph",
+        "DevEval生成DIR@1最高：DeepSeek-V3.2为52.91%，GPT-5-mini为53.58%",
+        "相比最强图基线，节点减61.0%、边减86.2%、总token开销降45.9%，检索时LLM token为0"
+      ],
+      "takeaways": [
+        "用特征索引做检索入口，比纯文本相似度或固定图查询更能命中结构依赖",
+        "先特征种子图再受控扩展加PageRank过滤，可在小上下文下保持高依赖召回"
+      ],
+      "limitations": "未来工作需加强运行时绑定、隐式框架约定及与特征簇弱对齐依赖的图推理，并扩展更多基准评测。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "What Makes a Terminal-Bench Task Hard? Separating Genuine Hardness from Fake-Hardness on an Adjudicated Agentic Corpus",
@@ -1015,7 +1304,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26826"
+    "arxiv_id": "2609.26826",
+    "digest": {
+      "problem": "全失败任务被默认当作难任务，但零通过率也可能源于任务缺陷、环境故障或验证器可绕过，导致基准的能力声明失真。",
+      "method": [
+        "审计冻结的 Terminal-Bench 3 / Frontier-Bench 0.1 生产记录，含 1,081 PR、639 任务、28,801 次试验。",
+        "对 125 个无诚实通过的任务施加有序有效性筛查，按首个匹配规则分为五类结果。",
+        "结合 oracle、nop、cheat 对照、轨迹、遥测与评审记录，并分析 555 个被拒提交。"
+      ],
+      "results": [
+        "125 个全失败任务中仅 78 个为 certified-unsolved，14 个 oracle 损坏、8 个基础设施受限、4 个仅可绕过、21 个可解性未认证。",
+        "若要求至少两次 oracle 运行，认证数从 78 降至 25。",
+        "通过任务中首次诚实通过所需最小输出 token 可区分难度，AUC 0.750。"
+      ],
+      "takeaways": [
+        "基准报告全失败任务时应附证据：参考解通过、空解失败、基础设施可达、验证器完整性。",
+        "低通过率只是粗信号，不能替代对任务有效性的逐项审查。"
+      ],
+      "limitations": "认证标签仅表示冻结设置下存在一条被接受的参考路线，不证明内在难度、验证器完备性或失败发生在预期能力点上。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Coding Agents are Strong Prompt Optimizers",
@@ -1066,7 +1374,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26261"
+    "arxiv_id": "2609.26261",
+    "digest": {
+      "problem": "基于搜索的 prompt 优化器需反复 rollout 与验证，成本高，且每次只反思少量轨迹，难以发现语料库级别的系统性失败模式。",
+      "method": [
+        "CASD：用现成 coding agent 对冻结的 rollout 语料库做一次离线分析，直接生成优化后的 prompt。",
+        "让 agent 写并执行分析代码，计算全语料统计（通过率、工具调用直方图、重复调用等），再定向检查代表性轨迹。",
+        "无需环境交互、验证集或迭代搜索，单次离线 pass 即产出 skill 文件作为新 prompt。"
+      ],
+      "results": [
+        "有限数据下，CASD 平均提升 16.6 个百分点，GEPA 为 10.9，SkillOpt 为 5.3。",
+        "CASD 在 4 个基准中 3 个超过 GEPA、4 个全部超过 SkillOpt。",
+        "单次优化成本约 $1.60，比验证门控搜索便宜 22 倍以上；即使对手获得额外验证数据与环境访问，CASD 仍在 2/4 基准领先。"
+      ],
+      "takeaways": [
+        "prompt 优化可先做一次全语料离线分析，用代码统计替代小批量反思，成本低且见效快。",
+        "让 coding agent 执行分析代码来聚合证据，比把大量轨迹塞进上下文更可靠。"
+      ],
+      "limitations": "固定语料库会引入偏差，当交互预算充足时迭代搜索的渐近偏差更低，优势可能减弱。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "prithivMLmods/CodeCAD-HF-v2",
@@ -1108,7 +1435,8 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": ""
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "Passes Alone, Fails Together: Benchmarking Semantic Coordination in Parallel LLM-Agent Development",
@@ -1156,7 +1484,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.25396"
+    "arxiv_id": "2609.25396",
+    "digest": {
+      "problem": "并行编码 agent 各自生成的 patch 单独通过测试，合并后却失败：一个 agent 改了接口或规则，另一个仍依赖旧版本，而文本合并无冲突。",
+      "method": [
+        "提出 stale 基准，用同一测试集分别评测 patch 单独与合并结果，只统计合并新引入的失败 Δ_blind。",
+        "设计三层任务：合成任务、417 对 Django 已合并 PR、基于 12 个真实 Django helper 的构造任务。",
+        "对比 blind（看不到并发改动）与 informed/comm（收到已完成改动的 oracle 消息）估计协调空间。"
+      ],
+      "results": [
+        "417 对 Django PR 的 834 次运行中，修正评分流程后仅 1 次出现干扰。",
+        "构造的 36 个真实 Django helper 任务中，blind 干扰达 105/108（97%）。",
+        "oracle 消息恢复 89/108（82%），合成任务干扰从 2.50 降至 0.04（98%）。"
+      ],
+      "takeaways": [
+        "干净合并不等于行为正确，评测 agent 并行产出时须在合并代码上跑同一套测试。",
+        "让 agent 获知并发已完成的接口变更可大幅减少失败，但需完整准确的消息。"
+      ],
+      "limitations": "构造任务的高失败率不代表真实开发中的发生频率；通信实验假设消息完整描述最终改动，未测试并行进行中的消息。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Spec2COBOLRot: An Agentic-AI Degradation Loop for Realistic COBOL Corpus Generation",
@@ -1201,7 +1548,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26835"
+    "arxiv_id": "2609.26835",
+    "digest": {
+      "problem": "COBOL 仍广泛部署，但缺乏反映真实生产代码的语料，阻碍现代化方法的严格基准测试。",
+      "method": [
+        "提出 agentic AI 流水线，结合规格驱动生成与迭代退化。",
+        "退化由真实生产代码提取的模式和复杂度目标引导。",
+        "以结构保真度作为现实性度量，评估退化能否达标并保留业务行为。"
+      ],
+      "results": [
+        "在三个不同业务领域的程序上，流水线可靠生成语法有效程序。",
+        "程序结构复杂度向真实水平靠拢。",
+        "但业务行为并非总能按构造保留，独立追求结构指标可能失真。"
+      ],
+      "takeaways": [
+        "生成训练/评测语料时，结构复杂度与业务语义需同时约束。",
+        "仅优化结构指标可能产出不符合真实维护历史的代码。"
+      ],
+      "limitations": "业务行为保留不总能保证；结构指标与业务逻辑脱节会降低现实性；样本仅三个程序。",
+      "basis": "abstract"
+    }
   },
   {
     "title": "WatchPoint: Executable User Feedback for Real-World Agentic Web Development",
@@ -1247,7 +1613,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.26204"
+    "arxiv_id": "2609.26204",
+    "digest": {
+      "problem": "编码 agent 的反馈机制多依赖截图、LLM 打分或自然语言纠正，缺少像开发者那样与运行中应用交互的可执行诊断，导致多文件 Web 项目失败后难以有效重试。",
+      "method": [
+        "WatchPoint 在首次失败后并行启动浏览器 agent 与终端 agent，分别生成并执行 Playwright 脚本和 bash 脚本。",
+        "诊断结果以结构化 JSON CHECK 键值对直接回传编码模型，不做 LLM 二次解释，避免幻觉漂移。",
+        "按 package.json 依赖分类项目，仅在 Standards、UI、State 类项目启用诊断，并采用 warm-start 重试。"
+      ],
+      "results": [
+        "在 Web-Bench 1000 个顺序任务上，WatchPoint 恢复其诊断任务的 57.6%，与人类测试者 54.5% 相当。",
+        "M2.7 + GLM-5 模拟用户在启用类别 P@2 从 21.8% 升至 24.5%（+2.7pp），State 类提升最大（+7.5pp）。",
+        "对已能自我纠错的 GLM-5，加入 GPT-5.4 模拟用户反而使 P@2 从 44.5% 降至 37.7%。"
+      ],
+      "takeaways": [
+        "可执行诊断脚本能替代部分人工交互测试，但反馈质量需与编码模型能力匹配。",
+        "结构化 CHECK 精确但表达力有限，布局类问题可结合自然语言反馈互补。"
+      ],
+      "limitations": "人类对比仅两名研究生、五个纯 HTML/CSS/JS 项目；强模型上的性能下降与运行方差重叠，需更多模型对验证。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Measuring the Checker: Mutation Analysis for GPU-Kernel Benchmark Oracles",
@@ -1297,7 +1682,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "https://huggingface.co/papers/2609.22220",
-    "arxiv_id": "2609.22220"
+    "arxiv_id": "2609.22220",
+    "digest": {
+      "problem": "GPU kernel benchmark 的正确性检查器只用少量随机输入和宽松浮点容差判定，其结论却用于排行榜和 RL 奖励，检查器弱会导致模型学会“通过”而非写对。",
+      "method": [
+        "把 mutation analysis 引入数值型 oracle：124 条规则向 188 个已验证 CUDA 实现注入 10,303 个可编译故障。",
+        "只把有 kill witness 的 7,384 个 mutant 计入分母，并用 NVRTC 把单 mutant 编译从约 200s 降到 84ms。",
+        "用 kill matrix 给任意测试协议打分，并做 set cover 合成最小输入套件、审计已有加固方案。"
+      ],
+      "results": [
+        "官方 KernelBench 检查漏掉 16.9% 有 witness 的故障；precision 类漏 78.6%，synchronization 漏 27.8%，arithmetic 仅漏 8.7%。",
+        "KernelBench-Verified 的 +8.5 分中 +4.0 来自四个隐藏分布、+4.5 来自更紧容差；其常数缩放无法覆盖 shape/indexing 故障。",
+        "set cover 两输入套件达 98.0% 检测（held-out 94.8%），官方五输入为 83.1%；重建 fuzzing 方案误拒正确 kernel 107 次。"
+      ],
+      "takeaways": [
+        "评测 GPU kernel 生成时，应把检查器本身当作被测对象，用故障注入量化其覆盖，而非靠手写几个 bug 验证。",
+        "加严容差往往比增加输入分布更有效，但输入幅度存在合法浮点方差上限，需设 validity gate 避免误拒正确实现。"
+      ],
+      "limitations": "substrate 为 LLM 生成并经自动 gate 验证，非官方参考实现；部分 mutant 无法判定等价或 oracle 盲区，被排除在分母外。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Unity Insight: A Production Code--Asset Index for LLM Coding Agents in Unity Projects",
@@ -1345,7 +1749,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.27585"
+    "arxiv_id": "2609.27585",
+    "digest": {
+      "problem": "LLM coding agent 在 Unity 仓库中无法回答跨文件问题：脚本与 prefab、scene、ScriptableObject 通过 GUID 和 YAML 关联，代码索引和文本搜索看不到这些关系。",
+      "method": [
+        "爬虫解析 C# 源码与序列化资产，解析 GUID↔路径、组件-脚本绑定、嵌套 prefab 链，构建持久只读 SQLite 代码-资产图。",
+        "向 agent 暴露五个类型化查询工具：vfs_ls、vfs_glob、vfs_grep、vfs_read、vfs_refs，支持双向引用遍历。",
+        "索引按需构建、增量刷新、默认关闭、不改动项目文件，并公开已知盲点（如 Resources.Load 动态加载）。"
+      ],
+      "results": [
+        "28 个 Unity 项目问题上，索引臂比 explore 臂少用 53.4% token、51.6% 墙钟时间（p<0.004）。",
+        "逐题中位数比值为 token 0.59、墙钟 0.53；23/28 题 token 更少（p=0.0009）。",
+        "索引臂 375 次调用全部走类型化工具，零回退文件 I/O；explore 臂 509 次文件系统/shell 调用。"
+      ],
+      "takeaways": [
+        "游戏引擎仓库的 agent 工具需索引序列化资产与 GUID 关系，仅靠代码索引和 grep 会漏掉关键事实。",
+        "用持久只读图加类型化查询工具替代手工链式 grep，可显著降低 token 与时间成本。"
+      ],
+      "limitations": "索引是静态快照，不捕获运行时或编辑器状态；字符串式 Resources.Load 等动态加载为已知盲点；实验只报告成本指标，未做机械正确性评分。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Lego-X/LegoFlow-SWE",
@@ -1389,7 +1812,8 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": ""
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "FDE-Bench: Evaluating LLM Agents for Deployment Environment Configuration",
@@ -1434,7 +1858,26 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2609.27571"
+    "arxiv_id": "2609.27571",
+    "digest": {
+      "problem": "仓库级基准只测代码改动，无法衡量 agent 能否把应用代码变成可运行、可连通、可观测的部署系统，部署配置能力缺乏独立评测。",
+      "method": [
+        "构建 FDE-Bench：136 个 Docker/Compose/Kubernetes 任务，分 greenfield 与 diagnose-and-repair 两种模式。",
+        "提交声明式产物后在纯净环境重建重部署，用 build/readiness/behavior/conformance 四层门控二进制检查评分，不用 LLM judge。",
+        "四臂发布门控要求参考解可解，且拒绝 do-nothing、spec-transcription、generic-stub 三类提交。"
+      ],
+      "results": [
+        "七个模型用同一四工具 scaffold，解决率 52.9–75.0%，最高为 Gemini-3.6-Flash 75.0%。",
+        "三个零智能 floor 均未解决任何任务，平均 Deployment Score 至多 0.44。",
+        "readiness 是最大失败阶段，313 个未解决 episode 中占 110 个；repair 组平均解决率比 greenfield 高 30.7 个百分点。"
+      ],
+      "takeaways": [
+        "部署类 agent 评测应基于重建后的真实运行状态，而非仅检查配置文本是否合法。",
+        "readiness 与健康探针语义是当前模型的主要短板，工具链应加强探针与依赖就绪设计。"
+      ],
+      "limitations": "每个模型-任务仅一次 episode，无法估计重复运行方差；对抗攻击仅覆盖作者设计的三种；七个评分行为缺少规格条款。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Recursive self-improvement of AI research agents",
@@ -1481,6 +1924,25 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "https://huggingface.co/papers/2609.26457",
-    "arxiv_id": "2609.26457"
+    "arxiv_id": "2609.26457",
+    "digest": {
+      "problem": "AI研究代理能加速研发，但代理自身的研究效率固定，传统研发投入回报递减，需让代理自我改进以提升研究效率。",
+      "method": [
+        "提出AIDE²双层优化系统：内层代理在AI研发任务上优化代码，外层代理改写内层代理代码。",
+        "用私有held-out评分g(a)选择改写，公开信号与私有评分分离，固定预算防止靠算力取胜。",
+        "内层从AIDE₀出发，外层由生产级AIDE_human驱动，8天自主运行。"
+      ],
+      "results": [
+        "8天运行接受7次改写，incumbent grade从0.703升至0.778，AIDE_human为0.749。",
+        "AIDE₈₅在ALE-Bench、MLE-Bench、WeatherBench 2、FML-Bench四个held-out基准上追平或超过AIDE_human。",
+        "reward hacking率从55%降至32%，低于AIDE_human的39%。"
+      ],
+      "takeaways": [
+        "harness层（搜索、上下文、验证）可被自动搜索优化，瓶颈从专家工程转向算力。",
+        "固定预算下提升优化能力即提升研究效率，且改进可跨任务和领域迁移。"
+      ],
+      "limitations": "双层噪声叠加，单次噪声比较可能让错误改写成为新incumbent；发现代理复杂难解释，部署有摩擦。",
+      "basis": "fulltext"
+    }
   }
 ]

@@ -6,6 +6,7 @@
   data/status.json     数据源健康状态 + 当前生效的更新策略摘要
   data/archive.json    滚动历史库（去重、首次收录时间、跨天窗口）
   data/llm_cache.json  大模型判定缓存（同一条内容只判定一次）
+  data/digests.json    论文解读缓存（每篇只生成一次）
 
 更新策略见 config/update_policy.yaml，数据源见 config/sources.yaml。
 内容没有变化时不会改写任何文件，避免产生无意义的提交。
@@ -35,7 +36,16 @@ from src.feed import (  # noqa: E402
     to_blog_item,
     update_archive,
 )
-from src.llm import PROMPT_VERSION, apply_verdict, judge, log, make_client, prune_cache  # noqa: E402
+from src.llm import (  # noqa: E402
+    DIGEST_PROMPT_VERSION,
+    PROMPT_VERSION,
+    apply_verdict,
+    generate_digests,
+    judge,
+    log,
+    make_client,
+    prune_cache,
+)
 from src.policy import UpdatePolicy, load_policy  # noqa: E402
 from src.sources import FetchOptions, Record, Source, fetch_source, load_sources  # noqa: E402
 
@@ -156,6 +166,37 @@ def fetch_all(sources: list[Source], policy: UpdatePolicy) -> tuple[list[Record]
     return records, reports
 
 
+def run_digests(
+    selected: list[dict[str, Any]],
+    archive_items: dict[str, dict[str, Any]],
+    policy: UpdatePolicy,
+    now: datetime,
+    path: Path,
+) -> tuple[dict[str, dict[str, Any]], dict[str, Any], dict[str, Any]]:
+    """为展示中的论文生成结构化解读。返回 (digests, 新缓存文件, 旧缓存文件)。"""
+    config = policy.llm
+    old_file = read_json(path, {})
+    cache: dict[str, Any] = dict(old_file.get("items", {}))
+    client, reason = make_client(config)
+    digests, report = generate_digests(selected, config, client, cache, now)
+    if client is not None and config.digest_enabled:
+        log(
+            f"论文解读：候选 {report.candidates}，缓存命中 {report.cached}，新生成 {report.generated}"
+            f"（全文 {report.fulltext}），失败 {report.failed}，超出预算 {report.skipped_budget}，token {report.usage or '-'}"
+        )
+        for error in report.errors[:3]:
+            log(f"解读失败：{error}")
+    # 只保留历史库里仍存在的条目
+    kept = {k: v for k, v in cache.items() if k in archive_items}
+    new_file = {
+        "version": 1,
+        "model": config.model,
+        "prompt_version": DIGEST_PROMPT_VERSION,
+        "items": dict(sorted(kept.items())),
+    }
+    return digests, new_file, old_file
+
+
 def main() -> int:
     args = parse_args()
     policy = load_policy()
@@ -198,13 +239,17 @@ def main() -> int:
     ok_sources = {r["id"] for r in reports if r["ok"]}
     archive_items = update_archive(archive_items, fresh, policy, now, ok_sources)
 
-    items = [to_blog_item(e) for e in select_items(archive_items, policy, now)]
+    selected = select_items(archive_items, policy, now)
+    digests_path = data_dir / "digests.json"
+    digests, new_digests, old_digests = run_digests(selected, archive_items, policy, now, digests_path)
+    items = [to_blog_item(e, digests.get(e["key"])) for e in selected]
     previous_items = read_json(out_path, [])
     if not items and isinstance(previous_items, list) and previous_items:
         # 窗口内没有任何条目（例如长时间抓取不到新内容）时保留旧数据，页面会显示“更新滞后”而不是一片空白
         print("展示窗口内没有条目，保留现有 blog.json。", file=sys.stderr)
         items = previous_items
     llm_summary["coverage"] = sum(1 for i in items if i.get("relevance_source") == "llm")
+    llm_summary["digests"] = sum(1 for i in items if i.get("digest"))
     status = build_status(policy, reports, len(archive_items), items, llm_summary)
 
     if args.dry_run:
@@ -217,6 +262,7 @@ def main() -> int:
         previous_items == items
         and old_archive == new_archive
         and old_cache == new_cache
+        and old_digests == new_digests
         and {k: v for k, v in old_status.items() if k != "generated_at"} == status
     )
     if unchanged:
@@ -227,6 +273,7 @@ def main() -> int:
     out_path.write_text(dump_json(items), encoding="utf-8")
     archive_path.write_text(dump_archive(new_archive), encoding="utf-8")
     cache_path.write_text(dump_archive(new_cache), encoding="utf-8")
+    digests_path.write_text(dump_archive(new_digests), encoding="utf-8")
     status_path.write_text(dump_json({"generated_at": iso(now), **status}), encoding="utf-8")
     ok = sum(1 for r in reports if r["ok"])
     print(f"生成 {len(items)} 条 → {out_path}（历史库 {len(archive_items)} 条，数据源 {ok}/{len(reports)} 正常）", file=sys.stderr)

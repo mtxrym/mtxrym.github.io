@@ -84,6 +84,23 @@ class FeedLogicTest {
     }
 
     @Test
+    fun parsesDigest() {
+        val item = json.decodeFromString<FeedItem>(
+            """{"title": "X", "digest": {"problem": "数据泄漏问题", "method": ["方法A", "方法B"], "results": ["Pass@1 下降 6%"],
+                "takeaways": [], "limitations": "", "basis": "fulltext"}}""",
+        )
+        val digest = item.digest!!
+        assertTrue(digest.isValid)
+        assertEquals("基于全文", digest.basisLabel)
+        assertEquals(listOf("方法A", "方法B"), digest.method)
+        // 解读内容可被搜索
+        assertEquals(1, applyFilter(listOf(item), FeedFilter(query = "数据泄漏"), emptySet(), sourceLabels(null)).size)
+        // digest 为 null 或缺字段时不报错
+        assertEquals(null, json.decodeFromString<FeedItem>("""{"title": "Y", "digest": null}""").digest)
+        assertEquals(false, json.decodeFromString<FeedItem>("""{"title": "Z", "digest": {}}""").digest!!.isValid)
+    }
+
+    @Test
     fun legacyFormatFallsBackToSubTitleAndRfcDates() {
         val items = parse(legacyFormat)
         assertEquals(19.1, items[0].effectiveScore, 0.001)
