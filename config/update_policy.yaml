@@ -1,0 +1,54 @@
+# ==========================================================================
+# 数据更新策略
+#
+# "抓多少、留多久、选哪些、什么时候算异常"都在这里维护，改完不用动代码，
+# 下一次定时任务就会按新策略生成 blog.json / data/status.json。
+# 网页和 Android App 都会读取 data/status.json 里的策略摘要并展示出来。
+#
+# 唯一的例外是抓取频率：GitHub 只认 .github/workflows/update-content.yml
+# 里的 cron。改频率时两处要一起改，tests/test_policy.py 会检查两者是否一致。
+# ==========================================================================
+
+schedule:
+  # 每天 4 次，UTC 05:30 / 11:30 / 17:30 / 23:30（北京时间 13:30 / 19:30 / 01:30 / 07:30）。
+  # - arXiv 每个工作日在美东午夜前后刷新 RSS（UTC 04:00–05:00），05:30 这一次保证当天能抓到；
+  # - Hugging Face Daily Papers 全天都有新论文和点赞，其余三次用来跟进热度；
+  # - 避开整点：GitHub 定时任务在整点最拥挤，容易延迟甚至被跳过。
+  cron: "30 5,11,17,23 * * *"
+  description: 每天 4 次（北京时间 07:30 / 13:30 / 19:30 / 01:30）
+
+fetch:
+  # 每个源最多处理多少条。arXiv cs.AI 单日可达 300+ 条，必须全部读完再按相关性筛选，
+  # 不能像旧版那样只取前 30 条。
+  per_source_limit: 500
+  timeout_seconds: 20
+  retries: 2
+  # arXiv 的 replace / replace-cross 是旧论文发了新版本，不算新内容
+  skip_arxiv_announce_types: [replace, replace-cross]
+
+selection:
+  # 相关性（0–100）低于该值的条目不进入历史库，也不会展示
+  min_relevance: 35
+  # 首页只展示最近 N 天内首次收录的条目（滚动窗口，周末 arXiv 停更时页面也不会空）
+  window_days: 7
+  # 首页最多展示条数，以及其中数据集最多占几条，避免挤占论文
+  max_items: 30
+  max_datasets: 6
+
+archive:
+  # 历史库（data/archive.json）保留天数：用于跨天去重、记录首次收录时间、维持滚动窗口
+  retention_days: 14
+
+health:
+  # 最新条目超过这么多小时仍没有更新 → 页面和 App 显示"更新滞后"。
+  # arXiv 周五、周六不发布，周末会自然空档约 72 小时，所以留到 96 小时。
+  stale_after_hours: 96
+
+scoring:
+  # 综合得分 = 各分项（0–100）加权求和，权重会自动归一化
+  weights:
+    relevance: 0.5    # 与 AI 编程的相关程度（关键词双轴模型：AI 信号 × 代码信号）
+    popularity: 0.2   # 社区热度（HF 点赞、GitHub star、数据集 likes）
+    freshness: 0.2    # 新鲜度，按发布天数指数衰减
+    impact: 0.1       # 影响力信号（开源代码、新 benchmark、SOTA 结果）
+  freshness_half_life_days: 3

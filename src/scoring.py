@@ -1,13 +1,21 @@
-"""AI Coding 重要性评分。"""
+"""AI Coding 重要性评分。
+
+综合得分（0–100）= 相关性 / 热度 / 新鲜度 / 影响力 四个分项（各 0–100）的加权和，
+权重和新鲜度半衰期来自 config/update_policy.yaml。
+"""
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import re
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from math import exp
-from typing import Iterable
+from math import log10
+from typing import Iterable, Mapping
 
-from src.relevance import keyword_relevance
+from src.relevance import RelevanceResult, display_keywords, keyword_relevance
+
+DEFAULT_WEIGHTS: dict[str, float] = {"relevance": 0.5, "popularity": 0.2, "freshness": 0.2, "impact": 0.1}
+DEFAULT_HALF_LIFE_DAYS = 3.0
 
 
 @dataclass(slots=True)
@@ -18,12 +26,15 @@ class Item:
     summary: str = ""
     abstract: str = ""
     published_at: datetime | None = None
-    stars: int = 0
-    upvotes: int = 0
+    stars: int = 0  # GitHub star
+    upvotes: int = 0  # HF Daily Papers 点赞
+    likes: int = 0  # HF 数据集 likes
     trending_rank: int | None = None
     benchmark_improvement: bool = False
     open_source_code: bool = False
     reproducible_experiment: bool = False
+    prefiltered: bool = False
+    code_url: str = ""
 
 
 @dataclass(slots=True)
@@ -34,45 +45,98 @@ class ScoreBreakdown:
     impact_score: float
     importance_score: float
     why_it_matters: str
+    keywords: list[str] = field(default_factory=list)
+    signals: list[str] = field(default_factory=list)
+
+
+_CODE_RELEASE = re.compile(
+    r"github\.com/|gitlab\.com/|huggingface\.co/|"
+    r"code\s+(?:and\s+\w+\s+)?(?:is|are|will\s+be)\s+(?:publicly\s+|made\s+|openly\s+)?(?:available|released)|"
+    r"\bopen[- ]source[sd]?\b|we\s+(?:release|open-source|publicly\s+release)",
+    re.IGNORECASE,
+)
+_NEW_BENCHMARK = re.compile(
+    r"\b(?:we|this\s+paper)\s+(?:introduce|present|propose|construct|build|release)s?\b[^.]{0,80}\b(?:benchmark|dataset|suite|leaderboard)",
+    re.IGNORECASE,
+)
+_SOTA = re.compile(r"state[- ]of[- ]the[- ]art|\boutperform|\bsurpass|\bnew\s+sota\b", re.IGNORECASE)
 
 
 def _days_since(published_at: datetime | None, now: datetime) -> float:
+    """按 UTC 日历天计算，保证同一天内多次运行得分一致，避免数据文件无意义地变化。"""
     if not published_at:
         return 180.0
     if published_at.tzinfo is None:
         published_at = published_at.replace(tzinfo=timezone.utc)
-    return max((now - published_at).total_seconds() / 86400.0, 0.0)
+    delta = now.astimezone(timezone.utc).date() - published_at.astimezone(timezone.utc).date()
+    return float(max(delta.days, 0))
 
 
-def compute_time_decay_score(published_at: datetime | None, now: datetime | None = None) -> float:
+def compute_time_decay_score(
+    published_at: datetime | None,
+    now: datetime | None = None,
+    half_life_days: float = DEFAULT_HALF_LIFE_DAYS,
+) -> float:
     now = now or datetime.now(timezone.utc)
-    days = _days_since(published_at, now)
-    return 100.0 * exp(-days / 45.0)
+    return 100.0 * 0.5 ** (_days_since(published_at, now) / half_life_days)
 
 
-def compute_popularity_score(stars: int = 0, upvotes: int = 0, trending_rank: int | None = None) -> float:
-    trending_boost = 0.0 if trending_rank is None else max(0.0, 20.0 - min(trending_rank, 20))
-    return min(100.0, stars * 0.15 + upvotes * 0.2 + trending_boost)
+def _log_scale(value: int, per_decade: float) -> float:
+    return min(100.0, per_decade * log10(1 + max(value, 0)))
 
 
-def compute_relevance_score(title: str = "", abstract: str = "", summary: str = "") -> float:
-    result = keyword_relevance(title=title, abstract=abstract, summary=summary)
-    semantic_bonus = 8.0 if any(token in (abstract + summary).lower() for token in ["agent", "repository", "benchmark", "code"]) else 0.0
-    return min(100.0, result.score * 12.0 + semantic_bonus)
+def compute_popularity_score(
+    stars: int = 0,
+    upvotes: int = 0,
+    trending_rank: int | None = None,
+    likes: int = 0,
+) -> float:
+    """对数刻度，取各项热度信号中最强的一个。
+
+    HF 点赞：10 → 31，100 → 60，1000 → 90；GitHub star / 数据集 likes：100 → 40，1000 → 60。
+    """
+    trending_boost = 0.0 if trending_rank is None else max(0.0, 40.0 - 2.0 * min(trending_rank, 20))
+    return max(
+        _log_scale(upvotes, 30.0),
+        _log_scale(stars, 20.0),
+        _log_scale(likes, 20.0),
+        trending_boost,
+    )
+
+
+def compute_relevance_score(title: str = "", abstract: str = "", summary: str = "", prefiltered: bool = False) -> float:
+    return keyword_relevance(title=title, abstract=abstract, summary=summary, prefiltered=prefiltered).score
+
+
+def detect_impact_signals(item: Item) -> list[str]:
+    text = f"{item.title}\n{item.abstract}\n{item.summary}"
+    signals: list[str] = []
+    if item.open_source_code or item.code_url or _CODE_RELEASE.search(text):
+        signals.append("open_source_code")
+    if item.benchmark_improvement or _NEW_BENCHMARK.search(text):
+        signals.append("new_benchmark")
+    if _SOTA.search(text):
+        signals.append("sota")
+    if item.reproducible_experiment:
+        signals.append("reproducible")
+    return signals
 
 
 def compute_impact_score(
     benchmark_improvement: bool,
     open_source_code: bool,
     reproducible_experiment: bool,
+    sota: bool = False,
 ) -> float:
     score = 0.0
-    if benchmark_improvement:
-        score += 45.0
     if open_source_code:
+        score += 40.0
+    if benchmark_improvement:
         score += 35.0
+    if sota:
+        score += 15.0
     if reproducible_experiment:
-        score += 20.0
+        score += 10.0
     return min(100.0, score)
 
 
@@ -80,46 +144,69 @@ def why_it_matters(item: Item, breakdown: ScoreBreakdown) -> str:
     reasons: list[str] = []
     if breakdown.relevance_score >= 60:
         reasons.append("高度聚焦 AI Coding 核心问题")
-    if item.benchmark_improvement:
-        reasons.append("包含 benchmark 提升信号")
-    if item.open_source_code:
+    if "new_benchmark" in breakdown.signals:
+        reasons.append("提出新的 benchmark / 数据集")
+    if "open_source_code" in breakdown.signals:
         reasons.append("提供开源代码便于落地")
-    if item.reproducible_experiment:
-        reasons.append("实验可复现便于验证")
+    if "sota" in breakdown.signals:
+        reasons.append("报告了领先结果")
+    if breakdown.popularity_score >= 50:
+        reasons.append("社区关注度高")
     if breakdown.time_decay_score >= 70:
         reasons.append("发布较新")
     if not reasons:
-        reasons.append("在代码智能方向具备稳定参考价值")
+        reasons.append("在代码智能方向具备参考价值")
     return "；".join(reasons) + "。"
 
 
-def score_item(item: Item, now: datetime | None = None) -> ScoreBreakdown:
-    time_score = compute_time_decay_score(item.published_at, now=now)
-    pop_score = compute_popularity_score(item.stars, item.upvotes, item.trending_rank)
-    rel_score = compute_relevance_score(item.title, item.abstract, item.summary)
+def _normalize_weights(weights: Mapping[str, float] | None) -> dict[str, float]:
+    merged = {**DEFAULT_WEIGHTS, **(weights or {})}
+    total = sum(max(v, 0.0) for v in merged.values()) or 1.0
+    return {k: max(v, 0.0) / total for k, v in merged.items()}
+
+
+def score_item(
+    item: Item,
+    now: datetime | None = None,
+    *,
+    weights: Mapping[str, float] | None = None,
+    half_life_days: float = DEFAULT_HALF_LIFE_DAYS,
+    relevance: RelevanceResult | None = None,
+) -> ScoreBreakdown:
+    w = _normalize_weights(weights)
+    relevance = relevance or keyword_relevance(
+        title=item.title, abstract=item.abstract, summary=item.summary, prefiltered=item.prefiltered
+    )
+    signals = detect_impact_signals(item)
+
+    time_score = compute_time_decay_score(item.published_at, now=now, half_life_days=half_life_days)
+    pop_score = compute_popularity_score(item.stars, item.upvotes, item.trending_rank, item.likes)
     impact_score = compute_impact_score(
-        benchmark_improvement=item.benchmark_improvement,
-        open_source_code=item.open_source_code,
-        reproducible_experiment=item.reproducible_experiment,
+        benchmark_improvement="new_benchmark" in signals,
+        open_source_code="open_source_code" in signals,
+        reproducible_experiment="reproducible" in signals,
+        sota="sota" in signals,
     )
 
     importance = (
-        time_score * 0.2
-        + pop_score * 0.25
-        + rel_score * 0.35
-        + impact_score * 0.2
+        relevance.score * w["relevance"]
+        + pop_score * w["popularity"]
+        + time_score * w["freshness"]
+        + impact_score * w["impact"]
     )
 
-    placeholder = ScoreBreakdown(
-        time_decay_score=time_score,
-        popularity_score=pop_score,
-        relevance_score=rel_score,
-        impact_score=impact_score,
-        importance_score=importance,
+    breakdown = ScoreBreakdown(
+        time_decay_score=round(time_score, 1),
+        popularity_score=round(pop_score, 1),
+        relevance_score=relevance.score,
+        impact_score=round(impact_score, 1),
+        importance_score=round(importance, 1),
         why_it_matters="",
+        keywords=display_keywords(relevance),
+        signals=signals,
     )
-    placeholder.why_it_matters = why_it_matters(item, placeholder)
-    return placeholder
+    breakdown.why_it_matters = why_it_matters(item, breakdown)
+    return breakdown
 
 
 def top_n(items: Iterable[Item], n: int = 10, now: datetime | None = None) -> list[tuple[Item, ScoreBreakdown]]:
@@ -140,7 +227,7 @@ def render_markdown_report(items: Iterable[Item], n: int = 10, now: datetime | N
             lines.append("")
             return "\n".join(lines)
         for item, score in rows:
-            lines.append(f"- **{item.title}** (score={score.importance_score:.2f})")
+            lines.append(f"- **{item.title}** (score={score.importance_score:.1f})")
             if item.url:
                 lines.append(f"  - link: {item.url}")
             lines.append(f"  - why_it_matters: {score.why_it_matters}")

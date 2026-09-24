@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-09-24T04:49:30Z",
+  "policy": {
+    "schedule": {
+      "cron": "30 5,11,17,23 * * *",
+      "description": "每天 4 次（北京时间 07:30 / 13:30 / 19:30 / 01:30）"
+    },
+    "window_days": 7,
+    "max_items": 30,
+    "max_datasets": 6,
+    "min_relevance": 35.0,
+    "retention_days": 14,
+    "stale_after_hours": 96,
+    "weights": {
+      "relevance": 0.5,
+      "popularity": 0.2,
+      "freshness": 0.2,
+      "impact": 0.1
+    }
+  },
+  "sources": [
+    {
+      "id": "arxiv_cs_se",
+      "label": "arXiv · cs.SE",
+      "category": "papers",
+      "type": "arxiv_rss",
+      "ok": true,
+      "fetched": 35,
+      "relevant": 9,
+      "error": null
+    },
+    {
+      "id": "arxiv_cs_cl",
+      "label": "arXiv · cs.CL",
+      "category": "papers",
+      "type": "arxiv_rss",
+      "ok": true,
+      "fetched": 105,
+      "relevant": 2,
+      "error": null
+    },
+    {
+      "id": "arxiv_cs_ai",
+      "label": "arXiv · cs.AI",
+      "category": "papers",
+      "type": "arxiv_rss",
+      "ok": true,
+      "fetched": 240,
+      "relevant": 9,
+      "error": null
+    },
+    {
+      "id": "arxiv_cs_lg",
+      "label": "arXiv · cs.LG",
+      "category": "papers",
+      "type": "arxiv_rss",
+      "ok": true,
+      "fetched": 209,
+      "relevant": 2,
+      "error": null
+    },
+    {
+      "id": "hf_daily_papers",
+      "label": "HF Daily Papers",
+      "category": "papers",
+      "type": "hf_daily_papers",
+      "ok": true,
+      "fetched": 100,
+      "relevant": 5,
+      "error": null
+    },
+    {
+      "id": "hf_datasets_code",
+      "label": "HF 数据集 · code",
+      "category": "datasets",
+      "type": "hf_datasets",
+      "ok": true,
+      "fetched": 40,
+      "relevant": 18,
+      "error": null
+    },
+    {
+      "id": "hf_datasets_swe",
+      "label": "HF 数据集 · SWE",
+      "category": "datasets",
+      "type": "hf_datasets",
+      "ok": true,
+      "fetched": 40,
+      "relevant": 15,
+      "error": null
+    }
+  ],
+  "totals": {
+    "archive": 58,
+    "displayed": 30,
+    "sources_ok": 7,
+    "sources_total": 7
+  }
+}
