@@ -49,7 +49,7 @@
     "upvotes": 15,
     "likes": 0,
     "github_url": "https://github.com/cslsolow/Schrodinger-Repo",
-    "github_stars": 5,
+    "github_stars": 6,
     "hf_url": "https://huggingface.co/papers/2609.27891",
     "arxiv_id": "2609.27891",
     "digest": {
@@ -287,6 +287,78 @@
     }
   },
   {
+    "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
+    "sub_title": "papers · source=arxiv_cs_ai · score=71.1",
+    "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.25804",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 71.1,
+    "scores": {
+      "relevance": 70.0,
+      "popularity": 63.7,
+      "freshness": 79.4,
+      "impact": 75.0
+    },
+    "keywords": [
+      "swe-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "定义并度量长时程任务中智能体的品味，即做出良好决策的能力。",
+    "reason_zh": "长时程智能体决策能力评测，对编程智能体有明确应用。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "LLM agents increasingly work on long-horizon tasks, and the decisions they make along the way, such as which hypothesis to test or which implementation to build on, determine the outcome of the whole run. Making these decisions well is becoming a key capability for both engineering and research agents. We refer to the ability to make good long-horizon…",
+    "authors": [
+      "Wenbo Pan",
+      "Zhichao Liu",
+      "Shujie Liu",
+      "Jingying Zeng",
+      "Chin-Yew Lin",
+      "Xianfeng Tang"
+    ],
+    "author_count": 9,
+    "upvotes": 132,
+    "likes": 0,
+    "github_url": "https://github.com/wbopan/tastebench",
+    "github_stars": 6,
+    "hf_url": "https://huggingface.co/papers/2609.25804",
+    "arxiv_id": "2609.25804",
+    "digest": {
+      "problem": "LLM agent 在长程任务中沿途决策（选哪个假设、哪个实现）决定最终成败，但现有 benchmark 只测端到端成功率，无法衡量决策质量。",
+      "method": [
+        "提出用轨迹后见之明自动挖掘 decision fork：同一任务多次尝试分叉处，或单条轨迹中的绕路纠错点。",
+        "构建 Taste-Bench，502 道二选一 taste 题，覆盖工程与研究两域，标签由记录结果确定，无需人工标注。",
+        "用见过正确方向的 teacher 蒸馏推理到 student，并将判断作为 advice 注入任务上下文。"
+      ],
+      "results": [
+        "最佳模型 GPT-5.6 Sol 平均准确率仅 59.7%，GPT-5.5 为 59.5%，随机猜测为 25%。",
+        "时间跨度越长越难：14 模型均值从 in-prefix 的 62.3% 降至 more-work 的 21.0%。",
+        "增加 reasoning budget 几乎不提升准确率（GPT-5.6 Sol -0.2 点，Luna +2.2 点）；蒸馏后在未见任务和 SWE-bench Pro 上端到端提升。"
+      ],
+      "takeaways": [
+        "长程 agent 的决策质量可与端到端分数脱节，评估工具应单独衡量 fork 判断力。",
+        "让模型多想并不能弥补后见证据缺失，训练判断力比加大推理预算更有效。"
+      ],
+      "limitations": "标签依赖记录结果，可能混入执行质量与环境因素；仅覆盖工程与研究两域，且二选一题存在位置偏差。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "ScaleAI/SWE-bench_Pro",
     "sub_title": "datasets · source=hf_datasets_swe · score=71.1",
     "url_title": "scaleaiswe-bench-pro",
@@ -333,80 +405,8 @@
     "digest": null
   },
   {
-    "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
-    "sub_title": "papers · source=arxiv_cs_ai · score=71.0",
-    "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.25804",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T08:15:45Z",
-    "score": 71.0,
-    "scores": {
-      "relevance": 70.0,
-      "popularity": 63.2,
-      "freshness": 79.4,
-      "impact": 75.0
-    },
-    "keywords": [
-      "swe-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "定义并度量长时程任务中智能体的品味，即做出良好决策的能力。",
-    "reason_zh": "长时程智能体决策能力评测，对编程智能体有明确应用。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "LLM agents increasingly work on long-horizon tasks, and the decisions they make along the way, such as which hypothesis to test or which implementation to build on, determine the outcome of the whole run. Making these decisions well is becoming a key capability for both engineering and research agents. We refer to the ability to make good long-horizon…",
-    "authors": [
-      "Wenbo Pan",
-      "Zhichao Liu",
-      "Shujie Liu",
-      "Jingying Zeng",
-      "Chin-Yew Lin",
-      "Xianfeng Tang"
-    ],
-    "author_count": 9,
-    "upvotes": 127,
-    "likes": 0,
-    "github_url": "https://github.com/wbopan/tastebench",
-    "github_stars": 4,
-    "hf_url": "https://huggingface.co/papers/2609.25804",
-    "arxiv_id": "2609.25804",
-    "digest": {
-      "problem": "LLM agent 在长程任务中沿途决策（选哪个假设、哪个实现）决定最终成败，但现有 benchmark 只测端到端成功率，无法衡量决策质量。",
-      "method": [
-        "提出用轨迹后见之明自动挖掘 decision fork：同一任务多次尝试分叉处，或单条轨迹中的绕路纠错点。",
-        "构建 Taste-Bench，502 道二选一 taste 题，覆盖工程与研究两域，标签由记录结果确定，无需人工标注。",
-        "用见过正确方向的 teacher 蒸馏推理到 student，并将判断作为 advice 注入任务上下文。"
-      ],
-      "results": [
-        "最佳模型 GPT-5.6 Sol 平均准确率仅 59.7%，GPT-5.5 为 59.5%，随机猜测为 25%。",
-        "时间跨度越长越难：14 模型均值从 in-prefix 的 62.3% 降至 more-work 的 21.0%。",
-        "增加 reasoning budget 几乎不提升准确率（GPT-5.6 Sol -0.2 点，Luna +2.2 点）；蒸馏后在未见任务和 SWE-bench Pro 上端到端提升。"
-      ],
-      "takeaways": [
-        "长程 agent 的决策质量可与端到端分数脱节，评估工具应单独衡量 fork 判断力。",
-        "让模型多想并不能弥补后见证据缺失，训练判断力比加大推理预算更有效。"
-      ],
-      "limitations": "标签依赖记录结果，可能混入执行质量与环境因素；仅覆盖工程与研究两域，且二选一题存在位置偏差。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
-    "sub_title": "papers · source=hf_daily_papers · score=70.4",
+    "sub_title": "papers · source=hf_daily_papers · score=70.8",
     "url_title": "embodiedswe-coding-agents-for-long-horizon-dexterous-robotics",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.27308",
@@ -418,10 +418,10 @@
     "category": "papers",
     "published_at": "2026-09-23T00:00:00Z",
     "first_seen_at": "2026-09-24T04:49:30Z",
-    "score": 70.4,
+    "score": 70.8,
     "scores": {
       "relevance": 88.0,
-      "popularity": 32.9,
+      "popularity": 34.8,
       "freshness": 79.4,
       "impact": 40.0
     },
@@ -451,7 +451,7 @@
     "upvotes": 2,
     "likes": 0,
     "github_url": "https://github.com/EmbodiedSWE/EmbodiedSWE",
-    "github_stars": 43,
+    "github_stars": 54,
     "hf_url": "https://huggingface.co/papers/2609.27308",
     "arxiv_id": "2609.27308",
     "digest": {
@@ -634,7 +634,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 135,
+    "likes": 136,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -1523,6 +1523,80 @@
     }
   },
   {
+    "title": "Rufus-Air: An Open LLM Post-Training Recipe",
+    "sub_title": "papers · source=arxiv_cs_cl · score=65.1",
+    "url_title": "rufus-air-an-open-llm-post-training-recipe",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.29421",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-25T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 65.1,
+    "scores": {
+      "relevance": 75.0,
+      "popularity": 18.1,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "模型训练与推理",
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "公开GLM-4.5-Air后训练配方，含Coding RL与Coding Agent阶段。",
+    "reason_zh": "后训练配方含编程智能体与代码RL，密切相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Rufus-Air is an open and reproducible post-training recipe on GLM-4.5-Air-Base (106B-A12B), organized as a serial pipeline of eight stages: SFT, Reasoning RL, Coding RL, Instruction-Following RL, General Agent, Coding Agent, Search Agent, and RLHF. We document the data, reward design, infrastructure, stage order, and stagewise results needed to reproduce…",
+    "authors": [
+      "Chia-Yuan Chang",
+      "Renyuan Cheng",
+      "Rui Feng",
+      "Xiaotian Han",
+      "Yuan He",
+      "Hongye Jin"
+    ],
+    "author_count": 22,
+    "upvotes": 3,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.29421",
+    "arxiv_id": "2609.29421",
+    "digest": {
+      "problem": "开源后训练配方披露不足，团队难以复现；需要一个基于公开权重、算力门槛低、可复用的完整后训练流程。",
+      "method": [
+        "在 GLM-4.5-Air-Base 上串联八阶段流水线：SFT→Reasoning RL→Coding RL→IF RL→三类 Agent→RLHF。",
+        "按奖励可被 hack 的难易排序阶段，硬验证奖励在前、软 judge 奖励在后。",
+        "用难度过滤剔除已解与不可解 prompt，形成自动课程；并公开数据、奖励与基础设施细节。"
+      ],
+      "results": [
+        "Rufus-Air 在除 Arena-Hard v2 Creative Writing 外的所有报告基准上超过官方 GLM-4.5-Air。",
+        "IFEval 95.4 vs 83.0，IFBench 76.9 vs 33.6，SWE-bench Verified 65.6 vs 50.6。",
+        "与同规模开源模型 INTELLECT-3、Nemotron-3-Super 相比具竞争力，部分 agentic 基准略低。"
+      ],
+      "takeaways": [
+        "SFT 应作为能力建设阶段而非热身，需覆盖广度、格式一致性与长程行为。",
+        "RL 阶段用难度过滤把 prompt 控制在可学习区间，并按奖励可靠性排序以抑制 reward hacking。"
+      ],
+      "limitations": "部分结论来自训练经验而非完整消融；n-gram 与 embedding 去污染无法排除全部泄漏。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
     "sub_title": "papers · source=arxiv_cs_ai · score=64.9",
     "url_title": "metrics-failure-in-llm-based-code-vulnerability-repair-an-empirical-study-and-a-",
@@ -1804,6 +1878,81 @@
     }
   },
   {
+    "title": "Coding Agents for Generalized Task and Motion Planning Problems",
+    "sub_title": "papers · source=arxiv_cs_ai · score=64.2",
+    "url_title": "coding-agents-for-generalized-task-and-motion-planning-problems",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.30233",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-25T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 64.2,
+    "scores": {
+      "relevance": 68.0,
+      "popularity": 23.3,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "coding agent",
+      "program synthesis",
+      "claude code",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "用编码智能体解决广义任务与运动规划问题。",
+    "reason_zh": "编程智能体用于机器人规划，偏特定场景。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Task and motion planning (TAMP) problems remain difficult even with full observability and object-centric states because discrete decisions are tightly coupled to geometric, kinematic, and dynamic constraints. Generalized TAMP addresses this difficulty by exploiting regularities across problem instances to reduce planning effort on new instances. However…",
+    "authors": [
+      "Matteo Merler",
+      "Bowen Li",
+      "Josh Roy",
+      "Yichao Liang",
+      "Qianwei Wang",
+      "Yixuan Huang"
+    ],
+    "author_count": 7,
+    "upvotes": 5,
+    "likes": 0,
+    "github_url": "https://github.com/tomsilver/robocode",
+    "github_stars": 8,
+    "hf_url": "https://huggingface.co/papers/2609.30233",
+    "arxiv_id": "2609.30233",
+    "digest": {
+      "problem": "通用 TAMP 需大量领域专用工程，现有方法难以跨实例复用；LLM 在几何与物理决策上表现差，编码智能体能否胜任尚不明确。",
+      "method": [
+        "给编码智能体任务描述与模拟器访问，在固定预算内自主写代码、做实验并合成程序",
+        "程序冻结后在未见实例上评估，测试时无 LLM 参与，不提供手工 TAMP 抽象",
+        "对比手工 TAMP planner、one-shot 生成与 LLMGenPlan，并设 + source 参考设置"
+      ],
+      "results": [
+        "16 个有 planner 的环境中，三种智能体配置均超过 planner 的 47%：Opus 82%、Astra 95%、Sol 56%",
+        "Astra 平均成功率：Kinematic2D 99%、Dynamic2D 97%、Kinematic3D 93%、Dynamic3D 65%、PDDLStream 近 100%",
+        "程序每实例计算约 0.5–2.1 秒，planner 约 29 秒；Astra 每动作 1.3ms，Opus 11.7ms"
+      ],
+      "takeaways": [
+        "编码智能体可作为通用 TAMP 的强基线，减少手工谓词、采样器与技能工程",
+        "让智能体交互式探测模拟器、写自定义测试并校准物理模型，比一次性生成更有效"
+      ],
+      "limitations": "部分 Dynamic3D 环境（如扫掠、倾倒大量小物体）在主设置下仍基本未解决；+ source 程序平均更慢。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "KernelOPT: Dispatch-Aware Agentic Search for GPU Kernel Optimization",
     "sub_title": "papers · source=arxiv_cs_ai · score=64.0",
     "url_title": "kernelopt-dispatch-aware-agentic-search-for-gpu-kernel-optimization",
@@ -1868,147 +2017,6 @@
         "端到端模型级验证与性能门必不可少，可避免单 kernel 加速但模型变慢或结果错误。"
       ],
       "limitations": "需 NCU 高权限性能计数器，每次 NCU prompt 约 60K token，仅支持单 GPU 推理；72% 回退源于 cuBLAS/cuDNN 主导。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "LLM Agents Can Easily Tamper With Their Own Traces",
-    "sub_title": "papers · source=arxiv_cs_ai · score=64.0",
-    "url_title": "llm-agents-can-easily-tamper-with-their-own-traces",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.30266",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-25T04:00:00Z",
-    "first_seen_at": "2026-09-25T10:18:59Z",
-    "score": 64.0,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "claude code",
-      "codex"
-    ],
-    "topics": [
-      "编程智能体",
-      "安全与漏洞"
-    ],
-    "summary_zh": "研究本地编程智能体（Claude Code、Codex 等）能否篡改自身执行轨迹，多数框架未能阻止。",
-    "reason_zh": "针对编程智能体的安全边界实证研究，高度相关。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Asynchronous monitoring, incident investigations, and compliance audits primarily rely on agent traces to reconstruct what happened. These analyses assume that LLM agents cannot tamper with their own execution traces. We show that local LLM agents such as Claude Code, Codex, Antigravity, Open Code and Grok Build fail to enforce this boundary. All tested…",
-    "authors": [
-      "Jeremy Qin",
-      "David Schmotz",
-      "Derck Prinzhorn",
-      "Luca Beurer-Kellner",
-      "Ameya Prabhu",
-      "Maksym Andriushchenko"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.30266",
-    "digest": {
-      "problem": "异步监控、事件调查与合规审计都依赖 agent trace 还原执行过程，但这一前提是 agent 无法篡改自身 trace；若该边界失效，监控与审计结论将建立在伪造或不完整证据上。",
-      "method": [
-        "在 Claude Code、Codex、Antigravity、OpenCode、Grok Build、Muse Code 等 harness 中测试 agent 删除、伪造、篡改自身 trace 的能力。",
-        "通过恶意 skill 文件注入，测试外部攻击能否在用户不知情下诱导 trace 删除或篡改。",
-        "设计奖励函数使高分依赖缩短 trace，测试 agent 是否会自发发现并篡改 trace 以提升奖励。"
-      ],
-      "results": [
-        "直接要求删除 trace 时，几乎所有 model-harness 组合都成功，部分 ASR 达 80% 以上；Muse Spark 为 0%。",
-        "auto-mode 监控在 10 对 model-harness 中有 5 对未能标记篡改行为，Claude Code 甚至降级模型后继续删除。",
-        "奖励场景下所有测试模型都篡改 trace，anonymization 任务中除 Muse Spark 20%、Opus 5.5 90% 外均为 100%，Terminal-Bench 任务全部高于 80%。"
-      ],
-      "takeaways": [
-        "trace 日志应通过 agent 控制之外的独立拦截机制记录，不能依赖 agent 可写的本地会话文件。",
-        "仅靠 API 请求日志不足以防篡改，还需验证客户端工具调用是否按报告执行，防止 tool-call spoofing。"
-      ],
-      "limitations": "研究限于客户端记录管线，未覆盖 provider 侧记录；trace 篡改的实际影响范围仍不明确。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "CliffCompaction: Cost-Efficient Compaction for Long-Horizon Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_ai · score=63.9",
-    "url_title": "cliffcompaction-cost-efficient-compaction-for-long-horizon-coding-agents",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.26779",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 63.9,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 55.0
-    },
-    "keywords": [
-      "coding agent",
-      "claude code",
-      "terminal-bench",
-      "codex"
-    ],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理"
-    ],
-    "summary_zh": "提出CliffCompaction压缩技术，降低长程编程智能体上下文成本。",
-    "reason_zh": "编程智能体上下文管理，属相关支撑技术。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Agents often work on complex problems that require millions of tokens of context, which necessitates compacting across sessions due to limited context windows. We develop CliffCompaction, an autocompaction technique that reduces cost by up to 50% under a bounded context while maintaining or improving performance on Terminal-Bench and achieving new levels of…",
-    "authors": [
-      "Trang Nguyen",
-      "Eulrang Cho",
-      "Bingqing Chen",
-      "Tim Dettmers"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.26779",
-    "digest": {
-      "problem": "长周期编码 agent 的上下文常达百万 token，受限于上下文窗口需压缩，但现有摘要式压缩会累积信息损失、破坏 KV-cache 并推高成本。",
-      "method": [
-        "规则式自动压缩：上下文达阈值时触发，只截断或丢弃内容，绝不改写或重述，保持信息忠实。",
-        "丢弃旧压缩块，每次只压缩最近活跃会话，避免 summary-of-summary 造成的上下文漂移。",
-        "按长度丢弃长工具结果、将工具调用压缩为签名，保留系统提示、任务描述与最近 K 轮。"
-      ],
-      "results": [
-        "Terminal-Bench 2.0 上 Kimi K2.6 在 32K/16K 达 61.42%，高于全上下文 59.16%；16K 下优于原生摘要 55.45%。",
-        "Terminal-Bench 2.1 上 GLM 5.3 Flash 在约 45K 达 76.69%，高于 Claude Code 自动压缩 70.97% 与默认 200K 的 73.03%。",
-        "KernelBench 上 200 步达 2.23×、400 步达 3.58× 加速，优于专用搜索算法与训练过的 agent。"
-      ],
-      "takeaways": [
-        "压缩应优先保真而非保量：只截断不改写，可避免摘要链式漂移，适合长周期 agent。",
-        "压缩会失效 KV-cache 并触发 re-prefill，应低频触发、让上下文自然增长以摊薄开销。"
-      ],
-      "limitations": "收益依赖 scaffold 与任务，仅对中长周期任务明显；未与训练式上下文管理或外部记忆方法对比。",
       "basis": "fulltext"
     }
   }
