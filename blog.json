@@ -1,7 +1,7 @@
 [
   {
     "title": "Schrödinger's Code Repository: Have LLMs Learned SWE-bench or Memorized It?",
-    "sub_title": "papers · source=arxiv_cs_se · score=73.1",
+    "sub_title": "papers · source=arxiv_cs_se · score=73.3",
     "url_title": "schrödingers-code-repository-have-llms-learned-swe-bench-or-memorized-it",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.27891",
@@ -14,10 +14,10 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 73.1,
+    "score": 73.3,
     "scores": {
       "relevance": 92.0,
-      "popularity": 36.1,
+      "popularity": 36.9,
       "freshness": 79.4,
       "impact": 40.0
     },
@@ -46,7 +46,7 @@
       "Haibing Guan"
     ],
     "author_count": 6,
-    "upvotes": 15,
+    "upvotes": 16,
     "likes": 0,
     "github_url": "https://github.com/cslsolow/Schrodinger-Repo",
     "github_stars": 6,
@@ -288,7 +288,7 @@
   },
   {
     "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
-    "sub_title": "papers · source=arxiv_cs_ai · score=71.1",
+    "sub_title": "papers · source=arxiv_cs_ai · score=71.2",
     "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.25804",
@@ -301,10 +301,10 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T08:15:45Z",
-    "score": 71.1,
+    "score": 71.2,
     "scores": {
       "relevance": 70.0,
-      "popularity": 63.7,
+      "popularity": 64.0,
       "freshness": 79.4,
       "impact": 75.0
     },
@@ -332,7 +332,7 @@
       "Xianfeng Tang"
     ],
     "author_count": 9,
-    "upvotes": 132,
+    "upvotes": 135,
     "likes": 0,
     "github_url": "https://github.com/wbopan/tastebench",
     "github_stars": 6,
@@ -1316,6 +1316,80 @@
     }
   },
   {
+    "title": "Rufus-Air: An Open LLM Post-Training Recipe",
+    "sub_title": "papers · source=arxiv_cs_cl · score=66.6",
+    "url_title": "rufus-air-an-open-llm-post-training-recipe",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.29421",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-25T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 66.6,
+    "scores": {
+      "relevance": 75.0,
+      "popularity": 25.4,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "模型训练与推理",
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "公开GLM-4.5-Air后训练配方，含Coding RL与Coding Agent阶段。",
+    "reason_zh": "后训练配方含编程智能体与代码RL，密切相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Rufus-Air is an open and reproducible post-training recipe on GLM-4.5-Air-Base (106B-A12B), organized as a serial pipeline of eight stages: SFT, Reasoning RL, Coding RL, Instruction-Following RL, General Agent, Coding Agent, Search Agent, and RLHF. We document the data, reward design, infrastructure, stage order, and stagewise results needed to reproduce…",
+    "authors": [
+      "Chia-Yuan Chang",
+      "Renyuan Cheng",
+      "Rui Feng",
+      "Xiaotian Han",
+      "Yuan He",
+      "Hongye Jin"
+    ],
+    "author_count": 22,
+    "upvotes": 6,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.29421",
+    "arxiv_id": "2609.29421",
+    "digest": {
+      "problem": "开源后训练配方披露不足，团队难以复现；需要一个基于公开权重、算力门槛低、可复用的完整后训练流程。",
+      "method": [
+        "在 GLM-4.5-Air-Base 上串联八阶段流水线：SFT→Reasoning RL→Coding RL→IF RL→三类 Agent→RLHF。",
+        "按奖励可被 hack 的难易排序阶段，硬验证奖励在前、软 judge 奖励在后。",
+        "用难度过滤剔除已解与不可解 prompt，形成自动课程；并公开数据、奖励与基础设施细节。"
+      ],
+      "results": [
+        "Rufus-Air 在除 Arena-Hard v2 Creative Writing 外的所有报告基准上超过官方 GLM-4.5-Air。",
+        "IFEval 95.4 vs 83.0，IFBench 76.9 vs 33.6，SWE-bench Verified 65.6 vs 50.6。",
+        "与同规模开源模型 INTELLECT-3、Nemotron-3-Super 相比具竞争力，部分 agentic 基准略低。"
+      ],
+      "takeaways": [
+        "SFT 应作为能力建设阶段而非热身，需覆盖广度、格式一致性与长程行为。",
+        "RL 阶段用难度过滤把 prompt 控制在可学习区间，并按奖励可靠性排序以抑制 reward hacking。"
+      ],
+      "limitations": "部分结论来自训练经验而非完整消融；n-gram 与 embedding 去污染无法排除全部泄漏。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Control the Harness, Control the Cost: Routing and Governing AI Coding Agents in the Enterprise",
     "sub_title": "papers · source=arxiv_cs_ai · score=66.0",
     "url_title": "control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-t",
@@ -1523,80 +1597,6 @@
     }
   },
   {
-    "title": "Rufus-Air: An Open LLM Post-Training Recipe",
-    "sub_title": "papers · source=arxiv_cs_cl · score=65.1",
-    "url_title": "rufus-air-an-open-llm-post-training-recipe",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.29421",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "arxiv_cs_ai",
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-25T04:00:00Z",
-    "first_seen_at": "2026-09-25T10:18:59Z",
-    "score": 65.1,
-    "scores": {
-      "relevance": 75.0,
-      "popularity": 18.1,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "模型训练与推理",
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "公开GLM-4.5-Air后训练配方，含Coding RL与Coding Agent阶段。",
-    "reason_zh": "后训练配方含编程智能体与代码RL，密切相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Rufus-Air is an open and reproducible post-training recipe on GLM-4.5-Air-Base (106B-A12B), organized as a serial pipeline of eight stages: SFT, Reasoning RL, Coding RL, Instruction-Following RL, General Agent, Coding Agent, Search Agent, and RLHF. We document the data, reward design, infrastructure, stage order, and stagewise results needed to reproduce…",
-    "authors": [
-      "Chia-Yuan Chang",
-      "Renyuan Cheng",
-      "Rui Feng",
-      "Xiaotian Han",
-      "Yuan He",
-      "Hongye Jin"
-    ],
-    "author_count": 22,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.29421",
-    "arxiv_id": "2609.29421",
-    "digest": {
-      "problem": "开源后训练配方披露不足，团队难以复现；需要一个基于公开权重、算力门槛低、可复用的完整后训练流程。",
-      "method": [
-        "在 GLM-4.5-Air-Base 上串联八阶段流水线：SFT→Reasoning RL→Coding RL→IF RL→三类 Agent→RLHF。",
-        "按奖励可被 hack 的难易排序阶段，硬验证奖励在前、软 judge 奖励在后。",
-        "用难度过滤剔除已解与不可解 prompt，形成自动课程；并公开数据、奖励与基础设施细节。"
-      ],
-      "results": [
-        "Rufus-Air 在除 Arena-Hard v2 Creative Writing 外的所有报告基准上超过官方 GLM-4.5-Air。",
-        "IFEval 95.4 vs 83.0，IFBench 76.9 vs 33.6，SWE-bench Verified 65.6 vs 50.6。",
-        "与同规模开源模型 INTELLECT-3、Nemotron-3-Super 相比具竞争力，部分 agentic 基准略低。"
-      ],
-      "takeaways": [
-        "SFT 应作为能力建设阶段而非热身，需覆盖广度、格式一致性与长程行为。",
-        "RL 阶段用难度过滤把 prompt 控制在可学习区间，并按奖励可靠性排序以抑制 reward hacking。"
-      ],
-      "limitations": "部分结论来自训练经验而非完整消融；n-gram 与 embedding 去污染无法排除全部泄漏。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
     "sub_title": "papers · source=arxiv_cs_ai · score=64.9",
     "url_title": "metrics-failure-in-llm-based-code-vulnerability-repair-an-empirical-study-and-a-",
@@ -1663,6 +1663,81 @@
         "评估漏洞修复应转向 change-aware、执行验证的指标，diff_F1 可作补充诊断但非修复质量度量。"
       ],
       "limitations": "diff_F1 对部分删除式作弊补丁仍给较高分，且它本身不是修复质量指标，只适合作为深入分析前的筛查。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Coding Agents for Generalized Task and Motion Planning Problems",
+    "sub_title": "papers · source=arxiv_cs_ai · score=64.6",
+    "url_title": "coding-agents-for-generalized-task-and-motion-planning-problems",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.30233",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-25T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 64.6,
+    "scores": {
+      "relevance": 68.0,
+      "popularity": 25.4,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "coding agent",
+      "program synthesis",
+      "claude code",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "用编码智能体解决广义任务与运动规划问题。",
+    "reason_zh": "编程智能体用于机器人规划，偏特定场景。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Task and motion planning (TAMP) problems remain difficult even with full observability and object-centric states because discrete decisions are tightly coupled to geometric, kinematic, and dynamic constraints. Generalized TAMP addresses this difficulty by exploiting regularities across problem instances to reduce planning effort on new instances. However…",
+    "authors": [
+      "Matteo Merler",
+      "Bowen Li",
+      "Josh Roy",
+      "Yichao Liang",
+      "Qianwei Wang",
+      "Yixuan Huang"
+    ],
+    "author_count": 7,
+    "upvotes": 6,
+    "likes": 0,
+    "github_url": "https://github.com/tomsilver/robocode",
+    "github_stars": 11,
+    "hf_url": "https://huggingface.co/papers/2609.30233",
+    "arxiv_id": "2609.30233",
+    "digest": {
+      "problem": "通用 TAMP 需大量领域专用工程，现有方法难以跨实例复用；LLM 在几何与物理决策上表现差，编码智能体能否胜任尚不明确。",
+      "method": [
+        "给编码智能体任务描述与模拟器访问，在固定预算内自主写代码、做实验并合成程序",
+        "程序冻结后在未见实例上评估，测试时无 LLM 参与，不提供手工 TAMP 抽象",
+        "对比手工 TAMP planner、one-shot 生成与 LLMGenPlan，并设 + source 参考设置"
+      ],
+      "results": [
+        "16 个有 planner 的环境中，三种智能体配置均超过 planner 的 47%：Opus 82%、Astra 95%、Sol 56%",
+        "Astra 平均成功率：Kinematic2D 99%、Dynamic2D 97%、Kinematic3D 93%、Dynamic3D 65%、PDDLStream 近 100%",
+        "程序每实例计算约 0.5–2.1 秒，planner 约 29 秒；Astra 每动作 1.3ms，Opus 11.7ms"
+      ],
+      "takeaways": [
+        "编码智能体可作为通用 TAMP 的强基线，减少手工谓词、采样器与技能工程",
+        "让智能体交互式探测模拟器、写自定义测试并校准物理模型，比一次性生成更有效"
+      ],
+      "limitations": "部分 Dynamic3D 环境（如扫掠、倾倒大量小物体）在主设置下仍基本未解决；+ source 程序平均更慢。",
       "basis": "fulltext"
     }
   },
@@ -1874,81 +1949,6 @@
         "补丁能应用不等于能编译或通过测试，工具链应把编译与行为验证作为独立反馈环节。"
       ],
       "limitations": "实例高度集中于 ponylang/ponyc（211/291，72.51%），仓库分布不均衡；结果仅基于各模型实际产出的补丁，未外推到全部 291 个任务。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Coding Agents for Generalized Task and Motion Planning Problems",
-    "sub_title": "papers · source=arxiv_cs_ai · score=64.2",
-    "url_title": "coding-agents-for-generalized-task-and-motion-planning-problems",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.30233",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-25T04:00:00Z",
-    "first_seen_at": "2026-09-25T10:18:59Z",
-    "score": 64.2,
-    "scores": {
-      "relevance": 68.0,
-      "popularity": 23.3,
-      "freshness": 100.0,
-      "impact": 55.0
-    },
-    "keywords": [
-      "coding agent",
-      "program synthesis",
-      "claude code",
-      "codex"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "用编码智能体解决广义任务与运动规划问题。",
-    "reason_zh": "编程智能体用于机器人规划，偏特定场景。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Task and motion planning (TAMP) problems remain difficult even with full observability and object-centric states because discrete decisions are tightly coupled to geometric, kinematic, and dynamic constraints. Generalized TAMP addresses this difficulty by exploiting regularities across problem instances to reduce planning effort on new instances. However…",
-    "authors": [
-      "Matteo Merler",
-      "Bowen Li",
-      "Josh Roy",
-      "Yichao Liang",
-      "Qianwei Wang",
-      "Yixuan Huang"
-    ],
-    "author_count": 7,
-    "upvotes": 5,
-    "likes": 0,
-    "github_url": "https://github.com/tomsilver/robocode",
-    "github_stars": 8,
-    "hf_url": "https://huggingface.co/papers/2609.30233",
-    "arxiv_id": "2609.30233",
-    "digest": {
-      "problem": "通用 TAMP 需大量领域专用工程，现有方法难以跨实例复用；LLM 在几何与物理决策上表现差，编码智能体能否胜任尚不明确。",
-      "method": [
-        "给编码智能体任务描述与模拟器访问，在固定预算内自主写代码、做实验并合成程序",
-        "程序冻结后在未见实例上评估，测试时无 LLM 参与，不提供手工 TAMP 抽象",
-        "对比手工 TAMP planner、one-shot 生成与 LLMGenPlan，并设 + source 参考设置"
-      ],
-      "results": [
-        "16 个有 planner 的环境中，三种智能体配置均超过 planner 的 47%：Opus 82%、Astra 95%、Sol 56%",
-        "Astra 平均成功率：Kinematic2D 99%、Dynamic2D 97%、Kinematic3D 93%、Dynamic3D 65%、PDDLStream 近 100%",
-        "程序每实例计算约 0.5–2.1 秒，planner 约 29 秒；Astra 每动作 1.3ms，Opus 11.7ms"
-      ],
-      "takeaways": [
-        "编码智能体可作为通用 TAMP 的强基线，减少手工谓词、采样器与技能工程",
-        "让智能体交互式探测模拟器、写自定义测试并校准物理模型，比一次性生成更有效"
-      ],
-      "limitations": "部分 Dynamic3D 环境（如扫掠、倾倒大量小物体）在主设置下仍基本未解决；+ source 程序平均更慢。",
       "basis": "fulltext"
     }
   },
