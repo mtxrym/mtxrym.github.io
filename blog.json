@@ -405,6 +405,78 @@
     }
   },
   {
+    "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
+    "sub_title": "papers · source=arxiv_cs_ai · score=68.0",
+    "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.25804",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 68.0,
+    "scores": {
+      "relevance": 70.0,
+      "popularity": 64.8,
+      "freshness": 63.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "swe-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "定义并度量长时程任务中智能体的品味，即做出良好决策的能力。",
+    "reason_zh": "长时程智能体决策能力评测，对编程智能体有明确应用。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "LLM agents increasingly work on long-horizon tasks, and the decisions they make along the way, such as which hypothesis to test or which implementation to build on, determine the outcome of the whole run. Making these decisions well is becoming a key capability for both engineering and research agents. We refer to the ability to make good long-horizon…",
+    "authors": [
+      "Wenbo Pan",
+      "Zhichao Liu",
+      "Shujie Liu",
+      "Jingying Zeng",
+      "Chin-Yew Lin",
+      "Xianfeng Tang"
+    ],
+    "author_count": 9,
+    "upvotes": 143,
+    "likes": 0,
+    "github_url": "https://github.com/wbopan/tastebench",
+    "github_stars": 11,
+    "hf_url": "https://huggingface.co/papers/2609.25804",
+    "arxiv_id": "2609.25804",
+    "digest": {
+      "problem": "LLM agent 在长程任务中沿途决策（选哪个假设、哪个实现）决定最终成败，但现有 benchmark 只测端到端成功率，无法衡量决策质量。",
+      "method": [
+        "提出用轨迹后见之明自动挖掘 decision fork：同一任务多次尝试分叉处，或单条轨迹中的绕路纠错点。",
+        "构建 Taste-Bench，502 道二选一 taste 题，覆盖工程与研究两域，标签由记录结果确定，无需人工标注。",
+        "用见过正确方向的 teacher 蒸馏推理到 student，并将判断作为 advice 注入任务上下文。"
+      ],
+      "results": [
+        "最佳模型 GPT-5.6 Sol 平均准确率仅 59.7%，GPT-5.5 为 59.5%，随机猜测为 25%。",
+        "时间跨度越长越难：14 模型均值从 in-prefix 的 62.3% 降至 more-work 的 21.0%。",
+        "增加 reasoning budget 几乎不提升准确率（GPT-5.6 Sol -0.2 点，Luna +2.2 点）；蒸馏后在未见任务和 SWE-bench Pro 上端到端提升。"
+      ],
+      "takeaways": [
+        "长程 agent 的决策质量可与端到端分数脱节，评估工具应单独衡量 fork 判断力。",
+        "让模型多想并不能弥补后见证据缺失，训练判断力比加大推理预算更有效。"
+      ],
+      "limitations": "标签依赖记录结果，可能混入执行质量与环境因素；仅覆盖工程与研究两域，且二选一题存在位置偏差。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "nvidia/Open-SWE-Traces",
     "sub_title": "datasets · source=hf_datasets_swe · score=68.0",
     "url_title": "nvidiaopen-swe-traces",
@@ -527,80 +599,8 @@
     }
   },
   {
-    "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
-    "sub_title": "papers · source=arxiv_cs_ai · score=67.9",
-    "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.25804",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T08:15:45Z",
-    "score": 67.9,
-    "scores": {
-      "relevance": 70.0,
-      "popularity": 64.2,
-      "freshness": 63.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "swe-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "定义并度量长时程任务中智能体的品味，即做出良好决策的能力。",
-    "reason_zh": "长时程智能体决策能力评测，对编程智能体有明确应用。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "LLM agents increasingly work on long-horizon tasks, and the decisions they make along the way, such as which hypothesis to test or which implementation to build on, determine the outcome of the whole run. Making these decisions well is becoming a key capability for both engineering and research agents. We refer to the ability to make good long-horizon…",
-    "authors": [
-      "Wenbo Pan",
-      "Zhichao Liu",
-      "Shujie Liu",
-      "Jingying Zeng",
-      "Chin-Yew Lin",
-      "Xianfeng Tang"
-    ],
-    "author_count": 9,
-    "upvotes": 137,
-    "likes": 0,
-    "github_url": "https://github.com/wbopan/tastebench",
-    "github_stars": 6,
-    "hf_url": "https://huggingface.co/papers/2609.25804",
-    "arxiv_id": "2609.25804",
-    "digest": {
-      "problem": "LLM agent 在长程任务中沿途决策（选哪个假设、哪个实现）决定最终成败，但现有 benchmark 只测端到端成功率，无法衡量决策质量。",
-      "method": [
-        "提出用轨迹后见之明自动挖掘 decision fork：同一任务多次尝试分叉处，或单条轨迹中的绕路纠错点。",
-        "构建 Taste-Bench，502 道二选一 taste 题，覆盖工程与研究两域，标签由记录结果确定，无需人工标注。",
-        "用见过正确方向的 teacher 蒸馏推理到 student，并将判断作为 advice 注入任务上下文。"
-      ],
-      "results": [
-        "最佳模型 GPT-5.6 Sol 平均准确率仅 59.7%，GPT-5.5 为 59.5%，随机猜测为 25%。",
-        "时间跨度越长越难：14 模型均值从 in-prefix 的 62.3% 降至 more-work 的 21.0%。",
-        "增加 reasoning budget 几乎不提升准确率（GPT-5.6 Sol -0.2 点，Luna +2.2 点）；蒸馏后在未见任务和 SWE-bench Pro 上端到端提升。"
-      ],
-      "takeaways": [
-        "长程 agent 的决策质量可与端到端分数脱节，评估工具应单独衡量 fork 判断力。",
-        "让模型多想并不能弥补后见证据缺失，训练判断力比加大推理预算更有效。"
-      ],
-      "limitations": "标签依赖记录结果，可能混入执行质量与环境因素；仅覆盖工程与研究两域，且二选一题存在位置偏差。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
-    "sub_title": "papers · source=hf_daily_papers · score=67.6",
+    "sub_title": "papers · source=hf_daily_papers · score=67.9",
     "url_title": "embodiedswe-coding-agents-for-long-horizon-dexterous-robotics",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.27308",
@@ -612,10 +612,10 @@
     "category": "papers",
     "published_at": "2026-09-23T00:00:00Z",
     "first_seen_at": "2026-09-24T04:49:30Z",
-    "score": 67.6,
+    "score": 67.9,
     "scores": {
       "relevance": 88.0,
-      "popularity": 34.8,
+      "popularity": 36.7,
       "freshness": 63.0,
       "impact": 40.0
     },
@@ -642,10 +642,10 @@
       "Kashu Yamazaki"
     ],
     "author_count": 19,
-    "upvotes": 2,
+    "upvotes": 3,
     "likes": 0,
     "github_url": "https://github.com/EmbodiedSWE/EmbodiedSWE",
-    "github_stars": 54,
+    "github_stars": 67,
     "hf_url": "https://huggingface.co/papers/2609.27308",
     "arxiv_id": "2609.27308",
     "digest": {
@@ -667,6 +667,195 @@
       "limitations": "最难任务仍未被自主解决；解需大量迭代且常针对单个任务实例；工具增益较小；sim-to-real 仅单任务验证。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "RECLAIM: Can Agents Reproduce the Claims of Machine Learning Papers?",
+    "sub_title": "papers · source=arxiv_cs_se · score=67.5",
+    "url_title": "reclaim-can-agents-reproduce-the-claims-of-machine-learning-papers",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.28850",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-26T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 67.5,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 35.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出RECLAIM基准，评测AI智能体能否复现NeurIPS论文的实验结果。",
+    "reason_zh": "智能体自主完成科研工程任务的评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark"
+    ],
+    "summary": "Reproducing a machine learning paper involves most research steps, from installing software and debugging to running experiments, work that AI agents increasingly do. We introduce RECLAIM, a benchmark of 100 NeurIPS 2025 papers that can be rebuilt yearly from new conferences. For each paper we fix in advance the result to reproduce, what counts as a…",
+    "authors": [
+      "Mithil Salunkhe",
+      "Haochen Ding",
+      "Samridhi Verma",
+      "Volodymyr Kindratenko"
+    ],
+    "author_count": 4,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.28850",
+    "digest": {
+      "problem": "ML 论文结果常难复现，缺代码、数据与实验细节；AI agent 已承担大量复现工程，但缺乏贴近真实工作流的评测基准。",
+      "method": [
+        "提出 RECLAIM 基准，含 100 篇 NeurIPS 2025 论文，每篇预先固定复现目标、成功标准与 GPU 预算。",
+        "按作者发布物分 Run/Retrain/Reimplement 三档，难度递增，可每年从新会议重建。",
+        "用独立 LLM 审计器从日志与输出评分，而非采信 agent 自述报告。"
+      ],
+      "results": [
+        "最佳 agent DeepSeek-V4-Flash 复现率：Run 41%、Retrain 27%、Reimplement 12%。",
+        "Muse Spark 1.2 在 Reimplement 档最高，为 15%；四 agent 平均审计分跨度 1.7 倍。",
+        "失败尝试平均仅用 29% 预算；最常见错误是写方法却不核对论文数字，400 次运行中占 63 次。"
+      ],
+      "takeaways": [
+        "agent 能跑通作者代码时表现远好于需自行重建方法，代码可用性是复现关键变量。",
+        "agent 普遍过早停止、预算未用尽，且倾向不核对论文数值，需在工具链中强制验证。"
+      ],
+      "limitations": "审计由 LLM 完成，与人工评分 F1 为 0.82；rollout 不可逐轮复现，仅评分阶段可复现。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Rufus-Air: An Open LLM Post-Training Recipe",
+    "sub_title": "papers · source=arxiv_cs_cl · score=67.5",
+    "url_title": "rufus-air-an-open-llm-post-training-recipe",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.29421",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-26T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 67.5,
+    "scores": {
+      "relevance": 75.0,
+      "popularity": 30.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "模型训练与推理",
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "公开GLM-4.5-Air后训练配方，含Coding RL与Coding Agent阶段。",
+    "reason_zh": "后训练配方含编程智能体与代码RL，密切相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Rufus-Air is an open and reproducible post-training recipe on GLM-4.5-Air-Base (106B-A12B), organized as a serial pipeline of eight stages: SFT, Reasoning RL, Coding RL, Instruction-Following RL, General Agent, Coding Agent, Search Agent, and RLHF. We document the data, reward design, infrastructure, stage order, and stagewise results needed to reproduce…",
+    "authors": [
+      "Chia-Yuan Chang",
+      "Renyuan Cheng",
+      "Rui Feng",
+      "Xiaotian Han",
+      "Yuan He",
+      "Hongye Jin"
+    ],
+    "author_count": 22,
+    "upvotes": 9,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.29421",
+    "arxiv_id": "2609.29421",
+    "digest": {
+      "problem": "开源后训练配方披露不足，团队难以复现；需要一个基于公开权重、算力门槛低、可复用的完整后训练流程。",
+      "method": [
+        "在 GLM-4.5-Air-Base 上串联八阶段流水线：SFT→Reasoning RL→Coding RL→IF RL→三类 Agent→RLHF。",
+        "按奖励可被 hack 的难易排序阶段，硬验证奖励在前、软 judge 奖励在后。",
+        "用难度过滤剔除已解与不可解 prompt，形成自动课程；并公开数据、奖励与基础设施细节。"
+      ],
+      "results": [
+        "Rufus-Air 在除 Arena-Hard v2 Creative Writing 外的所有报告基准上超过官方 GLM-4.5-Air。",
+        "IFEval 95.4 vs 83.0，IFBench 76.9 vs 33.6，SWE-bench Verified 65.6 vs 50.6。",
+        "与同规模开源模型 INTELLECT-3、Nemotron-3-Super 相比具竞争力，部分 agentic 基准略低。"
+      ],
+      "takeaways": [
+        "SFT 应作为能力建设阶段而非热身，需覆盖广度、格式一致性与长程行为。",
+        "RL 阶段用难度过滤把 prompt 控制在可学习区间，并按奖励可靠性排序以抑制 reward hacking。"
+      ],
+      "limitations": "部分结论来自训练经验而非完整消融；n-gram 与 embedding 去污染无法排除全部泄漏。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "liangzhidanta/claude-code-glm53-swesmith-trajectories",
+    "sub_title": "datasets · source=hf_datasets_swe · score=66.5",
+    "url_title": "liangzhidantaclaude-code-glm53-swesmith-trajectories",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/liangzhidanta/claude-code-glm53-swesmith-trajectories",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-24T16:59:16Z",
+    "first_seen_at": "2026-09-26T09:58:17Z",
+    "score": 66.5,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 12.0,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "claude code"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据",
+      "评测基准"
+    ],
+    "summary_zh": "GLM-5.3驱动Claude Code在SWE-smith任务中生成经执行验证的多轮编程智能体轨迹。",
+    "reason_zh": "编程智能体轨迹数据，含验证与评测，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Claude-Code-native Coding Agent Teacher Trajectories (GLM-5.3 × SWE-smith) English | 简体中文 A private research archive of execution-verified, multi-turn coding-agent trajectories. A strong teacher (GLM-5.3) drives a real coding-agent harness (Claude Code) inside verified Docker environments derived from SWE-smith tasks; every trajectory is graded in a clean…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 3,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "liangzhidanta/claude-code-glm53-swesmith-compact-trajectories",
@@ -1178,6 +1367,74 @@
     }
   },
   {
+    "title": "KernelOPT: Dispatch-Aware Agentic Search for GPU Kernel Optimization",
+    "sub_title": "papers · source=arxiv_cs_ai · score=64.0",
+    "url_title": "kernelopt-dispatch-aware-agentic-search-for-gpu-kernel-optimization",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.30059",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "arxiv_cs_lg"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-26T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 64.0,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "代码生成",
+      "模型训练与推理"
+    ],
+    "summary_zh": "提出调度感知智能体搜索，自动优化GPU内核代码。",
+    "reason_zh": "LLM智能体生成优化内核代码，核心即AI编程。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Deep learning inference and training performance depends critically on GPU kernel efficiency. Modern compilers such as PyTorch Inductor automatically generate GPU kernels from high-level model code, but frequently underperform expert-written implementations by wide margins. Recent LLM-assisted kernel optimizers can close this gap for standalone kernels, yet…",
+    "authors": [
+      "Aheli Poddar",
+      "Sanskar Prasad",
+      "Arindam Samanta",
+      "Subha Chakraborty",
+      "Vishal Goyal",
+      "Rohit Singh Rathaur"
+    ],
+    "author_count": 6,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2609.30059",
+    "digest": {
+      "problem": "torch.compile 生成的 GPU kernel 常落后专家实现，现有 LLM 优化器把编译模型当黑盒，只优化孤立 kernel，不尊重编译器结构决策，也不做端到端验证。",
+      "method": [
+        "把编译模型视为结构化产物：保留 cuBLAS/cuDNN 调用，只优化 Inductor 生成的 Triton 子 kernel。",
+        "五个 agent（四个 LLM + 一个确定性 profiler）在 LangGraph 中用 NCU profiling 分类瓶颈并指导优化。",
+        "四道验证门：静态校验、多种子正确性、模型级 float64 回退验证、性能门，失败则保留编译器基线。"
+      ],
+      "results": [
+        "在 250 个 KernelBench 问题上相对 torch.compile 几何平均加速：L1 1.40×（51/100）、L2 1.15×（31/100）、L3 1.07×（12/50）。",
+        "结果分类：94 个优化、58 个匹配（优化）、13 个合成失败、85 个回退；回退中 61 个因库调用主导。",
+        "Inductor 感知合成本身可带来大幅加速，例如 L2 kernel 018 达 33×。"
+      ],
+      "takeaways": [
+        "优化编译模型时应尊重编译器 dispatch，把 LLM 精力集中在 Triton 子 kernel 而非重写库调用。",
+        "端到端模型级验证与性能门必不可少，可避免单 kernel 加速但模型变慢或结果错误。"
+      ],
+      "limitations": "需 NCU 高权限性能计数器，每次 NCU prompt 约 60K token，仅支持单 GPU 推理；72% 回退源于 cuBLAS/cuDNN 主导。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "SciWalker: Synthesizing Scientific Coding Problems with Operator Graphs and Execution Feedback",
     "sub_title": "papers · source=arxiv_cs_ai · score=63.9",
     "url_title": "sciwalker-synthesizing-scientific-coding-problems-with-operator-graphs-and-execu",
@@ -1244,148 +1501,6 @@
         "此类数据做RL能同时提升科学代码生成、代码修复与推理能力。"
       ],
       "limitations": "数据生成依赖DeepSeek-V4-Flash，初始66,889条链仅12.2%保留，过滤成本高。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "RECLAIM: Can Agents Reproduce the Claims of Machine Learning Papers?",
-    "sub_title": "papers · source=arxiv_cs_se · score=63.4",
-    "url_title": "reclaim-can-agents-reproduce-the-claims-of-machine-learning-papers",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.28850",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-25T04:00:00Z",
-    "first_seen_at": "2026-09-25T10:18:59Z",
-    "score": 63.4,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 35.0
-    },
-    "keywords": [],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "提出RECLAIM基准，评测AI智能体能否复现NeurIPS论文的实验结果。",
-    "reason_zh": "智能体自主完成科研工程任务的评测基准。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Reproducing a machine learning paper involves most research steps, from installing software and debugging to running experiments, work that AI agents increasingly do. We introduce RECLAIM, a benchmark of 100 NeurIPS 2025 papers that can be rebuilt yearly from new conferences. For each paper we fix in advance the result to reproduce, what counts as a…",
-    "authors": [
-      "Mithil Salunkhe",
-      "Haochen Ding",
-      "Samridhi Verma",
-      "Volodymyr Kindratenko"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.28850",
-    "digest": {
-      "problem": "ML 论文结果常难复现，缺代码、数据与实验细节；AI agent 已承担大量复现工程，但缺乏贴近真实工作流的评测基准。",
-      "method": [
-        "提出 RECLAIM 基准，含 100 篇 NeurIPS 2025 论文，每篇预先固定复现目标、成功标准与 GPU 预算。",
-        "按作者发布物分 Run/Retrain/Reimplement 三档，难度递增，可每年从新会议重建。",
-        "用独立 LLM 审计器从日志与输出评分，而非采信 agent 自述报告。"
-      ],
-      "results": [
-        "最佳 agent DeepSeek-V4-Flash 复现率：Run 41%、Retrain 27%、Reimplement 12%。",
-        "Muse Spark 1.2 在 Reimplement 档最高，为 15%；四 agent 平均审计分跨度 1.7 倍。",
-        "失败尝试平均仅用 29% 预算；最常见错误是写方法却不核对论文数字，400 次运行中占 63 次。"
-      ],
-      "takeaways": [
-        "agent 能跑通作者代码时表现远好于需自行重建方法，代码可用性是复现关键变量。",
-        "agent 普遍过早停止、预算未用尽，且倾向不核对论文数值，需在工具链中强制验证。"
-      ],
-      "limitations": "审计由 LLM 完成，与人工评分 F1 为 0.82；rollout 不可逐轮复现，仅评分阶段可复现。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Rufus-Air: An Open LLM Post-Training Recipe",
-    "sub_title": "papers · source=arxiv_cs_cl · score=62.8",
-    "url_title": "rufus-air-an-open-llm-post-training-recipe",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.29421",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "arxiv_cs_ai",
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-25T04:00:00Z",
-    "first_seen_at": "2026-09-25T10:18:59Z",
-    "score": 62.8,
-    "scores": {
-      "relevance": 75.0,
-      "popularity": 27.1,
-      "freshness": 79.4,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "模型训练与推理",
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "公开GLM-4.5-Air后训练配方，含Coding RL与Coding Agent阶段。",
-    "reason_zh": "后训练配方含编程智能体与代码RL，密切相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Rufus-Air is an open and reproducible post-training recipe on GLM-4.5-Air-Base (106B-A12B), organized as a serial pipeline of eight stages: SFT, Reasoning RL, Coding RL, Instruction-Following RL, General Agent, Coding Agent, Search Agent, and RLHF. We document the data, reward design, infrastructure, stage order, and stagewise results needed to reproduce…",
-    "authors": [
-      "Chia-Yuan Chang",
-      "Renyuan Cheng",
-      "Rui Feng",
-      "Xiaotian Han",
-      "Yuan He",
-      "Hongye Jin"
-    ],
-    "author_count": 22,
-    "upvotes": 7,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.29421",
-    "arxiv_id": "2609.29421",
-    "digest": {
-      "problem": "开源后训练配方披露不足，团队难以复现；需要一个基于公开权重、算力门槛低、可复用的完整后训练流程。",
-      "method": [
-        "在 GLM-4.5-Air-Base 上串联八阶段流水线：SFT→Reasoning RL→Coding RL→IF RL→三类 Agent→RLHF。",
-        "按奖励可被 hack 的难易排序阶段，硬验证奖励在前、软 judge 奖励在后。",
-        "用难度过滤剔除已解与不可解 prompt，形成自动课程；并公开数据、奖励与基础设施细节。"
-      ],
-      "results": [
-        "Rufus-Air 在除 Arena-Hard v2 Creative Writing 外的所有报告基准上超过官方 GLM-4.5-Air。",
-        "IFEval 95.4 vs 83.0，IFBench 76.9 vs 33.6，SWE-bench Verified 65.6 vs 50.6。",
-        "与同规模开源模型 INTELLECT-3、Nemotron-3-Super 相比具竞争力，部分 agentic 基准略低。"
-      ],
-      "takeaways": [
-        "SFT 应作为能力建设阶段而非热身，需覆盖广度、格式一致性与长程行为。",
-        "RL 阶段用难度过滤把 prompt 控制在可学习区间，并按奖励可靠性排序以抑制 reward hacking。"
-      ],
-      "limitations": "部分结论来自训练经验而非完整消融；n-gram 与 embedding 去污染无法排除全部泄漏。",
       "basis": "fulltext"
     }
   },
@@ -1646,54 +1761,6 @@
     "digest": null
   },
   {
-    "title": "princeton-nlp/SWE-bench_Verified",
-    "sub_title": "datasets · source=hf_datasets_swe · score=61.9",
-    "url_title": "princeton-nlpswe-bench-verified",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2025-02-18T23:48:55Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 61.9,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 51.8,
-      "freshness": 0.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "swe-bench",
-      "github issue",
-      "pull request",
-      "unit test"
-    ],
-    "topics": [
-      "评测基准",
-      "程序修复"
-    ],
-    "summary_zh": "SWE-bench Verified 是经人工验证的 500 个样本子集，用于评测自动解决 GitHub issue。",
-    "reason_zh": "权威代码修复评测基准，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Dataset Summary SWE-bench Verified is a subset of 500 samples from the SWE-bench test set, which have been human-validated for quality. SWE-bench is a dataset that tests systems’ ability to solve GitHub issues automatically. See this post for more details on the human-validation process. The dataset collects 500 test Issue-Pull Request pairs from popular…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 387,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
-  },
-  {
     "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
     "sub_title": "papers · source=arxiv_cs_ai · score=61.6",
     "url_title": "metrics-failure-in-llm-based-code-vulnerability-repair-an-empirical-study-and-a-",
@@ -1765,7 +1832,7 @@
   },
   {
     "title": "WhatWorkedBench: Benchmarking Experimental Understanding in AI Agents",
-    "sub_title": "papers · source=arxiv_cs_lg · score=61.3",
+    "sub_title": "papers · source=arxiv_cs_lg · score=61.6",
     "url_title": "whatworkedbench-benchmarking-experimental-understanding-in-ai-agents",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.27490",
@@ -1778,10 +1845,10 @@
     "category": "papers",
     "published_at": "2026-09-24T04:00:00Z",
     "first_seen_at": "2026-09-24T08:15:45Z",
-    "score": 61.3,
+    "score": 61.6,
     "scores": {
       "relevance": 78.0,
-      "popularity": 28.6,
+      "popularity": 30.0,
       "freshness": 63.0,
       "impact": 40.0
     },
@@ -1804,7 +1871,7 @@
       "Dongting Li"
     ],
     "author_count": 4,
-    "upvotes": 8,
+    "upvotes": 9,
     "likes": 0,
     "github_url": "https://github.com/EthanNing/WhatWorkedBench",
     "github_stars": 2,
@@ -1898,79 +1965,6 @@
         "数据流、过程间执行与套件级聚合是当前模型明显短板，可作为工具改进重点。"
       ],
       "limitations": "仅覆盖 Python 仓库，基准规模 480 实例，评估模型数量有限。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "PonyEval: Evaluating LLM-Based Program Repair for Capability-Safe and Actor-Oriented Pony Software",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.1",
-    "url_title": "ponyeval-evaluating-llm-based-program-repair-for-capability-safe-and-actor-orien",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27832",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 61.1,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "program repair",
-      "swe-bench",
-      "swe-agent",
-      "repository-level"
-    ],
-    "topics": [
-      "程序修复",
-      "评测基准"
-    ],
-    "summary_zh": "提出PonyEval，评测LLM对Pony语言的仓库级程序修复能力。",
-    "reason_zh": "LLM程序修复评测基准，核心AI编程。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Repository-level issue-resolution benchmarks have made executable evaluation central to software-engineering agents, but their language coverage remains concentrated in mainstream ecosystems. Pony presents a different regime: it combines actors, reference capabilities, ahead-of-time compilation, and a rapidly evolving historical toolchain, making both patch…",
-    "authors": [
-      "Bang Xie",
-      "Hao Liu",
-      "Zhenyu Shi",
-      "Zhiyuan Peng",
-      "Xin Yin",
-      "Chenhao Ying"
-    ],
-    "author_count": 11,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.27832",
-    "digest": {
-      "problem": "仓库级 issue 修复基准集中于主流语言，Pony 这类具备 actor、引用能力与历史工具链的长尾生态缺乏可执行评测。",
-      "method": [
-        "构建 PonyEval：291 个真实 GitHub issue–PR 实例，覆盖 15 个仓库、2015–2026 提交。",
-        "每个实例绑定 base commit、gold patch、黑盒测试补丁与运行时映射，通过 fail-to-pass 双态门控准入。",
-        "重建 72 个历史运行时镜像覆盖 289 个 base commit，并在五类异构节点验证可用性。"
-      ],
-      "results": [
-        "288/291（98.97%）实例的 oracle 来自开发者或官方 PR 测试，仅 3 个为生成测试。",
-        "五模型条件解决率 10.21%–24.68%，Kimi-K3 最高 24.68%，GLM-5.2 18.55%，GPT-5.6-sol 18.21%。",
-        "应用率近 100%，但编译通过率降至 38.40%–79.22%，语义解决率大幅下降。"
-      ],
-      "takeaways": [
-        "长尾语言的修复评测必须绑定历史编译器与运行时，否则编译性与语义都会失真。",
-        "补丁能应用不等于能编译或通过测试，工具链应把编译与行为验证作为独立反馈环节。"
-      ],
-      "limitations": "实例高度集中于 ponylang/ponyc（211/291，72.51%），仓库分布不均衡；结果仅基于各模型实际产出的补丁，未外推到全部 291 个任务。",
       "basis": "fulltext"
     }
   }
