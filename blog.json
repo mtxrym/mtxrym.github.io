@@ -333,6 +333,222 @@
     }
   },
   {
+    "title": "Rufus-Air: An Open LLM Post-Training Recipe",
+    "sub_title": "papers · source=arxiv_cs_cl · score=68.2",
+    "url_title": "rufus-air-an-open-llm-post-training-recipe",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.29421",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-26T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 68.2,
+    "scores": {
+      "relevance": 75.0,
+      "popularity": 33.4,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "模型训练与推理",
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "公开GLM-4.5-Air后训练配方，含Coding RL与Coding Agent阶段。",
+    "reason_zh": "后训练配方含编程智能体与代码RL，密切相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Rufus-Air is an open and reproducible post-training recipe on GLM-4.5-Air-Base (106B-A12B), organized as a serial pipeline of eight stages: SFT, Reasoning RL, Coding RL, Instruction-Following RL, General Agent, Coding Agent, Search Agent, and RLHF. We document the data, reward design, infrastructure, stage order, and stagewise results needed to reproduce…",
+    "authors": [
+      "Chia-Yuan Chang",
+      "Renyuan Cheng",
+      "Rui Feng",
+      "Xiaotian Han",
+      "Yuan He",
+      "Hongye Jin"
+    ],
+    "author_count": 22,
+    "upvotes": 12,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.29421",
+    "arxiv_id": "2609.29421",
+    "digest": {
+      "problem": "开源后训练配方披露不足，团队难以复现；需要一个基于公开权重、算力门槛低、可复用的完整后训练流程。",
+      "method": [
+        "在 GLM-4.5-Air-Base 上串联八阶段流水线：SFT→Reasoning RL→Coding RL→IF RL→三类 Agent→RLHF。",
+        "按奖励可被 hack 的难易排序阶段，硬验证奖励在前、软 judge 奖励在后。",
+        "用难度过滤剔除已解与不可解 prompt，形成自动课程；并公开数据、奖励与基础设施细节。"
+      ],
+      "results": [
+        "Rufus-Air 在除 Arena-Hard v2 Creative Writing 外的所有报告基准上超过官方 GLM-4.5-Air。",
+        "IFEval 95.4 vs 83.0，IFBench 76.9 vs 33.6，SWE-bench Verified 65.6 vs 50.6。",
+        "与同规模开源模型 INTELLECT-3、Nemotron-3-Super 相比具竞争力，部分 agentic 基准略低。"
+      ],
+      "takeaways": [
+        "SFT 应作为能力建设阶段而非热身，需覆盖广度、格式一致性与长程行为。",
+        "RL 阶段用难度过滤把 prompt 控制在可学习区间，并按奖励可靠性排序以抑制 reward hacking。"
+      ],
+      "limitations": "部分结论来自训练经验而非完整消融；n-gram 与 embedding 去污染无法排除全部泄漏。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
+    "sub_title": "papers · source=arxiv_cs_ai · score=68.1",
+    "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.25804",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-24T04:00:00Z",
+    "first_seen_at": "2026-09-24T08:15:45Z",
+    "score": 68.1,
+    "scores": {
+      "relevance": 70.0,
+      "popularity": 64.8,
+      "freshness": 63.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "swe-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "定义并度量长时程任务中智能体的品味，即做出良好决策的能力。",
+    "reason_zh": "长时程智能体决策能力评测，对编程智能体有明确应用。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "LLM agents increasingly work on long-horizon tasks, and the decisions they make along the way, such as which hypothesis to test or which implementation to build on, determine the outcome of the whole run. Making these decisions well is becoming a key capability for both engineering and research agents. We refer to the ability to make good long-horizon…",
+    "authors": [
+      "Wenbo Pan",
+      "Zhichao Liu",
+      "Shujie Liu",
+      "Jingying Zeng",
+      "Chin-Yew Lin",
+      "Xianfeng Tang"
+    ],
+    "author_count": 9,
+    "upvotes": 144,
+    "likes": 0,
+    "github_url": "https://github.com/wbopan/tastebench",
+    "github_stars": 13,
+    "hf_url": "https://huggingface.co/papers/2609.25804",
+    "arxiv_id": "2609.25804",
+    "digest": {
+      "problem": "LLM agent 在长程任务中沿途决策（选哪个假设、哪个实现）决定最终成败，但现有 benchmark 只测端到端成功率，无法衡量决策质量。",
+      "method": [
+        "提出用轨迹后见之明自动挖掘 decision fork：同一任务多次尝试分叉处，或单条轨迹中的绕路纠错点。",
+        "构建 Taste-Bench，502 道二选一 taste 题，覆盖工程与研究两域，标签由记录结果确定，无需人工标注。",
+        "用见过正确方向的 teacher 蒸馏推理到 student，并将判断作为 advice 注入任务上下文。"
+      ],
+      "results": [
+        "最佳模型 GPT-5.6 Sol 平均准确率仅 59.7%，GPT-5.5 为 59.5%，随机猜测为 25%。",
+        "时间跨度越长越难：14 模型均值从 in-prefix 的 62.3% 降至 more-work 的 21.0%。",
+        "增加 reasoning budget 几乎不提升准确率（GPT-5.6 Sol -0.2 点，Luna +2.2 点）；蒸馏后在未见任务和 SWE-bench Pro 上端到端提升。"
+      ],
+      "takeaways": [
+        "长程 agent 的决策质量可与端到端分数脱节，评估工具应单独衡量 fork 判断力。",
+        "让模型多想并不能弥补后见证据缺失，训练判断力比加大推理预算更有效。"
+      ],
+      "limitations": "标签依赖记录结果，可能混入执行质量与环境因素；仅覆盖工程与研究两域，且二选一题存在位置偏差。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
+    "sub_title": "papers · source=hf_daily_papers · score=68.1",
+    "url_title": "embodiedswe-coding-agents-for-long-horizon-dexterous-robotics",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.27308",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-23T00:00:00Z",
+    "first_seen_at": "2026-09-24T04:49:30Z",
+    "score": 68.1,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 37.3,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出 EmbodiedSWE-Bench，评测编码智能体解决长时程灵巧机器人任务。",
+    "reason_zh": "编码智能体用于机器人编程，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "We study coding agents for long-horizon, dexterous robotics and ask whether their solutions can provide scalable supervision for learning general robot policies. To test this, we develop EMBODIEDSWE-BENCH, a simulation benchmark for coding agents spanning contact-rich manipulation, deformable objects, and long-horizon tasks requiring up to half an hour of…",
+    "authors": [
+      "Haoxiang You",
+      "Zeyu Shen",
+      "Yilang Liu",
+      "Zhicheng Zheng",
+      "Lihan Zha",
+      "Kashu Yamazaki"
+    ],
+    "author_count": 19,
+    "upvotes": 3,
+    "likes": 0,
+    "github_url": "https://github.com/EmbodiedSWE/EmbodiedSWE",
+    "github_stars": 72,
+    "hf_url": "https://huggingface.co/papers/2609.27308",
+    "arxiv_id": "2609.27308",
+    "digest": {
+      "problem": "VLA 等机器人策略依赖昂贵的人类演示数据，难以扩展到长时程、接触密集的灵巧操作任务，缺少可规模化的监督来源。",
+      "method": [
+        "构建 EmbodiedSWE-Bench：28 个长时程灵巧任务，覆盖装配、打包、切割等，支持五种机器人本体。",
+        "让前沿 coding agent 直接对仿真器写代码求解，并评估跨任务、跨本体的解迁移与附加工具。",
+        "提出 EmbodiedSWE-Gen，把单个已验证解分层多样化，生成大量轨迹用于 VLA 微调。"
+      ],
+      "results": [
+        "前沿 agent 在 4 小时预算内可解约 80% 任务，最强模型成功率约 82%，最弱约 11%。",
+        "VLA 平均成功率随演示数从 10 条的 18% 升至 400 条的 69%，rubric 分从 0.32 升至 0.76。",
+        "仅用 500 条 agent 生成仿真演示微调的策略，在真实机器人四阶段拆灯任务上完成抓灯罩 100%、拧灯泡 20%。"
+      ],
+      "takeaways": [
+        "coding agent 可直接对仿真器写控制程序，作为长时程任务的求解器与数据教师。",
+        "用 agent 多样化生成演示，比纯脚本域随机化更能提升 VLA 的分布外泛化。"
+      ],
+      "limitations": "最难任务仍未被自主解决；解需大量迭代且常针对单个任务实例；工具增益较小；sim-to-real 仅单任务验证。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "One to More, More to One: Category-Aware Iterative Expert Training for Software Engineering Agents",
     "sub_title": "papers · source=hf_daily_papers · score=68.1",
     "url_title": "one-to-more-more-to-one-category-aware-iterative-expert-training-for-software-en",
@@ -401,78 +617,6 @@
         "专家训练与整合无需外部模型提供轨迹或动作目标，可复用自身成功轨迹自改进。"
       ],
       "limitations": "Pro-618 为审计过滤后的 618 条子集；专家增益恢复在各类别间仍不均衡，单模型整合有待改进。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
-    "sub_title": "papers · source=arxiv_cs_ai · score=68.0",
-    "url_title": "the-tasteful-agent-measuring-and-improving-taste-in-long-horizon-tasks",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.25804",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T08:15:45Z",
-    "score": 68.0,
-    "scores": {
-      "relevance": 70.0,
-      "popularity": 64.8,
-      "freshness": 63.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "swe-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "定义并度量长时程任务中智能体的品味，即做出良好决策的能力。",
-    "reason_zh": "长时程智能体决策能力评测，对编程智能体有明确应用。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "LLM agents increasingly work on long-horizon tasks, and the decisions they make along the way, such as which hypothesis to test or which implementation to build on, determine the outcome of the whole run. Making these decisions well is becoming a key capability for both engineering and research agents. We refer to the ability to make good long-horizon…",
-    "authors": [
-      "Wenbo Pan",
-      "Zhichao Liu",
-      "Shujie Liu",
-      "Jingying Zeng",
-      "Chin-Yew Lin",
-      "Xianfeng Tang"
-    ],
-    "author_count": 9,
-    "upvotes": 143,
-    "likes": 0,
-    "github_url": "https://github.com/wbopan/tastebench",
-    "github_stars": 11,
-    "hf_url": "https://huggingface.co/papers/2609.25804",
-    "arxiv_id": "2609.25804",
-    "digest": {
-      "problem": "LLM agent 在长程任务中沿途决策（选哪个假设、哪个实现）决定最终成败，但现有 benchmark 只测端到端成功率，无法衡量决策质量。",
-      "method": [
-        "提出用轨迹后见之明自动挖掘 decision fork：同一任务多次尝试分叉处，或单条轨迹中的绕路纠错点。",
-        "构建 Taste-Bench，502 道二选一 taste 题，覆盖工程与研究两域，标签由记录结果确定，无需人工标注。",
-        "用见过正确方向的 teacher 蒸馏推理到 student，并将判断作为 advice 注入任务上下文。"
-      ],
-      "results": [
-        "最佳模型 GPT-5.6 Sol 平均准确率仅 59.7%，GPT-5.5 为 59.5%，随机猜测为 25%。",
-        "时间跨度越长越难：14 模型均值从 in-prefix 的 62.3% 降至 more-work 的 21.0%。",
-        "增加 reasoning budget 几乎不提升准确率（GPT-5.6 Sol -0.2 点，Luna +2.2 点）；蒸馏后在未见任务和 SWE-bench Pro 上端到端提升。"
-      ],
-      "takeaways": [
-        "长程 agent 的决策质量可与端到端分数脱节，评估工具应单独衡量 fork 判断力。",
-        "让模型多想并不能弥补后见证据缺失，训练判断力比加大推理预算更有效。"
-      ],
-      "limitations": "标签依赖记录结果，可能混入执行质量与环境因素；仅覆盖工程与研究两域，且二选一题存在位置偏差。",
       "basis": "fulltext"
     }
   },
@@ -599,76 +743,6 @@
     }
   },
   {
-    "title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
-    "sub_title": "papers · source=hf_daily_papers · score=67.9",
-    "url_title": "embodiedswe-coding-agents-for-long-horizon-dexterous-robotics",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.27308",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-23T00:00:00Z",
-    "first_seen_at": "2026-09-24T04:49:30Z",
-    "score": 67.9,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 36.7,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "提出 EmbodiedSWE-Bench，评测编码智能体解决长时程灵巧机器人任务。",
-    "reason_zh": "编码智能体用于机器人编程，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "We study coding agents for long-horizon, dexterous robotics and ask whether their solutions can provide scalable supervision for learning general robot policies. To test this, we develop EMBODIEDSWE-BENCH, a simulation benchmark for coding agents spanning contact-rich manipulation, deformable objects, and long-horizon tasks requiring up to half an hour of…",
-    "authors": [
-      "Haoxiang You",
-      "Zeyu Shen",
-      "Yilang Liu",
-      "Zhicheng Zheng",
-      "Lihan Zha",
-      "Kashu Yamazaki"
-    ],
-    "author_count": 19,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "https://github.com/EmbodiedSWE/EmbodiedSWE",
-    "github_stars": 67,
-    "hf_url": "https://huggingface.co/papers/2609.27308",
-    "arxiv_id": "2609.27308",
-    "digest": {
-      "problem": "VLA 等机器人策略依赖昂贵的人类演示数据，难以扩展到长时程、接触密集的灵巧操作任务，缺少可规模化的监督来源。",
-      "method": [
-        "构建 EmbodiedSWE-Bench：28 个长时程灵巧任务，覆盖装配、打包、切割等，支持五种机器人本体。",
-        "让前沿 coding agent 直接对仿真器写代码求解，并评估跨任务、跨本体的解迁移与附加工具。",
-        "提出 EmbodiedSWE-Gen，把单个已验证解分层多样化，生成大量轨迹用于 VLA 微调。"
-      ],
-      "results": [
-        "前沿 agent 在 4 小时预算内可解约 80% 任务，最强模型成功率约 82%，最弱约 11%。",
-        "VLA 平均成功率随演示数从 10 条的 18% 升至 400 条的 69%，rubric 分从 0.32 升至 0.76。",
-        "仅用 500 条 agent 生成仿真演示微调的策略，在真实机器人四阶段拆灯任务上完成抓灯罩 100%、拧灯泡 20%。"
-      ],
-      "takeaways": [
-        "coding agent 可直接对仿真器写控制程序，作为长时程任务的求解器与数据教师。",
-        "用 agent 多样化生成演示，比纯脚本域随机化更能提升 VLA 的分布外泛化。"
-      ],
-      "limitations": "最难任务仍未被自主解决；解需大量迭代且常针对单个任务实例；工具增益较小；sim-to-real 仅单任务验证。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "RECLAIM: Can Agents Reproduce the Claims of Machine Learning Papers?",
     "sub_title": "papers · source=arxiv_cs_se · score=67.5",
     "url_title": "reclaim-can-agents-reproduce-the-claims-of-machine-learning-papers",
@@ -733,80 +807,6 @@
         "agent 普遍过早停止、预算未用尽，且倾向不核对论文数值，需在工具链中强制验证。"
       ],
       "limitations": "审计由 LLM 完成，与人工评分 F1 为 0.82；rollout 不可逐轮复现，仅评分阶段可复现。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Rufus-Air: An Open LLM Post-Training Recipe",
-    "sub_title": "papers · source=arxiv_cs_cl · score=67.5",
-    "url_title": "rufus-air-an-open-llm-post-training-recipe",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.29421",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "arxiv_cs_ai",
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-26T04:00:00Z",
-    "first_seen_at": "2026-09-25T10:18:59Z",
-    "score": 67.5,
-    "scores": {
-      "relevance": 75.0,
-      "popularity": 30.0,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "模型训练与推理",
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "公开GLM-4.5-Air后训练配方，含Coding RL与Coding Agent阶段。",
-    "reason_zh": "后训练配方含编程智能体与代码RL，密切相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Rufus-Air is an open and reproducible post-training recipe on GLM-4.5-Air-Base (106B-A12B), organized as a serial pipeline of eight stages: SFT, Reasoning RL, Coding RL, Instruction-Following RL, General Agent, Coding Agent, Search Agent, and RLHF. We document the data, reward design, infrastructure, stage order, and stagewise results needed to reproduce…",
-    "authors": [
-      "Chia-Yuan Chang",
-      "Renyuan Cheng",
-      "Rui Feng",
-      "Xiaotian Han",
-      "Yuan He",
-      "Hongye Jin"
-    ],
-    "author_count": 22,
-    "upvotes": 9,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.29421",
-    "arxiv_id": "2609.29421",
-    "digest": {
-      "problem": "开源后训练配方披露不足，团队难以复现；需要一个基于公开权重、算力门槛低、可复用的完整后训练流程。",
-      "method": [
-        "在 GLM-4.5-Air-Base 上串联八阶段流水线：SFT→Reasoning RL→Coding RL→IF RL→三类 Agent→RLHF。",
-        "按奖励可被 hack 的难易排序阶段，硬验证奖励在前、软 judge 奖励在后。",
-        "用难度过滤剔除已解与不可解 prompt，形成自动课程；并公开数据、奖励与基础设施细节。"
-      ],
-      "results": [
-        "Rufus-Air 在除 Arena-Hard v2 Creative Writing 外的所有报告基准上超过官方 GLM-4.5-Air。",
-        "IFEval 95.4 vs 83.0，IFBench 76.9 vs 33.6，SWE-bench Verified 65.6 vs 50.6。",
-        "与同规模开源模型 INTELLECT-3、Nemotron-3-Super 相比具竞争力，部分 agentic 基准略低。"
-      ],
-      "takeaways": [
-        "SFT 应作为能力建设阶段而非热身，需覆盖广度、格式一致性与长程行为。",
-        "RL 阶段用难度过滤把 prompt 控制在可学习区间，并按奖励可靠性排序以抑制 reward hacking。"
-      ],
-      "limitations": "部分结论来自训练经验而非完整消融；n-gram 与 embedding 去污染无法排除全部泄漏。",
       "basis": "fulltext"
     }
   },
@@ -1728,7 +1728,7 @@
     "score": 61.9,
     "scores": {
       "relevance": 98.0,
-      "popularity": 44.4,
+      "popularity": 44.5,
       "freshness": 0.0,
       "impact": 40.0
     },
@@ -1753,7 +1753,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 165,
+    "likes": 166,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -1898,73 +1898,77 @@
     }
   },
   {
-    "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.1",
-    "url_title": "can-llms-reason-about-runtime-behavior-a-repository-level-dynamic-benchmark",
+    "title": "Coding Agents for Generalized Task and Motion Planning Problems",
+    "sub_title": "papers · source=arxiv_cs_ai · score=61.1",
+    "url_title": "coding-agents-for-generalized-task-and-motion-planning-problems",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.28449",
-    "source_id": "arxiv_cs_se",
+    "external_url": "https://arxiv.org/abs/2609.30233",
+    "source_id": "arxiv_cs_ai",
     "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl"
+      "arxiv_cs_ai",
+      "hf_daily_papers"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
+    "published_at": "2026-09-25T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
     "score": 61.1,
     "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 35.0
+      "relevance": 68.0,
+      "popularity": 28.6,
+      "freshness": 79.4,
+      "impact": 55.0
     },
     "keywords": [
-      "repository-level"
+      "coding agent",
+      "program synthesis",
+      "claude code",
+      "codex"
     ],
     "topics": [
-      "评测基准",
-      "代码理解与检索"
+      "编程智能体",
+      "代码生成"
     ],
-    "summary_zh": "提出SWE-Flux，仓库级动态执行推理基准，评测LLM对运行时行为的理解。",
-    "reason_zh": "面向代码LLM的仓库级执行推理评测基准，核心相关。",
+    "summary_zh": "用编码智能体解决广义任务与运动规划问题。",
+    "reason_zh": "编程智能体用于机器人规划，偏特定场景。",
     "relevance_source": "llm",
     "signals": [
-      "new_benchmark"
+      "open_source_code",
+      "sota"
     ],
-    "summary": "Large language models (LLMs) are increasingly used in coding tasks, but their ability to reason about code execution remains unclear. Existing repository-level QA benchmarks mainly evaluate static code understanding and often rely on LLM-based evaluation, while execution-reasoning benchmarks are mostly limited to snippets or functions. We introduce…",
+    "summary": "Task and motion planning (TAMP) problems remain difficult even with full observability and object-centric states because discrete decisions are tightly coupled to geometric, kinematic, and dynamic constraints. Generalized TAMP addresses this difficulty by exploiting regularities across problem instances to reduce planning effort on new instances. However…",
     "authors": [
-      "Hamed Taherkhani",
-      "Mohammad Abdollahi",
-      "Melika Sepidband",
-      "Hridya Dhulipala",
-      "Tien N. Nguyen",
-      "Hadi Hemmati"
+      "Matteo Merler",
+      "Bowen Li",
+      "Josh Roy",
+      "Yichao Liang",
+      "Qianwei Wang",
+      "Yixuan Huang"
     ],
-    "author_count": 6,
-    "upvotes": 0,
+    "author_count": 7,
+    "upvotes": 8,
     "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.28449",
+    "github_url": "https://github.com/tomsilver/robocode",
+    "github_stars": 12,
+    "hf_url": "https://huggingface.co/papers/2609.30233",
+    "arxiv_id": "2609.30233",
     "digest": {
-      "problem": "LLM 被广泛用于编码任务，但其对代码运行时行为的推理能力尚不明确；现有仓库级基准多评估静态理解，执行推理基准又局限于代码片段或函数。",
+      "problem": "通用 TAMP 需大量领域专用工程，现有方法难以跨实例复用；LLM 在几何与物理决策上表现差，编码智能体能否胜任尚不明确。",
       "method": [
-        "提出 SWE-Flux，含 480 个执行实例、覆盖 12 个真实 Python 仓库的仓库级动态执行推理基准。",
-        "用双层分类法覆盖单测试与多测试，含控制流、循环、状态、数据流、异常、不变量七类行为。",
-        "答案由插桩测试执行自动采集，非人工编写或 LLM 评判，并提供输入扰动生成新变体。"
+        "给编码智能体任务描述与模拟器访问，在固定预算内自主写代码、做实验并合成程序",
+        "程序冻结后在未见实例上评估，测试时无 LLM 参与，不提供手工 TAMP 抽象",
+        "对比手工 TAMP planner、one-shot 生成与 LLMGenPlan，并设 + source 参考设置"
       ],
       "results": [
-        "最佳模型准确率仅 37.71%；数据流最难，SOTA 模型仅 6%。",
-        "人工检查最强模型 299 个错误答案，93% 为实质性语义失败而非格式错误。",
-        "扰动管线对 58 个实例中 52 个成功生成变体（89.7%），使 GPT-5.4 从 100% 降至 43.1%。"
+        "16 个有 planner 的环境中，三种智能体配置均超过 planner 的 47%：Opus 82%、Astra 95%、Sol 56%",
+        "Astra 平均成功率：Kinematic2D 99%、Dynamic2D 97%、Kinematic3D 93%、Dynamic3D 65%、PDDLStream 近 100%",
+        "程序每实例计算约 0.5–2.1 秒，planner 约 29 秒；Astra 每动作 1.3ms，Opus 11.7ms"
       ],
       "takeaways": [
-        "编码 agent 需具备跨函数、跨文件的运行时行为推理能力，仅靠静态代码理解不足。",
-        "数据流、过程间执行与套件级聚合是当前模型明显短板，可作为工具改进重点。"
+        "编码智能体可作为通用 TAMP 的强基线，减少手工谓词、采样器与技能工程",
+        "让智能体交互式探测模拟器、写自定义测试并校准物理模型，比一次性生成更有效"
       ],
-      "limitations": "仅覆盖 Python 仓库，基准规模 480 实例，评估模型数量有限。",
+      "limitations": "部分 Dynamic3D 环境（如扫掠、倾倒大量小物体）在主设置下仍基本未解决；+ source 程序平均更慢。",
       "basis": "fulltext"
     }
   }
