@@ -282,7 +282,7 @@
     "score": 66.4,
     "scores": {
       "relevance": 95.0,
-      "popularity": 42.8,
+      "popularity": 42.9,
       "freshness": 31.5,
       "impact": 40.0
     },
@@ -306,7 +306,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 137,
+    "likes": 138,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -403,7 +403,7 @@
     "score": 65.7,
     "scores": {
       "relevance": 70.0,
-      "popularity": 65.8,
+      "popularity": 66.0,
       "freshness": 50.0,
       "impact": 75.0
     },
@@ -431,7 +431,7 @@
       "Xianfeng Tang"
     ],
     "author_count": 9,
-    "upvotes": 155,
+    "upvotes": 157,
     "likes": 0,
     "github_url": "https://github.com/wbopan/tastebench",
     "github_stars": 16,
@@ -1760,6 +1760,81 @@
     }
   },
   {
+    "title": "Coding Agents for Generalized Task and Motion Planning Problems",
+    "sub_title": "papers · source=arxiv_cs_ai · score=58.6",
+    "url_title": "coding-agents-for-generalized-task-and-motion-planning-problems",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.30233",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-25T04:00:00Z",
+    "first_seen_at": "2026-09-25T10:18:59Z",
+    "score": 58.6,
+    "scores": {
+      "relevance": 68.0,
+      "popularity": 32.4,
+      "freshness": 63.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "coding agent",
+      "program synthesis",
+      "claude code",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "用编码智能体解决广义任务与运动规划问题。",
+    "reason_zh": "编程智能体用于机器人规划，偏特定场景。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Task and motion planning (TAMP) problems remain difficult even with full observability and object-centric states because discrete decisions are tightly coupled to geometric, kinematic, and dynamic constraints. Generalized TAMP addresses this difficulty by exploiting regularities across problem instances to reduce planning effort on new instances. However…",
+    "authors": [
+      "Matteo Merler",
+      "Bowen Li",
+      "Josh Roy",
+      "Yichao Liang",
+      "Qianwei Wang",
+      "Yixuan Huang"
+    ],
+    "author_count": 7,
+    "upvotes": 11,
+    "likes": 0,
+    "github_url": "https://github.com/tomsilver/robocode",
+    "github_stars": 13,
+    "hf_url": "https://huggingface.co/papers/2609.30233",
+    "arxiv_id": "2609.30233",
+    "digest": {
+      "problem": "通用 TAMP 需大量领域专用工程，现有方法难以跨实例复用；LLM 在几何与物理决策上表现差，编码智能体能否胜任尚不明确。",
+      "method": [
+        "给编码智能体任务描述与模拟器访问，在固定预算内自主写代码、做实验并合成程序",
+        "程序冻结后在未见实例上评估，测试时无 LLM 参与，不提供手工 TAMP 抽象",
+        "对比手工 TAMP planner、one-shot 生成与 LLMGenPlan，并设 + source 参考设置"
+      ],
+      "results": [
+        "16 个有 planner 的环境中，三种智能体配置均超过 planner 的 47%：Opus 82%、Astra 95%、Sol 56%",
+        "Astra 平均成功率：Kinematic2D 99%、Dynamic2D 97%、Kinematic3D 93%、Dynamic3D 65%、PDDLStream 近 100%",
+        "程序每实例计算约 0.5–2.1 秒，planner 约 29 秒；Astra 每动作 1.3ms，Opus 11.7ms"
+      ],
+      "takeaways": [
+        "编码智能体可作为通用 TAMP 的强基线，减少手工谓词、采样器与技能工程",
+        "让智能体交互式探测模拟器、写自定义测试并校准物理模型，比一次性生成更有效"
+      ],
+      "limitations": "部分 Dynamic3D 环境（如扫掠、倾倒大量小物体）在主设置下仍基本未解决；+ source 程序平均更慢。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Control the Harness, Control the Cost: Routing and Governing AI Coding Agents in the Enterprise",
     "sub_title": "papers · source=arxiv_cs_ai · score=58.6",
     "url_title": "control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-t",
@@ -1894,77 +1969,6 @@
         "让 agent 渲染并检查自己的输出，比单纯增加推理 effort 更能提升重建质量。"
       ],
       "limitations": "模型与 harness 耦合，无法分离归因；目标固定，不衡量创作能力。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
-    "sub_title": "papers · source=arxiv_cs_se · score=58.5",
-    "url_title": "can-llms-reason-about-runtime-behavior-a-repository-level-dynamic-benchmark",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.28449",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-24T04:00:00Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 58.5,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 50.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "repository-level"
-    ],
-    "topics": [
-      "评测基准",
-      "代码理解与检索"
-    ],
-    "summary_zh": "提出SWE-Flux，仓库级动态执行推理基准，评测LLM对运行时行为的理解。",
-    "reason_zh": "面向代码LLM的仓库级执行推理评测基准，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Large language models (LLMs) are increasingly used in coding tasks, but their ability to reason about code execution remains unclear. Existing repository-level QA benchmarks mainly evaluate static code understanding and often rely on LLM-based evaluation, while execution-reasoning benchmarks are mostly limited to snippets or functions. We introduce…",
-    "authors": [
-      "Hamed Taherkhani",
-      "Mohammad Abdollahi",
-      "Melika Sepidband",
-      "Hridya Dhulipala",
-      "Tien N. Nguyen",
-      "Hadi Hemmati"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.28449",
-    "digest": {
-      "problem": "LLM 被广泛用于编码任务，但其对代码运行时行为的推理能力尚不明确；现有仓库级基准多评估静态理解，执行推理基准又局限于代码片段或函数。",
-      "method": [
-        "提出 SWE-Flux，含 480 个执行实例、覆盖 12 个真实 Python 仓库的仓库级动态执行推理基准。",
-        "用双层分类法覆盖单测试与多测试，含控制流、循环、状态、数据流、异常、不变量七类行为。",
-        "答案由插桩测试执行自动采集，非人工编写或 LLM 评判，并提供输入扰动生成新变体。"
-      ],
-      "results": [
-        "最佳模型准确率仅 37.71%；数据流最难，SOTA 模型仅 6%。",
-        "人工检查最强模型 299 个错误答案，93% 为实质性语义失败而非格式错误。",
-        "扰动管线对 58 个实例中 52 个成功生成变体（89.7%），使 GPT-5.4 从 100% 降至 43.1%。"
-      ],
-      "takeaways": [
-        "编码 agent 需具备跨函数、跨文件的运行时行为推理能力，仅靠静态代码理解不足。",
-        "数据流、过程间执行与套件级聚合是当前模型明显短板，可作为工具改进重点。"
-      ],
-      "limitations": "仅覆盖 Python 仓库，基准规模 480 实例，评估模型数量有限。",
       "basis": "fulltext"
     }
   }
