@@ -1,7 +1,7 @@
 [
   {
     "title": "Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL",
-    "sub_title": "papers · source=arxiv_cs_cl · score=78.5",
+    "sub_title": "papers · source=arxiv_cs_cl · score=78.6",
     "url_title": "groupwise-agentic-grading-and-advantage-redistribution-for-code-agent-rl",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.32577",
@@ -14,10 +14,10 @@
     "category": "papers",
     "published_at": "2026-09-29T04:00:00Z",
     "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 78.5,
+    "score": 78.6,
     "scores": {
       "relevance": 95.0,
-      "popularity": 54.8,
+      "popularity": 55.4,
       "freshness": 100.0,
       "impact": 0.0
     },
@@ -43,7 +43,7 @@
       "Lei Li"
     ],
     "author_count": 10,
-    "upvotes": 66,
+    "upvotes": 69,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -120,7 +120,7 @@
     "upvotes": 16,
     "likes": 0,
     "github_url": "https://github.com/ZJU-ACES-ISE/WideSWE",
-    "github_stars": 8,
+    "github_stars": 15,
     "hf_url": "https://huggingface.co/papers/2609.33382",
     "arxiv_id": "2609.33382",
     "digest": {
@@ -914,6 +914,50 @@
     }
   },
   {
+    "title": "FineEnvs/MiMo-V2.6-RL-harbor-code",
+    "sub_title": "datasets · source=hf_datasets_code · score=68.5",
+    "url_title": "fineenvsmimo-v26-rl-harbor-code",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/FineEnvs/MiMo-V2.6-RL-harbor-code",
+    "source_id": "hf_datasets_code",
+    "source_ids": [
+      "hf_datasets_code"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-27T01:39:17Z",
+    "first_seen_at": "2026-09-29T11:26:45Z",
+    "score": 68.5,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 22.0,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [],
+    "topics": [
+      "训练数据",
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "小米MiMo-V2.6-RL的代码域RL环境，2698个真实仓库修复任务。",
+    "reason_zh": "真实仓库issue修复的RL训练环境，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "MiMo-V2.6-RL Code (Harbor) Fix a real issue in a real repository. 2,698 Harbor tasks from the Code domain of Xiaomi's MiMo-V2.6-RL-oss, the RL environments MiMo-V2.6 was trained on, converted so every one runs as a standard Harbor task. The agent gets an issue and the repository at its base commit. After it finishes, the files the hidden test patch touches…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence",
     "sub_title": "papers · source=hf_daily_papers · score=68.3",
     "url_title": "self-evolving-coding-agents-from-digital-programs-to-physical-world-intelligence",
@@ -982,50 +1026,6 @@
       "limitations": "仅提供 Harness、工具与数据到模型的初步证据，未实现模型架构自主搜索、无限制自我改写或非受限物理环境部署。",
       "basis": "fulltext"
     }
-  },
-  {
-    "title": "FineEnvs/MiMo-V2.6-RL-harbor-code",
-    "sub_title": "datasets · source=hf_datasets_code · score=68.1",
-    "url_title": "fineenvsmimo-v26-rl-harbor-code",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/FineEnvs/MiMo-V2.6-RL-harbor-code",
-    "source_id": "hf_datasets_code",
-    "source_ids": [
-      "hf_datasets_code"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-09-27T01:39:17Z",
-    "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 68.1,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 20.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [],
-    "topics": [
-      "训练数据",
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "小米MiMo-V2.6-RL的代码域RL环境，2698个真实仓库修复任务。",
-    "reason_zh": "真实仓库issue修复的RL训练环境，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "MiMo-V2.6-RL Code (Harbor) Fix a real issue in a real repository. 2,698 Harbor tasks from the Code domain of Xiaomi's MiMo-V2.6-RL-oss, the RL environments MiMo-V2.6 was trained on, converted so every one runs as a standard Harbor task. The agent gets an issue and the repository at its base commit. After it finishes, the files the hidden test patch touches…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 2,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
   },
   {
     "title": "IChart2Code: Benchmarking Multimodal Large Language Models for Interactive Chart Code Generation",
