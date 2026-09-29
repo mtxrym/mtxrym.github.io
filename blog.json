@@ -1,7 +1,77 @@
 [
   {
+    "title": "Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL",
+    "sub_title": "papers · source=arxiv_cs_cl · score=78.5",
+    "url_title": "groupwise-agentic-grading-and-advantage-redistribution-for-code-agent-rl",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.32577",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-29T04:00:00Z",
+    "first_seen_at": "2026-09-29T11:26:45Z",
+    "score": 78.5,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 54.8,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "code agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理",
+      "代码生成"
+    ],
+    "summary_zh": "针对代码智能体RL，提出分组式智能体评分与优势重分配，改进GRPO奖励信号。",
+    "reason_zh": "核心为代码智能体强化学习训练方法。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Reinforcement learning (RL) for code agents often uses executable tests to provide binary rewards. With these rewards, Group Relative Policy Optimization (GRPO) assigns identical advantages to test-passing trajectories within each rollout group, overlooking differences in implementation quality and adherence to task requirements. This leaves the policy…",
+    "authors": [
+      "Jinhao Dong",
+      "Liang Zhao",
+      "Zihao Yue",
+      "Wenhan Ma",
+      "Linghao Zhang",
+      "Lei Li"
+    ],
+    "author_count": 10,
+    "upvotes": 66,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.32577",
+    "arxiv_id": "2609.32577",
+    "digest": {
+      "problem": "代码 agent 的 RL 常用测试通过与否作为二值奖励，GRPO 对同组内所有通过轨迹给相同优势，无法区分实现质量与任务贴合度，缺少偏好干净、精准实现的信号。",
+      "method": [
+        "Gagar 将同组所有轨迹放入共享工作区，由 SFT 训练的 agentic grader 联合检查代码、补丁与执行结果，对通过者按五个质量维度排名。",
+        "按排名给通过轨迹质量因子 f_i 降权，再按比例重缩放，使通过轨迹正优势总和不变、失败轨迹优势不变。",
+        "采用动态采样保留混合结果组，评分异步进行，无效评分回退原优势。"
+      ],
+      "results": [
+        "Flash 代码专用 RL 中，相比二值奖励基线，后期 DeepSWE 通过率提升、训练更稳定，交互轮数与 token 用量下降。",
+        "大规模混合任务 RL 后，Flash 与 Pro 的 DeepSWE v1.1 avg@3 分别达 67.9 和 71.9。",
+        "仅降权不重分配会导致策略熵与轨迹长度快速增长、评估不稳定。"
+      ],
+      "takeaways": [
+        "对代码 agent 的 RL，可在测试通过组内引入质量排名，把正优势从低质量实现重新分配给高质量实现。",
+        "重分配需保持正优势总和与失败轨迹优势不变，否则会破坏信用平衡、影响训练稳定性。"
+      ],
+      "limitations": "评分依赖 SFT grader，单组评分约 600 秒，带来额外延迟；质量因子映射与阈值需按模型配置调参。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "WideSWE: Can Coding Agents Coordinate Changes Across Repositories?",
-    "sub_title": "papers · source=arxiv_cs_se · score=77.7",
+    "sub_title": "papers · source=arxiv_cs_se · score=77.9",
     "url_title": "wideswe-can-coding-agents-coordinate-changes-across-repositories",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.33382",
@@ -14,10 +84,10 @@
     "category": "papers",
     "published_at": "2026-09-29T04:00:00Z",
     "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 77.7,
+    "score": 77.9,
     "scores": {
       "relevance": 93.0,
-      "popularity": 36.1,
+      "popularity": 36.9,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -47,7 +117,7 @@
       "Jianwei Yin"
     ],
     "author_count": 6,
-    "upvotes": 15,
+    "upvotes": 16,
     "likes": 0,
     "github_url": "https://github.com/ZJU-ACES-ISE/WideSWE",
     "github_stars": 8,
@@ -70,76 +140,6 @@
         "让 agent 在生态工作区联合执行可利用相关仓库信息辅助实现与验证，优于逐仓库独立执行。"
       ],
       "limitations": "基准来自公开开源仓库，agent 生成的补丁可能含漏洞或回归，不应未经人工审查直接部署。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL",
-    "sub_title": "papers · source=arxiv_cs_cl · score=75.2",
-    "url_title": "groupwise-agentic-grading-and-advantage-redistribution-for-code-agent-rl",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.32577",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-29T04:00:00Z",
-    "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 75.2,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 38.4,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "code agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理",
-      "代码生成"
-    ],
-    "summary_zh": "针对代码智能体RL，提出分组式智能体评分与优势重分配，改进GRPO奖励信号。",
-    "reason_zh": "核心为代码智能体强化学习训练方法。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Reinforcement learning (RL) for code agents often uses executable tests to provide binary rewards. With these rewards, Group Relative Policy Optimization (GRPO) assigns identical advantages to test-passing trajectories within each rollout group, overlooking differences in implementation quality and adherence to task requirements. This leaves the policy…",
-    "authors": [
-      "Jinhao Dong",
-      "Liang Zhao",
-      "Zihao Yue",
-      "Wenhan Ma",
-      "Linghao Zhang",
-      "Lei Li"
-    ],
-    "author_count": 10,
-    "upvotes": 18,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.32577",
-    "arxiv_id": "2609.32577",
-    "digest": {
-      "problem": "代码 agent 的 RL 常用测试通过与否作为二值奖励，GRPO 对同组内所有通过轨迹给相同优势，无法区分实现质量与任务贴合度，缺少偏好干净、精准实现的信号。",
-      "method": [
-        "Gagar 将同组所有轨迹放入共享工作区，由 SFT 训练的 agentic grader 联合检查代码、补丁与执行结果，对通过者按五个质量维度排名。",
-        "按排名给通过轨迹质量因子 f_i 降权，再按比例重缩放，使通过轨迹正优势总和不变、失败轨迹优势不变。",
-        "采用动态采样保留混合结果组，评分异步进行，无效评分回退原优势。"
-      ],
-      "results": [
-        "Flash 代码专用 RL 中，相比二值奖励基线，后期 DeepSWE 通过率提升、训练更稳定，交互轮数与 token 用量下降。",
-        "大规模混合任务 RL 后，Flash 与 Pro 的 DeepSWE v1.1 avg@3 分别达 67.9 和 71.9。",
-        "仅降权不重分配会导致策略熵与轨迹长度快速增长、评估不稳定。"
-      ],
-      "takeaways": [
-        "对代码 agent 的 RL，可在测试通过组内引入质量排名，把正优势从低质量实现重新分配给高质量实现。",
-        "重分配需保持正优势总和与失败轨迹优势不变，否则会破坏信用平衡、影响训练稳定性。"
-      ],
-      "limitations": "评分依赖 SFT grader，单组评分约 600 秒，带来额外延迟；质量因子映射与阈值需按模型配置调参。",
       "basis": "fulltext"
     }
   },
@@ -214,6 +214,79 @@
     }
   },
   {
+    "title": "Relic: From Multi-Agent Collaboration to Persistent Organizational Capability",
+    "sub_title": "papers · source=arxiv_cs_se · score=71.2",
+    "url_title": "relic-from-multi-agent-collaboration-to-persistent-organizational-capability",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.32965",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-29T04:00:00Z",
+    "first_seen_at": "2026-09-29T11:26:45Z",
+    "score": 71.2,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 23.3,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "pull request"
+    ],
+    "topics": [
+      "编程智能体",
+      "其他"
+    ],
+    "summary_zh": "Relic将多智能体协作失败转化为持久组织能力，解决编码智能体间接口冲突。",
+    "reason_zh": "多智能体协作含编码场景，偏组织能力较间接。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Multiple agents may often conflict in an organization: for example, one coding agent changes an interface in a repository, but another continues to develop on the old version where existing tests become stale. A conversation can resolve the episode, but when the participants change, what makes the lesson continue to govern the team? We introduce Relic…",
+    "authors": [
+      "Hongyi Du",
+      "Tianyi Zhang",
+      "Weijia Zhang",
+      "Yi Yang",
+      "Haofei Yu",
+      "Kunlun Zhu"
+    ],
+    "author_count": 12,
+    "upvotes": 5,
+    "likes": 0,
+    "github_url": "https://github.com/Hongyi-Du/Relic",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.32965",
+    "arxiv_id": "2609.32965",
+    "digest": {
+      "problem": "多智能体协作中，成员更替后经验难以延续，重复出现接口变更、测试失效等协作失败，团队无法形成持久能力。",
+      "method": [
+        "Relic 将反复出现的协作失败转化为组织所有、可执行的协议。",
+        "成员反思可见工作、提出规则并治理其采纳，协议绑定触发条件、责任、证据与执行后果。",
+        "协议可修订和退役，并在新成员间传递。"
+      ],
+      "results": [
+        "360 次受控运行、10 个软件负载、3 个模型上，完整契约交付从 14.06% 升至 19.76%（+5.71 个百分点）。",
+        "新成员迁移下行为正确率：无继承协议 25.4%，文本规则 34.6%，可执行绑定 41.2%，比纯文本高 6.5 个百分点。",
+        "CooperBench 上达 367/477（76.9%）；固定 48 对同模型子集上 Relic 29/48 超过 Solo 26/48。"
+      ],
+      "takeaways": [
+        "把协作教训固化为可执行协议，比只写文档更能跨成员传递。",
+        "AI 编程工具应支持规则绑定触发、责任与证据，并允许修订退役。"
+      ],
+      "limitations": "",
+      "basis": "abstract"
+    }
+  },
+  {
     "title": "SWE-Game: Can Coding Agents Build the Games We Want?",
     "sub_title": "papers · source=arxiv_cs_ai · score=71.0",
     "url_title": "swe-game-can-coding-agents-build-the-games-we-want",
@@ -282,79 +355,6 @@
       ],
       "limitations": "仅 41 个参考游戏，大项目与长期开发覆盖有限；每个模型只配单一 agent 框架，结果反映模型与框架的组合能力。",
       "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Relic: From Multi-Agent Collaboration to Persistent Organizational Capability",
-    "sub_title": "papers · source=arxiv_cs_se · score=70.1",
-    "url_title": "relic-from-multi-agent-collaboration-to-persistent-organizational-capability",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.32965",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-29T04:00:00Z",
-    "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 70.1,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 18.1,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "pull request"
-    ],
-    "topics": [
-      "编程智能体",
-      "其他"
-    ],
-    "summary_zh": "Relic将多智能体协作失败转化为持久组织能力，解决编码智能体间接口冲突。",
-    "reason_zh": "多智能体协作含编码场景，偏组织能力较间接。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Multiple agents may often conflict in an organization: for example, one coding agent changes an interface in a repository, but another continues to develop on the old version where existing tests become stale. A conversation can resolve the episode, but when the participants change, what makes the lesson continue to govern the team? We introduce Relic…",
-    "authors": [
-      "Hongyi Du",
-      "Tianyi Zhang",
-      "Weijia Zhang",
-      "Yi Yang",
-      "Haofei Yu",
-      "Kunlun Zhu"
-    ],
-    "author_count": 12,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "https://github.com/Hongyi-Du/Relic",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.32965",
-    "arxiv_id": "2609.32965",
-    "digest": {
-      "problem": "多智能体协作中，成员更替后经验难以延续，重复出现接口变更、测试失效等协作失败，团队无法形成持久能力。",
-      "method": [
-        "Relic 将反复出现的协作失败转化为组织所有、可执行的协议。",
-        "成员反思可见工作、提出规则并治理其采纳，协议绑定触发条件、责任、证据与执行后果。",
-        "协议可修订和退役，并在新成员间传递。"
-      ],
-      "results": [
-        "360 次受控运行、10 个软件负载、3 个模型上，完整契约交付从 14.06% 升至 19.76%（+5.71 个百分点）。",
-        "新成员迁移下行为正确率：无继承协议 25.4%，文本规则 34.6%，可执行绑定 41.2%，比纯文本高 6.5 个百分点。",
-        "CooperBench 上达 367/477（76.9%）；固定 48 对同模型子集上 Relic 29/48 超过 Solo 26/48。"
-      ],
-      "takeaways": [
-        "把协作教训固化为可执行协议，比只写文档更能跨成员传递。",
-        "AI 编程工具应支持规则绑定触发、责任与证据，并允许修订退役。"
-      ],
-      "limitations": "",
-      "basis": "abstract"
     }
   },
   {
@@ -914,8 +914,78 @@
     }
   },
   {
+    "title": "Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence",
+    "sub_title": "papers · source=hf_daily_papers · score=68.3",
+    "url_title": "self-evolving-coding-agents-from-digital-programs-to-physical-world-intelligence",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.35432",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-28T00:00:00Z",
+    "first_seen_at": "2026-09-29T11:26:45Z",
+    "score": 68.3,
+    "scores": {
+      "relevance": 65.0,
+      "popularity": 58.8,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "提出自进化编程智能体，将数字程序能力迁移到机器人物理世界。",
+    "reason_zh": "以编程智能体为核心但面向机器人，偏交叉应用。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Vision-language-action (VLA) and world-action (WAM) models map observations and instructions directly to robot actions. This directness ties a policy to training: minor layout or viewpoint changes cause failure, and instructions generalize poorly. The root cause lies in representation: task requirements, conditions, progress, and failure recovery are…",
+    "authors": [
+      "Hongcheng Gao",
+      "Jingjing Zhou",
+      "Zelin Zheng",
+      "Shijia Ge",
+      "Jay Zhu",
+      "Yazhe Wang"
+    ],
+    "author_count": 13,
+    "upvotes": 90,
+    "likes": 0,
+    "github_url": "https://github.com/HexaFuture/PhysicalCoding",
+    "github_stars": 30,
+    "hf_url": "https://huggingface.co/papers/2609.35432",
+    "arxiv_id": "2609.35432",
+    "digest": {
+      "problem": "VLA/WAM 模型把任务状态、进度与恢复隐式编码在动作序列中，导致指令不敏感、视角或布局稍变即失败，且难以检查与修正。",
+      "method": [
+        "提出 Physical Coding：用 Code as World 表示对象、关系、约束与进度，Code as Policy 组织规划、验证、恢复与执行。",
+        "构建 HexaAnything，调用感知、规划、控制工具（含 VLA/WAM），依据外部反馈在环决策。",
+        "验证通过的执行轨迹转为数据与记忆，驱动 Harness、工具、模型权重等演化。"
+      ],
+      "results": [
+        "RoboCasa365 上 Composite-Unseen 成功率从 XR-1 VLA 的 34.3% 提升到 38.3%。",
+        "Harness 轨迹训练的 HexaModel 在每个 split 上均优于其基座模型。",
+        "PhyBench 上自主完成模拟物理实验，物理参数平均相对误差低于 5%；AgileX 双臂机器人 7 项桌面任务中 5 项三次全成。"
+      ],
+      "takeaways": [
+        "把任务状态与执行流程显式写成可检查、可版本化的代码，比单纯扩大动作模型更能提升长程泛化。",
+        "验证器应独立于模型，执行轨迹可作为训练数据反哺模型，形成数据—模型—Harness 闭环。"
+      ],
+      "limitations": "仅提供 Harness、工具与数据到模型的初步证据，未实现模型架构自主搜索、无限制自我改写或非受限物理环境部署。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "FineEnvs/MiMo-V2.6-RL-harbor-code",
-    "sub_title": "datasets · source=hf_datasets_code · score=67.7",
+    "sub_title": "datasets · source=hf_datasets_code · score=68.1",
     "url_title": "fineenvsmimo-v26-rl-harbor-code",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://huggingface.co/datasets/FineEnvs/MiMo-V2.6-RL-harbor-code",
@@ -927,10 +997,10 @@
     "category": "datasets",
     "published_at": "2026-09-27T01:39:17Z",
     "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 67.7,
+    "score": 68.1,
     "scores": {
       "relevance": 95.0,
-      "popularity": 18.0,
+      "popularity": 20.0,
       "freshness": 63.0,
       "impact": 40.0
     },
@@ -1302,76 +1372,6 @@
     }
   },
   {
-    "title": "Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence",
-    "sub_title": "papers · source=hf_daily_papers · score=66.2",
-    "url_title": "self-evolving-coding-agents-from-digital-programs-to-physical-world-intelligence",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.35432",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-28T00:00:00Z",
-    "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 66.2,
-    "scores": {
-      "relevance": 65.0,
-      "popularity": 48.7,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "提出自进化编程智能体，将数字程序能力迁移到机器人物理世界。",
-    "reason_zh": "以编程智能体为核心但面向机器人，偏交叉应用。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Vision-language-action (VLA) and world-action (WAM) models map observations and instructions directly to robot actions. This directness ties a policy to training: minor layout or viewpoint changes cause failure, and instructions generalize poorly. The root cause lies in representation: task requirements, conditions, progress, and failure recovery are…",
-    "authors": [
-      "Hongcheng Gao",
-      "Jingjing Zhou",
-      "Zelin Zheng",
-      "Shijia Ge",
-      "Jay Zhu",
-      "Yazhe Wang"
-    ],
-    "author_count": 13,
-    "upvotes": 41,
-    "likes": 0,
-    "github_url": "https://github.com/HexaFuture/PhysicalCoding",
-    "github_stars": 17,
-    "hf_url": "https://huggingface.co/papers/2609.35432",
-    "arxiv_id": "2609.35432",
-    "digest": {
-      "problem": "VLA/WAM 模型把任务状态、进度与恢复隐式编码在动作序列中，导致指令不敏感、视角或布局稍变即失败，且难以检查与修正。",
-      "method": [
-        "提出 Physical Coding：用 Code as World 表示对象、关系、约束与进度，Code as Policy 组织规划、验证、恢复与执行。",
-        "构建 HexaAnything，调用感知、规划、控制工具（含 VLA/WAM），依据外部反馈在环决策。",
-        "验证通过的执行轨迹转为数据与记忆，驱动 Harness、工具、模型权重等演化。"
-      ],
-      "results": [
-        "RoboCasa365 上 Composite-Unseen 成功率从 XR-1 VLA 的 34.3% 提升到 38.3%。",
-        "Harness 轨迹训练的 HexaModel 在每个 split 上均优于其基座模型。",
-        "PhyBench 上自主完成模拟物理实验，物理参数平均相对误差低于 5%；AgileX 双臂机器人 7 项桌面任务中 5 项三次全成。"
-      ],
-      "takeaways": [
-        "把任务状态与执行流程显式写成可检查、可版本化的代码，比单纯扩大动作模型更能提升长程泛化。",
-        "验证器应独立于模型，执行轨迹可作为训练数据反哺模型，形成数据—模型—Harness 闭环。"
-      ],
-      "limitations": "仅提供 Harness、工具与数据到模型的初步证据，未实现模型架构自主搜索、无限制自我改写或非受限物理环境部署。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "Certified Long-Horizon Code Agent Evolution via Validation-Gated Skill Optimization",
     "sub_title": "papers · source=arxiv_cs_ai · score=66.0",
     "url_title": "certified-long-horizon-code-agent-evolution-via-validation-gated-skill-optimizat",
@@ -1722,6 +1722,74 @@
     }
   },
   {
+    "title": "ControlScope: Workflow Revision and Reliability in LLM Agents",
+    "sub_title": "papers · source=hf_daily_papers · score=65.4",
+    "url_title": "controlscope-workflow-revision-and-reliability-in-llm-agents",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.34313",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers",
+      "arxiv_cs_se",
+      "arxiv_cs_cl",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-29T04:00:00Z",
+    "first_seen_at": "2026-09-29T02:36:46Z",
+    "score": 65.4,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 14.3,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "程序修复",
+      "评测基准"
+    ],
+    "summary_zh": "ControlScope 研究 LLM 智能体在工作流中应修订多少代码，比较继续生成、编辑工具调用参数与替换工作流三种策略。",
+    "reason_zh": "聚焦编程智能体的工作流修订与可靠性，属核心 AI 编程。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "How much of a running workflow should a language model agent revise? ControlScope compares continuing generated code, editing the next tool call's data arguments, and replacing the unfinished workflow from the same public execution state. The nested permissions separate available repairs from the actions an agent selects. We evaluate one-time and repeated…",
+    "authors": [
+      "Jingjie Ning",
+      "Xueqi Li",
+      "Yibo Kong",
+      "Dongting Li"
+    ],
+    "author_count": 4,
+    "upvotes": 2,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.34313",
+    "arxiv_id": "2609.34313",
+    "digest": {
+      "problem": "LLM agent 在执行已生成工作流时，应允许多大范围的修订？修订权限的粒度如何影响任务成功率与执行稳定性，此前缺乏系统对比。",
+      "method": [
+        "定义嵌套操作集 Keep（继续）、Arg（改下一次工具调用参数）、Full（替换剩余工作流），从同一公开状态分支对比。",
+        "用配对差分、前缀回放与候选执行诊断，区分可用修复、实际选择与后续执行稳定性。",
+        "在 filesystem、ALFWorld、AppWorld V1 上做持续策略与单次干预实验。"
+      ],
+      "results": [
+        "20 个 filesystem 任务、3 次 reasoning 抽样：Full 完成 15–16 个，Keep 13 个；4 次 fast 抽样 Full 10–13 对 Keep 13。",
+        "ALFWorld 87 任务 reasoning 面板 Keep/Arg/Full 为 85/86/87；134 任务 fast 面板为 134/134/127。",
+        "AppWorld V1 共 1,755 次运行，Full 每 split 仅比 Keep 多 1 个任务，配对增益 +0.60 与 +0.24 个百分点。"
+      ],
+      "takeaways": [
+        "扩大修订权限不必然提升成功率，收益取决于源程序、抽样与后续执行是否被打断。",
+        "给 agent 更多控制权时需权衡审查开销与执行稳定性，并记录实际选择而非仅看可用操作。"
+      ],
+      "limitations": "结果依赖特定模型、基准与执行契约；AppWorld V1 的 Full 额外获得 250 请求配额，对其有利。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Compact Documentation for Coding Agents: A Benchmark, an Optimizer, and Why It Does Not Transfer",
     "sub_title": "papers · source=arxiv_cs_se · score=65.4",
     "url_title": "compact-documentation-for-coding-agents-a-benchmark-an-optimizer-and-why-it-does",
@@ -2001,51 +2069,5 @@
       "limitations": "依赖环境确定性与可靠状态恢复；随机延续、昂贵或不完美回放会削弱效果，跨容器引擎的复现可能有差异。",
       "basis": "fulltext"
     }
-  },
-  {
-    "title": "ScaleAI/SWE-bench_Pro",
-    "sub_title": "datasets · source=hf_datasets_swe · score=65.0",
-    "url_title": "scaleaiswe-bench-pro",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-09-22T18:44:38Z",
-    "first_seen_at": "2026-09-24T04:33:52Z",
-    "score": 65.0,
-    "scores": {
-      "relevance": 96.0,
-      "popularity": 45.4,
-      "freshness": 19.8,
-      "impact": 40.0
-    },
-    "keywords": [
-      "swe-bench",
-      "pull request"
-    ],
-    "topics": [
-      "评测基准",
-      "编程智能体"
-    ],
-    "summary_zh": "SWE-bench Pro 是来自真实 PR 的长周期软件工程任务基准，含隐藏测试验证。",
-    "reason_zh": "SWE-bench 系列核心编程智能体评测基准。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "SWE-bench Pro V2 SWE-bench Pro is a benchmark of long-horizon software engineering tasks drawn from real pull requests in 11 open-source repositories (Go, Python, JavaScript, TypeScript). Each task gives an agent a repository at a base commit plus a PR description with explicit requirements and interfaces; the agent's patch is graded by hidden fail-to-pass…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 185,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
   }
 ]
