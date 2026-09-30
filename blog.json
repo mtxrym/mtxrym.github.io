@@ -71,7 +71,7 @@
   },
   {
     "title": "LEGO-Anything: Coding Agents for 3D Scene Reconstruction",
-    "sub_title": "papers · source=hf_daily_papers · score=75.0",
+    "sub_title": "papers · source=hf_daily_papers · score=78.7",
     "url_title": "lego-anything-coding-agents-for-3d-scene-reconstruction",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.36380",
@@ -83,10 +83,10 @@
     "category": "papers",
     "published_at": "2026-09-28T00:00:00Z",
     "first_seen_at": "2026-09-30T11:14:23Z",
-    "score": 75.0,
+    "score": 78.7,
     "scores": {
       "relevance": 88.0,
-      "popularity": 37.7,
+      "popularity": 55.9,
       "freshness": 100.0,
       "impact": 35.0
     },
@@ -113,7 +113,7 @@
       "Dongkyu Lee"
     ],
     "author_count": 10,
-    "upvotes": 17,
+    "upvotes": 72,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -136,6 +136,80 @@
         "迭代式构建需加强初始化、防止回退编辑，并用参考图证据替代模型自评。"
       ],
       "limitations": "重建场景用于检测、分割、深度时明显低于专用视觉模型，尚不足以精确表示自然图像。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Can Agents Design Libraries for Agents?",
+    "sub_title": "papers · source=arxiv_cs_se · score=74.3",
+    "url_title": "can-agents-design-libraries-for-agents",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.36730",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-30T04:00:00Z",
+    "first_seen_at": "2026-09-30T11:14:23Z",
+    "score": 74.3,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 9.0,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "codebase"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "代码生成"
+    ],
+    "summary_zh": "提出LibraryDesignBench，评测智能体为其他智能体设计库的能力。",
+    "reason_zh": "面向编程智能体的库设计基准，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Agents increasingly build on code written by other agents, and they reimplement rather than reuse, growing the codebases later agents must work in. To measure how well agents design libraries for other agents, we introduce LibraryDesignBench, a two-phase benchmark in which an agent implements a full-featured library from a specification that defines…",
+    "authors": [
+      "Gabriel Orlanski",
+      "Alex L. Zhang",
+      "Avi Trost",
+      "Vincent Sunn Chen",
+      "Frederic Sala",
+      "Aws Albarghouthi"
+    ],
+    "author_count": 7,
+    "upvotes": 1,
+    "likes": 0,
+    "github_url": "https://github.com/SprocketLab/librarydesignbench",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.36730",
+    "arxiv_id": "2609.36730",
+    "digest": {
+      "problem": "Agent 之间越来越多复用彼此写的代码，但常重新实现而非复用，导致代码库膨胀；如何衡量 agent 为其他 agent 设计库的能力尚缺评测手段。",
+      "method": [
+        "提出 LibraryDesignBench 两阶段基准：设计阶段 agent 按非规定性规格实现库，评估阶段由下游 agent 使用该库解题。",
+        "用正确性与简洁性乘积打分，简洁性基于 Cyclomatic、Cognitive、Halstead、SLOC 四项静态指标相对参考解的比例。",
+        "覆盖 4 种语言、15 个库设计任务、242 个专家验证的下游编程问题，每任务独立生成 3 个库。"
+      ],
+      "results": [
+        "Opus 5.5 得分最高 48.9，比 production library 的 46.6 高 2.3 分（4.9% 相对提升）。",
+        "15 个任务中 11 个，agent 设计者复现了 production library 的抽象。",
+        "失败审计中 64% 的多余代码归因于接口僵化或难用，仅 14% 归因于能力缺失。"
+      ],
+      "takeaways": [
+        "为 agent 设计库时，接口易用性比功能覆盖更关键，僵化接口会迫使下游 agent 重写代码。",
+        "让设计者先写消费者程序作为可运行示例并用子 agent 测试，可提升下游简洁性。"
+      ],
+      "limitations": "仅 15 个任务、每任务 3 次生成，置信区间为模型近似；下游 agent 本身也只用出 61.5 的简洁性，分数受实现者能力影响。",
       "basis": "fulltext"
     }
   },
@@ -774,78 +848,6 @@
         "给 agent 完整历史源码也几乎无帮助，瓶颈是复用倾向而非信息获取。"
       ],
       "limitations": "仅覆盖 5 个纯 Python 库、75 条五轮任务链、2 个 harness 与 4 个模型，能否推广到其他语言、领域和更长开发周期仍未知。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Can Agents Design Libraries for Agents?",
-    "sub_title": "papers · source=arxiv_cs_se · score=68.5",
-    "url_title": "can-agents-design-libraries-for-agents",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.36730",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-30T04:00:00Z",
-    "first_seen_at": "2026-09-30T11:14:23Z",
-    "score": 68.5,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "codebase"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "代码生成"
-    ],
-    "summary_zh": "提出LibraryDesignBench，评测智能体为其他智能体设计库的能力。",
-    "reason_zh": "面向编程智能体的库设计基准，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Agents increasingly build on code written by other agents, and they reimplement rather than reuse, growing the codebases later agents must work in. To measure how well agents design libraries for other agents, we introduce LibraryDesignBench, a two-phase benchmark in which an agent implements a full-featured library from a specification that defines…",
-    "authors": [
-      "Gabriel Orlanski",
-      "Alex L. Zhang",
-      "Avi Trost",
-      "Vincent Sunn Chen",
-      "Frederic Sala",
-      "Aws Albarghouthi"
-    ],
-    "author_count": 7,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.36730",
-    "digest": {
-      "problem": "Agent 之间越来越多复用彼此写的代码，但常重新实现而非复用，导致代码库膨胀；如何衡量 agent 为其他 agent 设计库的能力尚缺评测手段。",
-      "method": [
-        "提出 LibraryDesignBench 两阶段基准：设计阶段 agent 按非规定性规格实现库，评估阶段由下游 agent 使用该库解题。",
-        "用正确性与简洁性乘积打分，简洁性基于 Cyclomatic、Cognitive、Halstead、SLOC 四项静态指标相对参考解的比例。",
-        "覆盖 4 种语言、15 个库设计任务、242 个专家验证的下游编程问题，每任务独立生成 3 个库。"
-      ],
-      "results": [
-        "Opus 5.5 得分最高 48.9，比 production library 的 46.6 高 2.3 分（4.9% 相对提升）。",
-        "15 个任务中 11 个，agent 设计者复现了 production library 的抽象。",
-        "失败审计中 64% 的多余代码归因于接口僵化或难用，仅 14% 归因于能力缺失。"
-      ],
-      "takeaways": [
-        "为 agent 设计库时，接口易用性比功能覆盖更关键，僵化接口会迫使下游 agent 重写代码。",
-        "让设计者先写消费者程序作为可运行示例并用子 agent 测试，可提升下游简洁性。"
-      ],
-      "limitations": "仅 15 个任务、每任务 3 次生成，置信区间为模型近似；下游 agent 本身也只用出 61.5 的简洁性，分数受实现者能力影响。",
       "basis": "fulltext"
     }
   },
