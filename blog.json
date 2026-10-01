@@ -1,5 +1,79 @@
 [
   {
+    "title": "CUA-SWE: When Computer-Use Agents Meet Visual Software Engineering",
+    "sub_title": "papers · source=arxiv_cs_se · score=80.2",
+    "url_title": "cua-swe-when-computer-use-agents-meet-visual-software-engineering",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.32600",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-29T04:00:00Z",
+    "first_seen_at": "2026-09-29T11:26:45Z",
+    "score": 80.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 33.4,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "代码理解与检索"
+    ],
+    "summary_zh": "提出CUA-SWE，让计算机使用智能体结合视觉观察完成软件工程任务，弥补编码与操作割裂。",
+    "reason_zh": "核心是编程智能体与视觉软件工程，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Software development requires more than editing code: developers repeatedly run software, interact with its interfaces, visually inspect its behavior, and use these observations to decide what to change next and whether a change works. Existing coding agents and computer-use agents are largely studied in isolation, leaving this integrated development…",
+    "authors": [
+      "Prince Zizhuang Wang",
+      "Chenhao Liang",
+      "Zelong Xu",
+      "Aojie Yuan",
+      "Xiaolin Zhou",
+      "Haiyue Zhang"
+    ],
+    "author_count": 9,
+    "upvotes": 12,
+    "likes": 0,
+    "github_url": "https://github.com/kingofspace0wzz/cua-swe",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2609.32600",
+    "arxiv_id": "2609.32600",
+    "digest": {
+      "problem": "现有编码智能体与计算机使用智能体多被孤立研究，缺少将运行软件、观察界面与修改代码结合起来的评测环境，难以衡量视觉反馈对软件工程的作用。",
+      "method": [
+        "提出 CUA-SWE 基准、交互式开发环境与评测流程，覆盖 Web、Game、DevOps、Mobile 四个领域共 105 个任务。",
+        "任务同时提供可编辑代码库与运行中应用，智能体可编辑代码、执行命令、截图观察并操作 GUI。",
+        "用确定性验证器检查任务功能、回归与允许修改，并区分 code-only 与 Hybrid CUA 两种条件。"
+      ],
+      "results": [
+        "基准含 36 个 Web、29 个 Game、20 个 DevOps、20 个 Mobile 任务，每项均有独立可执行验证器。",
+        "验证器要求原始代码失败、参考修复通过，并拒绝部分正确的负样本修复。",
+        "论文评估了前沿模型与编码智能体，比较 code-only 与 Hybrid CUA 在四个领域的任务成功率。"
+      ],
+      "takeaways": [
+        "评测软件工程智能体时，应把运行应用、视觉观察与代码修改放在同一任务中，而非只看补丁或只看 GUI 操作。",
+        "确定性测试与轨迹校验结合，可避免智能体绕过指定观察通道或修改评测材料。"
+      ],
+      "limitations": "任务使用本地托管应用，通过测试不代表改动可安全部署；论文未给出具体成功率数字。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Can Agents Design Libraries for Agents?",
     "sub_title": "papers · source=arxiv_cs_se · score=78.7",
     "url_title": "can-agents-design-libraries-for-agents",
@@ -76,7 +150,7 @@
   },
   {
     "title": "RSIGame: Autonomous Agentic Game Development with Recursive Self-improvement",
-    "sub_title": "papers · source=arxiv_cs_lg · score=76.9",
+    "sub_title": "papers · source=arxiv_cs_lg · score=78.7",
     "url_title": "rsigame-autonomous-agentic-game-development-with-recursive-self-improvement",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.39045",
@@ -89,10 +163,10 @@
     "category": "papers",
     "published_at": "2026-10-01T04:00:00Z",
     "first_seen_at": "2026-10-01T11:41:58Z",
-    "score": 76.9,
+    "score": 78.7,
     "scores": {
       "relevance": 88.0,
-      "popularity": 44.7,
+      "popularity": 53.6,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -119,10 +193,10 @@
       "Aayush Salvi"
     ],
     "author_count": 13,
-    "upvotes": 30,
+    "upvotes": 60,
     "likes": 0,
     "github_url": "https://github.com/WenyiWU0111/RSIGame",
-    "github_stars": 6,
+    "github_stars": 34,
     "hf_url": "https://huggingface.co/papers/2609.39045",
     "arxiv_id": "2609.39045",
     "digest": {
@@ -147,7 +221,7 @@
   },
   {
     "title": "A2Z GameSpec-Bench: How Faithfully Can Coding Agents Generate Games from Game Design Specifications?",
-    "sub_title": "papers · source=arxiv_cs_ai · score=75.7",
+    "sub_title": "papers · source=arxiv_cs_ai · score=77.5",
     "url_title": "a2z-gamespec-bench-how-faithfully-can-coding-agents-generate-games-from-game-des",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.39564",
@@ -160,10 +234,10 @@
     "category": "papers",
     "published_at": "2026-10-01T04:00:00Z",
     "first_seen_at": "2026-10-01T11:41:58Z",
-    "score": 75.7,
+    "score": 77.5,
     "scores": {
       "relevance": 88.0,
-      "popularity": 21.0,
+      "popularity": 30.0,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -192,10 +266,10 @@
       "Seungmin Kwak"
     ],
     "author_count": 7,
-    "upvotes": 4,
+    "upvotes": 9,
     "likes": 0,
     "github_url": "https://github.com/krafton-ai/a2z-gamespec-bench",
-    "github_stars": 2,
+    "github_stars": 5,
     "hf_url": "https://huggingface.co/papers/2609.39564",
     "arxiv_id": "2609.39564",
     "digest": {
@@ -217,6 +291,51 @@
       "limitations": "主实验限于2D单人Phaser设置，3D扩展仅在附录中演示，未覆盖多人或更复杂引擎。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "kingofspace0wzz/CUA-SWE",
+    "sub_title": "datasets · source=hf_datasets_swe · score=76.0",
+    "url_title": "kingofspace0wzzcua-swe",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/kingofspace0wzz/CUA-SWE",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-01T10:12:03Z",
+    "first_seen_at": "2026-10-01T21:52:42Z",
+    "score": 76.0,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 30.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "github"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "CUA-SWE 评测计算机使用智能体能否通过操作软件来完成代码编辑任务。",
+    "reason_zh": "面向编程智能体的软件工程评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "CUA-SWE When Computer-Use Agents Meet Visual Software Engineering Project website · Paper · PDF · GitHub · Interactive data browser · Leaderboard 105 tasks · 4 domains · Code editing + computer use · Deterministic verification CUA-SWE evaluates whether agents can develop software by using the software they edit. Agents inspect running applications, discover…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 3,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL",
@@ -359,80 +478,6 @@
     }
   },
   {
-    "title": "CUA-SWE: When Computer-Use Agents Meet Visual Software Engineering",
-    "sub_title": "papers · source=arxiv_cs_se · score=75.3",
-    "url_title": "cua-swe-when-computer-use-agents-meet-visual-software-engineering",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.32600",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-29T04:00:00Z",
-    "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 75.3,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 9.0,
-      "freshness": 100.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "代码理解与检索"
-    ],
-    "summary_zh": "提出CUA-SWE，让计算机使用智能体结合视觉观察完成软件工程任务，弥补编码与操作割裂。",
-    "reason_zh": "核心是编程智能体与视觉软件工程，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "Software development requires more than editing code: developers repeatedly run software, interact with its interfaces, visually inspect its behavior, and use these observations to decide what to change next and whether a change works. Existing coding agents and computer-use agents are largely studied in isolation, leaving this integrated development…",
-    "authors": [
-      "Prince Zizhuang Wang",
-      "Chenhao Liang",
-      "Zelong Xu",
-      "Aojie Yuan",
-      "Xiaolin Zhou",
-      "Haiyue Zhang"
-    ],
-    "author_count": 9,
-    "upvotes": 1,
-    "likes": 0,
-    "github_url": "https://github.com/kingofspace0wzz/cua-swe",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.32600",
-    "arxiv_id": "2609.32600",
-    "digest": {
-      "problem": "现有编码智能体与计算机使用智能体多被孤立研究，缺少将运行软件、观察界面与修改代码结合起来的评测环境，难以衡量视觉反馈对软件工程的作用。",
-      "method": [
-        "提出 CUA-SWE 基准、交互式开发环境与评测流程，覆盖 Web、Game、DevOps、Mobile 四个领域共 105 个任务。",
-        "任务同时提供可编辑代码库与运行中应用，智能体可编辑代码、执行命令、截图观察并操作 GUI。",
-        "用确定性验证器检查任务功能、回归与允许修改，并区分 code-only 与 Hybrid CUA 两种条件。"
-      ],
-      "results": [
-        "基准含 36 个 Web、29 个 Game、20 个 DevOps、20 个 Mobile 任务，每项均有独立可执行验证器。",
-        "验证器要求原始代码失败、参考修复通过，并拒绝部分正确的负样本修复。",
-        "论文评估了前沿模型与编码智能体，比较 code-only 与 Hybrid CUA 在四个领域的任务成功率。"
-      ],
-      "takeaways": [
-        "评测软件工程智能体时，应把运行应用、视觉观察与代码修改放在同一任务中，而非只看补丁或只看 GUI 操作。",
-        "确定性测试与轨迹校验结合，可避免智能体绕过指定观察通道或修改评测材料。"
-      ],
-      "limitations": "任务使用本地托管应用，通过测试不代表改动可安全部署；论文未给出具体成功率数字。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "Zero2Repo: Can Coding Agents Build Repositories from Scratch?",
     "sub_title": "papers · source=arxiv_cs_se · score=75.0",
     "url_title": "zero2repo-can-coding-agents-build-repositories-from-scratch",
@@ -503,6 +548,53 @@
       "limitations": "仅 11 个任务且 8 个为 Python，非 Python 结果只代表单任务；种子项目知名，通过率可能高于未见仓库；每配置仅跑一次，未测方差。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "OpenMOSS-Team/SWE-bench-Science",
+    "sub_title": "datasets · source=hf_datasets_swe · score=74.8",
+    "url_title": "openmoss-teamswe-bench-science",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/OpenMOSS-Team/SWE-bench-Science",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-01T16:50:26Z",
+    "first_seen_at": "2026-10-01T21:52:42Z",
+    "score": 74.8,
+    "scores": {
+      "relevance": 94.0,
+      "popularity": 19.1,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-bench",
+      "coding agent",
+      "github"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "SWE-bench Science 用 119 个科学计算仓库任务评测编程智能体。",
+    "reason_zh": "SWE-bench 扩展，直接评测编程智能体。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "SWE-bench Science SWE-bench Science evaluates coding agents on software-engineering tasks drawn from scientific-computing repositories. The release contains 119 tasks across 20 scientific domains, with isolated environments and separate programmatic verifiers. GitHub release repository: OpenMOSS/SWE-bench-Science Runtime images: Docker Hub, pinned by…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 8,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "E2E-SWE: Benchmarking LLMs on Building Working Codebases from Scratch",
@@ -1076,6 +1168,78 @@
         "复活类基准应优先使用 cutoff 后仓库并附带混淆对照，以区分真实能力与记忆。"
       ],
       "limitations": "CFD 任务无法证明数值求解器能力，MES 与 PLM 不区分模型；部分结论受 turn 预算与 harness 错误影响。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "MILO: Automated Harness Discovery via Orchestrated Multi-Agent Evolution",
+    "sub_title": "papers · source=arxiv_cs_ai · score=66.6",
+    "url_title": "milo-automated-harness-discovery-via-orchestrated-multi-agent-evolution",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.38349",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-01T04:00:00Z",
+    "first_seen_at": "2026-10-01T11:41:58Z",
+    "score": 66.6,
+    "scores": {
+      "relevance": 76.0,
+      "popularity": 35.3,
+      "freshness": 100.0,
+      "impact": 15.0
+    },
+    "keywords": [
+      "terminal-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "其他"
+    ],
+    "summary_zh": "MILO通过多智能体进化自动发现智能体harness，提升长程任务表现。",
+    "reason_zh": "自动发现智能体harness，可应用于编程智能体。",
+    "relevance_source": "llm",
+    "signals": [
+      "sota"
+    ],
+    "summary": "Modern agentic systems combine an AI model with a harness that controls execution and environmental interactions. Harness design strongly affects long-horizon performance, yet its combinatorial search space demands substantial human effort that must be repeated as models change. Existing automated methods explore this space narrowly, optimizing only…",
+    "authors": [
+      "Prithwish Jana",
+      "Mononito Goswami",
+      "Hao Liu",
+      "Xinyu Li",
+      "Langlin Huang",
+      "Zhehui Huang"
+    ],
+    "author_count": 12,
+    "upvotes": 14,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.38349",
+    "arxiv_id": "2609.38349",
+    "digest": {
+      "problem": "Agent 性能高度依赖 harness（控制流与工具层），但 harness 设计靠人工试错，搜索空间组合爆炸，且模型更新后需反复重调。",
+      "method": [
+        "MILO 用岛屿式层级谱系记忆保存所有候选（含被拒变异），以失败证据剪枝并引导结构性重写。",
+        "每个岛屿配 mutator agent，结合全局搜索历史与父代弱点反馈重写整个 harness。",
+        "orchestrator agent 在停滞时嫁接/分化谱系、重分配 mutator、修订课程，实现搜索策略自演化。"
+      ],
+      "results": [
+        "在 Terminal-Bench 2.1、PaperBench、DeepSWE 上，Opus 4.8 下较初始 harness 分别提升 +12.0%、+28.3%、+10.3%，优于 GEPA 的 +4.5%、Meta-Harness 的",
+        "Terminal-Bench 2.1 达 86.1±2.0%，高于官方榜首 83.8±2.3%，且 token 消耗比初始 harness 少 26%。",
+        "在 EinsteinArena 开放问题上收紧 Erdős 最小重叠等三个已知上界。"
+      ],
+      "takeaways": [
+        "harness 结构重写比只调 prompt/skill 收益更大，值得把控制流纳入可搜索空间。",
+        "保留失败候选作为负证据、多岛屿并行加自适应搜索策略，可缓解 LLM 搜索的多样性衰减与局部最优。"
+      ],
+      "limitations": "搜索需 72 小时墙钟与多 agent 调用，成本高；实验基于 DeepAgents 与 Bedrock 模型，迁移性未充分验证。",
       "basis": "fulltext"
     }
   },
@@ -1918,212 +2082,6 @@
       ],
       "limitations": "",
       "basis": "abstract"
-    }
-  },
-  {
-    "title": "How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?",
-    "sub_title": "papers · source=arxiv_cs_ai · score=64.5",
-    "url_title": "how-much-of-a-harness-does-a-strong-agent-need-for-autonomous-ml-engineering",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.40303",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-01T04:00:00Z",
-    "first_seen_at": "2026-10-01T11:41:58Z",
-    "score": 64.5,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 55.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "开发者与工具研究"
-    ],
-    "summary_zh": "研究自主ML工程智能体需要多少harness，评估多智能体编排等机制的必要性。",
-    "reason_zh": "自主ML工程智能体，属AI编程范畴但偏ML工程场景。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Recent autonomous machine learning engineering (MLE) agents have made significant progress on public leaderboards. Often motivated by progress stagnation over long-horizon cycles and limited Large Language Model (LLM) primitives, modern MLE agents are deployed on top of increasingly elaborate machinery: multi-agent orchestrators, dedicated retrieval…",
-    "authors": [
-      "Kirill Brilliantov",
-      "Alejandro Hern\\'andez-Cano",
-      "Emmanuel Abb\\'e"
-    ],
-    "author_count": 3,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.40303",
-    "digest": {
-      "problem": "MLE agent 普遍依赖复杂 harness（多智能体编排、检索子代理、搜索树等），但难以判断性能提升来自 harness 还是底层 LLM，缺乏在同等算力与时间预算下的公平对比。",
-      "method": [
-        "在 OpenCode 上统一复现四类 harness 干预：执行环境、搜索、自主性、多智能体编排，做预算与 backbone 匹配的消融。",
-        "提出 Malena：单次长会话 coding agent，仅配 submission、system、jobs 等最小工具，自主驱动搜索与复用产物。",
-        "与 MLEvolve、AiScientist、Arbor、ScienceFlow 四个开源 SOTA harness 在相同算力、时间与 backbone 下对比。"
-      ],
-      "results": [
-        "coding agent 环境是最大增益来源；Chat 到 Oneshot 在 GLM 5.2、Kimi K3 等 backbone 上大幅提升 percentile 与 medal rate。",
-        "搜索策略间无显著差异，最大差距为 UCB1 领先 Best-of-N 2.71pp，95% CI (-1.44,+6.60)。",
-        "Malena 在 17 个 harness–backbone 组合的 MLE-bench 与 6 个 NatureBench 组合上均不劣于各 harness；仅 Gemma 4 31B 上 MLEvolve 均值领先但 CI 重叠。"
-      ],
-      "takeaways": [
-        "给强模型配 coding agent 环境（读写文件、执行、调试）比堆叠编排层更划算，可优先简化 harness。",
-        "若 backbone 较弱，手工 workflow 先验仍有价值；随 agentic 能力增强，简单 agent loop 即可追平。"
-      ],
-      "limitations": "主要依赖 MLE-bench，存在任务准备问题与污染风险；部分结果 CI 较宽；多智能体协调协议与外部 harness 调优对称性未充分探索。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Relic: From Multi-Agent Collaboration to Persistent Organizational Capability",
-    "sub_title": "papers · source=arxiv_cs_se · score=64.2",
-    "url_title": "relic-from-multi-agent-collaboration-to-persistent-organizational-capability",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.32965",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-29T04:00:00Z",
-    "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 64.2,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 25.4,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "pull request"
-    ],
-    "topics": [
-      "编程智能体",
-      "其他"
-    ],
-    "summary_zh": "Relic将多智能体协作失败转化为持久组织能力，解决编码智能体间接口冲突。",
-    "reason_zh": "多智能体协作含编码场景，偏组织能力较间接。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Multiple agents may often conflict in an organization: for example, one coding agent changes an interface in a repository, but another continues to develop on the old version where existing tests become stale. A conversation can resolve the episode, but when the participants change, what makes the lesson continue to govern the team? We introduce Relic…",
-    "authors": [
-      "Hongyi Du",
-      "Tianyi Zhang",
-      "Weijia Zhang",
-      "Yi Yang",
-      "Haofei Yu",
-      "Kunlun Zhu"
-    ],
-    "author_count": 12,
-    "upvotes": 6,
-    "likes": 0,
-    "github_url": "https://github.com/Hongyi-Du/Relic",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.32965",
-    "arxiv_id": "2609.32965",
-    "digest": {
-      "problem": "多智能体协作中，成员更替后经验难以延续，重复出现接口变更、测试失效等协作失败，团队无法形成持久能力。",
-      "method": [
-        "Relic 将反复出现的协作失败转化为组织所有、可执行的协议。",
-        "成员反思可见工作、提出规则并治理其采纳，协议绑定触发条件、责任、证据与执行后果。",
-        "协议可修订和退役，并在新成员间传递。"
-      ],
-      "results": [
-        "360 次受控运行、10 个软件负载、3 个模型上，完整契约交付从 14.06% 升至 19.76%（+5.71 个百分点）。",
-        "新成员迁移下行为正确率：无继承协议 25.4%，文本规则 34.6%，可执行绑定 41.2%，比纯文本高 6.5 个百分点。",
-        "CooperBench 上达 367/477（76.9%）；固定 48 对同模型子集上 Relic 29/48 超过 Solo 26/48。"
-      ],
-      "takeaways": [
-        "把协作教训固化为可执行协议，比只写文档更能跨成员传递。",
-        "AI 编程工具应支持规则绑定触发、责任与证据，并允许修订退役。"
-      ],
-      "limitations": "",
-      "basis": "abstract"
-    }
-  },
-  {
-    "title": "Coding Agents for Coding Theory",
-    "sub_title": "papers · source=arxiv_cs_ai · score=64.0",
-    "url_title": "coding-agents-for-coding-theory",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.39081",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-01T04:00:00Z",
-    "first_seen_at": "2026-10-01T11:41:58Z",
-    "score": 64.0,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成",
-      "评测基准"
-    ],
-    "summary_zh": "用LLM编程智能体解决编码理论开放问题，智能体编写验证与搜索代码。",
-    "reason_zh": "编程智能体自主写代码解数学问题，核心相关。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "We spent five weeks using an LLM coding agent on open problems in coding theory: finding large sets of four-letter words, such as DNA barcodes, that stay far apart in edit distance. The agent wrote the verifiers and search code; a human chose the problem and set the verification protocol. Restricting the search to codes with a prescribed symmetry, a…",
-    "authors": [
-      "Abraham Yeung"
-    ],
-    "author_count": 1,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.39081",
-    "digest": {
-      "problem": "LLM coding agent 能搜索大组合空间，但其中间结论（哪些对称类已搜、哪些已穷尽）通常不被验证，却决定项目走向，可能隐藏真实结果。",
-      "method": [
-        "用 verifier-first 协议：两个独立验证器、先复现已知值、新进程重验每个保存的界。",
-        "把 E_q(n,d) 建模为混淆图最大独立集，限制在指定对称群下搜索轨道代表元。",
-        "用 ARW 局部搜索算子（含 C 重实现）驱动搜索，SAT/ILP 仅用于证书。"
-      ],
-      "results": [
-        "E_4(6,3) 从已发表 114 提升到 120（V_4 自由类，1021 轨道，8/96 种子）。",
-        "另改进 12 个下界，如 E_4(7,3)≥364、E_4(8,3)≥1148、E_4(9,3)≥3760。",
-        "ReduMIS 在原始图停在 113；对称约简加更强算子才达到 120。"
-      ],
-      "takeaways": [
-        "验证最终输出不够，需定期复查中间结论，未证明的求解器输出应记为 unknown。",
-        "用计算量响应曲线或共轭类一致性做校准，避免把欠预算搜索当成负结果。"
-      ],
-      "limitations": "单一案例研究，无跨项目对比；无法干净分离 agent 与传统搜索管线的贡献；校准规则仅试过 Table 1 的运行。",
-      "basis": "fulltext"
     }
   }
 ]
