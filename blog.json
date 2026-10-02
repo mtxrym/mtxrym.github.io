@@ -43,7 +43,7 @@
       "Na Li"
     ],
     "author_count": 5,
-    "upvotes": 2,
+    "upvotes": 5,
     "likes": 0,
     "github_url": "https://github.com/RLE-Bench/RLE-Bench",
     "github_stars": 65,
@@ -646,6 +646,75 @@
     }
   },
   {
+    "title": "GraphForge: Training Working Agents with Graph-Anchored Workspace Synthesis",
+    "sub_title": "papers · source=hf_daily_papers · score=71.5",
+    "url_title": "graphforge-training-working-agents-with-graph-anchored-workspace-synthesis",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.38923",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-30T00:00:00Z",
+    "first_seen_at": "2026-10-02T02:20:07Z",
+    "score": 71.5,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 45.2,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "claude code"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据",
+      "评测基准"
+    ],
+    "summary_zh": "GraphForge 用图锚定工作区合成训练数据，训练能读写文件、协调工具的工作智能体。",
+    "reason_zh": "为编程/工作智能体合成训练数据，高度相关。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Working agents need to read diverse files, coordinate tools, and produce deliverables. Training such agents requires tasks built on many real files with verifiable results, but few pipelines exist to synthesize this kind of data. Existing pipelines either generate files with models, which lack realism and diversity, or build tasks on real files without…",
+    "authors": [
+      "Qisheng Su",
+      "Hanchen Wang",
+      "Guanru Zhu",
+      "Huicheng Jiang",
+      "Qiuyinzhe Zhang",
+      "Kou Shi"
+    ],
+    "author_count": 12,
+    "upvotes": 31,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.38923",
+    "arxiv_id": "2609.38923",
+    "digest": {
+      "problem": "训练工作型 agent 需要基于大量真实文件、结果可验证的任务数据，但现有流水线要么用模型生成文件缺乏真实性与多样性，要么基于真实文件却缺少任务专属验证器，结果质量无法系统检查。",
+      "method": [
+        "以 O*NET 职业与工作活动为种子，控制任务多样性，再由 agent 抓取真实文件构建工作区。",
+        "在工作区上构建证据图，将跨文件关系编译为任务陈述与评分标准，每条标准锚定到验证所需文件。",
+        "先做一次教师 rollout 测试可执行性，由修订 agent 修复任务与标准，再经 artifact 级准入与轨迹清洗。"
+      ],
+      "results": [
+        "Qwen3.6-27B 经 2,169 条轨迹 SFT 后，GDPVal 达 1445.7（+65.7），Workspace-Bench-Lite 63.7（+7.7），SpreadsheetBench II 24.0（+13.7）。",
+        "Qwen3.6-35B-A3B 同样提升：GDPVal +101.7/+101.4，Workspace-Bench-Lite +3.8/+6.6，SpreadsheetBench II +16.5/+14.0。",
+        "在 SFT 模型自身 rollout 上做 RFT，用证据锚定评分标准选候选，三个基准均进一步提升。"
+      ],
+      "takeaways": [
+        "用真实文件加证据锚定评分标准，可同时保证任务真实性与结果可验证，值得在 agent 训练数据合成中借鉴。",
+        "评分标准可作为轨迹筛选信号，用于拒绝采样微调，比单纯用模型自身 rollout 更有增益。"
+      ],
+      "limitations": "语料仅 2,169 条轨迹，未研究数据规模扩展；合成与评判均由 GLM-5.2 驱动；仅验证同家族两个基座模型。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "OpenMOSS-Team/SWE-bench-Science",
     "sub_title": "datasets · source=hf_datasets_swe · score=70.9",
     "url_title": "openmoss-teamswe-bench-science",
@@ -761,75 +830,6 @@
         "全通过才给分的二值奖励与隐藏测试隔离，可作为训练 agent 的可验证奖励环境。"
       ],
       "limitations": "仅 11 个任务且 8 个为 Python，非 Python 结果只代表单任务；种子项目知名，通过率可能高于未见仓库；每配置仅跑一次，未测方差。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "GraphForge: Training Working Agents with Graph-Anchored Workspace Synthesis",
-    "sub_title": "papers · source=hf_daily_papers · score=70.3",
-    "url_title": "graphforge-training-working-agents-with-graph-anchored-workspace-synthesis",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.38923",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-30T00:00:00Z",
-    "first_seen_at": "2026-10-02T02:20:07Z",
-    "score": 70.3,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 39.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "claude code"
-    ],
-    "topics": [
-      "编程智能体",
-      "训练数据",
-      "评测基准"
-    ],
-    "summary_zh": "GraphForge 用图锚定工作区合成训练数据，训练能读写文件、协调工具的工作智能体。",
-    "reason_zh": "为编程/工作智能体合成训练数据，高度相关。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Working agents need to read diverse files, coordinate tools, and produce deliverables. Training such agents requires tasks built on many real files with verifiable results, but few pipelines exist to synthesize this kind of data. Existing pipelines either generate files with models, which lack realism and diversity, or build tasks on real files without…",
-    "authors": [
-      "Qisheng Su",
-      "Hanchen Wang",
-      "Guanru Zhu",
-      "Huicheng Jiang",
-      "Qiuyinzhe Zhang",
-      "Kou Shi"
-    ],
-    "author_count": 12,
-    "upvotes": 19,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.38923",
-    "arxiv_id": "2609.38923",
-    "digest": {
-      "problem": "训练工作型 agent 需要基于大量真实文件、结果可验证的任务数据，但现有流水线要么用模型生成文件缺乏真实性与多样性，要么基于真实文件却缺少任务专属验证器，结果质量无法系统检查。",
-      "method": [
-        "以 O*NET 职业与工作活动为种子，控制任务多样性，再由 agent 抓取真实文件构建工作区。",
-        "在工作区上构建证据图，将跨文件关系编译为任务陈述与评分标准，每条标准锚定到验证所需文件。",
-        "先做一次教师 rollout 测试可执行性，由修订 agent 修复任务与标准，再经 artifact 级准入与轨迹清洗。"
-      ],
-      "results": [
-        "Qwen3.6-27B 经 2,169 条轨迹 SFT 后，GDPVal 达 1445.7（+65.7），Workspace-Bench-Lite 63.7（+7.7），SpreadsheetBench II 24.0（+13.7）。",
-        "Qwen3.6-35B-A3B 同样提升：GDPVal +101.7/+101.4，Workspace-Bench-Lite +3.8/+6.6，SpreadsheetBench II +16.5/+14.0。",
-        "在 SFT 模型自身 rollout 上做 RFT，用证据锚定评分标准选候选，三个基准均进一步提升。"
-      ],
-      "takeaways": [
-        "用真实文件加证据锚定评分标准，可同时保证任务真实性与结果可验证，值得在 agent 训练数据合成中借鉴。",
-        "评分标准可作为轨迹筛选信号，用于拒绝采样微调，比单纯用模型自身 rollout 更有增益。"
-      ],
-      "limitations": "语料仅 2,169 条轨迹，未研究数据规模扩展；合成与评判均由 GLM-5.2 驱动；仅验证同家族两个基座模型。",
       "basis": "fulltext"
     }
   },
