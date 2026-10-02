@@ -1,7 +1,77 @@
 [
   {
+    "title": "RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers",
+    "sub_title": "papers · source=hf_daily_papers · score=78.8",
+    "url_title": "rle-bench-a-qualifying-exam-for-coding-agents-as-robot-learning-engineers",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.34210",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-29T00:00:00Z",
+    "first_seen_at": "2026-10-02T16:43:23Z",
+    "score": 78.8,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 36.4,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出 RLE-Bench，评测编程智能体作为机器人学习工程师的工程能力，超越纯数字任务。",
+    "reason_zh": "面向编程智能体的新基准，虽偏机器人场景但核心是智能体工程能力评测。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Coding agents are beginning to move beyond purely digital tasks to tackle physical-world challenges, particularly in robotics. Existing robotics benchmarks, however, primarily focus on the performance of individual artifacts, such as policies or controllers, offering limited coverage of coding agents' broader engineering capabilities. Real-world robotics…",
+    "authors": [
+      "Haitong Ma",
+      "Chenxiao Gao",
+      "Rushi Qiang",
+      "Bo Dai",
+      "Na Li"
+    ],
+    "author_count": 5,
+    "upvotes": 2,
+    "likes": 0,
+    "github_url": "https://github.com/RLE-Bench/RLE-Bench",
+    "github_stars": 65,
+    "hf_url": "https://huggingface.co/papers/2609.34210",
+    "arxiv_id": "2609.34210",
+    "digest": {
+      "problem": "现有机器人基准多只评估策略或控制器等单一产物，无法衡量编码智能体在机器人开发全流程中的工程能力。",
+      "method": [
+        "提出 RLE-Bench，含 51 个任务、4 类工作流、9 个任务族，覆盖控制、策略、感知与机械设计。",
+        "任务以可执行产物契约加隐藏评估环境交付，用 verifier 在隐藏场景与随机种子下评分。",
+        "汇总为等权 RLE Index，并给出各工作流能力画像与成本对比。"
+      ],
+      "results": [
+        "评估 11 个 model–harness 组合，GPT-6 Astra 与 Claude Fable 5.1 大幅领先，优势集中在 Interactive Control 与 Perception and Estimation。",
+        "Policy Development 上模型间差距明显更小。",
+        "Mechanical Design 上各模型差距小，且无模型能持续做出合理设计决策。"
+      ],
+      "takeaways": [
+        "外部机器人脚手架通常提升分数并降低成本，但强模型在 L1 下已表现良好，额外模块可能干扰其自身感知与推理。",
+        "开发期评估反馈能在其度量范围内带来真实改进，可作为智能体迭代训练信号。"
+      ],
+      "limitations": "仅在仿真中评估，仿真表现不代表真实可靠性或安全性；工作流覆盖不全；公开释放存在训练数据污染风险。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "CUA-SWE: When Computer-Use Agents Meet Visual Software Engineering",
-    "sub_title": "papers · source=arxiv_cs_se · score=76.3",
+    "sub_title": "papers · source=arxiv_cs_se · score=76.4",
     "url_title": "cua-swe-when-computer-use-agents-meet-visual-software-engineering",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2609.32600",
@@ -15,10 +85,10 @@
     "category": "papers",
     "published_at": "2026-09-29T04:00:00Z",
     "first_seen_at": "2026-09-29T11:26:45Z",
-    "score": 76.3,
+    "score": 76.4,
     "scores": {
       "relevance": 92.0,
-      "popularity": 34.4,
+      "popularity": 35.3,
       "freshness": 79.4,
       "impact": 75.0
     },
@@ -47,7 +117,7 @@
       "Haiyue Zhang"
     ],
     "author_count": 9,
-    "upvotes": 13,
+    "upvotes": 14,
     "likes": 0,
     "github_url": "https://github.com/kingofspace0wzz/cua-swe",
     "github_stars": 6,
@@ -293,6 +363,77 @@
     }
   },
   {
+    "title": "AgSpec: Pushing the Limits of Retrieval-Based Speculative Decoding in Coding Agent Pipelines",
+    "sub_title": "papers · source=arxiv_cs_cl · score=72.6",
+    "url_title": "agspec-pushing-the-limits-of-retrieval-based-speculative-decoding-in-coding-agen",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.01108",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-02T04:00:00Z",
+    "first_seen_at": "2026-10-02T11:11:35Z",
+    "score": 72.6,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 25.4,
+      "freshness": 100.0,
+      "impact": 15.0
+    },
+    "keywords": [
+      "coding agent",
+      "repository-level"
+    ],
+    "topics": [
+      "代码生成",
+      "模型训练与推理",
+      "编程智能体"
+    ],
+    "summary_zh": "提出 AgSpec，改进检索式推测解码，适配编程智能体流水线中重复代码与日志的生成。",
+    "reason_zh": "直接服务编程智能体的推理加速，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "sota"
+    ],
+    "summary": "Retrieval-based speculative decoding (SD) drafts tokens by copying continuations from existing text, which suits coding agents that repeatedly reproduce code, logs, and earlier attempts. Yet existing methods fall short in agent pipelines: much of the reusable text is missing from their corpora or stored in a form that differs from what the agent emits, and…",
+    "authors": [
+      "Sumin Lee",
+      "Sukmin Cho",
+      "Suengjae Lim",
+      "Youngjin Kwon"
+    ],
+    "author_count": 4,
+    "upvotes": 6,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.01108",
+    "arxiv_id": "2610.01108",
+    "digest": {
+      "problem": "编码 agent 会话中大量代码、日志与历史尝试可被复用，但现有 retrieval-based speculative decoding 的语料与 draft 长度策略未针对 agent pipeline 设计，加速受限。",
+      "method": [
+        "按来源划分 session、workspace、global 三类语料，workspace 以 agent 实际输出格式（如 unified diff 前缀）索引文件。",
+        "离线按 agent 画像接受长度设定 draft cap，并用验证反馈在线调整 draft 长度 scale。",
+        "不改动底层检索引擎，可叠加在 SAM-Decoding、SuffixDecoding 等现有引擎之上。"
+      ],
+      "results": [
+        "在 SWE-bench Verified 与 TeamBench 上多数设置优于五种 retrieval-based drafter 和 EAGLE-3。",
+        "batch size 1 吞吐达自回归解码的 2.27–4.37×，batch size 16 最高 4.76×。",
+        "以 SAM-Decoding 为引擎时，Gemma3-27B 在 SWE-bench 上 batch size 16 加速从 2.72× 提升到 3.61×。"
+      ],
+      "takeaways": [
+        "为编码 agent 做投机解码时，应把会话历史与仓库文件纳入语料，并按 agent 输出格式索引。",
+        "draft 长度应按 agent 角色和轮次自适应，而非固定值或仅由匹配长度决定。"
+      ],
+      "limitations": "session 与 workspace 语料可能含敏感 prompt、仓库内容和工具输出，需按会话隔离并在会话结束后丢弃。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL",
     "sub_title": "papers · source=arxiv_cs_cl · score=72.4",
     "url_title": "groupwise-agentic-grading-and-advantage-redistribution-for-code-agent-rl",
@@ -429,77 +570,6 @@
         "迭代式构建需加强初始化、防止回退编辑，并用参考图证据替代模型自评。"
       ],
       "limitations": "重建场景用于检测、分割、深度时明显低于专用视觉模型，尚不足以精确表示自然图像。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "AgSpec: Pushing the Limits of Retrieval-Based Speculative Decoding in Coding Agent Pipelines",
-    "sub_title": "papers · source=arxiv_cs_cl · score=71.7",
-    "url_title": "agspec-pushing-the-limits-of-retrieval-based-speculative-decoding-in-coding-agen",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.01108",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-02T04:00:00Z",
-    "first_seen_at": "2026-10-02T11:11:35Z",
-    "score": 71.7,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 21.0,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [
-      "coding agent",
-      "repository-level"
-    ],
-    "topics": [
-      "代码生成",
-      "模型训练与推理",
-      "编程智能体"
-    ],
-    "summary_zh": "提出 AgSpec，改进检索式推测解码，适配编程智能体流水线中重复代码与日志的生成。",
-    "reason_zh": "直接服务编程智能体的推理加速，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "Retrieval-based speculative decoding (SD) drafts tokens by copying continuations from existing text, which suits coding agents that repeatedly reproduce code, logs, and earlier attempts. Yet existing methods fall short in agent pipelines: much of the reusable text is missing from their corpora or stored in a form that differs from what the agent emits, and…",
-    "authors": [
-      "Sumin Lee",
-      "Sukmin Cho",
-      "Suengjae Lim",
-      "Youngjin Kwon"
-    ],
-    "author_count": 4,
-    "upvotes": 4,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.01108",
-    "arxiv_id": "2610.01108",
-    "digest": {
-      "problem": "编码 agent 会话中大量代码、日志与历史尝试可被复用，但现有 retrieval-based speculative decoding 的语料与 draft 长度策略未针对 agent pipeline 设计，加速受限。",
-      "method": [
-        "按来源划分 session、workspace、global 三类语料，workspace 以 agent 实际输出格式（如 unified diff 前缀）索引文件。",
-        "离线按 agent 画像接受长度设定 draft cap，并用验证反馈在线调整 draft 长度 scale。",
-        "不改动底层检索引擎，可叠加在 SAM-Decoding、SuffixDecoding 等现有引擎之上。"
-      ],
-      "results": [
-        "在 SWE-bench Verified 与 TeamBench 上多数设置优于五种 retrieval-based drafter 和 EAGLE-3。",
-        "batch size 1 吞吐达自回归解码的 2.27–4.37×，batch size 16 最高 4.76×。",
-        "以 SAM-Decoding 为引擎时，Gemma3-27B 在 SWE-bench 上 batch size 16 加速从 2.72× 提升到 3.61×。"
-      ],
-      "takeaways": [
-        "为编码 agent 做投机解码时，应把会话历史与仓库文件纳入语料，并按 agent 输出格式索引。",
-        "draft 长度应按 agent 角色和轮次自适应，而非固定值或仅由匹配长度决定。"
-      ],
-      "limitations": "session 与 workspace 语料可能含敏感 prompt、仓库内容和工具输出，需按会话隔离并在会话结束后丢弃。",
       "basis": "fulltext"
     }
   },
@@ -880,6 +950,77 @@
     "digest": null
   },
   {
+    "title": "Rules to Tools: Executable Checks for LLM Agents in Scientific Computing",
+    "sub_title": "papers · source=hf_daily_papers · score=68.2",
+    "url_title": "rules-to-tools-executable-checks-for-llm-agents-in-scientific-computing",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.00313",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers",
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-02T04:00:00Z",
+    "first_seen_at": "2026-10-02T02:20:07Z",
+    "score": 68.2,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "测试与验证",
+      "程序修复"
+    ],
+    "summary_zh": "R2T 为科学计算编程智能体提供可执行检查，用于评估其修复程序的能力。",
+    "reason_zh": "面向编程智能体的可执行验证工具，属核心 AI 编程。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Scientific coding agents receive equations, boundary conditions, and output requirements in writing, then must assess the programs they revise. Rules to Tools (R2T) supplies prepared executable checks of public scientific requirements. Matched SciCode repair groups share written checks, starting programs, model, and budgets; the tool group receives a…",
+    "authors": [
+      "Jingjie Ning",
+      "Guojiang Zhao",
+      "Chen Xu",
+      "Shanshan Zhong",
+      "Xiaochuan Li",
+      "Ji Zeng"
+    ],
+    "author_count": 7,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.00313",
+    "arxiv_id": "2610.00313",
+    "digest": {
+      "problem": "科学计算编程 agent 需在修订代码时判断程序是否满足公开的方程、边界条件等科学要求，仅靠文本规则难以获得可重复的量化测量。",
+      "method": [
+        "R2T 将公开科学要求封装为可调用的检查工具，agent 提交当前程序即可读取测量或错误报告。",
+        "匹配 SciCode 修复实验固定书面规则、起始程序、模型与预算，仅改变是否提供预制实现。",
+        "另设初始报告、经 Python 交付 checker 源码等对照臂，并记录 token 与 CPU 成本。"
+      ],
+      "results": [
+        "两个 SciCode task-ID 队列完整修复为文本 26/30、工具 29/30；八 ID 队列 13/16 对 15/16。",
+        "八 ID 差异的任务簇 bootstrap 95% 区间为 [-12.5,43.75] 个百分点，共享定义队列 13/24 打平。",
+        "匹配 PDE 中详细文本 23/24、检查 24/24，检查组报告输出 token 低 31.2%。"
+      ],
+      "takeaways": [
+        "把科学约束做成可执行检查可提升部分任务的修复率，但收益依任务而异，并非普遍有效。",
+        "预制检查可能增加公共 CPU 开销，同时减少 agent 侧输出，需权衡成本与收益。"
+      ],
+      "limitations": "检查由研究团队编写且未记录编写耗时；部分任务无初始违规报告，效果受任务与实现方式影响。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "WideSWE: Can Coding Agents Coordinate Changes Across Repositories?",
     "sub_title": "papers · source=arxiv_cs_se · score=67.9",
     "url_title": "wideswe-can-coding-agents-coordinate-changes-across-repositories",
@@ -950,77 +1091,6 @@
         "让 agent 在生态工作区联合执行可利用相关仓库信息辅助实现与验证，优于逐仓库独立执行。"
       ],
       "limitations": "基准来自公开开源仓库，agent 生成的补丁可能含漏洞或回归，不应未经人工审查直接部署。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Rules to Tools: Executable Checks for LLM Agents in Scientific Computing",
-    "sub_title": "papers · source=hf_daily_papers · score=67.6",
-    "url_title": "rules-to-tools-executable-checks-for-llm-agents-in-scientific-computing",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.00313",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers",
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-02T04:00:00Z",
-    "first_seen_at": "2026-10-02T02:20:07Z",
-    "score": 67.6,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 18.1,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "测试与验证",
-      "程序修复"
-    ],
-    "summary_zh": "R2T 为科学计算编程智能体提供可执行检查，用于评估其修复程序的能力。",
-    "reason_zh": "面向编程智能体的可执行验证工具，属核心 AI 编程。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Scientific coding agents receive equations, boundary conditions, and output requirements in writing, then must assess the programs they revise. Rules to Tools (R2T) supplies prepared executable checks of public scientific requirements. Matched SciCode repair groups share written checks, starting programs, model, and budgets; the tool group receives a…",
-    "authors": [
-      "Jingjie Ning",
-      "Guojiang Zhao",
-      "Chen Xu",
-      "Shanshan Zhong",
-      "Xiaochuan Li",
-      "Ji Zeng"
-    ],
-    "author_count": 7,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.00313",
-    "arxiv_id": "2610.00313",
-    "digest": {
-      "problem": "科学计算编程 agent 需在修订代码时判断程序是否满足公开的方程、边界条件等科学要求，仅靠文本规则难以获得可重复的量化测量。",
-      "method": [
-        "R2T 将公开科学要求封装为可调用的检查工具，agent 提交当前程序即可读取测量或错误报告。",
-        "匹配 SciCode 修复实验固定书面规则、起始程序、模型与预算，仅改变是否提供预制实现。",
-        "另设初始报告、经 Python 交付 checker 源码等对照臂，并记录 token 与 CPU 成本。"
-      ],
-      "results": [
-        "两个 SciCode task-ID 队列完整修复为文本 26/30、工具 29/30；八 ID 队列 13/16 对 15/16。",
-        "八 ID 差异的任务簇 bootstrap 95% 区间为 [-12.5,43.75] 个百分点，共享定义队列 13/24 打平。",
-        "匹配 PDE 中详细文本 23/24、检查 24/24，检查组报告输出 token 低 31.2%。"
-      ],
-      "takeaways": [
-        "把科学约束做成可执行检查可提升部分任务的修复率，但收益依任务而异，并非普遍有效。",
-        "预制检查可能增加公共 CPU 开销，同时减少 agent 侧输出，需权衡成本与收益。"
-      ],
-      "limitations": "检查由研究团队编写且未记录编写耗时；部分任务无初始违规报告，效果受任务与实现方式影响。",
       "basis": "fulltext"
     }
   },
@@ -1999,76 +2069,6 @@
         "环境规格应作为训练目标，以提升生成代码的可移植性与可复现性。"
       ],
       "limitations": "C++ 因无规范包管理器，D(1) 与 D(2) 比较无信息，跨语言传递依赖分析排除 C++。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "From Dead Code and Static Requirements to Working Engines: Software Revival with Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=63.6",
-    "url_title": "from-dead-code-and-static-requirements-to-working-engines-software-revival-with-",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.36161",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-30T04:00:00Z",
-    "first_seen_at": "2026-09-30T11:14:23Z",
-    "score": 63.6,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "程序修复"
-    ],
-    "summary_zh": "提出 ReviveBench，评测编程智能体复活死代码与重建软件引擎的能力。",
-    "reason_zh": "编程智能体基准，核心贡献即 AI 编程。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Can coding agents restore software that no longer runs while preserving its underlying methods, and reconstruct industrial software engines from open specifications? Here we introduce ReviveBench, a benchmark with two task families evaluated by hidden verifiers calibrated against native execution environments, established engineering tools, or purpose-built…",
-    "authors": [
-      "Tianyu Liu",
-      "Dingyuan Dai",
-      "Yufan Du",
-      "Zhen Yang"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.36161",
-    "digest": {
-      "problem": "大量有用软件因依赖腐化、核心模块缺失或仅有封闭实现而无法运行，需要评估编码智能体能否恢复旧软件、并依据公开规范重建工业引擎。",
-      "method": [
-        "提出 ReviveBench：10 个软件复活任务（依赖腐化、模块删除、旧构建、GPU 模型）加 13 个净室引擎重建任务。",
-        "用隐藏 verifier 评分，涵盖数值容差、精确/形式化证明、事务不变量三类正确性检查。",
-        "加入标识符混淆与 cutoff 后仓库等污染控制，并审计 verifier 缺陷。"
-      ],
-      "results": [
-        "Fable 5.1 在至少一次运行中通过全部 10 个复活任务，Sonnet 5 通过 8 个，Haiku 4.5 通过 4 个。",
-        "重建任务中 Fable 5.1 与 Opus 5 通过全部 13 个，Sonnet 5 通过 10 个，Haiku 4.5 仅 2 个。",
-        "混淆后行相似度从 0.51–0.96 降至 0.03–0.44，各模型通过率未下降；审计发现 28 个 verifier 缺陷（24 假阴性、2 假阳性）。"
-      ],
-      "takeaways": [
-        "评测编码智能体时需验证 verifier 本身：用可达性探针、候选共识、从提交产物重算诊断。",
-        "复活类基准应优先使用 cutoff 后仓库并附带混淆对照，以区分真实能力与记忆。"
-      ],
-      "limitations": "CFD 任务无法证明数值求解器能力，MES 与 PLM 不区分模型；部分结论受 turn 预算与 harness 错误影响。",
       "basis": "fulltext"
     }
   }
