@@ -43,7 +43,7 @@
       "Na Li"
     ],
     "author_count": 5,
-    "upvotes": 9,
+    "upvotes": 10,
     "likes": 0,
     "github_url": "https://github.com/RLE-Bench/RLE-Bench",
     "github_stars": 65,
@@ -215,6 +215,54 @@
     }
   },
   {
+    "title": "nebius/SWE-rebench-V2",
+    "sub_title": "datasets · source=hf_datasets_swe · score=71.3",
+    "url_title": "nebiusswe-rebench-v2",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/nebius/SWE-rebench-V2",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-01T17:53:16Z",
+    "first_seen_at": "2026-10-03T20:00:40Z",
+    "score": 71.3,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 35.8,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "github issue",
+      "pull request",
+      "github"
+    ],
+    "topics": [
+      "评测基准",
+      "训练数据",
+      "编程智能体"
+    ],
+    "summary_zh": "SWE-rebench-V2 是源自真实 GitHub issue 和 PR 的软件工程任务数据集，含 32079 个样本，覆盖 20 种编程语言。",
+    "reason_zh": "直接为编程智能体提供训练与评测数据，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "SWE-rebench-V2 Dataset Summary SWE-rebench-V2 is a curated dataset of software-engineering tasks derived from real GitHub issues and pull requests. The dataset contains 32,079 samples covering Python, Go, TypeScript, JavaScript, Rust, Java, PHP, Kotlin, Julia, Elixir, Scala, Swift, Dart, C, C++, C#, R, Clojure, OCaml, and Lua. For log parser functions, base…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 61,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "Can Agents Design Libraries for Agents?",
     "sub_title": "papers · source=arxiv_cs_se · score=71.3",
     "url_title": "can-agents-design-libraries-for-agents",
@@ -359,6 +407,75 @@
         "给智能体提供需求级、依赖感知的反馈，比让其自我修订更能提升规格遵循度。"
       ],
       "limitations": "主实验限于2D单人Phaser设置，3D扩展仅在附录中演示，未覆盖多人或更复杂引擎。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "GraphForge: Training Working Agents with Graph-Anchored Workspace Synthesis",
+    "sub_title": "papers · source=hf_daily_papers · score=69.9",
+    "url_title": "graphforge-training-working-agents-with-graph-anchored-workspace-synthesis",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2609.38923",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-09-30T00:00:00Z",
+    "first_seen_at": "2026-10-02T02:20:07Z",
+    "score": 69.9,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 57.7,
+      "freshness": 79.4,
+      "impact": 0.0
+    },
+    "keywords": [
+      "claude code"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据",
+      "评测基准"
+    ],
+    "summary_zh": "GraphForge 用图锚定工作区合成训练数据，训练能读写文件、协调工具的工作智能体。",
+    "reason_zh": "为编程/工作智能体合成训练数据，高度相关。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Working agents need to read diverse files, coordinate tools, and produce deliverables. Training such agents requires tasks built on many real files with verifiable results, but few pipelines exist to synthesize this kind of data. Existing pipelines either generate files with models, which lack realism and diversity, or build tasks on real files without…",
+    "authors": [
+      "Qisheng Su",
+      "Hanchen Wang",
+      "Guanru Zhu",
+      "Huicheng Jiang",
+      "Qiuyinzhe Zhang",
+      "Kou Shi"
+    ],
+    "author_count": 12,
+    "upvotes": 83,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2609.38923",
+    "arxiv_id": "2609.38923",
+    "digest": {
+      "problem": "训练工作型 agent 需要基于大量真实文件、结果可验证的任务数据，但现有流水线要么用模型生成文件缺乏真实性与多样性，要么基于真实文件却缺少任务专属验证器，结果质量无法系统检查。",
+      "method": [
+        "以 O*NET 职业与工作活动为种子，控制任务多样性，再由 agent 抓取真实文件构建工作区。",
+        "在工作区上构建证据图，将跨文件关系编译为任务陈述与评分标准，每条标准锚定到验证所需文件。",
+        "先做一次教师 rollout 测试可执行性，由修订 agent 修复任务与标准，再经 artifact 级准入与轨迹清洗。"
+      ],
+      "results": [
+        "Qwen3.6-27B 经 2,169 条轨迹 SFT 后，GDPVal 达 1445.7（+65.7），Workspace-Bench-Lite 63.7（+7.7），SpreadsheetBench II 24.0（+13.7）。",
+        "Qwen3.6-35B-A3B 同样提升：GDPVal +101.7/+101.4，Workspace-Bench-Lite +3.8/+6.6，SpreadsheetBench II +16.5/+14.0。",
+        "在 SFT 模型自身 rollout 上做 RFT，用证据锚定评分标准选候选，三个基准均进一步提升。"
+      ],
+      "takeaways": [
+        "用真实文件加证据锚定评分标准，可同时保证任务真实性与结果可验证，值得在 agent 训练数据合成中借鉴。",
+        "评分标准可作为轨迹筛选信号，用于拒绝采样微调，比单纯用模型自身 rollout 更有增益。"
+      ],
+      "limitations": "语料仅 2,169 条轨迹，未研究数据规模扩展；合成与评判均由 GLM-5.2 驱动；仅验证同家族两个基座模型。",
       "basis": "fulltext"
     }
   },
@@ -570,75 +687,6 @@
         "迭代式构建需加强初始化、防止回退编辑，并用参考图证据替代模型自评。"
       ],
       "limitations": "重建场景用于检测、分割、深度时明显低于专用视觉模型，尚不足以精确表示自然图像。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "GraphForge: Training Working Agents with Graph-Anchored Workspace Synthesis",
-    "sub_title": "papers · source=hf_daily_papers · score=69.3",
-    "url_title": "graphforge-training-working-agents-with-graph-anchored-workspace-synthesis",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.38923",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-09-30T00:00:00Z",
-    "first_seen_at": "2026-10-02T02:20:07Z",
-    "score": 69.3,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 54.8,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "claude code"
-    ],
-    "topics": [
-      "编程智能体",
-      "训练数据",
-      "评测基准"
-    ],
-    "summary_zh": "GraphForge 用图锚定工作区合成训练数据，训练能读写文件、协调工具的工作智能体。",
-    "reason_zh": "为编程/工作智能体合成训练数据，高度相关。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Working agents need to read diverse files, coordinate tools, and produce deliverables. Training such agents requires tasks built on many real files with verifiable results, but few pipelines exist to synthesize this kind of data. Existing pipelines either generate files with models, which lack realism and diversity, or build tasks on real files without…",
-    "authors": [
-      "Qisheng Su",
-      "Hanchen Wang",
-      "Guanru Zhu",
-      "Huicheng Jiang",
-      "Qiuyinzhe Zhang",
-      "Kou Shi"
-    ],
-    "author_count": 12,
-    "upvotes": 66,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2609.38923",
-    "arxiv_id": "2609.38923",
-    "digest": {
-      "problem": "训练工作型 agent 需要基于大量真实文件、结果可验证的任务数据，但现有流水线要么用模型生成文件缺乏真实性与多样性，要么基于真实文件却缺少任务专属验证器，结果质量无法系统检查。",
-      "method": [
-        "以 O*NET 职业与工作活动为种子，控制任务多样性，再由 agent 抓取真实文件构建工作区。",
-        "在工作区上构建证据图，将跨文件关系编译为任务陈述与评分标准，每条标准锚定到验证所需文件。",
-        "先做一次教师 rollout 测试可执行性，由修订 agent 修复任务与标准，再经 artifact 级准入与轨迹清洗。"
-      ],
-      "results": [
-        "Qwen3.6-27B 经 2,169 条轨迹 SFT 后，GDPVal 达 1445.7（+65.7），Workspace-Bench-Lite 63.7（+7.7），SpreadsheetBench II 24.0（+13.7）。",
-        "Qwen3.6-35B-A3B 同样提升：GDPVal +101.7/+101.4，Workspace-Bench-Lite +3.8/+6.6，SpreadsheetBench II +16.5/+14.0。",
-        "在 SFT 模型自身 rollout 上做 RFT，用证据锚定评分标准选候选，三个基准均进一步提升。"
-      ],
-      "takeaways": [
-        "用真实文件加证据锚定评分标准，可同时保证任务真实性与结果可验证，值得在 agent 训练数据合成中借鉴。",
-        "评分标准可作为轨迹筛选信号，用于拒绝采样微调，比单纯用模型自身 rollout 更有增益。"
-      ],
-      "limitations": "语料仅 2,169 条轨迹，未研究数据规模扩展；合成与评判均由 GLM-5.2 驱动；仅验证同家族两个基座模型。",
       "basis": "fulltext"
     }
   },
@@ -1980,77 +2028,6 @@
         "LLM judge 需按 judge 模型、生成器和提示策略分别验证，不能依赖聚合分数。"
       ],
       "limitations": "评测仅覆盖 18 道题、7 个生成器和 3 种语言，未涉及人机混合代码与来源保持变换。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Self-Spec Verifiable Code Generation",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.1",
-    "url_title": "self-spec-verifiable-code-generation",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2609.39568",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-01T04:00:00Z",
-    "first_seen_at": "2026-10-01T11:41:58Z",
-    "score": 61.1,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "code generation"
-    ],
-    "topics": [
-      "代码生成",
-      "测试与验证",
-      "评测基准"
-    ],
-    "summary_zh": "提出可自验证的代码生成方法，让LLM生成形式化规约并验证代码正确性。",
-    "reason_zh": "LLM生成可形式验证代码，属代码生成与验证核心。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Large language models (LLMs) may generate unreliable code on corner cases missed by testing, while formal verification can provide machine-checkable guarantees. Recently, researchers have proposed several benchmarks to evaluate the capabilities of LLMs in generating formally verifiable code, where LLMs need to formulate formal specifications, generate the…",
-    "authors": [
-      "Jiaru Qian",
-      "Yihong Dong",
-      "Yongmin Li",
-      "Hao Zhu",
-      "Bin Gu",
-      "Ge Li"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2609.39568",
-    "digest": {
-      "problem": "LLM 生成的代码在测试覆盖不到的边界情形上不可靠，形式验证可提供机器可检查的保证，但现有基准分阶段评估、依赖 oracle 规约，无法反映端到端能力。",
-      "method": [
-        "提出 VeriCodeBench：400 道 C/Java/Rust/Python 原生题目，采用 self-spec 协议，模型全程只用自己生成的规约。",
-        "分别度量规约覆盖（CEF 自动 SMT 蕴含检查）与代码有效性（原生验证器），二者同时满足才算问题级成功。",
-        "提出 CodeNova：约束引导的规约生成加验证器反馈驱动的候选修复，统一端到端流水线。"
-      ],
-      "results": [
-        "自生成规约仍是主要瓶颈；更精细的规约不一定带来更高验证成功率。",
-        "CodeNova 在所有评估指标上显著提升，使 Claude Sonnet 5 在 self-spec 协议下取得最强结果。"
-      ],
-      "takeaways": [
-        "评估可验证代码生成应保留规约到代码的依赖链，避免用 oracle 规约掩盖错误传播。",
-        "工具设计需同时优化需求形式化与验证器反馈修复，而非只提升代码生成。"
-      ],
-      "limitations": "修复在不充分规约下效果有限；跨语言差异来自完整任务-工具链组合，非受控平行翻译对比。",
       "basis": "fulltext"
     }
   }
