@@ -1,5 +1,149 @@
 [
   {
+    "title": "4DCodeBench: Benchmarking Agents on Inverse Graphics of Dynamic Scenes",
+    "sub_title": "papers · source=arxiv_cs_ai · score=76.7",
+    "url_title": "4dcodebench-benchmarking-agents-on-inverse-graphics-of-dynamic-scenes",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.03715",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-05T04:00:00Z",
+    "first_seen_at": "2026-10-05T12:24:32Z",
+    "score": 76.7,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 33.4,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "code generation"
+    ],
+    "topics": [
+      "评测基准",
+      "代码生成",
+      "编程智能体"
+    ],
+    "summary_zh": "提出 4DCodeBench，评测智能体通过代码生成完成动态场景逆图形重建。",
+    "reason_zh": "代码生成智能体基准，但领域偏图形学。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "We introduce 4DCodeBench, a benchmark for 4D inverse graphics through code generation, in which agents reconstruct dynamic scenes from video as executable graphics programs. To accomplish this, agents must translate visual observations into compact representations of scene structure and dynamics, by implementing abstractions such as physical simulations to…",
+    "authors": [
+      "Ruihong Shen",
+      "\\v{Z}iga Kova\\v{c}i\\v{c}",
+      "Peter Kulits",
+      "Xingrui Wang",
+      "Zizhang Li",
+      "Joshua B. Tenenbaum"
+    ],
+    "author_count": 9,
+    "upvotes": 12,
+    "likes": 0,
+    "github_url": "https://github.com/4DCodeBench/4DCodeBench",
+    "github_stars": 5,
+    "hf_url": "https://huggingface.co/papers/2610.03715",
+    "arxiv_id": "2610.03715",
+    "digest": {
+      "problem": "多模态编码 agent 能否从视频中理解动态场景的物理演化，并写出可执行的 4D 图形程序重建几何与运动，是当前逆图形研究的空白。",
+      "method": [
+        "提出 4DCodeBench：给定视频，agent 写可执行图形代码构建 3D 几何及其随时间演化，用 Blender 渲染回视频。",
+        "数据集含 100 个真实视频与 100 个带 4D ground truth 的合成场景，覆盖刚体、可变形体、布料绳索、流体颗粒等。",
+        "从感知、2D/3D 动态、2.5D/3D 几何五类指标评测，并做 VLM 与人类成对偏好 Elo 研究。"
+      ],
+      "results": [
+        "评测 18 个模型，Astra [Max] 综合领先，开源权重模型整体落后于闭源模型。",
+        "所有模型静态指标均高于动态指标，最强模型 Astra [Max] 静态 0.91、动态仅 0.67。",
+        "VLM 与人类 Elo 高度相关（Spearman ρ=0.980），916 个共同比较中一致率 89.3%。"
+      ],
+      "takeaways": [
+        "当前模型擅长恢复外观与静态几何，但推断材质、交互与驱动力仍是明显短板。",
+        "token 消耗与 agent 步数同重建质量相关性弱，提升推理效率比堆算力更关键。"
+      ],
+      "limitations": "评测只关注重建保真度，未约束底层物理机制；预设轨迹也能得高分，仿真的泛化收益尚未验证。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "FrugalEvo: Towards Cost-Aware LLM-Guided Program Evolution",
+    "sub_title": "papers · source=arxiv_cs_cl · score=75.4",
+    "url_title": "frugalevo-towards-cost-aware-llm-guided-program-evolution",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.03675",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-05T04:00:00Z",
+    "first_seen_at": "2026-10-05T12:24:32Z",
+    "score": 75.4,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 36.9,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [],
+    "topics": [
+      "代码生成",
+      "编程智能体"
+    ],
+    "summary_zh": "提出成本感知的LLM引导程序进化框架FrugalEvo。",
+    "reason_zh": "LLM引导程序进化，属AI编程核心。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "LLM-guided evolutionary methods, such as AlphaEvolve, have emerged as powerful approaches for challenging computational optimization problems, such as circle packing. However, prior work typically optimizes performance gain over a fixed number of iterations. We argue that practical optimization should maximize gain per unit cost. To this end, we propose…",
+    "authors": [
+      "Hui Chen",
+      "Xuan Qi",
+      "James Xu Zhao",
+      "Zhaopeng Feng",
+      "Shilong Liu",
+      "Kuang Xu"
+    ],
+    "author_count": 8,
+    "upvotes": 16,
+    "likes": 0,
+    "github_url": "https://github.com/chchenhui/frugalevo",
+    "github_stars": 3,
+    "hf_url": "https://huggingface.co/papers/2610.03675",
+    "arxiv_id": "2610.03675",
+    "digest": {
+      "problem": "LLM引导的进化式程序优化通常以固定迭代次数衡量性能，忽视API与算力成本；高收益可能只是高花费，需按单位成本收益评估。",
+      "method": [
+        "用高成本强LLM探索设计策略，低成本弱LLM实现并迭代精炼代码。",
+        "设计缓存高效提示，将固定内容前置以最大化前缀复用，降低输入token成本。",
+        "提出BA-AUC指标，衡量固定LLM成本预算内最优解质量曲线下面积。"
+      ],
+      "results": [
+        "在10个数学与系统优化任务中，最终解质量匹配或超越OpenEvolve、ShinkaEvolve、AdaEvolve、EvoX，9个任务BA-AUC更高。",
+        "Circle Packing上GLM-5.3/Flash仅花$0.55达2.635990，GPT-5.6 Terra/Luna花$1.68达2.635996，优于约$50的多智能体方法。",
+        "10个ALE-Bench-Lite算法优化任务上平均性能最高，4个数学任务匹配或超过AlphaEvolve。"
+      ],
+      "takeaways": [
+        "评估LLM编程优化工具应关注单位成本收益，而非仅看固定迭代后的分数。",
+        "强弱模型分工（强模型出策略、弱模型写代码）可大幅降低优化成本。"
+      ],
+      "limitations": "方法依赖代码环境自动执行与评分，难以扩展到需物理实验的领域；策略探索指令为人工设计，未自动生成。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "OpenGameEval: Benchmarking Agentic Programming and Exploration in a Stateful Game Engine",
     "sub_title": "papers · source=arxiv_cs_ai · score=73.5",
     "url_title": "opengameeval-benchmarking-agentic-programming-and-exploration-in-a-stateful-game",
@@ -84,7 +228,7 @@
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-10-05T12:24:30Z",
+    "published_at": "2026-10-05T12:25:16Z",
     "first_seen_at": "2026-09-29T11:26:45Z",
     "score": 73.4,
     "scores": {
@@ -255,78 +399,6 @@
         "复用生成过程中的内部激活可在不增加token和前向开销的情况下实现低延迟监控。"
       ],
       "limitations": "结论基于Qwen3-8B与CodeContests，扩展到其他策略、基准和自适应攻击者尚待验证；监控信号也可能被策略学会规避。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "4DCodeBench: Benchmarking Agents on Inverse Graphics of Dynamic Scenes",
-    "sub_title": "papers · source=arxiv_cs_ai · score=70.0",
-    "url_title": "4dcodebench-benchmarking-agents-on-inverse-graphics-of-dynamic-scenes",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.03715",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-05T04:00:00Z",
-    "first_seen_at": "2026-10-05T12:24:32Z",
-    "score": 70.0,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "code generation"
-    ],
-    "topics": [
-      "评测基准",
-      "代码生成",
-      "编程智能体"
-    ],
-    "summary_zh": "提出 4DCodeBench，评测智能体通过代码生成完成动态场景逆图形重建。",
-    "reason_zh": "代码生成智能体基准，但领域偏图形学。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "We introduce 4DCodeBench, a benchmark for 4D inverse graphics through code generation, in which agents reconstruct dynamic scenes from video as executable graphics programs. To accomplish this, agents must translate visual observations into compact representations of scene structure and dynamics, by implementing abstractions such as physical simulations to…",
-    "authors": [
-      "Ruihong Shen",
-      "\\v{Z}iga Kova\\v{c}i\\v{c}",
-      "Peter Kulits",
-      "Xingrui Wang",
-      "Zizhang Li",
-      "Joshua B. Tenenbaum"
-    ],
-    "author_count": 9,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.03715",
-    "digest": {
-      "problem": "多模态编码 agent 能否从视频中理解动态场景的物理演化，并写出可执行的 4D 图形程序重建几何与运动，是当前逆图形研究的空白。",
-      "method": [
-        "提出 4DCodeBench：给定视频，agent 写可执行图形代码构建 3D 几何及其随时间演化，用 Blender 渲染回视频。",
-        "数据集含 100 个真实视频与 100 个带 4D ground truth 的合成场景，覆盖刚体、可变形体、布料绳索、流体颗粒等。",
-        "从感知、2D/3D 动态、2.5D/3D 几何五类指标评测，并做 VLM 与人类成对偏好 Elo 研究。"
-      ],
-      "results": [
-        "评测 18 个模型，Astra [Max] 综合领先，开源权重模型整体落后于闭源模型。",
-        "所有模型静态指标均高于动态指标，最强模型 Astra [Max] 静态 0.91、动态仅 0.67。",
-        "VLM 与人类 Elo 高度相关（Spearman ρ=0.980），916 个共同比较中一致率 89.3%。"
-      ],
-      "takeaways": [
-        "当前模型擅长恢复外观与静态几何，但推断材质、交互与驱动力仍是明显短板。",
-        "token 消耗与 agent 步数同重建质量相关性弱，提升推理效率比堆算力更关键。"
-      ],
-      "limitations": "评测只关注重建保真度，未约束底层物理机制；预设轨迹也能得高分，仿真的泛化收益尚未验证。",
       "basis": "fulltext"
     }
   },
@@ -1708,75 +1780,6 @@
         "draft 长度应按 agent 角色和轮次自适应，而非固定值或仅由匹配长度决定。"
       ],
       "limitations": "session 与 workspace 语料可能含敏感 prompt、仓库内容和工具输出，需按会话隔离并在会话结束后丢弃。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "FrugalEvo: Towards Cost-Aware LLM-Guided Program Evolution",
-    "sub_title": "papers · source=arxiv_cs_cl · score=64.0",
-    "url_title": "frugalevo-towards-cost-aware-llm-guided-program-evolution",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.03675",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-05T04:00:00Z",
-    "first_seen_at": "2026-10-05T12:24:32Z",
-    "score": 64.0,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "编程智能体"
-    ],
-    "summary_zh": "提出成本感知的LLM引导程序进化框架FrugalEvo。",
-    "reason_zh": "LLM引导程序进化，属AI编程核心。",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "LLM-guided evolutionary methods, such as AlphaEvolve, have emerged as powerful approaches for challenging computational optimization problems, such as circle packing. However, prior work typically optimizes performance gain over a fixed number of iterations. We argue that practical optimization should maximize gain per unit cost. To this end, we propose…",
-    "authors": [
-      "Hui Chen",
-      "Xuan Qi",
-      "James Xu Zhao",
-      "Zhaopeng Feng",
-      "Shilong Liu",
-      "Kuang Xu"
-    ],
-    "author_count": 8,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.03675",
-    "digest": {
-      "problem": "LLM引导的进化式程序优化通常以固定迭代次数衡量性能，忽视API与算力成本；高收益可能只是高花费，需按单位成本收益评估。",
-      "method": [
-        "用高成本强LLM探索设计策略，低成本弱LLM实现并迭代精炼代码。",
-        "设计缓存高效提示，将固定内容前置以最大化前缀复用，降低输入token成本。",
-        "提出BA-AUC指标，衡量固定LLM成本预算内最优解质量曲线下面积。"
-      ],
-      "results": [
-        "在10个数学与系统优化任务中，最终解质量匹配或超越OpenEvolve、ShinkaEvolve、AdaEvolve、EvoX，9个任务BA-AUC更高。",
-        "Circle Packing上GLM-5.3/Flash仅花$0.55达2.635990，GPT-5.6 Terra/Luna花$1.68达2.635996，优于约$50的多智能体方法。",
-        "10个ALE-Bench-Lite算法优化任务上平均性能最高，4个数学任务匹配或超过AlphaEvolve。"
-      ],
-      "takeaways": [
-        "评估LLM编程优化工具应关注单位成本收益，而非仅看固定迭代后的分数。",
-        "强弱模型分工（强模型出策略、弱模型写代码）可大幅降低优化成本。"
-      ],
-      "limitations": "方法依赖代码环境自动执行与评分，难以扩展到需物理实验的领域；策略探索指令为人工设计，未自动生成。",
       "basis": "fulltext"
     }
   },
