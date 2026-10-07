@@ -1,5 +1,79 @@
 [
   {
+    "title": "CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers?",
+    "sub_title": "papers · source=arxiv_cs_se · score=83.8",
+    "url_title": "checkerbench-can-long-horizon-agents-synthesize-static-analysis-checkers",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.07557",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-07T04:00:00Z",
+    "first_seen_at": "2026-10-07T11:52:14Z",
+    "score": 83.8,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 51.7,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "coding agent",
+      "vulnerability detection"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "测试与验证"
+    ],
+    "summary_zh": "CheckerBench 评测长程智能体能否在仓库中合成静态分析检查器。",
+    "reason_zh": "编程智能体基准，任务为代码分析工具合成。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Static-analysis checker synthesis requires agents to interpret a defect specification, inspect a repository, implement analyzer-specific logic, and refine the checker through repeated compilation and analysis feedback. Existing coding-agent benchmarks focus on tasks such as patch generation or vulnerability detection and rarely assess whether an agent can…",
+    "authors": [
+      "Hang He",
+      "Li Wang",
+      "Hao Chen",
+      "Yuchen Shao",
+      "Yuling Shi",
+      "Lisheng Wang"
+    ],
+    "author_count": 12,
+    "upvotes": 52,
+    "likes": 0,
+    "github_url": "https://github.com/ahang0712/CheckerBench-Dataset",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2610.07557",
+    "arxiv_id": "2610.07557",
+    "digest": {
+      "problem": "现有 coding-agent 基准多关注补丁生成或漏洞检测，很少评估 agent 能否从零完成静态分析 checker 的合成，而这类长程任务对自动化缺陷检测很重要。",
+      "method": [
+        "提出 CheckerBench：300 个可执行任务，来自 297 个 CVE、167 个仓库、85 个 CWE、五种语言生态。",
+        "每个任务含漏洞/修复版本、固定分析环境与 checker 脚手架，覆盖 CSA 与 CodeQL。",
+        "提出 CheckerLab 统一评测框架，独立重建提交的 checker，衡量漏洞-修复诊断对比、补丁定位、误报与工具使用。"
+      ],
+      "results": [
+        "21 个 model–harness 配置各重复三次，平均 Pass@1 为 32.30%，最佳配置达 45.33%。",
+        "OpenCode 上 Claude Opus 4.8 取得最高 45.33% Pass@1，但 Build 降至 81.67%。",
+        "整体平均 Build 78.25%、Diff. SR 73.65%、FP_pass 3.88%。"
+      ],
+      "takeaways": [
+        "让 agent 写可复用静态分析规则比生成补丁更难，需重视编译与差分验证反馈。",
+        "评测应独立重建 checker 并检查误报，而非只看补丁或检测结果。"
+      ],
+      "limitations": "评测仅覆盖 CSA 与 CodeQL 及五种语言，最佳 Pass@1 仅 45.33%，结论限于所评估的仓库与分析器配置。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Correct Code, Broken Contributions? SWE-CC: Benchmarking Repository Policy Compliance for Coding Agents",
     "sub_title": "papers · source=arxiv_cs_se · score=73.5",
     "url_title": "correct-code-broken-contributions-swe-cc-benchmarking-repository-policy-complian",
@@ -75,7 +149,7 @@
   },
   {
     "title": "Understanding and Enhancing Backdoor Persistency in LLM Agent Post-Training",
-    "sub_title": "papers · source=hf_daily_papers · score=72.7",
+    "sub_title": "papers · source=hf_daily_papers · score=73.1",
     "url_title": "understanding-and-enhancing-backdoor-persistency-in-llm-agent-post-training",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.07510",
@@ -87,10 +161,10 @@
     "category": "papers",
     "published_at": "2026-10-05T00:00:00Z",
     "first_seen_at": "2026-10-07T11:52:14Z",
-    "score": 72.7,
+    "score": 73.1,
     "scores": {
       "relevance": 88.0,
-      "popularity": 23.3,
+      "popularity": 25.4,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -116,7 +190,7 @@
       "Daniel Kang"
     ],
     "author_count": 6,
-    "upvotes": 5,
+    "upvotes": 6,
     "likes": 0,
     "github_url": "https://github.com/uiuc-kang-lab/PersistBD",
     "github_stars": 1,
@@ -249,7 +323,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 172,
+    "likes": 173,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -326,6 +400,77 @@
         "token 消耗与 agent 步数同重建质量相关性弱，提升推理效率比堆算力更关键。"
       ],
       "limitations": "评测只关注重建保真度，未约束底层物理机制；预设轨迹也能得高分，仿真的泛化收益尚未验证。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Harness Engineering for Software Engineering via Modular Executable Dev-Primitives",
+    "sub_title": "papers · source=hf_daily_papers · score=70.2",
+    "url_title": "harness-engineering-for-software-engineering-via-modular-executable-dev-primitiv",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.07832",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers",
+      "arxiv_cs_se",
+      "arxiv_cs_cl"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-07T04:00:00Z",
+    "first_seen_at": "2026-10-07T02:29:59Z",
+    "score": 70.2,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 23.3,
+      "freshness": 100.0,
+      "impact": 15.0
+    },
+    "keywords": [
+      "software engineering agent",
+      "terminal-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码理解与检索"
+    ],
+    "summary_zh": "提出模块化可执行开发原语，缓解LLM编程智能体长流程中的上下文爆炸问题。",
+    "reason_zh": "面向编程智能体的长程工作流与状态管理，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "sota"
+    ],
+    "summary": "Large language models (LLMs) equipped with terminal access have demonstrated strong capabilities in automating software engineering tasks. However, existing agents remain brittle on long-horizon workflows, where they must repeatedly reconstruct program state scattered across source files, configurations, tests, dependencies, and runtime behavior, leading to…",
+    "authors": [
+      "Haibo Jin",
+      "Xinjie Li",
+      "Peng Kuang",
+      "Haohan Wang"
+    ],
+    "author_count": 4,
+    "upvotes": 5,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.07832",
+    "arxiv_id": "2610.07832",
+    "digest": {
+      "problem": "长周期软件工程任务中，agent 需反复重建散落在源码、配置、测试与运行时中的程序状态，导致上下文爆炸、语义漂移，大仓库中难以定位相关组件。",
+      "method": [
+        "Dev-Primitives：将每个仓库组件（源码/配置/测试）与常驻 LLM 配对，使其能自然语言推理、组件间通信并自改自身工件。",
+        "HERMES 框架：依赖感知的动态激活机制，只实例化任务相关组件并沿依赖扩展到调用方、配置与测试。",
+        "Bug 诊断机制：将执行失败证据映射回需修改的组件，仅重新激活这些 primitive，循环至通过或耗尽预算。"
+      ],
+      "results": [
+        "四个软件工程基准上平均比匹配的 baseline harness 提升 12.4 个百分点。",
+        "SWE-bench Verified 上 20 个 backbone 中 19 个提升，GPT-5 Mini 提升最大达 +19.4 点，GPT-5.6 Sol 达 97.0%。",
+        "SWE Refactor Bench 上 GPT-5.6 Sol medium 从 6.5% 升至 31.0%（+24.5）；Qwen3-8B Dev-Primitives 与同构 GPT-5.6 Sol 差距在 4.5 点内，Termin"
+      ],
+      "takeaways": [
+        "把推理能力绑定到具体仓库工件、让组件直接通信，比在单一轨迹里压缩上下文更能应对跨文件协调。",
+        "harness 设计（激活与诊断）是决定 agent 实际表现的关键，轻量模型配合好 harness 也能接近前沿模型。"
+      ],
+      "limitations": "原文仅说明局限见 Appendix I，正文未给出具体内容。",
       "basis": "fulltext"
     }
   },
@@ -471,149 +616,6 @@
         "可通过在指令或仓库中明确风险归属、处理幅度与已接受决策，减少 agent 的过度防御。"
       ],
       "limitations": "任务对仅变动单条证据，真实场景证据更分散模糊；未跨 harness 对比同一模型，结论限于所测生态与用户群体。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers?",
-    "sub_title": "papers · source=arxiv_cs_se · score=69.5",
-    "url_title": "checkerbench-can-long-horizon-agents-synthesize-static-analysis-checkers",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.07557",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-07T04:00:00Z",
-    "first_seen_at": "2026-10-07T11:52:14Z",
-    "score": 69.5,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "coding agent",
-      "vulnerability detection"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "测试与验证"
-    ],
-    "summary_zh": "CheckerBench 评测长程智能体能否在仓库中合成静态分析检查器。",
-    "reason_zh": "编程智能体基准，任务为代码分析工具合成。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Static-analysis checker synthesis requires agents to interpret a defect specification, inspect a repository, implement analyzer-specific logic, and refine the checker through repeated compilation and analysis feedback. Existing coding-agent benchmarks focus on tasks such as patch generation or vulnerability detection and rarely assess whether an agent can…",
-    "authors": [
-      "Hang He",
-      "Li Wang",
-      "Hao Chen",
-      "Yuchen Shao",
-      "Yuling Shi",
-      "Lisheng Wang"
-    ],
-    "author_count": 12,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.07557",
-    "digest": {
-      "problem": "现有 coding-agent 基准多关注补丁生成或漏洞检测，很少评估 agent 能否从零完成静态分析 checker 的合成，而这类长程任务对自动化缺陷检测很重要。",
-      "method": [
-        "提出 CheckerBench：300 个可执行任务，来自 297 个 CVE、167 个仓库、85 个 CWE、五种语言生态。",
-        "每个任务含漏洞/修复版本、固定分析环境与 checker 脚手架，覆盖 CSA 与 CodeQL。",
-        "提出 CheckerLab 统一评测框架，独立重建提交的 checker，衡量漏洞-修复诊断对比、补丁定位、误报与工具使用。"
-      ],
-      "results": [
-        "21 个 model–harness 配置各重复三次，平均 Pass@1 为 32.30%，最佳配置达 45.33%。",
-        "OpenCode 上 Claude Opus 4.8 取得最高 45.33% Pass@1，但 Build 降至 81.67%。",
-        "整体平均 Build 78.25%、Diff. SR 73.65%、FP_pass 3.88%。"
-      ],
-      "takeaways": [
-        "让 agent 写可复用静态分析规则比生成补丁更难，需重视编译与差分验证反馈。",
-        "评测应独立重建 checker 并检查误报，而非只看补丁或检测结果。"
-      ],
-      "limitations": "评测仅覆盖 CSA 与 CodeQL 及五种语言，最佳 Pass@1 仅 45.33%，结论限于所评估的仓库与分析器配置。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Harness Engineering for Software Engineering via Modular Executable Dev-Primitives",
-    "sub_title": "papers · source=hf_daily_papers · score=69.1",
-    "url_title": "harness-engineering-for-software-engineering-via-modular-executable-dev-primitiv",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.07832",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers",
-      "arxiv_cs_se",
-      "arxiv_cs_cl"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-07T04:00:00Z",
-    "first_seen_at": "2026-10-07T02:29:59Z",
-    "score": 69.1,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 18.1,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [
-      "software engineering agent",
-      "terminal-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码理解与检索"
-    ],
-    "summary_zh": "提出模块化可执行开发原语，缓解LLM编程智能体长流程中的上下文爆炸问题。",
-    "reason_zh": "面向编程智能体的长程工作流与状态管理，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "Large language models (LLMs) equipped with terminal access have demonstrated strong capabilities in automating software engineering tasks. However, existing agents remain brittle on long-horizon workflows, where they must repeatedly reconstruct program state scattered across source files, configurations, tests, dependencies, and runtime behavior, leading to…",
-    "authors": [
-      "Haibo Jin",
-      "Xinjie Li",
-      "Peng Kuang",
-      "Haohan Wang"
-    ],
-    "author_count": 4,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.07832",
-    "arxiv_id": "2610.07832",
-    "digest": {
-      "problem": "长周期软件工程任务中，agent 需反复重建散落在源码、配置、测试与运行时中的程序状态，导致上下文爆炸、语义漂移，大仓库中难以定位相关组件。",
-      "method": [
-        "Dev-Primitives：将每个仓库组件（源码/配置/测试）与常驻 LLM 配对，使其能自然语言推理、组件间通信并自改自身工件。",
-        "HERMES 框架：依赖感知的动态激活机制，只实例化任务相关组件并沿依赖扩展到调用方、配置与测试。",
-        "Bug 诊断机制：将执行失败证据映射回需修改的组件，仅重新激活这些 primitive，循环至通过或耗尽预算。"
-      ],
-      "results": [
-        "四个软件工程基准上平均比匹配的 baseline harness 提升 12.4 个百分点。",
-        "SWE-bench Verified 上 20 个 backbone 中 19 个提升，GPT-5 Mini 提升最大达 +19.4 点，GPT-5.6 Sol 达 97.0%。",
-        "SWE Refactor Bench 上 GPT-5.6 Sol medium 从 6.5% 升至 31.0%（+24.5）；Qwen3-8B Dev-Primitives 与同构 GPT-5.6 Sol 差距在 4.5 点内，Termin"
-      ],
-      "takeaways": [
-        "把推理能力绑定到具体仓库工件、让组件直接通信，比在单一轨迹里压缩上下文更能应对跨文件协调。",
-        "harness 设计（激活与诊断）是决定 agent 实际表现的关键，轻量模型配合好 harness 也能接近前沿模型。"
-      ],
-      "limitations": "原文仅说明局限见 Appendix I，正文未给出具体内容。",
       "basis": "fulltext"
     }
   },
