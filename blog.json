@@ -75,6 +75,73 @@
     }
   },
   {
+    "title": "StepCAD: Mesh-to-CAD Code Generation via LLM Policy and Geometry-Guided Search",
+    "sub_title": "papers · source=arxiv_cs_lg · score=73.7",
+    "url_title": "stepcad-mesh-to-cad-code-generation-via-llm-policy-and-geometry-guided-search",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.03799",
+    "source_id": "arxiv_cs_lg",
+    "source_ids": [
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-06T04:00:00Z",
+    "first_seen_at": "2026-10-06T12:06:44Z",
+    "score": 73.7,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "code generation"
+    ],
+    "topics": [
+      "代码生成",
+      "编程智能体"
+    ],
+    "summary_zh": "StepCAD用LLM策略与几何引导搜索，从3D网格生成可执行CAD代码。",
+    "reason_zh": "LLM生成CAD程序代码，属核心代码生成。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Recovering executable CAD programs from 3D meshes is challenging due to the compositional nature of CAD construction and the interaction between discrete modeling choices and continuous parameters. Many learning-based methods predict complete programs in a single pass and rely predominantly on sketch-extrude representations, limiting operation diversity and…",
+    "authors": [
+      "Ghadi Nehme",
+      "Faez Ahmed"
+    ],
+    "author_count": 2,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "https://github.com/ghadinehme/StepCAD",
+    "github_stars": 3,
+    "hf_url": "https://huggingface.co/papers/2610.03799",
+    "arxiv_id": "2610.03799",
+    "digest": {
+      "problem": "从3D网格恢复可执行CAD程序困难，因构造具组合性且离散建模选择与连续参数相互耦合；现有方法单次预测完整程序且多限于sketch-extrude，操作多样性差、难纠错。",
+      "method": [
+        "提出StepCAD：状态条件CAD策略+几何引导搜索，策略基于目标与中间几何预测构造动作。",
+        "用IoU引导的树搜索通过局部编辑精化程序，支持重建中纠错。",
+        "发布ARCADE-1.5M数据集：150万可执行CAD程序、最长150+操作、1250万状态-动作转移。"
+      ],
+      "results": [
+        "在多个CAD重建基准上取得state-of-the-art几何重建精度，并保持高有效性。",
+        "相对最强评估基线，IoU最高提升87.2%，复杂形状上增益尤其大。"
+      ],
+      "takeaways": [
+        "单次生成完整程序不如状态条件策略+搜索迭代纠错，适合CAD类结构化代码生成。",
+        "中间几何反馈（如IoU）可作为搜索信号，提升生成程序的有效性与精度。"
+      ],
+      "limitations": "",
+      "basis": "abstract"
+    }
+  },
+  {
     "title": "TaoD2C-Bench: Benchmarking MLLMs for Industrial UI Code Generation Beyond Visual Fidelity",
     "sub_title": "papers · source=arxiv_cs_se · score=71.5",
     "url_title": "taod2c-bench-benchmarking-mllms-for-industrial-ui-code-generation-beyond-visual-",
@@ -144,73 +211,6 @@
       ],
       "limitations": "评测集为 421 个设计，来自单一电商生态的 MasterGo 文件，结论对其他平台与组件库的泛化性未知。",
       "basis": "fulltext"
-    }
-  },
-  {
-    "title": "StepCAD: Mesh-to-CAD Code Generation via LLM Policy and Geometry-Guided Search",
-    "sub_title": "papers · source=arxiv_cs_lg · score=71.3",
-    "url_title": "stepcad-mesh-to-cad-code-generation-via-llm-policy-and-geometry-guided-search",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.03799",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-06T04:00:00Z",
-    "first_seen_at": "2026-10-06T12:06:44Z",
-    "score": 71.3,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 9.0,
-      "freshness": 100.0,
-      "impact": 55.0
-    },
-    "keywords": [
-      "code generation"
-    ],
-    "topics": [
-      "代码生成",
-      "编程智能体"
-    ],
-    "summary_zh": "StepCAD用LLM策略与几何引导搜索，从3D网格生成可执行CAD代码。",
-    "reason_zh": "LLM生成CAD程序代码，属核心代码生成。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Recovering executable CAD programs from 3D meshes is challenging due to the compositional nature of CAD construction and the interaction between discrete modeling choices and continuous parameters. Many learning-based methods predict complete programs in a single pass and rely predominantly on sketch-extrude representations, limiting operation diversity and…",
-    "authors": [
-      "Ghadi Nehme",
-      "Faez Ahmed"
-    ],
-    "author_count": 2,
-    "upvotes": 1,
-    "likes": 0,
-    "github_url": "https://github.com/ghadinehme/StepCAD",
-    "github_stars": 1,
-    "hf_url": "https://huggingface.co/papers/2610.03799",
-    "arxiv_id": "2610.03799",
-    "digest": {
-      "problem": "从3D网格恢复可执行CAD程序困难，因构造具组合性且离散建模选择与连续参数相互耦合；现有方法单次预测完整程序且多限于sketch-extrude，操作多样性差、难纠错。",
-      "method": [
-        "提出StepCAD：状态条件CAD策略+几何引导搜索，策略基于目标与中间几何预测构造动作。",
-        "用IoU引导的树搜索通过局部编辑精化程序，支持重建中纠错。",
-        "发布ARCADE-1.5M数据集：150万可执行CAD程序、最长150+操作、1250万状态-动作转移。"
-      ],
-      "results": [
-        "在多个CAD重建基准上取得state-of-the-art几何重建精度，并保持高有效性。",
-        "相对最强评估基线，IoU最高提升87.2%，复杂形状上增益尤其大。"
-      ],
-      "takeaways": [
-        "单次生成完整程序不如状态条件策略+搜索迭代纠错，适合CAD类结构化代码生成。",
-        "中间几何反馈（如IoU）可作为搜索信号，提升生成程序的有效性与精度。"
-      ],
-      "limitations": "",
-      "basis": "abstract"
     }
   },
   {
@@ -285,6 +285,53 @@
       "limitations": "评测限于 Python 包重建，依赖原生测试作评分；primitive 适配与诊断仍依赖 LLM，且每模块预算为 5 轮。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "zlab-princeton/SWEeper-Bench",
+    "sub_title": "datasets · source=hf_datasets_swe · score=71.0",
+    "url_title": "zlab-princetonsweeper-bench",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/zlab-princeton/SWEeper-Bench",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-07T20:42:10Z",
+    "first_seen_at": "2026-10-08T22:13:44Z",
+    "score": 71.0,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 18.0,
+      "freshness": 79.4,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "codebase"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "程序修复"
+    ],
+    "summary_zh": "SWEeper-Bench 含200个任务，测试编程智能体能否发现并修复未报告的软件缺陷。",
+    "reason_zh": "直接评测编程智能体发现修复bug能力，核心AI编程基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "🧹 SWEeper-Bench Can Agents Discover Bugs in Interactive Software? Paper · Blog · Code · Agent traces SWEeper-Bench tests whether coding agents can find and fix bugs that nobody has reported yet. It has 200 tasks, each built from a real bug fix in a different open-source web app. The agent gets the codebase and an open-ended request such as \"Find and fix…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "Coding-Agent Benchmarks Should Match Their Users' Task Flows",
@@ -2027,70 +2074,6 @@
         "失败轨迹适合驱动 harness 改进，成功轨迹才适合模仿学习，二者应分流而非混池。"
       ],
       "limitations": "证据来自少量只跑一次的协同演化链，102 任务 split 单次评测波动约 ±2 任务，1–2 任务差距不应视为排名；仅覆盖一个模型家族两个规模。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Who Broke Me? Execution-Guided Repair of Behavioral Dependency Breaks",
-    "sub_title": "papers · source=arxiv_cs_se · score=64.0",
-    "url_title": "who-broke-me-execution-guided-repair-of-behavioral-dependency-breaks",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.09267",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-08T04:00:00Z",
-    "first_seen_at": "2026-10-08T12:07:28Z",
-    "score": 64.0,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "topics": [
-      "程序修复",
-      "代码理解与检索"
-    ],
-    "summary_zh": "针对依赖升级导致的行为性破坏，用执行引导的LLM方法定位并修复根因API。",
-    "reason_zh": "LLM驱动的程序修复，属AI编程核心方向。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Dependency upgrades can break downstream projects without changing the library interface. Such behavioral breaking changes are difficult for developers to fix, because the failing test does not always point to the root API, the upstream API that causes the break. Existing LLM-based repair methods obtain evidence for the repair from compiler feedback or…",
-    "authors": [
-      "Juntao Chen",
-      "Tingting Bi",
-      "Yanlin Wang",
-      "Patanamon Thongtanunam"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.09267",
-    "digest": {
-      "problem": "依赖升级可因行为变更破坏下游项目，但接口不变、无编译报错、文档常缺失，失败测试也不指向根因 API，修复困难。",
-      "method": [
-        "BBCFixer 在旧/新库版本下差分执行失败测试，对返回值不同的调用排序，取最高者为 first divergence 并作为候选 root API。",
-        "用候选 root API 与错误信息中的症状符号过滤 library diff，生成紧凑的上游修复证据。",
-        "构建 BBCBench：100 个 Python/JavaScript 真实行为破坏案例，含可复现 harness 与 reference fix。"
-      ],
-      "results": [
-        "相比 Pure Agent，平均通过率最高提升 17%，每次成功修复所需 agent 步骤最多减少 27%。",
-        "相比 BDUpdater，平均通过率最高提升 53%，步骤最多减少 58%。",
-        "在 qwen3-coder 与 GLM-4.5-Air 两个模型、三轮实验中均优于两个基线。"
-      ],
-      "takeaways": [
-        "修复行为破坏的关键是先把上游证据压缩成失败特定证据，再交给 agent，而非让 agent 自行挖掘。",
-        "差分执行可作为定位 root API 的实用选择器，降低 agent 步骤与成本。"
-      ],
-      "limitations": "收益集中在证据指向标注 root API 的案例；差分执行无 divergence 时需回退到下游使用的上游符号。",
       "basis": "fulltext"
     }
   }
