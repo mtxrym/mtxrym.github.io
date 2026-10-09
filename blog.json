@@ -150,7 +150,7 @@
   },
   {
     "title": "TestPrism: Rethinking Test Evaluation Beyond a Single Reference",
-    "sub_title": "papers · source=arxiv_cs_se · score=71.3",
+    "sub_title": "papers · source=arxiv_cs_se · score=71.8",
     "url_title": "testprism-rethinking-test-evaluation-beyond-a-single-reference",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.12289",
@@ -163,10 +163,10 @@
     "category": "papers",
     "published_at": "2026-10-09T04:00:00Z",
     "first_seen_at": "2026-10-09T11:58:57Z",
-    "score": 71.3,
+    "score": 71.8,
     "scores": {
       "relevance": 86.0,
-      "popularity": 41.4,
+      "popularity": 43.9,
       "freshness": 100.0,
       "impact": 0.0
     },
@@ -192,7 +192,7 @@
       "Wei Gao"
     ],
     "author_count": 9,
-    "upvotes": 23,
+    "upvotes": 28,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -432,7 +432,7 @@
   },
   {
     "title": "zlab-princeton/SWEeper-Bench",
-    "sub_title": "datasets · source=hf_datasets_swe · score=68.1",
+    "sub_title": "datasets · source=hf_datasets_swe · score=68.5",
     "url_title": "zlab-princetonsweeper-bench",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://huggingface.co/datasets/zlab-princeton/SWEeper-Bench",
@@ -444,10 +444,10 @@
     "category": "datasets",
     "published_at": "2026-10-07T20:42:10Z",
     "first_seen_at": "2026-10-08T22:13:44Z",
-    "score": 68.1,
+    "score": 68.5,
     "scores": {
       "relevance": 95.0,
-      "popularity": 20.0,
+      "popularity": 22.0,
       "freshness": 63.0,
       "impact": 40.0
     },
@@ -1649,6 +1649,76 @@
     }
   },
   {
+    "title": "Skill Constellations: Tracing the Supply Chain of Agent Skills on GitHub",
+    "sub_title": "papers · source=arxiv_cs_se · score=64.8",
+    "url_title": "skill-constellations-tracing-the-supply-chain-of-agent-skills-on-github",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.11169",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-09T04:00:00Z",
+    "first_seen_at": "2026-10-09T11:58:57Z",
+    "score": 64.8,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 9.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "github",
+      "coding agent",
+      "claude code",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "安全与漏洞",
+      "开发者与工具研究"
+    ],
+    "summary_zh": "追踪GitHub上AI编程智能体技能(SKILL.md)的供应链与来源。",
+    "reason_zh": "编程智能体技能生态与安全，较相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Agent skills are SKILL.md instructions and scripts that AI coding agents such as Claude Code and Codex run with the permissions of their user. Developers share skills by copying them between repositories, which makes them a software supply chain without a registry, versions or provenance. The origin of a copied skill, the reach of a security fix and the…",
+    "authors": [
+      "Fahd Seddik"
+    ],
+    "author_count": 1,
+    "upvotes": 1,
+    "likes": 0,
+    "github_url": "https://github.com/FahdSeddik/Skill-Constellations",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.11169",
+    "arxiv_id": "2610.11169",
+    "digest": {
+      "problem": "Agent skills 通过仓库间复制传播，形成无注册表、无版本、无溯源的软件供应链，无法知道复制来源、修复传播范围和应优先审查的仓库。",
+      "method": [
+        "从 GitSkills 全部 SKILL.md 的 git 历史重建首个带日期的有向复制网络，覆盖 2,193,119 次技能采用。",
+        "用条件 logit 建模复制事件如何选择源仓库，并据此对仓库排序以指导审计。",
+        "用 Claude 模型标注仓库类型与技能风险，严格标记精确率 98.3%、召回 80.9%。"
+      ],
+      "results": [
+        "审计模型评分最高的 100 个仓库可阻止 14.9% 后续高风险技能采用，而最热门的 100 个仅 0.5%。",
+        "仅 11.1% 的克隆组变更能一致传播，只有 20.9% 的技能副本跟随源仓库后续修改。",
+        "复制网络高度集中（负二项离散度 k=0.086），GitHub stars 几乎无法指示复制出度。"
+      ],
+      "takeaways": [
+        "平台应以带版本的引用而非副本分发技能，开发者需主动更新依赖的副本。",
+        "安全审查应按复制出度而非 stars 排序，并在技能发布后数周内行动。"
+      ],
+      "limitations": "数据仅覆盖公开 GitHub 上该格式前 10 个月；风险标记表示能力而非恶意，高精确率低召回使风险计数为下界。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Evaluating Local Language Model Agents for Reproducible Data Engineering: An Empirical Software Engineering Study of Mobility Workflows",
     "sub_title": "papers · source=arxiv_cs_se · score=64.5",
     "url_title": "evaluating-local-language-model-agents-for-reproducible-data-engineering-an-empi",
@@ -1721,7 +1791,7 @@
   },
   {
     "title": "SpatialOPSD: Self-Distilling Spatial Intelligence from Verified Coding Agent Traces",
-    "sub_title": "papers · source=arxiv_cs_lg · score=64.1",
+    "sub_title": "papers · source=arxiv_cs_lg · score=64.4",
     "url_title": "spatialopsd-self-distilling-spatial-intelligence-from-verified-coding-agent-trac",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.11366",
@@ -1734,10 +1804,10 @@
     "category": "papers",
     "published_at": "2026-10-09T04:00:00Z",
     "first_seen_at": "2026-10-09T11:58:57Z",
-    "score": 64.1,
+    "score": 64.4,
     "scores": {
       "relevance": 78.0,
-      "popularity": 25.4,
+      "popularity": 27.1,
       "freshness": 100.0,
       "impact": 0.0
     },
@@ -1763,7 +1833,7 @@
       "Bin Yang"
     ],
     "author_count": 9,
-    "upvotes": 6,
+    "upvotes": 7,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -1990,75 +2060,6 @@
         "检索历史经验不仅用于生成补丁，也可用于在多个候选补丁间做选择。"
       ],
       "limitations": "边类型与遍历权重为人工设定先验，依赖 PR 元数据质量；评估限于所测基准与 backbone。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "HarnessSQL: Harness-Native Training for SQL Agents in Realistic Database Environments",
-    "sub_title": "papers · source=arxiv_cs_cl · score=64.0",
-    "url_title": "harnesssql-harness-native-training-for-sql-agents-in-realistic-database-environm",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.12274",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-09T04:00:00Z",
-    "first_seen_at": "2026-10-09T11:58:57Z",
-    "score": 64.0,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "text-to-sql"
-    ],
-    "topics": [
-      "代码生成",
-      "编程智能体",
-      "训练数据"
-    ],
-    "summary_zh": "HarnessSQL针对真实数据库环境训练多轮交互式SQL智能体，弥合训练部署差距。",
-    "reason_zh": "面向SQL智能体的训练方法，属编程智能体核心。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Text-to-SQL models are commonly trained to map questions directly to static queries, whereas real-world database agents operate through stateful, multi-turn interaction with live databases -- inspecting schemas, executing probe queries, diagnosing errors, and revising hypotheses. This creates a critical train-deploy mismatch, as the execution harness that…",
-    "authors": [
-      "Haolin Yang",
-      "Jipeng Zhang",
-      "Jian Xie",
-      "Shuaishuai Gong",
-      "Sirui Han",
-      "Yike Guo"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.12274",
-    "digest": {
-      "problem": "Text-to-SQL 模型通常只训练从问题到静态 SQL 的映射，而真实数据库 agent 需要多轮交互（查 schema、试执行、诊断错误、修正），造成训练与部署不匹配。",
-      "method": [
-        "构建隔离可执行数据库沙箱，含真实 schema、查询执行、运行时反馈与隐藏 oracle 验证。",
-        "将通用 harness 适配为 SQL 专用四工具接口：list_tables、schema、exec、submit。",
-        "在目标 harness 内采集验证过的完整轨迹做全序列 SFT，再用执行奖励 RL（DAPO）优化。"
-      ],
-      "results": [
-        "Spider 2.0-SQLite 上 Qwen3-8B 从 15.5% 提升到 45.2%，Qwen3-14B 从 22.2% 提升到 54.8%。",
-        "OOD 上 BIRD-Interact Mini 达 9.0%/11.3%，LiveSQLBench Base-Lite 达 24.8%/28.5%（8B/14B）。",
-        "SFT 后 RL 比直接 RL 增益更大：8B 上 SFT+RL 45.2%，Direct RL 仅 20.0%。"
-      ],
-      "takeaways": [
-        "训练 agent 时应把部署时的 harness 纳入训练流程，而非只在推理时加工具。",
-        "保留完整交互轨迹做监督，比只监督最终 SQL 更能教会探索与错误恢复。"
-      ],
-      "limitations": "更广泛的 SQL 方言与 harness 覆盖仍是重要方向；当前实现主要基于 SQLite/DuckDB 与特定四工具契约。",
       "basis": "fulltext"
     }
   }
