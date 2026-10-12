@@ -1,7 +1,7 @@
 [
   {
     "title": "ProgramGym: Scaling Training Environments for Long-Horizon Program Reproduction Agents",
-    "sub_title": "papers · source=hf_daily_papers · score=81.4",
+    "sub_title": "papers · source=hf_daily_papers · score=81.6",
     "url_title": "programgym-scaling-training-environments-for-long-horizon-program-reproduction-a",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.13395",
@@ -16,10 +16,10 @@
     "category": "papers",
     "published_at": "2026-10-12T04:00:00Z",
     "first_seen_at": "2026-10-12T02:30:37Z",
-    "score": 81.4,
+    "score": 81.6,
     "scores": {
       "relevance": 95.0,
-      "popularity": 49.6,
+      "popularity": 50.7,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -47,10 +47,10 @@
       "Yujie Lin"
     ],
     "author_count": 13,
-    "upvotes": 44,
+    "upvotes": 48,
     "likes": 0,
     "github_url": "https://github.com/Acm1011/ProgramGym",
-    "github_stars": 1,
+    "github_stars": 10,
     "hf_url": "https://huggingface.co/papers/2610.13395",
     "arxiv_id": "2610.13395",
     "digest": {
@@ -74,8 +74,83 @@
     }
   },
   {
+    "title": "Coding-Agent Benchmarks Should Match Their Users' Task Flows",
+    "sub_title": "papers · source=arxiv_cs_se · score=80.5",
+    "url_title": "coding-agent-benchmarks-should-match-their-users-task-flows",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.09633",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-08T04:00:00Z",
+    "first_seen_at": "2026-10-08T12:07:28Z",
+    "score": 80.5,
+    "scores": {
+      "relevance": 93.0,
+      "popularity": 32.4,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "swe-bench",
+      "coding agent",
+      "refactoring"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "开发者与工具研究"
+    ],
+    "summary_zh": "基于真实IDE会话数据，主张编程智能体基准应匹配用户任务流。",
+    "reason_zh": "编程智能体评测与真实使用研究，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "The evaluation of coding agents generally strives to be as realistic as possible. In our study, we collect 4,782 agent sessions of real software engineers in JetBrains IDEs, which we call Production Sessions. Since our subject is interactive agents, we study the sessions with at least three user messages (33% of the sample). These long sessions differ from…",
+    "authors": [
+      "Igor Slinko",
+      "Yaroslav Golubev",
+      "Sergey Titov"
+    ],
+    "author_count": 3,
+    "upvotes": 11,
+    "likes": 0,
+    "github_url": "https://github.com/JetBrains-Research/SWE-TaskFlow-Generation-Public",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.09633",
+    "arxiv_id": "2610.09633",
+    "digest": {
+      "problem": "现有 coding agent 基准多源自 issue，单轮且任务类型集中，无法反映真实用户多轮、任务类型切换的交互分布，导致评测失真。",
+      "method": [
+        "分析 4,782 个 JetBrains IDE 真实会话，定义 Task Flow（会话长度、任务类型、类型转移）作为校准目标。",
+        "提出 SWE-TaskFlow：对已验证 SWE 任务做 prompt splitting 与可验证 repository QA，保留原测试。",
+        "用 TaskFlow Alignment Score (TFAS) 选择生成轨迹，使交互分布对齐目标。"
+      ],
+      "results": [
+        "SWE-Bench Pro 中 new feature 54.7%、bug fix 39.1%，合计 93.8%；Production Sessions 中两者不足一半。",
+        "700 个 SWE-Bench Pro 任务上，Split 使 agent 成本约翻倍，resolve rate 无稳定变化。",
+        "Split+QA 将 TFAS 从 59.6 提升至 77.8；四个模型 QA 答案准确率 69.8–83.0%。"
+      ],
+      "takeaways": [
+        "评测 coding agent 应明确目标用户与任务流，并据此校准交互层，而非默认单轮 issue。",
+        "多轮渐进披露会显著改变 agent 成本，交互协议本身是重要评测变量。"
+      ],
+      "limitations": "仅基于一个生产用例；分类器无人工标注准确率；部分 issue 无法拆分；QA 难度依赖生成器；pilot 仅三次运行，无显著性检验。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "SWE-Duel: Towards a Self-Scaling Arena for Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=77.4",
+    "sub_title": "papers · source=arxiv_cs_se · score=77.9",
     "url_title": "swe-duel-towards-a-self-scaling-arena-for-coding-agents",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.12569",
@@ -89,10 +164,10 @@
     "category": "papers",
     "published_at": "2026-10-12T04:00:00Z",
     "first_seen_at": "2026-10-12T13:19:34Z",
-    "score": 77.4,
+    "score": 77.9,
     "scores": {
       "relevance": 92.0,
-      "popularity": 36.9,
+      "popularity": 39.7,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -120,7 +195,7 @@
       "David Lo"
     ],
     "author_count": 4,
-    "upvotes": 16,
+    "upvotes": 20,
     "likes": 0,
     "github_url": "https://github.com/sweduel/SWE-Duel",
     "github_stars": 3,
@@ -143,6 +218,76 @@
         "出题能力与解题能力可分离，评测工具应同时报告 Red 与 Blue 两类指标。"
       ],
       "limitations": "任务难度受作者自身找 bug 能力上限约束；最强 Red 27.3% 攻击成功率具双用途安全风险。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "MetaKernelBench: Measuring GPU Kernel Knowledge Transfer Beyond Code",
+    "sub_title": "papers · source=arxiv_cs_lg · score=75.4",
+    "url_title": "metakernelbench-measuring-gpu-kernel-knowledge-transfer-beyond-code",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.05014",
+    "source_id": "arxiv_cs_lg",
+    "source_ids": [
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-06T04:00:00Z",
+    "first_seen_at": "2026-10-06T12:06:44Z",
+    "score": 75.4,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 36.9,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "提出MetaKernelBench，衡量GPU内核优化智能体跨DSL的知识迁移。",
+    "reason_zh": "面向代码生成智能体的评测基准，高相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Recent GPU kernel optimization agents retain what they learn in knowledge bases or as distilled skills. Kernel benchmarks score each attempt's implementation for correctness and speed but leave the reuse value of retained experience unmeasured. We introduce MetaKernelBench, which measures whether experience distilled from an attempt in one kernel…",
+    "authors": [
+      "Xueyi Chen",
+      "Shiyu Liu",
+      "Xin Jin",
+      "Yuhua Zheng",
+      "Xin Li",
+      "Haolei Bai"
+    ],
+    "author_count": 8,
+    "upvotes": 16,
+    "likes": 0,
+    "github_url": "https://github.com/YIGE24/MetaKernelBench",
+    "github_stars": 4,
+    "hf_url": "https://huggingface.co/papers/2610.05014",
+    "arxiv_id": "2610.05014",
+    "digest": {
+      "problem": "GPU kernel 优化 agent 会把经验存入知识库或蒸馏成 skill，但现有 kernel benchmark 只评单次实现的正确性与速度，未衡量这些经验能否复用到同一问题的新尝试中。",
+      "method": [
+        "构建 MetaKernelBench：74 个融合子图，每个配 CuTe DSL 与 TIRx 两个仅 DSL 不同的变体。",
+        "agent 先单独尝试一个变体并蒸馏出自然语言 skill，无论源尝试是否通过都转移该 skill。",
+        "同一模型在另一 DSL 上做 skill 条件尝试，与 solo 尝试在匹配预算下配对比较正确性和端到端运行时。"
+      ],
+      "results": [
+        "六个模型两个方向上 paired lift 从 -19.1% 到 +29.3%，四个模型双向增益。",
+        "每个模型和方向都有回退，harm rate 16.2% 到 44.6%，help rate 21.6% 到 40.5%。",
+        "源尝试相对目标 solo 更强时 71% 比较改善，更弱时 54% 回退。"
+      ],
+      "takeaways": [
+        "skill 的复用价值不只看源尝试是否成功，还要看它相对目标 solo 的水平。",
+        "跨 DSL 转移会同时带来帮助和伤害，工具应评估并过滤无依据的排除性结论。"
+      ],
+      "limitations": "只测同一问题跨 DSL 转移，不涉及新问题、新负载或新硬件；总计算量未与基线对齐。",
       "basis": "fulltext"
     }
   },
@@ -211,76 +356,6 @@
         "失败轨迹更难识别，验证器设计需关注失败模式的多样性。"
       ],
       "limitations": "负类召回仅64%，失败轨迹仍难区分；R2E-Gym表现偏低，可能因数据量小；评估仅限判别能力。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "MetaKernelBench: Measuring GPU Kernel Knowledge Transfer Beyond Code",
-    "sub_title": "papers · source=arxiv_cs_lg · score=74.7",
-    "url_title": "metakernelbench-measuring-gpu-kernel-knowledge-transfer-beyond-code",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.05014",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-06T04:00:00Z",
-    "first_seen_at": "2026-10-06T12:06:44Z",
-    "score": 74.7,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 33.4,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [],
-    "topics": [
-      "评测基准",
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "提出MetaKernelBench，衡量GPU内核优化智能体跨DSL的知识迁移。",
-    "reason_zh": "面向代码生成智能体的评测基准，高相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Recent GPU kernel optimization agents retain what they learn in knowledge bases or as distilled skills. Kernel benchmarks score each attempt's implementation for correctness and speed but leave the reuse value of retained experience unmeasured. We introduce MetaKernelBench, which measures whether experience distilled from an attempt in one kernel…",
-    "authors": [
-      "Xueyi Chen",
-      "Shiyu Liu",
-      "Xin Jin",
-      "Yuhua Zheng",
-      "Xin Li",
-      "Haolei Bai"
-    ],
-    "author_count": 8,
-    "upvotes": 12,
-    "likes": 0,
-    "github_url": "https://github.com/YIGE24/MetaKernelBench",
-    "github_stars": 3,
-    "hf_url": "https://huggingface.co/papers/2610.05014",
-    "arxiv_id": "2610.05014",
-    "digest": {
-      "problem": "GPU kernel 优化 agent 会把经验存入知识库或蒸馏成 skill，但现有 kernel benchmark 只评单次实现的正确性与速度，未衡量这些经验能否复用到同一问题的新尝试中。",
-      "method": [
-        "构建 MetaKernelBench：74 个融合子图，每个配 CuTe DSL 与 TIRx 两个仅 DSL 不同的变体。",
-        "agent 先单独尝试一个变体并蒸馏出自然语言 skill，无论源尝试是否通过都转移该 skill。",
-        "同一模型在另一 DSL 上做 skill 条件尝试，与 solo 尝试在匹配预算下配对比较正确性和端到端运行时。"
-      ],
-      "results": [
-        "六个模型两个方向上 paired lift 从 -19.1% 到 +29.3%，四个模型双向增益。",
-        "每个模型和方向都有回退，harm rate 16.2% 到 44.6%，help rate 21.6% 到 40.5%。",
-        "源尝试相对目标 solo 更强时 71% 比较改善，更弱时 54% 回退。"
-      ],
-      "takeaways": [
-        "skill 的复用价值不只看源尝试是否成功，还要看它相对目标 solo 的水平。",
-        "跨 DSL 转移会同时带来帮助和伤害，工具应评估并过滤无依据的排除性结论。"
-      ],
-      "limitations": "只测同一问题跨 DSL 转移，不涉及新问题、新负载或新硬件；总计算量未与基线对齐。",
       "basis": "fulltext"
     }
   },
@@ -499,6 +574,52 @@
       "limitations": "mutant 可能过于针对特定输入而不够真实；组合多个模型的测试套件仅带来有限提升，仍有 41% mutant 无人杀死。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "Nethraaaaa81/swev-trm-trajectories-25models",
+    "sub_title": "datasets · source=hf_datasets_swe · score=71.2",
+    "url_title": "nethraaaaa81swev-trm-trajectories-25models",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/Nethraaaaa81/swev-trm-trajectories-25models",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-12T13:39:04Z",
+    "first_seen_at": "2026-10-12T23:39:53Z",
+    "score": 71.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 6.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-bench"
+    ],
+    "topics": [
+      "训练数据",
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "25 个 LLM 在 SWE-Bench Verified 上的多轮轨迹数据集，带真实 harness 判定标签，用于训练轨迹奖励模型。",
+    "reason_zh": "编程智能体轨迹训练数据，直接用于奖励模型训练。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "SWE-Bench Verified TRM Trajectories (25 Models, Verified Labels) Trajectories from 25 LLMs attempting SWE-Bench Verified tasks, formatted for training a Trajectory Reward Model (TRM). Each record is one model's full multi-turn attempt at one task, labeled with the real SWE-bench harness verdict (scores.resolved). Splits Split Records Tasks Pos Neg train…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 1,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers?",
@@ -1784,7 +1905,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 242,
+    "likes": 243,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -1905,146 +2026,6 @@
         "本地 27B 级模型已可用于嵌入式智能体工作流，但需关注其自验证质量。"
       ],
       "limitations": "当前仅在仿真中评测，尚未覆盖真实硬件的传感器抖动、通信延迟、看门狗与启动瞬态等效应。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "WorldBench: Evaluating LLMs on Three.js Voxel World Generation",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.1",
-    "url_title": "worldbench-evaluating-llms-on-threejs-voxel-world-generation",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.10622",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-10T04:00:00Z",
-    "first_seen_at": "2026-10-09T11:58:57Z",
-    "score": 60.1,
-    "scores": {
-      "relevance": 80.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 75.0
-    },
-    "keywords": [],
-    "topics": [
-      "评测基准",
-      "代码生成"
-    ],
-    "summary_zh": "WorldBench评测LLM生成Three.js体素世界代码的能力。",
-    "reason_zh": "LLM代码生成评测基准，属AI编程。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "Large language models can now write complete, interactive 3D worlds as code, but grading those worlds automatically is unreliable. Existing judges take one view of the output: a vision-language model scores a few rendered snapshots, or a language model reads the source. On worlds written by five frontier models we find that the two views disagree on 32% of…",
-    "authors": [
-      "Krish Bakshi"
-    ],
-    "author_count": 1,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.10622",
-    "digest": {
-      "problem": "LLM 生成的 Three.js 3D 世界需自动评分，但现有视觉或代码单一评判不可靠，两者在 32% 的必查项上不一致。",
-      "method": [
-        "提出 WorldBench：一个固定 prompt 生成浮动体素岛，用 280 分五级测试逐项评分。",
-        "评判器同时探索运行世界（控制时钟、环绕、导航到各生物群系）并读取代码，双通道证据互不信任。",
-        "代码引用须逐行匹配源文件，视觉声明须由像素测量（亮度、帧差、色度）或盲识别确认。"
-      ],
-      "results": [
-        "五个前沿模型生成的世界中，代码与视觉在 32% 的必查项上不一致（365 项中 105 项代码有但帧未显示）。",
-        "突变测试中，仅代码评判给五个被移除特征中的四个满分；WorldBench 将保留分从 5.44 降至 3.55（满分 7.11）。",
-        "参考世界 claude-fable-5-1 在 WC002 得 15/20；其季节帧色度偏移为 0.019、0.035、0.024，视觉评判曾误判为相同。"
-      ],
-      "takeaways": [
-        "评估代码生成的 3D 世界时，应同时检查代码与运行结果，并用可测量证据验证模型声明。",
-        "仅靠代码或截图评分易被欺骗，需对引用和视觉声明做源文本与像素级校验。"
-      ],
-      "limitations": "布局读取未逐项验证，在四个世界上与真实生物群系图仅匹配 61/76 对；仍会奖励存在但从未运行的代码。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Correct Code, Broken Contributions? SWE-CC: Benchmarking Repository Policy Compliance for Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=59.8",
-    "url_title": "correct-code-broken-contributions-swe-cc-benchmarking-repository-policy-complian",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.06193",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-07T04:00:00Z",
-    "first_seen_at": "2026-10-06T12:06:44Z",
-    "score": 59.8,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 0.0,
-      "freshness": 31.5,
-      "impact": 75.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-bench",
-      "software engineering agent",
-      "github issue"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "代码评审"
-    ],
-    "summary_zh": "提出SWE-CC基准，评测编程智能体对GitHub仓库贡献政策的合规性。",
-    "reason_zh": "面向编程智能体的新评测基准，核心AI编程。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "Autonomous coding agents now resolve a substantial share of real-world GitHub issues. However, passing functional tests differs fundamentally from producing a high-quality contribution acceptable for merging. Mature open-source projects publish repository-specific contribution policies, spanning style, git, testing workflows, to ensure code quality and…",
-    "authors": [
-      "Hai Dang Truong",
-      "Rayner Goh",
-      "Thanh Le-Cong",
-      "Yintong Huo"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.06193",
-    "digest": {
-      "problem": "现有基准仅用单元测试评判补丁，无法衡量编码 agent 是否遵守仓库贡献规范，导致功能正确但不可合并的贡献被误判为成功。",
-      "method": [
-        "半自动流水线将 12 个开源仓库的开发者文档转为 823 条机器可检查的原子策略。",
-        "每条策略编译为轻量确定性 checker 函数，检查 agent 执行轨迹与最终交付物。",
-        "在 SWE-bench Verified 扩展的 500 个端到端贡献任务上审计，设 Native 与 Consolidated 两种策略提供方式。"
-      ],
-      "results": [
-        "四种 LLM 在两种 scaffold 下平均违反 43.1% 的适用仓库策略，最高模型仍违反 44.7%。",
-        "约一半（50.3%）违规发生在最终提交打包前的中间执行步骤。",
-        "Consolidated 设置下平均合规率提升 8.75%，但 agent 在 Native 下仅 28.9% 的执行会主动检索策略。"
-      ],
-      "takeaways": [
-        "仅靠测试通过率评估编码 agent 会高估其真实可用性，需同时审计执行轨迹与交付物。",
-        "工具应主动注入或强制检索仓库贡献规范，而非依赖 agent 自行发现。"
-      ],
-      "limitations": "策略 checker 中约 64% 为近似实现，且基准仅覆盖 12 个仓库，结论的泛化性有限。",
       "basis": "fulltext"
     }
   }
