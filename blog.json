@@ -1,7 +1,7 @@
 [
   {
     "title": "AgentSWE: Can Coding Agents Build the Agent You Actually Want?",
-    "sub_title": "papers · source=arxiv_cs_se · score=81.6",
+    "sub_title": "papers · source=arxiv_cs_se · score=82.3",
     "url_title": "agentswe-can-coding-agents-build-the-agent-you-actually-want",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.13361",
@@ -16,10 +16,10 @@
     "category": "papers",
     "published_at": "2026-10-12T04:00:00Z",
     "first_seen_at": "2026-10-12T13:19:34Z",
-    "score": 81.6,
+    "score": 82.3,
     "scores": {
       "relevance": 90.0,
-      "popularity": 65.5,
+      "popularity": 69.2,
       "freshness": 100.0,
       "impact": 35.0
     },
@@ -46,7 +46,7 @@
       "Zheng Liu"
     ],
     "author_count": 5,
-    "upvotes": 152,
+    "upvotes": 201,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -295,6 +295,52 @@
     }
   },
   {
+    "title": "ExpertCrowd/ec-swe",
+    "sub_title": "datasets · source=hf_datasets_swe · score=73.4",
+    "url_title": "expertcrowdec-swe",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-13T16:45:56Z",
+    "first_seen_at": "2026-10-13T21:54:00Z",
+    "score": 73.4,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 9.5,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "程序修复"
+    ],
+    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
+    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "SWE-Critix: Post-Training Generalist Verifiers for Assessing Coding-Agent Trajectories",
     "sub_title": "papers · source=arxiv_cs_ai · score=70.9",
     "url_title": "swe-critix-post-training-generalist-verifiers-for-assessing-coding-agent-traject",
@@ -439,7 +485,7 @@
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-10-13T12:21:58Z",
+    "published_at": "2026-10-13T13:07:04Z",
     "first_seen_at": "2026-10-13T12:48:32Z",
     "score": 69.4,
     "scores": {
@@ -1531,7 +1577,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 180,
+    "likes": 181,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -1854,52 +1900,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 344,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
-  },
-  {
-    "title": "nickrosh/Evol-Instruct-Code-80k-v1",
-    "sub_title": "datasets · source=hf_datasets_code · score=58.6",
-    "url_title": "nickroshevol-instruct-code-80k-v1",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/nickrosh/Evol-Instruct-Code-80k-v1",
-    "source_id": "hf_datasets_code",
-    "source_ids": [
-      "hf_datasets_code"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2023-07-11T02:05:26Z",
-    "first_seen_at": "2026-10-13T12:48:32Z",
-    "score": 58.6,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 48.1,
-      "freshness": 0.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "github"
-    ],
-    "topics": [
-      "训练数据",
-      "代码生成"
-    ],
-    "summary_zh": "Evol-Instruct-Code开源实现，生成代码指令数据用于训练。",
-    "reason_zh": "代码指令数据集，直接用于代码模型训练。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Open Source Implementation of Evol-Instruct-Code as described in the WizardCoder Paper. Code for the intruction generation can be found on Github as Evol-Teacher.",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 254,
+    "likes": 345,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
