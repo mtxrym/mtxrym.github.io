@@ -1,5 +1,80 @@
 [
   {
+    "title": "Last Secure Code Benchmark: Is the Code You Vibe Secure?",
+    "sub_title": "papers · source=arxiv_cs_ai · score=84.3",
+    "url_title": "last-secure-code-benchmark-is-the-code-you-vibe-secure",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.14766",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-14T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 84.3,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 46.7,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "coding agent",
+      "code generation",
+      "vibe coding"
+    ],
+    "topics": [
+      "评测基准",
+      "安全与漏洞",
+      "代码生成"
+    ],
+    "summary_zh": "提出 Last Secure Code Benchmark，用 150 个真实漏洞构建 450 个任务，评测编程智能体生成代码的安全性。",
+    "reason_zh": "直接面向 AI 编程智能体的安全代码生成评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "AI coding agents now write much of the code that ships, yet whether that code is secure remains unclear. We introduce the Last Secure Code Benchmark, a comprehensive evaluation of secure code generation by coding agents. Built from 150 real vulnerabilities, its 450 tasks span seven widely used languages (Java, C, C++, JavaScript, Python, PHP, and Go), 24…",
+    "authors": [
+      "Tianyi Wu",
+      "Chao Ge",
+      "Peng Chen",
+      "Fengji Zhang",
+      "Yongxing Wu",
+      "Yuchong Xie"
+    ],
+    "author_count": 15,
+    "upvotes": 35,
+    "likes": 0,
+    "github_url": "https://github.com/alibaba/last-secure-code-benchmark",
+    "github_stars": 21,
+    "hf_url": "https://huggingface.co/papers/2610.14766",
+    "arxiv_id": "2610.14766",
+    "digest": {
+      "problem": "AI coding agent 大量代写代码，但生成代码是否安全不明；功能测试通过无法发现漏洞，用户又很少审查代码。",
+      "method": [
+        "提出 LSCBench：150 个真实漏洞场景，按 function/file/repository 三种粒度拆成 450 个任务。",
+        "覆盖 7 种语言、24 类 CWE（含 2025 Top 25 中的 21 项、KEV Top 10 中的 8 项）。",
+        "任务规格只描述功能、不提安全，用隐藏的功能与安全测试分别评分。"
+      ],
+      "results": [
+        "六个前沿 agent 功能通过率 73.6%–91.3%，但功能与安全同时通过最高仅 25.1%（Claude Fable 5）。",
+        "其余模型功能与安全同时通过率为 16.4%–24.7%。",
+        "最佳模型在三种粒度上全部通过同一漏洞场景的比例仅 12%。"
+      ],
+      "takeaways": [
+        "功能测试全绿不等于安全，vibe coding 工作流需额外安全审查或安全测试。",
+        "安全决策常是未明说的策略，agent 默认不会处理，需在规格或工具链中显式约束。"
+      ],
+      "limitations": "评测为 pass@1 单次尝试，且任务规格刻意不提安全，可能低估带安全提示或多次迭代的实际表现。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "AgentSWE: Can Coding Agents Build the Agent You Actually Want?",
     "sub_title": "papers · source=arxiv_cs_se · score=82.3",
     "url_title": "agentswe-can-coding-agents-build-the-agent-you-actually-want",
@@ -74,83 +149,8 @@
     }
   },
   {
-    "title": "Last Secure Code Benchmark: Is the Code You Vibe Secure?",
-    "sub_title": "papers · source=arxiv_cs_ai · score=82.2",
-    "url_title": "last-secure-code-benchmark-is-the-code-you-vibe-secure",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.14766",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-14T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 82.2,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 36.1,
-      "freshness": 100.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "coding agent",
-      "code generation",
-      "vibe coding"
-    ],
-    "topics": [
-      "评测基准",
-      "安全与漏洞",
-      "代码生成"
-    ],
-    "summary_zh": "提出 Last Secure Code Benchmark，用 150 个真实漏洞构建 450 个任务，评测编程智能体生成代码的安全性。",
-    "reason_zh": "直接面向 AI 编程智能体的安全代码生成评测基准。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "AI coding agents now write much of the code that ships, yet whether that code is secure remains unclear. We introduce the Last Secure Code Benchmark, a comprehensive evaluation of secure code generation by coding agents. Built from 150 real vulnerabilities, its 450 tasks span seven widely used languages (Java, C, C++, JavaScript, Python, PHP, and Go), 24…",
-    "authors": [
-      "Tianyi Wu",
-      "Chao Ge",
-      "Peng Chen",
-      "Fengji Zhang",
-      "Yongxing Wu",
-      "Yuchong Xie"
-    ],
-    "author_count": 15,
-    "upvotes": 15,
-    "likes": 0,
-    "github_url": "https://github.com/alibaba/last-secure-code-benchmark",
-    "github_stars": 21,
-    "hf_url": "https://huggingface.co/papers/2610.14766",
-    "arxiv_id": "2610.14766",
-    "digest": {
-      "problem": "AI coding agent 大量代写代码，但生成代码是否安全不明；功能测试通过无法发现漏洞，用户又很少审查代码。",
-      "method": [
-        "提出 LSCBench：150 个真实漏洞场景，按 function/file/repository 三种粒度拆成 450 个任务。",
-        "覆盖 7 种语言、24 类 CWE（含 2025 Top 25 中的 21 项、KEV Top 10 中的 8 项）。",
-        "任务规格只描述功能、不提安全，用隐藏的功能与安全测试分别评分。"
-      ],
-      "results": [
-        "六个前沿 agent 功能通过率 73.6%–91.3%，但功能与安全同时通过最高仅 25.1%（Claude Fable 5）。",
-        "其余模型功能与安全同时通过率为 16.4%–24.7%。",
-        "最佳模型在三种粒度上全部通过同一漏洞场景的比例仅 12%。"
-      ],
-      "takeaways": [
-        "功能测试全绿不等于安全，vibe coding 工作流需额外安全审查或安全测试。",
-        "安全决策常是未明说的策略，agent 默认不会处理，需在规格或工具链中显式约束。"
-      ],
-      "limitations": "评测为 pass@1 单次尝试，且任务规格刻意不提安全，可能低估带安全提示或多次迭代的实际表现。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "ReTerm: Recovery Training for Self-Improving Terminal Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=80.0",
+    "sub_title": "papers · source=arxiv_cs_se · score=80.2",
     "url_title": "reterm-recovery-training-for-self-improving-terminal-agents",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.18484",
@@ -164,10 +164,10 @@
     "category": "papers",
     "published_at": "2026-10-14T04:00:00Z",
     "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 80.0,
+    "score": 80.2,
     "scores": {
       "relevance": 90.0,
-      "popularity": 37.7,
+      "popularity": 38.4,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -196,10 +196,10 @@
       "Shuangjia Zheng"
     ],
     "author_count": 6,
-    "upvotes": 17,
+    "upvotes": 18,
     "likes": 0,
     "github_url": "https://github.com/twothsnd/ReTerm",
-    "github_stars": 7,
+    "github_stars": 16,
     "hf_url": "https://huggingface.co/papers/2610.18484",
     "arxiv_id": "2610.18484",
     "digest": {
@@ -240,7 +240,7 @@
     "score": 79.9,
     "scores": {
       "relevance": 82.0,
-      "popularity": 56.8,
+      "popularity": 56.9,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -268,10 +268,10 @@
       "Muzhao Tian"
     ],
     "author_count": 16,
-    "upvotes": 77,
+    "upvotes": 78,
     "likes": 0,
     "github_url": "https://github.com/microsoft/AesCode",
-    "github_stars": 42,
+    "github_stars": 62,
     "hf_url": "https://huggingface.co/papers/2610.18860",
     "arxiv_id": "2610.18860",
     "digest": {
@@ -296,7 +296,7 @@
   },
   {
     "title": "SWE-MISBEHAVIOR: Benchmarking and Mitigating Boundary Violations in Software Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=78.7",
+    "sub_title": "papers · source=arxiv_cs_se · score=79.0",
     "url_title": "swe-misbehavior-benchmarking-and-mitigating-boundary-violations-in-software-codi",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.18206",
@@ -310,10 +310,10 @@
     "category": "papers",
     "published_at": "2026-10-14T04:00:00Z",
     "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 78.7,
+    "score": 79.0,
     "scores": {
       "relevance": 95.0,
-      "popularity": 28.6,
+      "popularity": 30.0,
       "freshness": 100.0,
       "impact": 55.0
     },
@@ -343,7 +343,7 @@
       "Duy Dinh"
     ],
     "author_count": 15,
-    "upvotes": 8,
+    "upvotes": 9,
     "likes": 0,
     "github_url": "https://github.com/dxlong2000/SWE-Misbehavior",
     "github_stars": 1,
@@ -441,7 +441,7 @@
   },
   {
     "title": "AutoEnvScaling: Automating the Data Flywheel with Terminal Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=74.7",
+    "sub_title": "papers · source=arxiv_cs_se · score=75.2",
     "url_title": "autoenvscaling-automating-the-data-flywheel-with-terminal-agents",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.14163",
@@ -455,10 +455,10 @@
     "category": "papers",
     "published_at": "2026-10-14T04:00:00Z",
     "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 74.7,
+    "score": 75.2,
     "scores": {
       "relevance": 90.0,
-      "popularity": 28.6,
+      "popularity": 31.2,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -486,7 +486,7 @@
       "Hao Cheng"
     ],
     "author_count": 11,
-    "upvotes": 8,
+    "upvotes": 10,
     "likes": 0,
     "github_url": "https://github.com/MSR-Orchard/AutoEnvScaling",
     "github_stars": 4,
@@ -587,6 +587,53 @@
     }
   },
   {
+    "title": "zlab-princeton/SWEeper-Bench",
+    "sub_title": "datasets · source=hf_datasets_swe · score=73.9",
+    "url_title": "zlab-princetonsweeper-bench",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/zlab-princeton/SWEeper-Bench",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-14T16:30:55Z",
+    "first_seen_at": "2026-10-08T22:13:44Z",
+    "score": 73.9,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 12.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "codebase"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "程序修复"
+    ],
+    "summary_zh": "SWEeper-Bench 含200个任务，测试编程智能体能否发现并修复未报告的软件缺陷。",
+    "reason_zh": "直接评测编程智能体发现修复bug能力，核心AI编程基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "🧹 SWEeper-Bench Can Agents Discover Bugs in Interactive Software? Paper · Blog · Code · Agent traces SWEeper-Bench tests whether coding agents can find and fix bugs that nobody has reported yet. It has 200 tasks, each built from a real bug fix in a different open-source web app. The agent gets the codebase and an open-ended request such as \"Find and fix…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "ExpertCrowd/ec-swe",
     "sub_title": "datasets · source=hf_datasets_swe · score=73.5",
     "url_title": "expertcrowdec-swe",
@@ -631,6 +678,77 @@
     "hf_url": "",
     "arxiv_id": "",
     "digest": null
+  },
+  {
+    "title": "Beyond the Verdict: Agentic Code Judging with Verifiable Feedback",
+    "sub_title": "papers · source=arxiv_cs_ai · score=73.1",
+    "url_title": "beyond-the-verdict-agentic-code-judging-with-verifiable-feedback",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.18760",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-14T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 73.1,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 18.1,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "代码生成",
+      "评测基准"
+    ],
+    "summary_zh": "面向竞赛编程的智能体代码评判，提供可验证反馈以指导选择与修订。",
+    "reason_zh": "核心为编程智能体的代码验证与反馈。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Test-time scaling for large language models (LLMs) can involve generating multiple candidate solutions for selection or revising an earlier attempt. To guide selection and revision, we need a verifier that can estimate candidate correctness and provide evidence of failure. In competitive programming, however, official judging systems provide authoritative…",
+    "authors": [
+      "Zheye Deng",
+      "Sha Li",
+      "Changlong Yu",
+      "Xin Liu",
+      "Qin Lu",
+      "Priyanka Nigam"
+    ],
+    "author_count": 7,
+    "upvotes": 3,
+    "likes": 0,
+    "github_url": "https://github.com/horizon-llm/IOI2026",
+    "github_stars": 2,
+    "hf_url": "https://huggingface.co/papers/2610.18760",
+    "arxiv_id": "2610.18760",
+    "digest": {
+      "problem": "竞赛编程中官方评测只给判定、不解释失败原因，且提交次数有限，无法为候选程序的筛选与修正提供可验证的反馈。",
+      "method": [
+        "提出单候选验证任务：仅凭题面与源码判定是否通过，并为疑似失败生成可执行反例。",
+        "构建 USACO-Judge 基准，含人类与多个 LLM 的通过/未通过程序及官方测试标签。",
+        "训练 Arbiter：35B MoE 智能体验证器，用 GRPO 强化学习，奖励可执行反例并做长度控制。"
+      ],
+      "results": [
+        "反例成功率从 40.61% 提升到 62.67%，USACO-Judge 二分类判定准确率从 71.41% 升到 87.41%。",
+        "35B Arbiter 在 UOJ-Bench 与 USACO-Judge 上超过部分非智能体大模型（最高 1.6T 参数）。",
+        "IOI 2026 案例中，Arbiter 引导 GPT-OSS-120B 达 385.46 期望分，超过 361.12 金牌线。"
+      ],
+      "takeaways": [
+        "为代码生成工具加入可执行反例反馈，比单纯判定更能指导筛选与修正。",
+        "小模型经智能体强化学习可逼近大模型验证性能，适合作为低成本验证器。"
+      ],
+      "limitations": "反例只能证明失败、不能证明通过；诊断文本未被直接评分，反例成功只是诊断质量的代理指标。",
+      "basis": "fulltext"
+    }
   },
   {
     "title": "Coding-Agent Benchmarks Should Match Their Users' Task Flows",
@@ -1976,145 +2094,6 @@
         "准确率相近的配置成本可差数倍，选型应同时权衡质量与成本。"
       ],
       "limitations": "结论限于临床试验方案场景；结构化时间线任务仅评测 3 份方案，且其下游任务未涉及。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Make Every Expansion Count: Learning to Search Efficiently in LLM Code Repair",
-    "sub_title": "papers · source=arxiv_cs_se · score=66.5",
-    "url_title": "make-every-expansion-count-learning-to-search-efficiently-in-llm-code-repair",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.15894",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-14T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 66.5,
-    "scores": {
-      "relevance": 93.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "topics": [
-      "程序修复",
-      "模型训练与推理"
-    ],
-    "summary_zh": "提出CodeTriage学习策略，在LLM代码修复中高效选择修复方案。",
-    "reason_zh": "LLM代码修复搜索优化，核心相关。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Large language model (LLM) code-repair systems fix faulty programs by repeatedly generating and testing revisions. Each revision is costly, making the choice of which repair to pursue important for efficiency. Existing search policies rely on test pass rates and search statistics, ignoring the details of test failures and proposed edits. We introduce…",
-    "authors": [
-      "Elad Sharony",
-      "Ido Greenberg",
-      "Jialin Song",
-      "Shie Mannor",
-      "Gal Chechik",
-      "Eli Meirom"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.15894",
-    "digest": {
-      "problem": "LLM代码修复中每次生成和测试修订成本高，现有搜索策略仅依赖测试通过率和统计，忽略测试失败细节与编辑内容，导致修复效率低。",
-      "method": [
-        "提出CodeTriage，在生成和测试修订前，基于测试输出、失败诊断和提议编辑预测修复所需步数分布。",
-        "用0.6B参数模型对跨程序的所有待处理编辑进行优先级排序，再生成和测试修订代码。",
-        "发布包含四个LLM的1220万程序版本语料，组织为带提议编辑和测试结果的修复树。"
-      ],
-      "results": [
-        "在留出修复任务上，比最强基线减少21%程序修订次数和12%输出token。",
-        "无需重新训练，在11个未见修复LLM上，各搜索预算下平均成功率最高。",
-        "消融实验表明失败上下文、编辑文本及跨程序比较均提升搜索效果。"
-      ],
-      "takeaways": [
-        "在代码修复工具中，利用测试失败细节和编辑内容预排序，可显著减少昂贵生成与测试调用。",
-        "小模型（0.6B）即可实现高效搜索策略，且能跨不同修复LLM泛化，降低部署成本。"
-      ],
-      "limitations": "",
-      "basis": "abstract"
-    }
-  },
-  {
-    "title": "PreciseCoder: Faithful and Generalizable Debugging Beyond Unit-Test Rewards",
-    "sub_title": "papers · source=arxiv_cs_se · score=66.5",
-    "url_title": "precisecoder-faithful-and-generalizable-debugging-beyond-unit-test-rewards",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.18755",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-14T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 66.5,
-    "scores": {
-      "relevance": 93.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "repository-level",
-      "program repair",
-      "code model",
-      "unit test"
-    ],
-    "topics": [
-      "程序修复",
-      "模型训练与推理"
-    ],
-    "summary_zh": "提出PreciseCoder训练算法，改进基于单元测试奖励的代码调试。",
-    "reason_zh": "代码模型调试训练方法，核心相关。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Reinforcement learning (RL) from unit tests is the common recipe for post-training code models, but a unit test only asks whether the final program passes. We analyze what this unit-test-only reward teaches a model during debugging and find that, while it raises pass rates, it also teaches the model to edit more and to hallucinate bugs in code that is…",
-    "authors": [
-      "Yunkai Zhan",
-      "Miaosen Chai",
-      "Shangshang Wang",
-      "Jike Zhong",
-      "Yuqing Yang",
-      "Deqing Fu"
-    ],
-    "author_count": 8,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.18755",
-    "digest": {
-      "problem": "单元测试奖励只看程序是否通过，导致模型在调试时过度编辑、改写正确代码，并在无 bug 代码中幻觉出 bug，增加审查成本与回归风险。",
-      "method": [
-        "诊断：追踪 GRPO 训练动态，发现单元测试奖励推高通过率的同时增加编辑行数并诱发 bug 幻觉。",
-        "奖励设计：用语义验证的编辑 precision 与 recall 组成 F1，与 unit 奖励结合，二者分别与编辑量和正确性相关。",
-        "优化：采用 GDPO 对各项分别组内标准化再混合，λ=1/3 保证通过样本优势高于失败样本。"
-      ],
-      "results": [
-        "4B/9B/27B 上编辑精度比 base 提升 24–29 点，比 unit-test-only GRPO 提升 26–35 点，平均编辑行数从 7–15 降至 3，通过率持平。",
-        "正确代码上 no-op 率从 base 的 31–37% 和 GRPO 的 19–31% 升至 47–52%，damage 率下降。",
-        "仅用单行 bug 训练即可泛化到 PDB-Wild 多行与仓库级修复，精度提升 17–20 点，编辑量缩小 63–71%；9B 推理轨迹使 GPT-5.6 Sol 等前沿模型编辑精度提升 4.6–12.4 点。"
-      ],
-      "takeaways": [
-        "仅用单元测试做 RL 奖励会鼓励过度编辑和 bug 幻觉，代码模型后训练应显式奖励最小且必要的编辑。",
-        "语义验证的 precision/recall 奖励可同时提升通过率与编辑精度，且推理轨迹本身可作为弱到强迁移的载体。"
-      ],
-      "limitations": "奖励依赖参考修复与逐故障对齐，需构造反事实编辑并执行测试，训练成本较高；作者建议对模型补丁保留人工审查。",
       "basis": "fulltext"
     }
   }
