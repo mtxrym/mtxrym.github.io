@@ -17,7 +17,7 @@
     "score": 85.8,
     "scores": {
       "relevance": 95.0,
-      "popularity": 53.8,
+      "popularity": 54.0,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -48,10 +48,10 @@
       "Yuchong Xie"
     ],
     "author_count": 15,
-    "upvotes": 61,
+    "upvotes": 62,
     "likes": 0,
     "github_url": "https://github.com/alibaba/last-secure-code-benchmark",
-    "github_stars": 21,
+    "github_stars": 26,
     "hf_url": "https://huggingface.co/papers/2610.14766",
     "arxiv_id": "2610.14766",
     "digest": {
@@ -76,7 +76,7 @@
   },
   {
     "title": "Doc2Harness: Benchmarking LLMs on Long-Horizon Harness Engineering of Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=83.1",
+    "sub_title": "papers · source=arxiv_cs_se · score=84.3",
     "url_title": "doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agen",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.20344",
@@ -89,10 +89,10 @@
     "category": "papers",
     "published_at": "2026-10-15T04:00:00Z",
     "first_seen_at": "2026-10-15T10:07:17Z",
-    "score": 83.1,
+    "score": 84.3,
     "scores": {
       "relevance": 90.0,
-      "popularity": 53.1,
+      "popularity": 58.8,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -121,10 +121,10 @@
       "Yiwei Wang"
     ],
     "author_count": 11,
-    "upvotes": 58,
+    "upvotes": 90,
     "likes": 0,
     "github_url": "https://github.com/YuyaoGe/doc2harness",
-    "github_stars": 32,
+    "github_stars": 33,
     "hf_url": "https://huggingface.co/papers/2610.20344",
     "arxiv_id": "2610.20344",
     "digest": {
@@ -369,7 +369,7 @@
   },
   {
     "title": "ProgAgent: Learning Tool Orchestration through Programmatic Training",
-    "sub_title": "papers · source=arxiv_cs_ai · score=75.2",
+    "sub_title": "papers · source=arxiv_cs_ai · score=77.2",
     "url_title": "progagent-learning-tool-orchestration-through-programmatic-training",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.14774",
@@ -382,10 +382,10 @@
     "category": "papers",
     "published_at": "2026-10-15T04:00:00Z",
     "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 75.2,
+    "score": 77.2,
     "scores": {
       "relevance": 90.0,
-      "popularity": 23.3,
+      "popularity": 33.4,
       "freshness": 100.0,
       "impact": 55.0
     },
@@ -412,7 +412,7 @@
       "Qian Liu"
     ],
     "author_count": 7,
-    "upvotes": 5,
+    "upvotes": 12,
     "likes": 0,
     "github_url": "https://github.com/hkust-nlp/ProgAgent",
     "github_stars": 6,
@@ -435,6 +435,78 @@
         "PTC 训练收益可迁移到 DTC 接口，跨 harness 评估中 PTC 训练模型均优于 DTC 训练模型"
       ],
       "limitations": "任务仅 215 个、覆盖 23 个领域，规模有限；PTC 需沙箱运行时，且未训练时切换 PTC 收益有限。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "SWEeper-Bench: Can Agents Discover Bugs in Interactive Software?",
+    "sub_title": "papers · source=arxiv_cs_se · score=75.4",
+    "url_title": "sweeper-bench-can-agents-discover-bugs-in-interactive-software",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.14096",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-14T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 75.4,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 27.1,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "codebase"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "测试与验证"
+    ],
+    "summary_zh": "提出SWEeper-Bench基准，评测编程智能体在交互式软件中自主发现bug的能力。",
+    "reason_zh": "核心是编程智能体的bug发现评测基准，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Coding agents increasingly interact with users by generating interactive software on the fly rather than replying in text, yet many bugs in such software reveal themselves only after multi-step interactions. Today, users must discover these bugs and wait for fixes, making the development loop slow and expensive. Existing benchmarks typically assume the bugs…",
+    "authors": [
+      "Yang Yao",
+      "Haozhe Chen",
+      "Bingyi Kang",
+      "Karthik R Narasimhan",
+      "Zhuang Liu"
+    ],
+    "author_count": 5,
+    "upvotes": 7,
+    "likes": 0,
+    "github_url": "https://github.com/zlab-princeton/sweeper-bench",
+    "github_stars": 2,
+    "hf_url": "https://huggingface.co/papers/2610.14096",
+    "arxiv_id": "2610.14096",
+    "digest": {
+      "problem": "编码 agent 生成的交互式软件中，许多 bug 只在多步用户交互后才暴露，现有 benchmark 都假设 bug 已被报告，agent 自主发现交互依赖型 bug 的能力未被评估。",
+      "method": [
+        "构建 SWEeper-Bench：200 个来自 200 个开源 Web 应用真实修复的交互依赖 bug 任务。",
+        "每个任务只给代码库、运行中的应用和一句开放式请求，agent 需自行设计交互测试发现并修复 bug。",
+        "用 agentic verifier 在浏览器中按用户可观察行为判定修复，target 与 preservation 测试都过才算通过。"
+      ],
+      "results": [
+        "15 个前沿 agent 中最好的 Grok 4.6+Cursor 仅通过 59.0%，9 个不足一半。",
+        "换成详细 bug 描述后，5 个 agent 通过率从 35.0%–51.5% 升至约 96%。",
+        "轨迹分析：75.4% 到达目标功能，但仅 50.0% 识别出 buggy 行为，是最大瓶颈。"
+      ],
+      "takeaways": [
+        "agent 修复能力已强，瓶颈在自主发现 bug：需主动设计交互测试并识别失败。",
+        "不提示时 agent 几乎不用浏览器（200 个任务仅 2–6 个），应显式要求端到端浏览器测试。"
+      ],
+      "limitations": "仅覆盖 Web 应用，每任务只评一个已知 bug，衡量召回而非精确率；行为测试只查功能正确性，不含视觉、易用性与响应性。",
       "basis": "fulltext"
     }
   },
@@ -726,78 +798,6 @@
         "代码级与视觉级标准分开评估，可捕捉整体 judge 漏掉的渲染布局错误。"
       ],
       "limitations": "DesignBench 编辑任务上两模型均低于 Claude 4.6 与 Gemini 3 变体；部分评测 judge 与流水线同族，需跨 judge 验证。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "SWEeper-Bench: Can Agents Discover Bugs in Interactive Software?",
-    "sub_title": "papers · source=arxiv_cs_se · score=72.9",
-    "url_title": "sweeper-bench-can-agents-discover-bugs-in-interactive-software",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.14096",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-14T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 72.9,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 14.3,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "codebase"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "测试与验证"
-    ],
-    "summary_zh": "提出SWEeper-Bench基准，评测编程智能体在交互式软件中自主发现bug的能力。",
-    "reason_zh": "核心是编程智能体的bug发现评测基准，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Coding agents increasingly interact with users by generating interactive software on the fly rather than replying in text, yet many bugs in such software reveal themselves only after multi-step interactions. Today, users must discover these bugs and wait for fixes, making the development loop slow and expensive. Existing benchmarks typically assume the bugs…",
-    "authors": [
-      "Yang Yao",
-      "Haozhe Chen",
-      "Bingyi Kang",
-      "Karthik R Narasimhan",
-      "Zhuang Liu"
-    ],
-    "author_count": 5,
-    "upvotes": 2,
-    "likes": 0,
-    "github_url": "https://github.com/zlab-princeton/sweeper-bench",
-    "github_stars": 2,
-    "hf_url": "https://huggingface.co/papers/2610.14096",
-    "arxiv_id": "2610.14096",
-    "digest": {
-      "problem": "编码 agent 生成的交互式软件中，许多 bug 只在多步用户交互后才暴露，现有 benchmark 都假设 bug 已被报告，agent 自主发现交互依赖型 bug 的能力未被评估。",
-      "method": [
-        "构建 SWEeper-Bench：200 个来自 200 个开源 Web 应用真实修复的交互依赖 bug 任务。",
-        "每个任务只给代码库、运行中的应用和一句开放式请求，agent 需自行设计交互测试发现并修复 bug。",
-        "用 agentic verifier 在浏览器中按用户可观察行为判定修复，target 与 preservation 测试都过才算通过。"
-      ],
-      "results": [
-        "15 个前沿 agent 中最好的 Grok 4.6+Cursor 仅通过 59.0%，9 个不足一半。",
-        "换成详细 bug 描述后，5 个 agent 通过率从 35.0%–51.5% 升至约 96%。",
-        "轨迹分析：75.4% 到达目标功能，但仅 50.0% 识别出 buggy 行为，是最大瓶颈。"
-      ],
-      "takeaways": [
-        "agent 修复能力已强，瓶颈在自主发现 bug：需主动设计交互测试并识别失败。",
-        "不提示时 agent 几乎不用浏览器（200 个任务仅 2–6 个），应显式要求端到端浏览器测试。"
-      ],
-      "limitations": "仅覆盖 Web 应用，每任务只评一个已知 bug，衡量召回而非精确率；行为测试只查功能正确性，不含视觉、易用性与响应性。",
       "basis": "fulltext"
     }
   },
@@ -1227,77 +1227,72 @@
     }
   },
   {
-    "title": "Coding-Agent Benchmarks Should Match Their Users' Task Flows",
-    "sub_title": "papers · source=arxiv_cs_se · score=70.5",
-    "url_title": "coding-agent-benchmarks-should-match-their-users-task-flows",
+    "title": "Diff Diffusion: Predicting Edit Paths with Diffusion Models for Efficient Code Editing",
+    "sub_title": "papers · source=arxiv_cs_se · score=70.1",
+    "url_title": "diff-diffusion-predicting-edit-paths-with-diffusion-models-for-efficient-code-ed",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.09633",
+    "external_url": "https://arxiv.org/abs/2610.17831",
     "source_id": "arxiv_cs_se",
     "source_ids": [
       "arxiv_cs_se",
       "arxiv_cs_cl",
-      "arxiv_cs_ai",
-      "arxiv_cs_lg",
       "hf_daily_papers"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-08T04:00:00Z",
-    "first_seen_at": "2026-10-08T12:07:28Z",
-    "score": 70.5,
+    "published_at": "2026-10-14T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 70.1,
     "scores": {
-      "relevance": 93.0,
-      "popularity": 32.4,
-      "freshness": 50.0,
-      "impact": 75.0
+      "relevance": 90.0,
+      "popularity": 25.4,
+      "freshness": 100.0,
+      "impact": 0.0
     },
     "keywords": [
-      "swe-bench",
-      "coding agent",
-      "refactoring"
+      "code generation"
     ],
     "topics": [
-      "编程智能体",
-      "评测基准",
-      "开发者与工具研究"
+      "代码生成",
+      "模型训练与推理"
     ],
-    "summary_zh": "基于真实IDE会话数据，主张编程智能体基准应匹配用户任务流。",
-    "reason_zh": "编程智能体评测与真实使用研究，高度相关。",
+    "summary_zh": "用扩散模型预测编辑路径，实现高效代码编辑。",
+    "reason_zh": "面向AI辅助IDE的代码编辑生成，核心相关。",
     "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "The evaluation of coding agents generally strives to be as realistic as possible. In our study, we collect 4,782 agent sessions of real software engineers in JetBrains IDEs, which we call Production Sessions. Since our subject is interactive agents, we study the sessions with at least three user messages (33% of the sample). These long sessions differ from…",
+    "signals": [],
+    "summary": "Diffusion large language models (dLLMs) are appealing for code generation because they can update many tokens in parallel, yet many are optimized for sequence synthesis rather than edit prediction. This setting is poorly matched to modern AI-assisted IDEs, where edit prediction must infer the next code change from recent edits, the current file, and…",
     "authors": [
-      "Igor Slinko",
-      "Yaroslav Golubev",
-      "Sergey Titov"
+      "Xiaolong Xu",
+      "Hao Jiang",
+      "Bo Jiang",
+      "Zhiwen Deng",
+      "Ningyuan Sun",
+      "Bingzhou Chen"
     ],
-    "author_count": 3,
-    "upvotes": 11,
+    "author_count": 8,
+    "upvotes": 6,
     "likes": 0,
-    "github_url": "https://github.com/JetBrains-Research/SWE-TaskFlow-Generation-Public",
-    "github_stars": 1,
-    "hf_url": "https://huggingface.co/papers/2610.09633",
-    "arxiv_id": "2610.09633",
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.17831",
+    "arxiv_id": "2610.17831",
     "digest": {
-      "problem": "现有 coding agent 基准多源自 issue，单轮且任务类型集中，无法反映真实用户多轮、任务类型切换的交互分布，导致评测失真。",
+      "problem": "现有 dLLM 多按 masked diffusion 从零重建序列，与 IDE 编辑预测中稀疏、局部、依赖上下文的真实改码流程不匹配，浪费算力且延迟高。",
       "method": [
-        "分析 4,782 个 JetBrains IDE 真实会话，定义 Task Flow（会话长度、任务类型、类型转移）作为校准目标。",
-        "提出 SWE-TaskFlow：对已验证 SWE 任务做 prompt splitting 与可验证 repository QA，保留原测试。",
-        "用 TaskFlow Alignment Score (TFAS) 选择生成轨迹，使交互分布对齐目标。"
+        "把去噪目标改为预测编辑路径，用 same/delete/insert/replace/mask-to-token 动作显式表示从原片段到目标片段的 diff。",
+        "三阶段训练：CommitPack 提交 diff 持续预训练、编辑预测 SFT、以及基于去噪转移的 Diff-DPO 与 AGRPO 后训练。",
+        "推理侧采用块级并行编辑解码、近似 KV-Cache 与 PIE 后缀复用、自适应多 token 插入来降延迟。"
       ],
       "results": [
-        "SWE-Bench Pro 中 new feature 54.7%、bug fix 39.1%，合计 93.8%；Production Sessions 中两者不足一半。",
-        "700 个 SWE-Bench Pro 任务上，Split 使 agent 成本约翻倍，resolve rate 无稳定变化。",
-        "Split+QA 将 TFAS 从 59.6 提升至 77.8；四个模型 QA 答案准确率 69.8–83.0%。"
+        "C3PO 编辑补全上结果准确率 81.33%，接近 AR 的 83.18%，每样本解码步数从 14.62 降至 3.90，推理 145ms 对 403ms，提速 2.78×。",
+        "IDE 编辑预测评测中，CT+SFT+AGRPO 的 Act 50.00%、Stay 96.40%、Multi-line 73.68%，优于 AR 的 45.90/91.73/68.42，并大幅领先 Mercury-Coder。",
+        "线上 A/B 中 P50 模型延迟降低 39.0%。"
       ],
       "takeaways": [
-        "评测 coding agent 应明确目标用户与任务流，并据此校准交互层，而非默认单轮 issue。",
-        "多轮渐进披露会显著改变 agent 成本，交互协议本身是重要评测变量。"
+        "编辑预测应把计算集中在改动区域，跳过未变 token，而非整段重生成。",
+        "用编辑动作建模可变长输出，可支持多位置并行修改并显著降低延迟。"
       ],
-      "limitations": "仅基于一个生产用例；分类器无人工标注准确率；部分 issue 无法拆分；QA 难度依赖生成器；pilot 仅三次运行，无显著性检验。",
+      "limitations": "作者称尚未对编辑路径扩散做更深入理论分析，评测也集中在延迟敏感的 IDE 编辑预测场景。",
       "basis": "fulltext"
     }
   },
