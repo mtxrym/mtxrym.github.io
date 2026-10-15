@@ -92,7 +92,7 @@
     "score": 84.3,
     "scores": {
       "relevance": 90.0,
-      "popularity": 58.8,
+      "popularity": 59.1,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -121,7 +121,7 @@
       "Yiwei Wang"
     ],
     "author_count": 11,
-    "upvotes": 90,
+    "upvotes": 92,
     "likes": 0,
     "github_url": "https://github.com/YuyaoGe/doc2harness",
     "github_stars": 33,
@@ -873,6 +873,74 @@
     }
   },
   {
+    "title": "Cortex: Measurement-Gated Evolution and Pruning of Coding-Agent Skills and Rules",
+    "sub_title": "papers · source=arxiv_cs_se · score=72.3",
+    "url_title": "cortex-measurement-gated-evolution-and-pruning-of-coding-agent-skills-and-rules",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.14216",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-15T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 72.3,
+    "scores": {
+      "relevance": 93.0,
+      "popularity": 9.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "claude code"
+    ],
+    "topics": [
+      "编程智能体",
+      "开发者与工具研究"
+    ],
+    "summary_zh": "Cortex通过测量门控进化与剪枝编程智能体的技能和规则文件。",
+    "reason_zh": "直接优化编程智能体的harness，核心AI编程。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Coding agents such as Claude Code also follow text files that developers write for them: a project file, skills the agent may choose to open, and rules that load automatically when the agent reads matching files. We call these files the agent's harness. Developers add to it whenever they correct the agent, but one success proves little: the same agent can…",
+    "authors": [
+      "Samuele Giampieri"
+    ],
+    "author_count": 1,
+    "upvotes": 1,
+    "likes": 0,
+    "github_url": "https://github.com/samugit83/cortex",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2610.14216",
+    "arxiv_id": "2610.14216",
+    "digest": {
+      "problem": "开发者凭印象往 coding agent 的 harness（CLAUDE.md、skills、rules）里加指令，但 agent 单次运行噪声大，无法判断某条指令是否真有帮助，导致无用甚至有害文本不断累积。",
+      "method": [
+        "把会话中从坏到好的修复保存为可重放任务，并记录开发者反复做的纠正。",
+        "每次只写一条新 skill 或 rule，在任务上多次带/不带该文本对比，净收益且无任务明显变差才保留。",
+        "删除前同样重测，且只对真正进入 agent 上下文的 item 计功过，未触发的不加不删。"
+      ],
+      "results": [
+        "在 4 个规则族上，演化出的 harness 比无 skills/rules 的 harness 高 +55.0 点（95% CI [+34.1, +74.1]），对照族仅 −0.8 点。",
+        "保留的 18 个 item 中 16 个是 rule；path-gated skill 在 66 次尝试中被列出并打开 28 次，always-on skill 在 198 次尝试中打开 0 次。",
+        "R1 harness 在 Claude Haiku 4.5 上 +66.7 点，换到 Claude Sonnet 5 仅 +5.6 点（95% CI [−2.8, +13.9]）。"
+      ],
+      "takeaways": [
+        "给 coding agent 写规则时优先用会自动加载的 rule，而非需要 agent 主动打开的 skill。",
+        "把指令绑定到具体文件路径，避免 always-on 文本每轮都占用上下文却很少被使用。"
+      ],
+      "limitations": "正面结果仅来自一个合成仓库、脚本开发者和小模型；未证明能识别有害文本，强模型下增益很小，真实开源仓库未学到东西。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "ProgramGym: Scaling Training Environments for Long-Horizon Program Reproduction Agents",
     "sub_title": "papers · source=hf_daily_papers · score=71.7",
     "url_title": "programgym-scaling-training-environments-for-long-horizon-program-reproduction-a",
@@ -1160,71 +1228,120 @@
     }
   },
   {
-    "title": "Cortex: Measurement-Gated Evolution and Pruning of Coding-Agent Skills and Rules",
-    "sub_title": "papers · source=arxiv_cs_se · score=70.5",
-    "url_title": "cortex-measurement-gated-evolution-and-pruning-of-coding-agent-skills-and-rules",
+    "title": "PreciseCoder: Faithful and Generalizable Debugging Beyond Unit-Test Rewards",
+    "sub_title": "papers · source=arxiv_cs_se · score=70.7",
+    "url_title": "precisecoder-faithful-and-generalizable-debugging-beyond-unit-test-rewards",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.14216",
+    "external_url": "https://arxiv.org/abs/2610.18755",
     "source_id": "arxiv_cs_se",
     "source_ids": [
       "arxiv_cs_se",
-      "arxiv_cs_ai"
+      "arxiv_cs_cl",
+      "hf_daily_papers"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-15T04:00:00Z",
+    "published_at": "2026-10-14T04:00:00Z",
     "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 70.5,
+    "score": 70.7,
     "scores": {
       "relevance": 93.0,
-      "popularity": 0.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "repository-level",
+      "program repair",
+      "code model",
+      "unit test"
+    ],
+    "topics": [
+      "程序修复",
+      "模型训练与推理"
+    ],
+    "summary_zh": "提出PreciseCoder训练算法，改进基于单元测试奖励的代码调试。",
+    "reason_zh": "代码模型调试训练方法，核心相关。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Reinforcement learning (RL) from unit tests is the common recipe for post-training code models, but a unit test only asks whether the final program passes. We analyze what this unit-test-only reward teaches a model during debugging and find that, while it raises pass rates, it also teaches the model to edit more and to hallucinate bugs in code that is…",
+    "authors": [
+      "Yunkai Zhan",
+      "Miaosen Chai",
+      "Shangshang Wang",
+      "Jike Zhong",
+      "Yuqing Yang",
+      "Deqing Fu"
+    ],
+    "author_count": 8,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.18755",
+    "arxiv_id": "2610.18755",
+    "digest": {
+      "problem": "单元测试奖励只看程序是否通过，导致模型在调试时过度编辑、改写正确代码，并在无 bug 代码中幻觉出 bug，增加审查成本与回归风险。",
+      "method": [
+        "诊断：追踪 GRPO 训练动态，发现单元测试奖励推高通过率的同时增加编辑行数并诱发 bug 幻觉。",
+        "奖励设计：用语义验证的编辑 precision 与 recall 组成 F1，与 unit 奖励结合，二者分别与编辑量和正确性相关。",
+        "优化：采用 GDPO 对各项分别组内标准化再混合，λ=1/3 保证通过样本优势高于失败样本。"
+      ],
+      "results": [
+        "4B/9B/27B 上编辑精度比 base 提升 24–29 点，比 unit-test-only GRPO 提升 26–35 点，平均编辑行数从 7–15 降至 3，通过率持平。",
+        "正确代码上 no-op 率从 base 的 31–37% 和 GRPO 的 19–31% 升至 47–52%，damage 率下降。",
+        "仅用单行 bug 训练即可泛化到 PDB-Wild 多行与仓库级修复，精度提升 17–20 点，编辑量缩小 63–71%；9B 推理轨迹使 GPT-5.6 Sol 等前沿模型编辑精度提升 4.6–12.4 点。"
+      ],
+      "takeaways": [
+        "仅用单元测试做 RL 奖励会鼓励过度编辑和 bug 幻觉，代码模型后训练应显式奖励最小且必要的编辑。",
+        "语义验证的 precision/recall 奖励可同时提升通过率与编辑精度，且推理轨迹本身可作为弱到强迁移的载体。"
+      ],
+      "limitations": "奖励依赖参考修复与逐故障对齐，需构造反事实编辑并执行测试，训练成本较高；作者建议对模型补丁保留人工审查。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "klein-ml/klein-code-bench",
+    "sub_title": "datasets · source=hf_datasets_code · score=70.4",
+    "url_title": "klein-mlklein-code-bench",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/klein-ml/klein-code-bench",
+    "source_id": "hf_datasets_code",
+    "source_ids": [
+      "hf_datasets_code"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-15T09:50:56Z",
+    "first_seen_at": "2026-10-15T20:25:13Z",
+    "score": 70.4,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 12.0,
       "freshness": 100.0,
       "impact": 40.0
     },
-    "keywords": [
-      "coding agent",
-      "claude code"
-    ],
+    "keywords": [],
     "topics": [
-      "编程智能体",
-      "开发者与工具研究"
+      "代码生成",
+      "评测基准"
     ],
-    "summary_zh": "Cortex通过测量门控进化与剪枝编程智能体的技能和规则文件。",
-    "reason_zh": "直接优化编程智能体的harness，核心AI编程。",
+    "summary_zh": "Klein-Code-Bench：给模型规格和空目录，检验其从零构建Python项目能否通过验收测试。",
+    "reason_zh": "从零构建程序的代码生成评测基准，高度相关。",
     "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
-    "summary": "Coding agents such as Claude Code also follow text files that developers write for them: a project file, skills the agent may choose to open, and rules that load automatically when the agent reads matching files. We call these files the agent's harness. Developers add to it whenever they correct the agent, but one success proves little: the same agent can…",
-    "authors": [
-      "Samuele Giampieri"
-    ],
-    "author_count": 1,
+    "summary": "Klein-Code-Bench Can a model build a working program from scratch? Klein-Code-Bench gives a coding model a specification and an empty directory, and checks whether the finished Python project passes every acceptance test. 260 tasks in four tiers of 65 Pass or fail per project: a task counts only if all of its tests pass Runs locally: standard-library…",
+    "authors": [],
+    "author_count": 0,
     "upvotes": 0,
-    "likes": 0,
+    "likes": 3,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2610.14216",
-    "digest": {
-      "problem": "开发者凭印象往 coding agent 的 harness（CLAUDE.md、skills、rules）里加指令，但 agent 单次运行噪声大，无法判断某条指令是否真有帮助，导致无用甚至有害文本不断累积。",
-      "method": [
-        "把会话中从坏到好的修复保存为可重放任务，并记录开发者反复做的纠正。",
-        "每次只写一条新 skill 或 rule，在任务上多次带/不带该文本对比，净收益且无任务明显变差才保留。",
-        "删除前同样重测，且只对真正进入 agent 上下文的 item 计功过，未触发的不加不删。"
-      ],
-      "results": [
-        "在 4 个规则族上，演化出的 harness 比无 skills/rules 的 harness 高 +55.0 点（95% CI [+34.1, +74.1]），对照族仅 −0.8 点。",
-        "保留的 18 个 item 中 16 个是 rule；path-gated skill 在 66 次尝试中被列出并打开 28 次，always-on skill 在 198 次尝试中打开 0 次。",
-        "R1 harness 在 Claude Haiku 4.5 上 +66.7 点，换到 Claude Sonnet 5 仅 +5.6 点（95% CI [−2.8, +13.9]）。"
-      ],
-      "takeaways": [
-        "给 coding agent 写规则时优先用会自动加载的 rule，而非需要 agent 主动打开的 skill。",
-        "把指令绑定到具体文件路径，避免 always-on 文本每轮都占用上下文却很少被使用。"
-      ],
-      "limitations": "正面结果仅来自一个合成仓库、脚本开发者和小模型；未证明能识别有害文本，强模型下增益很小，真实开源仓库未学到东西。",
-      "basis": "fulltext"
-    }
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "Diff Diffusion: Predicting Edit Paths with Diffusion Models for Efficient Code Editing",
@@ -1297,19 +1414,19 @@
     }
   },
   {
-    "title": "zlab-princeton/SWEeper-Bench",
+    "title": "ExpertCrowd/ec-swe",
     "sub_title": "datasets · source=hf_datasets_swe · score=69.8",
-    "url_title": "zlab-princetonsweeper-bench",
+    "url_title": "expertcrowdec-swe",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/zlab-princeton/SWEeper-Bench",
+    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
     "source_id": "hf_datasets_swe",
     "source_ids": [
       "hf_datasets_swe"
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-10-14T16:30:55Z",
-    "first_seen_at": "2026-10-08T22:13:44Z",
+    "published_at": "2026-10-14T09:44:14Z",
+    "first_seen_at": "2026-10-13T21:54:00Z",
     "score": 69.8,
     "scores": {
       "relevance": 95.0,
@@ -1318,21 +1435,20 @@
       "impact": 40.0
     },
     "keywords": [
-      "coding agent",
-      "codebase"
+      "coding agent"
     ],
     "topics": [
-      "编程智能体",
       "评测基准",
+      "编程智能体",
       "程序修复"
     ],
-    "summary_zh": "SWEeper-Bench 含200个任务，测试编程智能体能否发现并修复未报告的软件缺陷。",
-    "reason_zh": "直接评测编程智能体发现修复bug能力，核心AI编程基准。",
+    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
+    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
     "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
-    "summary": "🧹 SWEeper-Bench Can Agents Discover Bugs in Interactive Software? Paper · Blog · Code · Agent traces SWEeper-Bench tests whether coding agents can find and fix bugs that nobody has reported yet. It has 200 tasks, each built from a real bug fix in a different open-source web app. The agent gets the codebase and an open-ended request such as \"Find and fix…",
+    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
@@ -1489,41 +1605,42 @@
     }
   },
   {
-    "title": "ExpertCrowd/ec-swe",
-    "sub_title": "datasets · source=hf_datasets_swe · score=69.4",
-    "url_title": "expertcrowdec-swe",
+    "title": "zlab-princeton/SWEeper-Bench",
+    "sub_title": "datasets · source=hf_datasets_swe · score=69.3",
+    "url_title": "zlab-princetonsweeper-bench",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
+    "external_url": "https://huggingface.co/datasets/zlab-princeton/SWEeper-Bench",
     "source_id": "hf_datasets_swe",
     "source_ids": [
       "hf_datasets_swe"
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-10-14T09:44:14Z",
-    "first_seen_at": "2026-10-13T21:54:00Z",
-    "score": 69.4,
+    "published_at": "2026-10-14T16:30:55Z",
+    "first_seen_at": "2026-10-08T22:13:44Z",
+    "score": 69.3,
     "scores": {
       "relevance": 95.0,
-      "popularity": 10.0,
+      "popularity": 9.5,
       "freshness": 79.4,
       "impact": 40.0
     },
     "keywords": [
-      "coding agent"
+      "coding agent",
+      "codebase"
     ],
     "topics": [
-      "评测基准",
       "编程智能体",
+      "评测基准",
       "程序修复"
     ],
-    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
-    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
+    "summary_zh": "SWEeper-Bench 含200个任务，测试编程智能体能否发现并修复未报告的软件缺陷。",
+    "reason_zh": "直接评测编程智能体发现修复bug能力，核心AI编程基准。",
     "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
-    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
+    "summary": "🧹 SWEeper-Bench Can Agents Discover Bugs in Interactive Software? Paper · Blog · Code · Agent traces SWEeper-Bench tests whether coding agents can find and fix bugs that nobody has reported yet. It has 200 tasks, each built from a real bug fix in a different open-source web app. The agent gets the codebase and an open-ended request such as \"Find and fix…",
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
@@ -1952,146 +2069,6 @@
         "出题能力与解题能力可分离，评测工具应同时报告 Red 与 Blue 两类指标。"
       ],
       "limitations": "任务难度受作者自身找 bug 能力上限约束；最强 Red 27.3% 攻击成功率具双用途安全风险。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "AuthGateBench: Benchmarking LLMs as Authorization Gate",
-    "sub_title": "papers · source=arxiv_cs_ai · score=67.5",
-    "url_title": "authgatebench-benchmarking-llms-as-authorization-gate",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.16426",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-15T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 67.5,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "coding agent",
-      "claude code",
-      "codex"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "安全与漏洞"
-    ],
-    "summary_zh": "AuthGateBench评测LLM作为授权门控，防止编程智能体越权操作。",
-    "reason_zh": "针对编程智能体授权安全的基准，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Automated approval systems let coding agents execute high-risk actions with minimal human oversight by delegating the authorization decision to a classifier, typically a large language model (LLM). Such systems, adopted in tools like Claude Code and Codex, remain vulnerable to failure modes such as scope escalation, where the agent takes actions exceeding…",
-    "authors": [
-      "Zhixiong Zhuang",
-      "Jin Jia",
-      "Zhiwei Shang",
-      "Ziyu Wang"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.16426",
-    "digest": {
-      "problem": "自动审批系统让 coding agent 在无人监督下执行高风险操作，但 LLM 作为授权门控易出现 scope escalation 等失败，现有基准多针对恶意请求。",
-      "method": [
-        "构建 AuthGateBench，首个面向良性请求、策略引导的授权门控基准，含 1,400 实例、5 种失败模式。",
-        "用对比对构造：固定 action 与 trajectory，仅改 request 翻转标签，检验模型是否依赖上下文而非动作表面。",
-        "为实例附加只读环境信号，测试事后检索证据能否改善授权判断。"
-      ],
-      "results": [
-        "无信号增强时各模型准确率随失败模式不均下降，External Sharing 上 FPR 高达 92.86–97.14。",
-        "即使显式授权，模型仍拦截多数高风险动作，对比对不变率高，决策不稳定而非确定性。",
-        "提供显式策略 π* 后准确率普遍提升，如 Qwen3.7-Plus 在 Scope Escalation 达 90.71。"
-      ],
-      "takeaways": [
-        "授权门控不能只看动作表面风险，需联合 request 与 trajectory 做上下文推理。",
-        "门控应主动检索只读环境证据，而非仅依赖 agent 已生成的轨迹。"
-      ],
-      "limitations": "基准为合成构造，环境信号亦为合成，可能未覆盖真实工具输出多样性；仅用单一显式策略 π* 生成数据。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Verifier-Grounded Agentic RL for Provably Correct Code",
-    "sub_title": "papers · source=arxiv_cs_lg · score=67.5",
-    "url_title": "verifier-grounded-agentic-rl-for-provably-correct-code",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.19298",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-15T04:00:00Z",
-    "first_seen_at": "2026-10-15T10:07:17Z",
-    "score": 67.5,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "code generation"
-    ],
-    "topics": [
-      "代码生成",
-      "程序修复",
-      "测试与验证"
-    ],
-    "summary_zh": "用程序验证器作为强化学习奖励，训练生成可证明正确代码的智能体。",
-    "reason_zh": "验证器驱动的代码RL训练，核心AI编程。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Reinforcement learning for code usually rewards passing tests, which a model can do while remaining wrong on the inputs the tests do not cover. A program verifier instead decides whether a program satisfies a formal specification for all inputs. Language models are almost always paired with verifiers at inference time only, and turning a verifier into a…",
-    "authors": [
-      "George Ma",
-      "Yuhao Zhang",
-      "Bing He",
-      "Zeren Shui",
-      "Ferhat Erata",
-      "Murali Krishna Ramanathan"
-    ],
-    "author_count": 8,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.19298",
-    "digest": {
-      "problem": "用测试通过率奖励代码 RL 无法覆盖全部输入，模型可能通过测试却仍不正确；程序验证器可判定所有输入的正确性，但仅作推理期过滤器，未用于训练。",
-      "method": [
-        "用验证器诊断而非判定做奖励：按已证明义务的加权比例打分，并加入参考证明的隐藏探针。",
-        "引入完整性审计，检查规范是否被改动、义务是否被假设而非证明，其优先级高于验证器。",
-        "模型作为 agent 多轮与实时验证器交互，并接入冻结的证明专家，取直接与辅助得分的较大值。"
-      ],
-      "results": [
-        "代码生成 held-out 验证率在 DafnyBench 从 66.1% 升至 93.5%，SWE-Proof 从 56.3% 升至 100%。",
-        "DafnyBench 代码生成上，SFT 为 53.2%、二值奖励为 71.0%，本方法为 93.5%。",
-        "需提交仓库补丁时，held-out SWE-Proof 问题解决率从 59.6% 升至 72.5%。"
-      ],
-      "takeaways": [
-        "把验证器诊断转成稠密奖励，可避免二值奖励在失败尝试上无梯度的问题。",
-        "奖励设计需防作弊：审计提交产物而非推理轨迹，并让审计优先于验证器。"
-      ],
-      "limitations": "SWE-Proof 上 1.7B 至 14B 模型 annotation repair 验证率低于 3.4%，仅报告 35B 模型结果。",
       "basis": "fulltext"
     }
   }
