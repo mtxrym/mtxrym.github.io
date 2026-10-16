@@ -17,7 +17,7 @@
     "score": 84.4,
     "scores": {
       "relevance": 90.0,
-      "popularity": 59.5,
+      "popularity": 59.7,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -46,7 +46,7 @@
       "Wang Qin"
     ],
     "author_count": 19,
-    "upvotes": 95,
+    "upvotes": 97,
     "likes": 0,
     "github_url": "https://github.com/gaoypeng/3dcodeverse",
     "github_stars": 40,
@@ -149,7 +149,7 @@
   },
   {
     "title": "SWE-at-Scale: Scalable Issue Synthesis from Historical Bug Fixes",
-    "sub_title": "papers · source=arxiv_cs_se · score=80.2",
+    "sub_title": "papers · source=arxiv_cs_se · score=80.4",
     "url_title": "swe-at-scale-scalable-issue-synthesis-from-historical-bug-fixes",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.21359",
@@ -162,10 +162,10 @@
     "category": "papers",
     "published_at": "2026-10-16T04:00:00Z",
     "first_seen_at": "2026-10-16T09:57:23Z",
-    "score": 80.2,
+    "score": 80.4,
     "scores": {
       "relevance": 95.0,
-      "popularity": 36.1,
+      "popularity": 36.9,
       "freshness": 100.0,
       "impact": 55.0
     },
@@ -194,7 +194,7 @@
       "Han Li"
     ],
     "author_count": 10,
-    "upvotes": 15,
+    "upvotes": 16,
     "likes": 0,
     "github_url": "https://github.com/cslsolow/SWE-at-scale",
     "github_stars": 3,
@@ -312,7 +312,7 @@
     "score": 76.6,
     "scores": {
       "relevance": 78.0,
-      "popularity": 68.1,
+      "popularity": 68.2,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -339,7 +339,7 @@
       "Xiren Zhou"
     ],
     "author_count": 8,
-    "upvotes": 185,
+    "upvotes": 186,
     "likes": 0,
     "github_url": "https://github.com/zgcagi/Harness-RSI",
     "github_stars": 43,
@@ -587,7 +587,7 @@
   },
   {
     "title": "OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use",
-    "sub_title": "papers · source=hf_daily_papers · score=73.3",
+    "sub_title": "papers · source=hf_daily_papers · score=74.5",
     "url_title": "opengcua-toward-a-fully-open-stack-for-generalist-computer-use",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.22200",
@@ -599,10 +599,10 @@
     "category": "papers",
     "published_at": "2026-10-15T00:00:00Z",
     "first_seen_at": "2026-10-16T09:57:23Z",
-    "score": 73.3,
+    "score": 74.5,
     "scores": {
       "relevance": 72.0,
-      "popularity": 66.7,
+      "popularity": 72.7,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -627,10 +627,10 @@
       "Long Chen"
     ],
     "author_count": 15,
-    "upvotes": 166,
+    "upvotes": 264,
     "likes": 0,
     "github_url": "https://github.com/Tongyi-MAI/OpenGCUA",
-    "github_stars": 3,
+    "github_stars": 26,
     "hf_url": "https://huggingface.co/papers/2610.22200",
     "arxiv_id": "2610.22200",
     "digest": {
@@ -1733,6 +1733,52 @@
     }
   },
   {
+    "title": "ExpertCrowd/ec-swe",
+    "sub_title": "datasets · source=hf_datasets_swe · score=67.3",
+    "url_title": "expertcrowdec-swe",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-14T09:44:14Z",
+    "first_seen_at": "2026-10-13T21:54:00Z",
+    "score": 67.3,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 16.0,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "程序修复"
+    ],
+    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
+    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "DivAlgo: A systematic evaluation of algorithmic diversity for code generation models",
     "sub_title": "papers · source=arxiv_cs_se · score=66.9",
     "url_title": "divalgo-a-systematic-evaluation-of-algorithmic-diversity-for-code-generation-mod",
@@ -1801,45 +1847,42 @@
     }
   },
   {
-    "title": "ExpertCrowd/ec-swe",
-    "sub_title": "datasets · source=hf_datasets_swe · score=66.9",
-    "url_title": "expertcrowdec-swe",
+    "title": "klein-ml/klein-code-bench",
+    "sub_title": "datasets · source=hf_datasets_code · score=66.7",
+    "url_title": "klein-mlklein-code-bench",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
-    "source_id": "hf_datasets_swe",
+    "external_url": "https://huggingface.co/datasets/klein-ml/klein-code-bench",
+    "source_id": "hf_datasets_code",
     "source_ids": [
-      "hf_datasets_swe"
+      "hf_datasets_code"
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-10-14T09:44:14Z",
-    "first_seen_at": "2026-10-13T21:54:00Z",
-    "score": 66.9,
+    "published_at": "2026-10-15T09:50:56Z",
+    "first_seen_at": "2026-10-15T20:25:13Z",
+    "score": 66.7,
     "scores": {
-      "relevance": 95.0,
+      "relevance": 88.0,
       "popularity": 14.0,
-      "freshness": 63.0,
+      "freshness": 79.4,
       "impact": 40.0
     },
-    "keywords": [
-      "coding agent"
-    ],
+    "keywords": [],
     "topics": [
-      "评测基准",
-      "编程智能体",
-      "程序修复"
+      "代码生成",
+      "评测基准"
     ],
-    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
-    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
+    "summary_zh": "Klein-Code-Bench：给模型规格和空目录，检验其从零构建Python项目能否通过验收测试。",
+    "reason_zh": "从零构建程序的代码生成评测基准，高度相关。",
     "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
-    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
+    "summary": "Klein-Code-Bench Can a model build a working program from scratch? Klein-Code-Bench gives a coding model a specification and an empty directory, and checks whether the finished Python project passes every acceptance test. 260 tasks in four tiers of 65 Pass or fail per project: a task counts only if all of its tests pass Runs locally: standard-library…",
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 2,
+    "likes": 4,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -1984,49 +2027,6 @@
       "limitations": "绝对攻击率基于 Mini-SWE-Agent harness；轨迹长度与任务表面的关联仅为相关性，未建立因果。",
       "basis": "fulltext"
     }
-  },
-  {
-    "title": "klein-ml/klein-code-bench",
-    "sub_title": "datasets · source=hf_datasets_code · score=66.3",
-    "url_title": "klein-mlklein-code-bench",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/klein-ml/klein-code-bench",
-    "source_id": "hf_datasets_code",
-    "source_ids": [
-      "hf_datasets_code"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-10-15T09:50:56Z",
-    "first_seen_at": "2026-10-15T20:25:13Z",
-    "score": 66.3,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 12.0,
-      "freshness": 79.4,
-      "impact": 40.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "评测基准"
-    ],
-    "summary_zh": "Klein-Code-Bench：给模型规格和空目录，检验其从零构建Python项目能否通过验收测试。",
-    "reason_zh": "从零构建程序的代码生成评测基准，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Klein-Code-Bench Can a model build a working program from scratch? Klein-Code-Bench gives a coding model a specification and an empty directory, and checks whether the finished Python project passes every acceptance test. 260 tasks in four tiers of 65 Pass or fail per project: a task counts only if all of its tests pass Runs locally: standard-library…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 3,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
   },
   {
     "title": "HPCAgent-Bench: A Framework for Sound Benchmarking of Code-Optimizing Agents, Harnesses, and Skills",
