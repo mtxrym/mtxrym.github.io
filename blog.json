@@ -1,7 +1,7 @@
 [
   {
     "title": "3DCodeVerse: Exploring 3D Worlds as Code",
-    "sub_title": "papers · source=arxiv_cs_ai · score=80.4",
+    "sub_title": "papers · source=arxiv_cs_ai · score=84.6",
     "url_title": "3dcodeverse-exploring-3d-worlds-as-code",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.22341",
@@ -12,13 +12,13 @@
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-16T04:00:00Z",
+    "published_at": "2026-10-17T04:00:00Z",
     "first_seen_at": "2026-10-16T09:57:23Z",
-    "score": 80.4,
+    "score": 84.6,
     "scores": {
       "relevance": 90.0,
-      "popularity": 60.0,
-      "freshness": 79.4,
+      "popularity": 60.4,
+      "freshness": 100.0,
       "impact": 75.0
     },
     "keywords": [
@@ -46,10 +46,10 @@
       "Wang Qin"
     ],
     "author_count": 19,
-    "upvotes": 99,
+    "upvotes": 102,
     "likes": 0,
     "github_url": "https://github.com/gaoypeng/3dcodeverse",
-    "github_stars": 40,
+    "github_stars": 50,
     "hf_url": "https://huggingface.co/papers/2610.22341",
     "arxiv_id": "2610.22341",
     "digest": {
@@ -442,6 +442,78 @@
     }
   },
   {
+    "title": "Self-Evolving Agent Harness",
+    "sub_title": "papers · source=arxiv_cs_cl · score=72.6",
+    "url_title": "self-evolving-agent-harness",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.18813",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-15T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 72.6,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 68.7,
+      "freshness": 79.4,
+      "impact": 40.0
+    },
+    "keywords": [
+      "repository-level"
+    ],
+    "topics": [
+      "编程智能体",
+      "其他"
+    ],
+    "summary_zh": "形式化智能体harness自演化，修改提示、记忆、工作流与可执行代码组件。",
+    "reason_zh": "智能体脚手架自演化含代码修改，与编程智能体密切相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Harness self-evolution revises an agent's software scaffolding, including prompts, memory, workflows, and executable components, while keeping model weights fixed. We formalize a feedback-driven process in which accepted revisions persist across runs. The framework separates update targets from proposal and admission mechanisms. It distinguishes changes to…",
+    "authors": [
+      "Chuyang Wei",
+      "Haoxiang Guan",
+      "Minghang Zhu",
+      "Kexin Zhou",
+      "Jiyan He",
+      "Xiren Zhou"
+    ],
+    "author_count": 8,
+    "upvotes": 194,
+    "likes": 0,
+    "github_url": "https://github.com/zgcagi/Harness-RSI",
+    "github_stars": 112,
+    "hf_url": "https://huggingface.co/papers/2610.18813",
+    "arxiv_id": "2610.18813",
+    "digest": {
+      "problem": "部署后任务与环境持续变化，固定模型权重下 agent 的 prompts、memory、workflow 与工具无法自适应，需要可持久化的自我改进机制。",
+      "method": [
+        "形式化 harness 自演化生命周期：用执行反馈迭代修订 H，模型权重 M 固定，接受的修订跨运行持久化。",
+        "提出分类法：区分解释态更新（指令、记忆、任务级协调）与可执行修订（组件实现、仓库级控制逻辑、插件组合）。",
+        "将 harness 搜索映射到演化优化，用稳定性与集中不等式推导泛化界、回归预算下的保留界与高概率准入规则。"
+      ],
+      "results": [
+        "SpreadsheetBench 上 GPT-5.4-nano + HarnessOpt + skill 达 77.58%，超过 GPT-5.5 + SkillOpt 的 76.20%。",
+        "四个模型上 HarnessOpt + skill 比 SkillOpt-Lite 提升 5.69–11.39 个百分点。",
+        "EIP 办公负载中首任务工具调用从 13 降到 3，但 wall time +54.9%、tokens +15.7%；五任务累计节省 110,351 tokens 与 22.97s。"
+      ],
+      "takeaways": [
+        "改进 harness（prompt、memory、workflow、工具）可在不重训权重、仅用 API 的情况下提升固定模型表现。",
+        "自演化需持续验证与独立安全控制，因任务分布和评估器会变化，且修订会跨运行传播。"
+      ],
+      "limitations": "理论结论依赖显式假设；EIP 首任务与累计成本报告存在未解决差异，且未证明同等成本下的优越性。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards",
     "sub_title": "papers · source=arxiv_cs_ai · score=72.5",
     "url_title": "aescode-aesthetic-code-generation-with-decoupled-cross-modal-rewards",
@@ -514,80 +586,8 @@
     }
   },
   {
-    "title": "Self-Evolving Agent Harness",
-    "sub_title": "papers · source=arxiv_cs_cl · score=72.5",
-    "url_title": "self-evolving-agent-harness",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.18813",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-15T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 72.5,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 68.4,
-      "freshness": 79.4,
-      "impact": 40.0
-    },
-    "keywords": [
-      "repository-level"
-    ],
-    "topics": [
-      "编程智能体",
-      "其他"
-    ],
-    "summary_zh": "形式化智能体harness自演化，修改提示、记忆、工作流与可执行代码组件。",
-    "reason_zh": "智能体脚手架自演化含代码修改，与编程智能体密切相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Harness self-evolution revises an agent's software scaffolding, including prompts, memory, workflows, and executable components, while keeping model weights fixed. We formalize a feedback-driven process in which accepted revisions persist across runs. The framework separates update targets from proposal and admission mechanisms. It distinguishes changes to…",
-    "authors": [
-      "Chuyang Wei",
-      "Haoxiang Guan",
-      "Minghang Zhu",
-      "Kexin Zhou",
-      "Jiyan He",
-      "Xiren Zhou"
-    ],
-    "author_count": 8,
-    "upvotes": 189,
-    "likes": 0,
-    "github_url": "https://github.com/zgcagi/Harness-RSI",
-    "github_stars": 43,
-    "hf_url": "https://huggingface.co/papers/2610.18813",
-    "arxiv_id": "2610.18813",
-    "digest": {
-      "problem": "部署后任务与环境持续变化，固定模型权重下 agent 的 prompts、memory、workflow 与工具无法自适应，需要可持久化的自我改进机制。",
-      "method": [
-        "形式化 harness 自演化生命周期：用执行反馈迭代修订 H，模型权重 M 固定，接受的修订跨运行持久化。",
-        "提出分类法：区分解释态更新（指令、记忆、任务级协调）与可执行修订（组件实现、仓库级控制逻辑、插件组合）。",
-        "将 harness 搜索映射到演化优化，用稳定性与集中不等式推导泛化界、回归预算下的保留界与高概率准入规则。"
-      ],
-      "results": [
-        "SpreadsheetBench 上 GPT-5.4-nano + HarnessOpt + skill 达 77.58%，超过 GPT-5.5 + SkillOpt 的 76.20%。",
-        "四个模型上 HarnessOpt + skill 比 SkillOpt-Lite 提升 5.69–11.39 个百分点。",
-        "EIP 办公负载中首任务工具调用从 13 降到 3，但 wall time +54.9%、tokens +15.7%；五任务累计节省 110,351 tokens 与 22.97s。"
-      ],
-      "takeaways": [
-        "改进 harness（prompt、memory、workflow、工具）可在不重训权重、仅用 API 的情况下提升固定模型表现。",
-        "自演化需持续验证与独立安全控制，因任务分布和评估器会变化，且修订会跨运行传播。"
-      ],
-      "limitations": "理论结论依赖显式假设；EIP 首任务与累计成本报告存在未解决差异，且未证明同等成本下的优越性。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use",
-    "sub_title": "papers · source=hf_daily_papers · score=70.5",
+    "sub_title": "papers · source=hf_daily_papers · score=70.9",
     "url_title": "opengcua-toward-a-fully-open-stack-for-generalist-computer-use",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.22200",
@@ -599,10 +599,10 @@
     "category": "papers",
     "published_at": "2026-10-15T00:00:00Z",
     "first_seen_at": "2026-10-16T09:57:23Z",
-    "score": 70.5,
+    "score": 70.9,
     "scores": {
       "relevance": 72.0,
-      "popularity": 73.3,
+      "popularity": 75.0,
       "freshness": 79.4,
       "impact": 40.0
     },
@@ -627,10 +627,10 @@
       "Long Chen"
     ],
     "author_count": 15,
-    "upvotes": 277,
+    "upvotes": 315,
     "likes": 0,
     "github_url": "https://github.com/Tongyi-MAI/OpenGCUA",
-    "github_stars": 26,
+    "github_stars": 48,
     "hf_url": "https://huggingface.co/papers/2610.22200",
     "arxiv_id": "2610.22200",
     "digest": {
@@ -1131,7 +1131,7 @@
     "upvotes": 3,
     "likes": 0,
     "github_url": "https://github.com/samugit83/cortex",
-    "github_stars": 1,
+    "github_stars": 2,
     "hf_url": "https://huggingface.co/papers/2610.14216",
     "arxiv_id": "2610.14216",
     "digest": {
@@ -1151,6 +1151,76 @@
         "把指令绑定到具体文件路径，避免 always-on 文本每轮都占用上下文却很少被使用。"
       ],
       "limitations": "正面结果仅来自一个合成仓库、脚本开发者和小模型；未证明能识别有害文本，强模型下增益很小，真实开源仓库未学到东西。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
+    "sub_title": "papers · source=arxiv_cs_ai · score=66.5",
+    "url_title": "infuse-a-unified-surface-benchmark-for-indirect-prompt-injection-in-agentic-syst",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.20776",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-17T04:00:00Z",
+    "first_seen_at": "2026-10-16T09:57:23Z",
+    "score": 66.5,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [],
+    "topics": [
+      "安全与漏洞",
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出统一基准，评测编程智能体在shell、改代码等场景下的间接提示注入攻击。",
+    "reason_zh": "面向编程智能体的安全评测，与AI编程密切相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "LLM-based agents increasingly execute long-horizon, end-to-end workflows involving shell commands, code modification, dependency installation, and interaction with remote services. This growing autonomy expands their exposure to indirect prompt injection (IPI), where adversarial instructions embedded in external content are interpreted as legitimate task…",
+    "authors": [
+      "Thuy Dung Nguyen",
+      "Jingyi Guo",
+      "Rana Seda Dubauskas",
+      "Sreepriya Damuluru",
+      "Taylor T. Johnson",
+      "Kevin Leach"
+    ],
+    "author_count": 6,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.20776",
+    "digest": {
+      "problem": "LLM agent 执行长周期任务时读取外部内容，易受间接提示注入（IPI）攻击；现有评测多局限于孤立恶意字符串或单步工具调用，缺乏真实端到端评估。",
+      "method": [
+        "提出 INFUSE 端到端基准：40 个长周期任务 + 56 个攻击场景，覆盖五类威胁，在真实 Docker 沙箱中执行。",
+        "构建表面感知注入引擎，将载荷植入文件名、文件内容、配置、终端输出、归档五类目标，并追踪 12 种读取侧运行时表面。",
+        "采用启发式验证器与 LLM judge 双重评分，联合衡量任务效用与攻击成功率，并标注攻击来源通道。"
+      ],
+      "results": [
+        "评测 19 个 LLM，共 41,824 条攻击轨迹；平均 ASR-L 达 19.6%，启发式 ASR-H 为 15.4%，单模型 ASR-L 范围 3.2%–41.9%。",
+        "显式拒绝罕见（各模型 RR ≤ 1.0%）；现有 guard 模型防护有限，外部聊天安全分类器迁移效果差（高 ASR 子集上 ASR-L 43.8–44.0%）。",
+        "提示级指令加固将平均攻击成功率从 58.2% 降至 14.3%，但效用权衡因模型而异。"
+      ],
+      "takeaways": [
+        "终端 agent 的 IPI 风险普遍存在，能力更强不等于更安全，需按任务、harness 和预算综合评估。",
+        "防御应针对环境嵌入载荷设计，聊天安全分类器难以直接迁移；指令加固有效但需权衡效用。"
+      ],
+      "limitations": "绝对攻击率基于 Mini-SWE-Agent harness；轨迹长度与任务表面的关联仅为相关性，未建立因果。",
       "basis": "fulltext"
     }
   },
@@ -1226,6 +1296,49 @@
     }
   },
   {
+    "title": "klein-ml/klein-code-bench",
+    "sub_title": "datasets · source=hf_datasets_code · score=66.2",
+    "url_title": "klein-mlklein-code-bench",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/klein-ml/klein-code-bench",
+    "source_id": "hf_datasets_code",
+    "source_ids": [
+      "hf_datasets_code"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-15T09:50:56Z",
+    "first_seen_at": "2026-10-15T20:25:13Z",
+    "score": 66.2,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 28.0,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [],
+    "topics": [
+      "代码生成",
+      "评测基准"
+    ],
+    "summary_zh": "Klein-Code-Bench：给模型规格和空目录，检验其从零构建Python项目能否通过验收测试。",
+    "reason_zh": "从零构建程序的代码生成评测基准，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Klein-Code-Bench Can a model build a working program from scratch? Klein-Code-Bench gives a coding model a specification and an empty directory, and checks whether the finished Python project passes every acceptance test. 260 tasks in four tiers of 65 Pass or fail per project: a task counts only if all of its tests pass Runs locally: standard-library…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 4,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "LintEval: Benchmarking LLMs on Linter-Guided File Refactoring",
     "sub_title": "papers · source=arxiv_cs_se · score=66.1",
     "url_title": "linteval-benchmarking-llms-on-linter-guided-file-refactoring",
@@ -1299,6 +1412,138 @@
     }
   },
   {
+    "title": "Poison Valleys: Diagnosing Path-Dependent Failure in LLM Code Repair",
+    "sub_title": "papers · source=arxiv_cs_se · score=66.0",
+    "url_title": "poison-valleys-diagnosing-path-dependent-failure-in-llm-code-repair",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.21514",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-17T04:00:00Z",
+    "first_seen_at": "2026-10-16T09:57:23Z",
+    "score": 66.0,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "程序修复",
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "诊断LLM代码修复中路径依赖失败，提出Poison Valleys概念。",
+    "reason_zh": "LLM代码修复失败机制分析，核心程序修复研究。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "When code-repair agents fail, final tests reveal that a patch is wrong but not which earlier commitment caused it or which software obligation failed. Poison Valleys traces this path in 1,844 model requests on two synthetic Python cases: PersistQueue adds atomic batch claiming to a disk-backed queue, while Dijkstra adds source-sensitive filtering to…",
+    "authors": [
+      "Veljko Skarich"
+    ],
+    "author_count": 1,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.21514",
+    "digest": {
+      "problem": "代码修复智能体失败时，最终测试只说明补丁错误，无法定位是哪个早期承诺导致失败、破坏了哪项软件义务。",
+      "method": [
+        "定义 poison family：可信但错误的软件机制，含解释、实现承诺与可执行见证。",
+        "在 hypothesis、plan 或两者中注入同一误解，固定任务后追踪生成代码与失败形态。",
+        "用 Oracle 判定成败，18/28 项诊断坐标刻画被违反的软件义务。"
+      ],
+      "results": [
+        "plan-only 相比 H-only 失败率升 32.2%（PersistQueue）和 28.9%（Dijkstra），风险比 2.44 与 1.54。",
+        "不同 poison family 产生不同义务违反分布，Cramér's V 为 0.475 与 0.314。",
+        "同一 Dijkstra B01 干预下，GPT-5.6 Luna 成功率 35.0%，Qwen 3.8 Flash 仅 4.7%。"
+      ],
+      "takeaways": [
+        "在计划形成后、生成代码前审查，重点检查最易被破坏的软件义务。",
+        "修复提示应点名被违反的义务，而非只给失败测试。"
+      ],
+      "limitations": "仅两个合成 Python 案例、1,844 次请求，样本有限，结论不宜外推为通用模型排名。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine",
+    "sub_title": "papers · source=arxiv_cs_ai · score=65.9",
+    "url_title": "terminal-rsi-recursive-self-improving-terminal-agents-via-recursive-self-rewrite",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.22192",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-17T04:00:00Z",
+    "first_seen_at": "2026-10-16T09:57:23Z",
+    "score": 65.9,
+    "scores": {
+      "relevance": 75.0,
+      "popularity": 41.9,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "terminal-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "Terminal-RSI 通过递归自改写与策略精炼训练终端智能体。",
+    "reason_zh": "终端编程智能体的自我改进训练，相关度高。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Converting verifier outcomes into useful policy updates and partial progress into complete task resolution is crucial for terminal agents. We present Terminal-RSI, which alternates Recursive Self-Rewrite (RSR) of verified trajectories with critic-inheriting Recursive Policy-Refine (RPR). We formulate Turn-Boundary Skip-Observation GAE (TB-GAE) to retain…",
+    "authors": [
+      "Junyao Yang",
+      "Zongxia Li",
+      "Yucheng Shi",
+      "Zhongzhi Li",
+      "Ruhan Wang",
+      "Ruiwen Zhou"
+    ],
+    "author_count": 9,
+    "upvotes": 24,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.22192",
+    "arxiv_id": "2610.22192",
+    "digest": {
+      "problem": "终端 agent 需在可执行环境中产生可验证的持久改动，但 token 生成与环境变化时间尺度错位，递归监督下 critic 价值漂移，部分进度奖励易压过严格成功。",
+      "method": [
+        "交替 actor-only 的 RSR 与继承 critic 的 RPR，跨阶段保留 critic 权重并做阶段内校准。",
+        "提出 TB-GAE，按轮次边界而非文本长度衰减，保留 token 级基线。",
+        "FDR 按家族分位数归一化进度，SPR 让严格成功始终高于有界部分分。"
+      ],
+      "results": [
+        "Terminal-RSI-27B 四套件平均成功率 50.58%，较 Base 与 RSR-1 分别提升 29.90 和 16.33 个百分点。",
+        "LHTB 过程奖励从 0.21 升至 0.37，严格完成 5/46；SWR100 达 6.00%，为 Base 两倍。",
+        "独立重打分使失败轨迹奖励占比从 50.09% 降至 28.72%。"
+      ],
+      "takeaways": [
+        "长程终端任务中，信用分配应按交互轮次而非 token 长度衰减，避免日志长度影响优势。",
+        "奖励设计应让严格验证成功优先于部分进度，防止大量通过检查但未完成任务的轨迹主导训练。"
+      ],
+      "limitations": "各阶段学习率、奖励与初始化同时变化，缺少计算匹配的消融，无法隔离各组件因果贡献；仅单一 27B 骨干。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "PremiseSQL: Evaluating Premise Critique and Abstention in Text-to-SQL Systems",
     "sub_title": "papers · source=arxiv_cs_cl · score=65.9",
     "url_title": "premisesql-evaluating-premise-critique-and-abstention-in-text-to-sql-systems",
@@ -1368,49 +1613,6 @@
       "limitations": "仅覆盖英文 NL2SQL 基准，构造错误由分类法驱动，未必反映真实用户错误，且部分依赖 LLM 自动评判。",
       "basis": "fulltext"
     }
-  },
-  {
-    "title": "klein-ml/klein-code-bench",
-    "sub_title": "datasets · source=hf_datasets_code · score=65.8",
-    "url_title": "klein-mlklein-code-bench",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/klein-ml/klein-code-bench",
-    "source_id": "hf_datasets_code",
-    "source_ids": [
-      "hf_datasets_code"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-10-15T09:50:56Z",
-    "first_seen_at": "2026-10-15T20:25:13Z",
-    "score": 65.8,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 26.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "评测基准"
-    ],
-    "summary_zh": "Klein-Code-Bench：给模型规格和空目录，检验其从零构建Python项目能否通过验收测试。",
-    "reason_zh": "从零构建程序的代码生成评测基准，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Klein-Code-Bench Can a model build a working program from scratch? Klein-Code-Bench gives a coding model a specification and an empty directory, and checks whether the finished Python project passes every acceptance test. 260 tasks in four tiers of 65 Pass or fail per project: a task counts only if all of its tests pass Runs locally: standard-library…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 4,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
   },
   {
     "title": "PrismaCoder: Pushing the Boundaries of Open Multimodal Code Intelligence through Decomposed Rubric Synthesis",
@@ -1823,283 +2025,72 @@
     }
   },
   {
-    "title": "DivAlgo: A systematic evaluation of algorithmic diversity for code generation models",
-    "sub_title": "papers · source=arxiv_cs_se · score=63.6",
-    "url_title": "divalgo-a-systematic-evaluation-of-algorithmic-diversity-for-code-generation-mod",
+    "title": "CodeHealth Predicts the Token Cost of Agentic Code Review: A Pre-Registered Study of 465 Agent-Authored Pull Requests",
+    "sub_title": "papers · source=arxiv_cs_se · score=64.0",
+    "url_title": "codehealth-predicts-the-token-cost-of-agentic-code-review-a-pre-registered-study",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.19157",
+    "external_url": "https://arxiv.org/abs/2610.21914",
     "source_id": "arxiv_cs_se",
     "source_ids": [
       "arxiv_cs_se",
-      "arxiv_cs_cl"
+      "arxiv_cs_ai"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-15T04:00:00Z",
-    "first_seen_at": "2026-10-15T10:07:17Z",
-    "score": 63.6,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "code generation"
-    ],
-    "topics": [
-      "代码生成",
-      "评测基准",
-      "训练数据"
-    ],
-    "summary_zh": "提出DivAlgo基准，评估代码生成模型的算法多样性，含大规模数据集和相似度指标。",
-    "reason_zh": "核心是代码生成模型的评测基准与数据集。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Code generation models are actively being used in professional and educational settings. However, the competence of large language models (LLMs) to generate algorithmically diverse code remains largely unknown. We propose the DivAlgo benchmark, a large-scale dataset constituting algorithmically diverse solutions to programming problems. We also introduce a…",
-    "authors": [
-      "Anubhav Jangra",
-      "Smaranda Muresan"
-    ],
-    "author_count": 2,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.19157",
-    "digest": {
-      "problem": "代码生成模型被广泛使用，但其生成代码的算法多样性未知；若模型只会重复少数解法，会收窄开发者的算法视野并影响N版本容错等工程实践。",
-      "method": [
-        "构建DivAlgo基准：从CodeContests+经PDG、CodeXEmbed与LLM-judge级联过滤，得到算法多样的人类解法。",
-        "提出三层本体（13种范式、64种技术、22种数据结构）标注解法，并定义strong/medium/weak/identical多样性等级。",
-        "蒸馏轻量相似度模型CodeX-SFT，用Vendi score衡量群体多样性，用AlgoCov衡量对人类代表解法的覆盖。"
-      ],
-      "results": [
-        "24个模型无控制采样仅达人类多样性的约31%，最佳模型Gemini-flash-3.8的Vendi为4.84，人类为14.27。",
-        "温度、verbalized sampling、迭代约束生成最多达人类多样性的70.5%；迭代生成提升最大（+0.98至+6.22）。",
-        "跨24个模型合并无控制解法不如单模型加合适提示策略，模型系统性偏向更流行的人类解法。"
-      ],
-      "takeaways": [
-        "仅优化功能正确性会牺牲算法多样性，评估代码生成工具时应加入多样性指标。",
-        "提示模型生成不同解法可部分弥补差距，但无法替代人类解法的算法广度。"
-      ],
-      "limitations": "研究仅限C++解法，多样性度量依赖LLM标注与蒸馏模型，可能引入偏差；引导生成仍低于人类上限。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "WEAVE: Weaving Real-World Code Evolution into Dependency-Structured Tasks for Benchmarking and Training Code Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=63.4",
-    "url_title": "weave-weaving-real-world-code-evolution-into-dependency-structured-tasks-for-ben",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.22039",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-16T04:00:00Z",
+    "published_at": "2026-10-17T04:00:00Z",
     "first_seen_at": "2026-10-16T09:57:23Z",
-    "score": 63.4,
+    "score": 64.0,
     "scores": {
-      "relevance": 95.0,
+      "relevance": 88.0,
       "popularity": 0.0,
-      "freshness": 79.4,
+      "freshness": 100.0,
       "impact": 0.0
     },
     "keywords": [
-      "code agent",
-      "repository-level",
-      "pull request"
+      "code review",
+      "pull request",
+      "refactoring"
     ],
     "topics": [
+      "代码评审",
       "编程智能体",
-      "评测基准",
-      "训练数据"
+      "开发者与工具研究"
     ],
-    "summary_zh": "WEAVE将真实代码演化织入依赖结构化任务，用于评测和训练代码智能体。",
-    "reason_zh": "代码智能体基准与训练数据，核心相关。",
+    "summary_zh": "预注册研究：用CodeHealth预测多智能体LLM代码评审的token成本，基于465个agent提交的PR。",
+    "reason_zh": "智能体代码评审的成本实证研究，核心相关。",
     "relevance_source": "llm",
     "signals": [],
-    "summary": "Real-world software engineering rarely consists of isolated changes. Features, migrations, and systematic fixes often unfold across multiple pull requests (PRs), requiring coordinated modifications across a repository. Yet most executable repository-level benchmarks retain a single issue or PR as the task unit, while existing multi-PR settings rely on…",
+    "summary": "Context: Organizations increasingly delegate code review to multi-agent large language model (LLM) pipelines billed per token. Low code quality raises human maintenance effort, but its effect on agent review cost has not been measured. Objective: We test whether baseline CodeHealth predicts the token cost of agentic review and fix beyond pull request (PR)…",
     "authors": [
-      "Weihao Li",
-      "Zihang Xu",
-      "Zhongqiu Wang",
-      "Songwei Yu",
-      "Wenqiang Zhu",
-      "Yuechen Luo"
+      "Lo Gullstrand Heander",
+      "Markus Borg",
+      "Emma S\\\"oderberg",
+      "Christofer Rydenf\\\"alt"
     ],
-    "author_count": 10,
+    "author_count": 4,
     "upvotes": 0,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2610.22039",
+    "arxiv_id": "2610.21914",
     "digest": {
-      "problem": "现有仓库级基准多以单个 issue/PR 为任务单元，多 PR 场景仅做粗粒度聚合与结构无关评估，掩盖了变更间依赖，限制长程代码智能体的评测与学习。",
+      "problem": "组织把代码评审交给按 token 计费的多智能体 LLM 流水线，但代码质量是否影响这类评审的推理成本尚无测量。",
       "method": [
-        "用仓库校准的 typed change loci 将相关 PR 组织成有界依赖 DAG，并实例化为统一可执行任务。",
-        "提出 Graph Credit：基于测试、按依赖递归取 min 的确定性部分进度指标，抑制下游 phantom credit。",
-        "将 Graph Credit 作为稠密可验证奖励用于 RL，并构建 SFT 轨迹语料。"
+        "预注册观察研究：465 个 agent 编写的 PR，来自 246 个仓库，按 CodeHealth 与 PR footprint 联合分层抽样。",
+        "冻结的五智能体评审与修复流水线，用三个独立 LLM 分别处理同一批 PR。",
+        "对每个 LLM 拟合混合模型：log tokens 对 CodeHealth 与 log footprint 回归，仓库为随机截距。"
       ],
       "results": [
-        "构建 3200 个训练任务与 300 个 held-out 基准任务，覆盖六种编程语言。",
-        "代码耦合聚合比时间邻近与粗粒度重叠基线产生更连贯分组和更高可执行任务产出率。",
-        "8 个智能体评测显示 Graph Credit 揭示被 flat scoring 掩盖的结构性不一致；图结构奖励优于 binary 与 flat 奖励。"
+        "三个 LLM 的 CodeHealth 系数均为负且 95% CI 不含零，每点 CH 对应 token 成本降低 3.5%–6.1%。",
+        "CodeHealth 与 PR footprint 基本无关，说明效应不由 PR 规模解释。",
+        "典型不健康层与健康层 PR 的单次评审修复成本差约 91,000–360,000 tokens，视 LLM 而定。"
       ],
       "takeaways": [
-        "评测长程代码任务时应保留变更依赖结构，而非只看单点通过率。",
-        "可用依赖 DAG 上的部分进度作为稠密可验证奖励来训练代码智能体。"
+        "保持 PR 小不能替代代码质量；重构应改变 agent 读取的文件结构，如拆分长方法和低内聚模块。",
+        "评审成本集中在 review 阶段：不健康代码上 agent 迭代更多、取更多上下文，但评论数不增。"
       ],
-      "limitations": "原文未给出具体局限讨论；typed loci 对部分语言（如 Go/Java/Kotlin 的配置）仅部分支持。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "ANTE: Anticipate, Then Execute -- Learning Internal World Models for Coding Agents from Verified Beliefs",
-    "sub_title": "papers · source=arxiv_cs_lg · score=62.7",
-    "url_title": "ante-anticipate-then-execute-learning-internal-world-models-for-coding-agents-fr",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.15368",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-14T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 62.7,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 9.0,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-bench",
-      "software engineering agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "ANTE 让编程智能体从已验证信念中学习内部世界模型，先预测再执行以提升决策。",
-    "reason_zh": "面向编程智能体的世界模型与前瞻决策。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Rapid advances in large language models have made software engineering agents capable of tackling complex coding tasks. Within a containerized environment, a coding agent receives tool responses or execution results, and determines its later actions by those earlier results. However, most existing coding agents never look ahead: their policies do not…",
-    "authors": [
-      "Yi Ge",
-      "Kangrui Ruan",
-      "Jifan Chen",
-      "Manish Prajapat",
-      "Christian Bock",
-      "Xiaoyang Wang"
-    ],
-    "author_count": 9,
-    "upvotes": 1,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.15368",
-    "arxiv_id": "2610.15368",
-    "digest": {
-      "problem": "现有编码 agent 的 RL 只看最终任务奖励，不预测动作后果，一次错误编辑可能在信号到来前不可逆地破坏仓库状态。",
-      "method": [
-        "让策略在每次动作前写出 belief state：状态摘要、结果预测与 trust/abstain 决策。",
-        "BAPO 用真实执行验证预测，按预测结果跨 rollout 分组，给出逐步 credit。",
-        "ANTE-TTO 在推理时按自身预测对候选动作排序，无需外部打分器。"
-      ],
-      "results": [
-        "Qwen3-32B 在 SWE-bench Verified 上 pass@1 从 25.0% 提升到 57.2%，比匹配的 GRPO 基线高 6.2%。",
-        "世界模型预测准确率在 RL 中从 44% 升到 69%。",
-        "ANTE-9B 在 Terminal-Bench 2.0 达 24.7%；11 个 OOD 基准上平均比无 belief 的 RL 基线高 6.2 个百分点。"
-      ],
-      "takeaways": [
-        "让 agent 先预测动作后果再执行，可用真实执行结果作为免费监督信号。",
-        "把预测正确性转化为逐步 credit，比只依赖最终奖励更能定位错误步骤。"
-      ],
-      "limitations": "预测监督仅适用于可被确定性 verifier 判定的步骤，摘要 token 无梯度，且依赖执行环境提供可验证反馈。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Diff Diffusion: Predicting Edit Paths with Diffusion Models for Efficient Code Editing",
-    "sub_title": "papers · source=arxiv_cs_se · score=62.7",
-    "url_title": "diff-diffusion-predicting-edit-paths-with-diffusion-models-for-efficient-code-ed",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.17831",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-14T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 62.7,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 25.4,
-      "freshness": 63.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "code generation"
-    ],
-    "topics": [
-      "代码生成",
-      "模型训练与推理"
-    ],
-    "summary_zh": "用扩散模型预测编辑路径，实现高效代码编辑。",
-    "reason_zh": "面向AI辅助IDE的代码编辑生成，核心相关。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Diffusion large language models (dLLMs) are appealing for code generation because they can update many tokens in parallel, yet many are optimized for sequence synthesis rather than edit prediction. This setting is poorly matched to modern AI-assisted IDEs, where edit prediction must infer the next code change from recent edits, the current file, and…",
-    "authors": [
-      "Xiaolong Xu",
-      "Hao Jiang",
-      "Bo Jiang",
-      "Zhiwen Deng",
-      "Ningyuan Sun",
-      "Bingzhou Chen"
-    ],
-    "author_count": 8,
-    "upvotes": 6,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.17831",
-    "arxiv_id": "2610.17831",
-    "digest": {
-      "problem": "现有 dLLM 多按 masked diffusion 从零重建序列，与 IDE 编辑预测中稀疏、局部、依赖上下文的真实改码流程不匹配，浪费算力且延迟高。",
-      "method": [
-        "把去噪目标改为预测编辑路径，用 same/delete/insert/replace/mask-to-token 动作显式表示从原片段到目标片段的 diff。",
-        "三阶段训练：CommitPack 提交 diff 持续预训练、编辑预测 SFT、以及基于去噪转移的 Diff-DPO 与 AGRPO 后训练。",
-        "推理侧采用块级并行编辑解码、近似 KV-Cache 与 PIE 后缀复用、自适应多 token 插入来降延迟。"
-      ],
-      "results": [
-        "C3PO 编辑补全上结果准确率 81.33%，接近 AR 的 83.18%，每样本解码步数从 14.62 降至 3.90，推理 145ms 对 403ms，提速 2.78×。",
-        "IDE 编辑预测评测中，CT+SFT+AGRPO 的 Act 50.00%、Stay 96.40%、Multi-line 73.68%，优于 AR 的 45.90/91.73/68.42，并大幅领先 Mercury-Coder。",
-        "线上 A/B 中 P50 模型延迟降低 39.0%。"
-      ],
-      "takeaways": [
-        "编辑预测应把计算集中在改动区域，跳过未变 token，而非整段重生成。",
-        "用编辑动作建模可变长输出，可支持多位置并行修改并显著降低延迟。"
-      ],
-      "limitations": "作者称尚未对编辑路径扩散做更深入理论分析，评测也集中在延迟敏感的 IDE 编辑预测场景。",
+      "limitations": "仅一个质量指标、一条流水线、三个特定版本 LLM，样本为热门开源仓库中已合并的 agent 编写 PR。",
       "basis": "fulltext"
     }
   }
