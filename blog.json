@@ -17,7 +17,7 @@
     "score": 84.6,
     "scores": {
       "relevance": 90.0,
-      "popularity": 60.4,
+      "popularity": 60.5,
       "freshness": 100.0,
       "impact": 75.0
     },
@@ -46,7 +46,7 @@
       "Wang Qin"
     ],
     "author_count": 19,
-    "upvotes": 102,
+    "upvotes": 103,
     "likes": 0,
     "github_url": "https://github.com/gaoypeng/3dcodeverse",
     "github_stars": 86,
@@ -490,7 +490,7 @@
     "upvotes": 196,
     "likes": 0,
     "github_url": "https://github.com/zgcagi/Harness-RSI",
-    "github_stars": 112,
+    "github_stars": 165,
     "hf_url": "https://huggingface.co/papers/2610.18813",
     "arxiv_id": "2610.18813",
     "digest": {
@@ -630,7 +630,7 @@
     "upvotes": 315,
     "likes": 0,
     "github_url": "https://github.com/Tongyi-MAI/OpenGCUA",
-    "github_stars": 48,
+    "github_stars": 75,
     "hf_url": "https://huggingface.co/papers/2610.22200",
     "arxiv_id": "2610.22200",
     "digest": {
@@ -1296,49 +1296,6 @@
     }
   },
   {
-    "title": "klein-ml/klein-code-bench",
-    "sub_title": "datasets · source=hf_datasets_code · score=66.2",
-    "url_title": "klein-mlklein-code-bench",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/klein-ml/klein-code-bench",
-    "source_id": "hf_datasets_code",
-    "source_ids": [
-      "hf_datasets_code"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-10-15T09:50:56Z",
-    "first_seen_at": "2026-10-15T20:25:13Z",
-    "score": 66.2,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 28.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "评测基准"
-    ],
-    "summary_zh": "Klein-Code-Bench：给模型规格和空目录，检验其从零构建Python项目能否通过验收测试。",
-    "reason_zh": "从零构建程序的代码生成评测基准，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Klein-Code-Bench Can a model build a working program from scratch? Klein-Code-Bench gives a coding model a specification and an empty directory, and checks whether the finished Python project passes every acceptance test. 260 tasks in four tiers of 65 Pass or fail per project: a task counts only if all of its tests pass Runs locally: standard-library…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 4,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
-  },
-  {
     "title": "LintEval: Benchmarking LLMs on Linter-Guided File Refactoring",
     "sub_title": "papers · source=arxiv_cs_se · score=66.1",
     "url_title": "linteval-benchmarking-llms-on-linter-guided-file-refactoring",
@@ -1615,45 +1572,42 @@
     }
   },
   {
-    "title": "ExpertCrowd/ec-swe",
-    "sub_title": "datasets · source=hf_datasets_swe · score=65.9",
-    "url_title": "expertcrowdec-swe",
+    "title": "klein-ml/klein-code-bench",
+    "sub_title": "datasets · source=hf_datasets_code · score=65.8",
+    "url_title": "klein-mlklein-code-bench",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
-    "source_id": "hf_datasets_swe",
+    "external_url": "https://huggingface.co/datasets/klein-ml/klein-code-bench",
+    "source_id": "hf_datasets_code",
     "source_ids": [
-      "hf_datasets_swe"
+      "hf_datasets_code"
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-10-14T09:44:14Z",
-    "first_seen_at": "2026-10-13T21:54:00Z",
-    "score": 65.9,
+    "published_at": "2026-10-15T09:50:56Z",
+    "first_seen_at": "2026-10-15T20:25:13Z",
+    "score": 65.8,
     "scores": {
-      "relevance": 95.0,
-      "popularity": 22.0,
-      "freshness": 50.0,
+      "relevance": 88.0,
+      "popularity": 26.0,
+      "freshness": 63.0,
       "impact": 40.0
     },
-    "keywords": [
-      "coding agent"
-    ],
+    "keywords": [],
     "topics": [
-      "评测基准",
-      "编程智能体",
-      "程序修复"
+      "代码生成",
+      "评测基准"
     ],
-    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
-    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
+    "summary_zh": "Klein-Code-Bench：给模型规格和空目录，检验其从零构建Python项目能否通过验收测试。",
+    "reason_zh": "从零构建程序的代码生成评测基准，高度相关。",
     "relevance_source": "llm",
     "signals": [
       "open_source_code"
     ],
-    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
+    "summary": "Klein-Code-Bench Can a model build a working program from scratch? Klein-Code-Bench gives a coding model a specification and an empty directory, and checks whether the finished Python project passes every acceptance test. 260 tasks in four tiers of 65 Pass or fail per project: a task counts only if all of its tests pass Runs locally: standard-library…",
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 2,
+    "likes": 4,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -1805,6 +1759,52 @@
       "limitations": "未验证更长训练下 RSI 增益是否持续；Terminal-Bench 4.0 分数仍低；validation 不能保证环境正确；跨域仅验证生成，未验证训练收益。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "ExpertCrowd/ec-swe",
+    "sub_title": "datasets · source=hf_datasets_swe · score=65.1",
+    "url_title": "expertcrowdec-swe",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-14T09:44:14Z",
+    "first_seen_at": "2026-10-13T21:54:00Z",
+    "score": 65.1,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 18.0,
+      "freshness": 50.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "程序修复"
+    ],
+    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
+    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "PreciseCoder: Faithful and Generalizable Debugging Beyond Unit-Test Rewards",
