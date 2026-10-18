@@ -49,7 +49,7 @@
     "upvotes": 105,
     "likes": 0,
     "github_url": "https://github.com/gaoypeng/3dcodeverse",
-    "github_stars": 86,
+    "github_stars": 105,
     "hf_url": "https://huggingface.co/papers/2610.22341",
     "arxiv_id": "2610.22341",
     "digest": {
@@ -559,10 +559,10 @@
       "Xiren Zhou"
     ],
     "author_count": 8,
-    "upvotes": 198,
+    "upvotes": 199,
     "likes": 0,
     "github_url": "https://github.com/zgcagi/Harness-RSI",
-    "github_stars": 165,
+    "github_stars": 173,
     "hf_url": "https://huggingface.co/papers/2610.18813",
     "arxiv_id": "2610.18813",
     "digest": {
@@ -627,10 +627,10 @@
       "Long Chen"
     ],
     "author_count": 15,
-    "upvotes": 315,
+    "upvotes": 316,
     "likes": 0,
     "github_url": "https://github.com/Tongyi-MAI/OpenGCUA",
-    "github_stars": 75,
+    "github_stars": 95,
     "hf_url": "https://huggingface.co/papers/2610.22200",
     "arxiv_id": "2610.22200",
     "digest": {
@@ -1084,6 +1084,51 @@
     }
   },
   {
+    "title": "glayguo/evalarc-independent-swe",
+    "sub_title": "datasets · source=hf_datasets_swe · score=64.2",
+    "url_title": "glayguoevalarc-independent-swe",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/glayguo/evalarc-independent-swe",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-18T07:19:06Z",
+    "first_seen_at": "2026-10-18T09:43:53Z",
+    "score": 64.2,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 6.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-bench"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "记录 Qwen3-8B 在 SWE-bench Verified 任务上四种固定工作流的独立尝试结果。",
+    "reason_zh": "针对编程智能体工作流的评测记录，规模较小。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Independent-source SWE workflow records 36 Qwen3-8B attempts compare four fixed workflows on three public SWE-bench Verified tasks. There are no accepted attempts: 31 have assessable native reports and five retain an upstream infrastructure flag, so their task outcome is uncertain. Eight attempts produced nonempty patches. One generation request has…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 1,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "OPRD: On-Policy Reminder Distillation for Long-Horizon Coding Agents",
     "sub_title": "papers · source=arxiv_cs_cl · score=64.1",
     "url_title": "oprd-on-policy-reminder-distillation-for-long-horizon-coding-agents",
@@ -1488,52 +1533,6 @@
     }
   },
   {
-    "title": "ExpertCrowd/ec-swe",
-    "sub_title": "datasets · source=hf_datasets_swe · score=63.0",
-    "url_title": "expertcrowdec-swe",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
-    "source_id": "hf_datasets_swe",
-    "source_ids": [
-      "hf_datasets_swe"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-10-14T09:44:14Z",
-    "first_seen_at": "2026-10-13T21:54:00Z",
-    "score": 63.0,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 18.0,
-      "freshness": 39.7,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "评测基准",
-      "编程智能体",
-      "程序修复"
-    ],
-    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
-    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 2,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
-  },
-  {
     "title": "SWE-Duel: Towards a Self-Scaling Arena for Coding Agents",
     "sub_title": "papers · source=arxiv_cs_se · score=62.9",
     "url_title": "swe-duel-towards-a-self-scaling-arena-for-coding-agents",
@@ -1678,6 +1677,52 @@
     }
   },
   {
+    "title": "ExpertCrowd/ec-swe",
+    "sub_title": "datasets · source=hf_datasets_swe · score=62.6",
+    "url_title": "expertcrowdec-swe",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-14T09:44:14Z",
+    "first_seen_at": "2026-10-13T21:54:00Z",
+    "score": 62.6,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 16.0,
+      "freshness": 39.7,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "程序修复"
+    ],
+    "summary_zh": "EC-SWE 数据集，含真实开源仓库的 bug 修复任务，用于评测编程智能体。",
+    "reason_zh": "面向编程智能体的真实软件工程评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Dataset Card for ExpertCrowd SWE (EC-SWE) This dataset contains real software engineering tasks for evaluating coding agents. Each one is a bug or missing behaviour in a real open-source repository, pinned to a commit, with a written problem statement, a reference fix, and a weighted grader backed by hidden tests. The tasks were chosen to sit at the typical…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 2,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "INFUSE: A Unified Surface Benchmark for Indirect Prompt Injection in Agentic Systems",
     "sub_title": "papers · source=arxiv_cs_ai · score=62.4",
     "url_title": "infuse-a-unified-surface-benchmark-for-indirect-prompt-injection-in-agentic-syst",
@@ -1744,6 +1789,77 @@
         "防御应针对环境嵌入载荷设计，聊天安全分类器难以直接迁移；指令加固有效但需权衡效用。"
       ],
       "limitations": "绝对攻击率基于 Mini-SWE-Agent harness；轨迹长度与任务表面的关联仅为相关性，未建立因果。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "ANTE: Anticipate, Then Execute -- Learning Internal World Models for Coding Agents from Verified Beliefs",
+    "sub_title": "papers · source=arxiv_cs_lg · score=62.3",
+    "url_title": "ante-anticipate-then-execute-learning-internal-world-models-for-coding-agents-fr",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.15368",
+    "source_id": "arxiv_cs_lg",
+    "source_ids": [
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-14T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 62.3,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 23.3,
+      "freshness": 63.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent",
+      "swe-bench",
+      "software engineering agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "ANTE 让编程智能体从已验证信念中学习内部世界模型，先预测再执行以提升决策。",
+    "reason_zh": "面向编程智能体的世界模型与前瞻决策。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Rapid advances in large language models have made software engineering agents capable of tackling complex coding tasks. Within a containerized environment, a coding agent receives tool responses or execution results, and determines its later actions by those earlier results. However, most existing coding agents never look ahead: their policies do not…",
+    "authors": [
+      "Yi Ge",
+      "Kangrui Ruan",
+      "Jifan Chen",
+      "Manish Prajapat",
+      "Christian Bock",
+      "Xiaoyang Wang"
+    ],
+    "author_count": 9,
+    "upvotes": 5,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.15368",
+    "arxiv_id": "2610.15368",
+    "digest": {
+      "problem": "现有编码 agent 的 RL 只看最终任务奖励，不预测动作后果，一次错误编辑可能在信号到来前不可逆地破坏仓库状态。",
+      "method": [
+        "让策略在每次动作前写出 belief state：状态摘要、结果预测与 trust/abstain 决策。",
+        "BAPO 用真实执行验证预测，按预测结果跨 rollout 分组，给出逐步 credit。",
+        "ANTE-TTO 在推理时按自身预测对候选动作排序，无需外部打分器。"
+      ],
+      "results": [
+        "Qwen3-32B 在 SWE-bench Verified 上 pass@1 从 25.0% 提升到 57.2%，比匹配的 GRPO 基线高 6.2%。",
+        "世界模型预测准确率在 RL 中从 44% 升到 69%。",
+        "ANTE-9B 在 Terminal-Bench 2.0 达 24.7%；11 个 OOD 基准上平均比无 belief 的 RL 基线高 6.2 个百分点。"
+      ],
+      "takeaways": [
+        "让 agent 先预测动作后果再执行，可用真实执行结果作为免费监督信号。",
+        "把预测正确性转化为逐步 credit，比只依赖最终奖励更能定位错误步骤。"
+      ],
+      "limitations": "预测监督仅适用于可被确定性 verifier 判定的步骤，摘要 token 无梯度，且依赖执行环境提供可验证反馈。",
       "basis": "fulltext"
     }
   },
@@ -1821,6 +1937,75 @@
     }
   },
   {
+    "title": "Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine",
+    "sub_title": "papers · source=arxiv_cs_ai · score=62.0",
+    "url_title": "terminal-rsi-recursive-self-improving-terminal-agents-via-recursive-self-rewrite",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.22192",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-17T04:00:00Z",
+    "first_seen_at": "2026-10-16T09:57:23Z",
+    "score": 62.0,
+    "scores": {
+      "relevance": 75.0,
+      "popularity": 42.9,
+      "freshness": 79.4,
+      "impact": 0.0
+    },
+    "keywords": [
+      "terminal-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "Terminal-RSI 通过递归自改写与策略精炼训练终端智能体。",
+    "reason_zh": "终端编程智能体的自我改进训练，相关度高。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Converting verifier outcomes into useful policy updates and partial progress into complete task resolution is crucial for terminal agents. We present Terminal-RSI, which alternates Recursive Self-Rewrite (RSR) of verified trajectories with critic-inheriting Recursive Policy-Refine (RPR). We formulate Turn-Boundary Skip-Observation GAE (TB-GAE) to retain…",
+    "authors": [
+      "Junyao Yang",
+      "Zongxia Li",
+      "Yucheng Shi",
+      "Zhongzhi Li",
+      "Ruhan Wang",
+      "Ruiwen Zhou"
+    ],
+    "author_count": 9,
+    "upvotes": 26,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.22192",
+    "arxiv_id": "2610.22192",
+    "digest": {
+      "problem": "终端 agent 需在可执行环境中产生可验证的持久改动，但 token 生成与环境变化时间尺度错位，递归监督下 critic 价值漂移，部分进度奖励易压过严格成功。",
+      "method": [
+        "交替 actor-only 的 RSR 与继承 critic 的 RPR，跨阶段保留 critic 权重并做阶段内校准。",
+        "提出 TB-GAE，按轮次边界而非文本长度衰减，保留 token 级基线。",
+        "FDR 按家族分位数归一化进度，SPR 让严格成功始终高于有界部分分。"
+      ],
+      "results": [
+        "Terminal-RSI-27B 四套件平均成功率 50.58%，较 Base 与 RSR-1 分别提升 29.90 和 16.33 个百分点。",
+        "LHTB 过程奖励从 0.21 升至 0.37，严格完成 5/46；SWR100 达 6.00%，为 Base 两倍。",
+        "独立重打分使失败轨迹奖励占比从 50.09% 降至 28.72%。"
+      ],
+      "takeaways": [
+        "长程终端任务中，信用分配应按交互轮次而非 token 长度衰减，避免日志长度影响优势。",
+        "奖励设计应让严格验证成功优先于部分进度，防止大量通过检查但未完成任务的轨迹主导训练。"
+      ],
+      "limitations": "各阶段学习率、奖励与初始化同时变化，缺少计算匹配的消融，无法隔离各组件因果贡献；仅单一 27B 骨干。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Poison Valleys: Diagnosing Path-Dependent Failure in LLM Code Repair",
     "sub_title": "papers · source=arxiv_cs_se · score=61.9",
     "url_title": "poison-valleys-diagnosing-path-dependent-failure-in-llm-code-repair",
@@ -1880,218 +2065,6 @@
         "修复提示应点名被违反的义务，而非只给失败测试。"
       ],
       "limitations": "仅两个合成 Python 案例、1,844 次请求，样本有限，结论不宜外推为通用模型排名。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine",
-    "sub_title": "papers · source=arxiv_cs_ai · score=61.9",
-    "url_title": "terminal-rsi-recursive-self-improving-terminal-agents-via-recursive-self-rewrite",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.22192",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-17T04:00:00Z",
-    "first_seen_at": "2026-10-16T09:57:23Z",
-    "score": 61.9,
-    "scores": {
-      "relevance": 75.0,
-      "popularity": 42.4,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "terminal-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理"
-    ],
-    "summary_zh": "Terminal-RSI 通过递归自改写与策略精炼训练终端智能体。",
-    "reason_zh": "终端编程智能体的自我改进训练，相关度高。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Converting verifier outcomes into useful policy updates and partial progress into complete task resolution is crucial for terminal agents. We present Terminal-RSI, which alternates Recursive Self-Rewrite (RSR) of verified trajectories with critic-inheriting Recursive Policy-Refine (RPR). We formulate Turn-Boundary Skip-Observation GAE (TB-GAE) to retain…",
-    "authors": [
-      "Junyao Yang",
-      "Zongxia Li",
-      "Yucheng Shi",
-      "Zhongzhi Li",
-      "Ruhan Wang",
-      "Ruiwen Zhou"
-    ],
-    "author_count": 9,
-    "upvotes": 25,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.22192",
-    "arxiv_id": "2610.22192",
-    "digest": {
-      "problem": "终端 agent 需在可执行环境中产生可验证的持久改动，但 token 生成与环境变化时间尺度错位，递归监督下 critic 价值漂移，部分进度奖励易压过严格成功。",
-      "method": [
-        "交替 actor-only 的 RSR 与继承 critic 的 RPR，跨阶段保留 critic 权重并做阶段内校准。",
-        "提出 TB-GAE，按轮次边界而非文本长度衰减，保留 token 级基线。",
-        "FDR 按家族分位数归一化进度，SPR 让严格成功始终高于有界部分分。"
-      ],
-      "results": [
-        "Terminal-RSI-27B 四套件平均成功率 50.58%，较 Base 与 RSR-1 分别提升 29.90 和 16.33 个百分点。",
-        "LHTB 过程奖励从 0.21 升至 0.37，严格完成 5/46；SWR100 达 6.00%，为 Base 两倍。",
-        "独立重打分使失败轨迹奖励占比从 50.09% 降至 28.72%。"
-      ],
-      "takeaways": [
-        "长程终端任务中，信用分配应按交互轮次而非 token 长度衰减，避免日志长度影响优势。",
-        "奖励设计应让严格验证成功优先于部分进度，防止大量通过检查但未完成任务的轨迹主导训练。"
-      ],
-      "limitations": "各阶段学习率、奖励与初始化同时变化，缺少计算匹配的消融，无法隔离各组件因果贡献；仅单一 27B 骨干。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "PhysCodeGym: Benchmarking Coding Agents for Physically Verifiable 4D Reconstruction",
-    "sub_title": "papers · source=arxiv_cs_ai · score=61.5",
-    "url_title": "physcodegym-benchmarking-coding-agents-for-physically-verifiable-4d-reconstructi",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.17288",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-15T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 61.5,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 50.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "代码生成"
-    ],
-    "summary_zh": "提出PhysCodeGym基准，让编程智能体写Blender程序做可物理验证的4D重建。",
-    "reason_zh": "核心是编程智能体写代码并迭代，属AI编程评测。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "Building physical simulations from video requires coding agents to translate observations into executable models and refine them through tool use. We introduce PhysCodeGym, a benchmark for physically verifiable 4D reconstruction with $156$ tasks covering rigid-body, liquid, deformable, and wind-driven motion. Agents autonomously inspect videos, write and…",
-    "authors": [
-      "Shuai Shao",
-      "Jinchen He",
-      "Cunxin Fan",
-      "Zihan Guo",
-      "Shijian Wang",
-      "Qihan Ren"
-    ],
-    "author_count": 13,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.17288",
-    "digest": {
-      "problem": "从视频构建可执行物理仿真需要编码智能体把观察转成模型并迭代修正，但现有基准难以同时检验视觉还原与物理机制是否真实。",
-      "method": [
-        "提出 PhysCodeGym，156 个视频到 Blender 场景重建任务，覆盖刚体、液体、形变与风驱动运动。",
-        "智能体自主观察视频、编写并运行 Blender 程序，依据仿真反馈修改场景。",
-        "六项指标结合规则与 rubric 评判，并用反事实干预检验物理一致性。"
-      ],
-      "results": [
-        "九个编码智能体可重建可识别物体，但常难以准确捕捉运动与物理交互。",
-        "物体与事件得分完美的重建仍可能违反能量守恒等物理约束。",
-        "高推理投入下 Codex 视觉与事件分更高，Claude Code 运动重叠略高；低投入完成更多任务。"
-      ],
-      "takeaways": [
-        "评估编码智能体不能只看渲染相似度，需检查场景程序与仿真状态。",
-        "反事实干预能暴露普通物理检查漏掉的接触与支撑缺陷。"
-      ],
-      "limitations": "当前基准限于 Blender 可表达的过程及其 rubric 指定的物理检查。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "ANTE: Anticipate, Then Execute -- Learning Internal World Models for Coding Agents from Verified Beliefs",
-    "sub_title": "papers · source=arxiv_cs_lg · score=61.2",
-    "url_title": "ante-anticipate-then-execute-learning-internal-world-models-for-coding-agents-fr",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.15368",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-14T04:00:00Z",
-    "first_seen_at": "2026-10-14T10:21:53Z",
-    "score": 61.2,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 18.1,
-      "freshness": 63.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-bench",
-      "software engineering agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "ANTE 让编程智能体从已验证信念中学习内部世界模型，先预测再执行以提升决策。",
-    "reason_zh": "面向编程智能体的世界模型与前瞻决策。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Rapid advances in large language models have made software engineering agents capable of tackling complex coding tasks. Within a containerized environment, a coding agent receives tool responses or execution results, and determines its later actions by those earlier results. However, most existing coding agents never look ahead: their policies do not…",
-    "authors": [
-      "Yi Ge",
-      "Kangrui Ruan",
-      "Jifan Chen",
-      "Manish Prajapat",
-      "Christian Bock",
-      "Xiaoyang Wang"
-    ],
-    "author_count": 9,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.15368",
-    "arxiv_id": "2610.15368",
-    "digest": {
-      "problem": "现有编码 agent 的 RL 只看最终任务奖励，不预测动作后果，一次错误编辑可能在信号到来前不可逆地破坏仓库状态。",
-      "method": [
-        "让策略在每次动作前写出 belief state：状态摘要、结果预测与 trust/abstain 决策。",
-        "BAPO 用真实执行验证预测，按预测结果跨 rollout 分组，给出逐步 credit。",
-        "ANTE-TTO 在推理时按自身预测对候选动作排序，无需外部打分器。"
-      ],
-      "results": [
-        "Qwen3-32B 在 SWE-bench Verified 上 pass@1 从 25.0% 提升到 57.2%，比匹配的 GRPO 基线高 6.2%。",
-        "世界模型预测准确率在 RL 中从 44% 升到 69%。",
-        "ANTE-9B 在 Terminal-Bench 2.0 达 24.7%；11 个 OOD 基准上平均比无 belief 的 RL 基线高 6.2 个百分点。"
-      ],
-      "takeaways": [
-        "让 agent 先预测动作后果再执行，可用真实执行结果作为免费监督信号。",
-        "把预测正确性转化为逐步 credit，比只依赖最终奖励更能定位错误步骤。"
-      ],
-      "limitations": "预测监督仅适用于可被确定性 verifier 判定的步骤，摘要 token 无梯度，且依赖执行环境提供可验证反馈。",
       "basis": "fulltext"
     }
   }
