@@ -73,6 +73,150 @@
     }
   },
   {
+    "title": "EvoWeb: A Benchmark for Coding Agents on Evolving Web Applications",
+    "sub_title": "papers · source=arxiv_cs_se · score=77.1",
+    "url_title": "evoweb-a-benchmark-for-coding-agents-on-evolving-web-applications",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.16402",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-15T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 77.1,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 18.1,
+      "freshness": 100.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "coding agent",
+      "codebase"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "提出EvoWeb基准，评估编程智能体在演化Web应用上的累积修改能力。",
+    "reason_zh": "编程智能体评测基准，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Web application development often proceeds through successive requests that extend an existing implementation. Yet web-generation benchmarks primarily evaluate development toward fixed specifications. We introduce EvoWeb, a novel benchmark comprising 320 cumulative requests over 32 web applications, grounded in real-world product features and structured by…",
+    "authors": [
+      "David Nukrai",
+      "Bar Alon",
+      "Nativ Levy",
+      "Ido Andrew Atad",
+      "Ido Cohen",
+      "Itamar Zimerman"
+    ],
+    "author_count": 9,
+    "upvotes": 3,
+    "likes": 0,
+    "github_url": "https://github.com/two-delta/EvoWeb",
+    "github_stars": 5,
+    "hf_url": "https://huggingface.co/papers/2610.16402",
+    "arxiv_id": "2610.16402",
+    "digest": {
+      "problem": "现有 web 生成基准只评估固定规格的开发，无法衡量编码 agent 在连续迭代请求中扩展已有实现的能力。",
+      "method": [
+        "提出 EvoWeb 基准，含 32 个 web 应用上的 320 个累积请求，基于真实产品功能与功能依赖图。",
+        "agent 迭代修改持久代码库，多模态 web agent 在真实浏览器中测试每个中间应用。",
+        "用跨用户容忍阈值的轨迹表现刻画可靠性，而非固定停止标准。"
+      ],
+      "results": [
+        "开源与闭源前沿模型在 EvoWeb 上表现出明显性能差异，跨请求集成是主要挑战。",
+        "依赖更深或更多的后续请求解决准确率更低，运行时错误随请求推进更频繁。"
+      ],
+      "takeaways": [
+        "评估编码 agent 应关注多请求长程迭代中的跨请求集成与回归，而非单次生成。",
+        "需重视后续请求的依赖深度与运行时错误累积问题。"
+      ],
+      "limitations": "",
+      "basis": "abstract"
+    }
+  },
+  {
+    "title": "HexaShell: A Thin Harness for Exploring the Limits of VLM Agents as Robot Coding Agents",
+    "sub_title": "papers · source=hf_daily_papers · score=73.9",
+    "url_title": "hexashell-a-thin-harness-for-exploring-the-limits-of-vlm-agents-as-robot-coding-",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.23479",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-16T00:00:00Z",
+    "first_seen_at": "2026-10-19T10:58:40Z",
+    "score": 73.9,
+    "scores": {
+      "relevance": 70.0,
+      "popularity": 66.8,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "coding agent",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体"
+    ],
+    "summary_zh": "用轻量框架让VLM编码智能体通过命令行控制机器人",
+    "reason_zh": "编程智能体应用于机器人控制场景",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Agents built on vision language models (VLMs) now compete with learned policies on robot manipulation leaderboards. We ask how far a coding agent can go when it controls a robot instead of a computer, and where it stops. Our system, HexaShell, keeps the harness thin: it only turns the agent's commands into robot motion. The agent drives a robot with two…",
+    "authors": [
+      "Hongcheng Gao",
+      "Alex Zhou",
+      "Jay Zhu",
+      "Zelin Zheng",
+      "Shijia Ge",
+      "Xiping Li"
+    ],
+    "author_count": 16,
+    "upvotes": 167,
+    "likes": 0,
+    "github_url": "https://github.com/HexaFuture/HexaShell",
+    "github_stars": 29,
+    "hf_url": "https://huggingface.co/papers/2610.23479",
+    "arxiv_id": "2610.23479",
+    "digest": {
+      "problem": "VLM 编码智能体能否像修代码一样控制机器人，以及它在物理世界中能走多远、卡在哪里。",
+      "method": [
+        "薄封装只把 robo 命令转成关节运动，不替智能体做决策，学习成果固化为带单元测试的小工具。",
+        "失败后由同模型优化器读日志诊断并修复工具，同一布局重跑，工具冻结后在新布局测试。",
+        "用标定相机三角测量和已知平面求 3D 位置，替代单目深度网络，必要时移动腕相机取第二视角。"
+      ],
+      "results": [
+        "RoboDojo 全部 42 任务上成功率 39.7%、progress score 48.0，超过 VPP2 的 32.3%/39.3 和 PhysicalRSI 的 31.4%/36.3。",
+        "三角测量比 Depth Anything V2 高 8.7 分，按布局配对赢 57 输 23；取第二视角的布局成功 39 次对 22 次。",
+        "推动类 92.5%、记忆类 65.0%，但紧密插入仅 8.3%；加 13–18 个干扰物仍保留 95% 成功率。"
+      ],
+      "takeaways": [
+        "把智能体学到的东西保存为可复用、可测试的代码工具，比每轮重新生成程序更稳。",
+        "用几何三角测量而非深度网络获取位置，是 VLM 智能体做机器人任务的关键工程选择。"
+      ],
+      "limitations": "瓶颈在接触控制而非推理：失败多因步数耗尽，智能体看到动作不对却无法在接触中修正。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Last Secure Code Benchmark: Is the Code You Vibe Secure?",
     "sub_title": "papers · source=arxiv_cs_ai · score=73.7",
     "url_title": "last-secure-code-benchmark-is-the-code-you-vibe-secure",
@@ -194,7 +338,7 @@
     "upvotes": 9,
     "likes": 0,
     "github_url": "https://github.com/OS-Copilot/OS-Helix",
-    "github_stars": 1,
+    "github_stars": 3,
     "hf_url": "https://huggingface.co/papers/2610.22234",
     "arxiv_id": "2610.22234",
     "digest": {
@@ -291,147 +435,71 @@
     }
   },
   {
-    "title": "HexaShell: A Thin Harness for Exploring the Limits of VLM Agents as Robot Coding Agents",
-    "sub_title": "papers · source=hf_daily_papers · score=72.1",
-    "url_title": "hexashell-a-thin-harness-for-exploring-the-limits-of-vlm-agents-as-robot-coding-",
+    "title": "Lean4AgenticRL: Advancing Agentic RL with Verifiable Multi-level Process Rewards",
+    "sub_title": "papers · source=arxiv_cs_lg · score=71.3",
+    "url_title": "lean4agenticrl-advancing-agentic-rl-with-verifiable-multi-level-process-rewards",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.23479",
-    "source_id": "hf_daily_papers",
+    "external_url": "https://arxiv.org/abs/2610.22448",
+    "source_id": "arxiv_cs_lg",
     "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-16T00:00:00Z",
-    "first_seen_at": "2026-10-19T10:58:40Z",
-    "score": 72.1,
-    "scores": {
-      "relevance": 70.0,
-      "popularity": 57.9,
-      "freshness": 100.0,
-      "impact": 55.0
-    },
-    "keywords": [
-      "coding agent",
-      "codex"
-    ],
-    "topics": [
-      "编程智能体"
-    ],
-    "summary_zh": "用轻量框架让VLM编码智能体通过命令行控制机器人",
-    "reason_zh": "编程智能体应用于机器人控制场景",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Agents built on vision language models (VLMs) now compete with learned policies on robot manipulation leaderboards. We ask how far a coding agent can go when it controls a robot instead of a computer, and where it stops. Our system, HexaShell, keeps the harness thin: it only turns the agent's commands into robot motion. The agent drives a robot with two…",
-    "authors": [
-      "Hongcheng Gao",
-      "Alex Zhou",
-      "Jay Zhu",
-      "Zelin Zheng",
-      "Shijia Ge",
-      "Xiping Li"
-    ],
-    "author_count": 16,
-    "upvotes": 84,
-    "likes": 0,
-    "github_url": "https://github.com/HexaFuture/HexaShell",
-    "github_stars": 22,
-    "hf_url": "https://huggingface.co/papers/2610.23479",
-    "arxiv_id": "2610.23479",
-    "digest": {
-      "problem": "VLM 编码智能体能否像修代码一样控制机器人，以及它在物理世界中能走多远、卡在哪里。",
-      "method": [
-        "薄封装只把 robo 命令转成关节运动，不替智能体做决策，学习成果固化为带单元测试的小工具。",
-        "失败后由同模型优化器读日志诊断并修复工具，同一布局重跑，工具冻结后在新布局测试。",
-        "用标定相机三角测量和已知平面求 3D 位置，替代单目深度网络，必要时移动腕相机取第二视角。"
-      ],
-      "results": [
-        "RoboDojo 全部 42 任务上成功率 39.7%、progress score 48.0，超过 VPP2 的 32.3%/39.3 和 PhysicalRSI 的 31.4%/36.3。",
-        "三角测量比 Depth Anything V2 高 8.7 分，按布局配对赢 57 输 23；取第二视角的布局成功 39 次对 22 次。",
-        "推动类 92.5%、记忆类 65.0%，但紧密插入仅 8.3%；加 13–18 个干扰物仍保留 95% 成功率。"
-      ],
-      "takeaways": [
-        "把智能体学到的东西保存为可复用、可测试的代码工具，比每轮重新生成程序更稳。",
-        "用几何三角测量而非深度网络获取位置，是 VLM 智能体做机器人任务的关键工程选择。"
-      ],
-      "limitations": "瓶颈在接触控制而非推理：失败多因步数耗尽，智能体看到动作不对却无法在接触中修正。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "AgentSWE: Can Coding Agents Build the Agent You Actually Want?",
-    "sub_title": "papers · source=arxiv_cs_se · score=71.4",
-    "url_title": "agentswe-can-coding-agents-build-the-agent-you-actually-want",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.13361",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
       "arxiv_cs_lg",
       "hf_daily_papers"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-12T04:00:00Z",
-    "first_seen_at": "2026-10-12T13:19:34Z",
-    "score": 71.4,
+    "published_at": "2026-10-19T04:00:00Z",
+    "first_seen_at": "2026-10-19T10:58:40Z",
+    "score": 71.3,
     "scores": {
-      "relevance": 90.0,
-      "popularity": 69.5,
-      "freshness": 25.0,
-      "impact": 75.0
+      "relevance": 88.0,
+      "popularity": 9.0,
+      "freshness": 100.0,
+      "impact": 55.0
     },
-    "keywords": [
-      "coding agent",
-      "codebase"
-    ],
+    "keywords": [],
     "topics": [
       "编程智能体",
+      "模型训练与推理",
       "评测基准"
     ],
-    "summary_zh": "提出AgentSWE基准，测试编程智能体能否构建用户真正想要的智能体。",
-    "reason_zh": "编程智能体构建智能体的评测基准，核心相关。",
+    "summary_zh": "用可验证多级过程奖励的智能体强化学习提升SWE与终端任务能力",
+    "reason_zh": "面向软件工程智能体的RL训练方法",
     "relevance_source": "llm",
     "signals": [
-      "new_benchmark",
-      "open_source_code"
+      "open_source_code",
+      "sota"
     ],
-    "summary": "As the production of software passes into the hands of software itself, coding agents are increasingly commissioned to build agents fitted to their users' own workflows. This delegation carries a quiet assumption, that the delivered agent will faithfully serve the requirement it was built for, rather than merely appear to. No existing benchmark tests that…",
+    "summary": "Enhancing the agentic capabilities of Large Language Models (LLMs) to tackle complex software engineering (SWE) and general terminal-usage problems is a pressing challenge. Current state-of-the-art LLMs often go through large-scale agentic Reinforcement Learning (RL). However, they mostly rely on high-level outcome rewards, with minimal consideration of…",
     "authors": [
-      "Jiahao Wang",
-      "Hongjin Qian",
-      "Yuyang Hu",
-      "Jiajun Zhang",
-      "Zheng Liu"
+      "Ruida Wang",
+      "Gerald Friedland",
+      "Tong Zhang",
+      "Chris Kong"
     ],
-    "author_count": 5,
-    "upvotes": 206,
+    "author_count": 4,
+    "upvotes": 1,
     "likes": 0,
-    "github_url": "https://github.com/VectorSpaceLab/AgentSWE",
-    "github_stars": 36,
-    "hf_url": "https://huggingface.co/papers/2610.13361",
-    "arxiv_id": "2610.13361",
+    "github_url": "https://github.com/RickySkywalker/Lean4AgenticRL",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2610.22448",
+    "arxiv_id": "2610.22448",
     "digest": {
-      "problem": "编码 agent 被委托构建用户所需的 agent，但缺乏基准检验交付物是否真正满足需求，而非仅表面合规。",
+      "problem": "现有 agentic RL 主要依赖高层结果奖励，缺少对工具调用与工作流阶段的细粒度过程奖励，导致长轨迹训练效果受限。",
       "method": [
-        "提出 AgentSWE 基准，含 25 个任务，覆盖 Creation、Editing、Optimization 三阶段。",
-        "任务以委托形式给出，builder 仅见少量开发用例，验收在冻结交付物上跑留出用例。",
-        "Creation/Editing 用需求推导的 rubric 评分，Optimization 用源基准原生目标衡量差距闭合。"
+        "提出 PSWF 计划-执行范式，兼顾智能体自主性与执行可控性，为验证奠定基础。",
+        "将 Lean4Agent 验证从固定工作流推广到通用 harness，形式化工作流并切分轨迹。",
+        "统一 α/β/γ 三级奖励，提出 workflow-stage-normalized GRPO 训练。"
       ],
       "results": [
-        "最强 builder 在 Creation 平均 19.1、Editing 平均 31.6。",
-        "Optimization 中无 builder 平均闭合超过 5% 的剩余差距，25 次运行仅 13 次高于起点。",
-        "开发阶段得分 90 以上的 Creation 运行，留出用例平均仅 9.9。"
+        "LAR-27B 在 TerminalBench-2.1 达 77.3%。",
+        "三个基准上平均超基座模型 9.89%，超同规模第二优模型 5.07%。",
+        "Qwen-3.6-27B 经训练 SWE 提升 4.0%、TerminalBench-2.0 提升 8.0%。"
       ],
       "takeaways": [
-        "编码 agent 常过拟合可见用例、交付空壳运行时并虚报完成，需针对性验证。",
-        "增加开发用例、指定设计或要求测试，均无法显著提升留出表现。"
+        "过程奖励需分层设计，并用符号谓词防止奖励黑客。",
+        "按工作流阶段而非工具调用对齐步骤，可改善长轨迹信用分配。"
       ],
-      "limitations": "论文正文被截断，部分实验细节与逐任务结果未在提供内容中呈现。",
+      "limitations": "验证仍依赖外部显式约束，未打开 LLM 内部计算黑箱；未在运行时集成验证，也未纳入视觉信号。",
       "basis": "fulltext"
     }
   },
@@ -1216,73 +1284,6 @@
     }
   },
   {
-    "title": "Lean4AgenticRL: Advancing Agentic RL with Verifiable Multi-level Process Rewards",
-    "sub_title": "papers · source=arxiv_cs_lg · score=65.5",
-    "url_title": "lean4agenticrl-advancing-agentic-rl-with-verifiable-multi-level-process-rewards",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.22448",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-19T04:00:00Z",
-    "first_seen_at": "2026-10-19T10:58:40Z",
-    "score": 65.5,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理",
-      "评测基准"
-    ],
-    "summary_zh": "用可验证多级过程奖励的智能体强化学习提升SWE与终端任务能力",
-    "reason_zh": "面向软件工程智能体的RL训练方法",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "Enhancing the agentic capabilities of Large Language Models (LLMs) to tackle complex software engineering (SWE) and general terminal-usage problems is a pressing challenge. Current state-of-the-art LLMs often go through large-scale agentic Reinforcement Learning (RL). However, they mostly rely on high-level outcome rewards, with minimal consideration of…",
-    "authors": [
-      "Ruida Wang",
-      "Gerald Friedland",
-      "Tong Zhang",
-      "Chris Kong"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.22448",
-    "digest": {
-      "problem": "现有 agentic RL 主要依赖高层结果奖励，缺少对工具调用与工作流阶段的细粒度过程奖励，导致长轨迹训练效果受限。",
-      "method": [
-        "提出 PSWF 计划-执行范式，兼顾智能体自主性与执行可控性，为验证奠定基础。",
-        "将 Lean4Agent 验证从固定工作流推广到通用 harness，形式化工作流并切分轨迹。",
-        "统一 α/β/γ 三级奖励，提出 workflow-stage-normalized GRPO 训练。"
-      ],
-      "results": [
-        "LAR-27B 在 TerminalBench-2.1 达 77.3%。",
-        "三个基准上平均超基座模型 9.89%，超同规模第二优模型 5.07%。",
-        "Qwen-3.6-27B 经训练 SWE 提升 4.0%、TerminalBench-2.0 提升 8.0%。"
-      ],
-      "takeaways": [
-        "过程奖励需分层设计，并用符号谓词防止奖励黑客。",
-        "按工作流阶段而非工具调用对齐步骤，可改善长轨迹信用分配。"
-      ],
-      "limitations": "验证仍依赖外部显式约束，未打开 LLM 内部计算黑箱；未在运行时集成验证，也未纳入视觉信号。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "SWE-MISBEHAVIOR: Benchmarking and Mitigating Boundary Violations in Software Coding Agents",
     "sub_title": "papers · source=arxiv_cs_se · score=65.3",
     "url_title": "swe-misbehavior-benchmarking-and-mitigating-boundary-violations-in-software-codi",
@@ -1980,81 +1981,8 @@
     }
   },
   {
-    "title": "SWE-Duel: Towards a Self-Scaling Arena for Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.9",
-    "url_title": "swe-duel-towards-a-self-scaling-arena-for-coding-agents",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.12569",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-12T04:00:00Z",
-    "first_seen_at": "2026-10-12T13:19:34Z",
-    "score": 61.9,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 39.7,
-      "freshness": 19.8,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-agent",
-      "codex",
-      "pull request"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "提出SWE-Duel自扩展竞技场，在评测时动态生成任务与判定。",
-    "reason_zh": "面向编程智能体的自扩展评测基准，高度相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Static coding benchmarks are fixed at release. Over time their tasks leak into training data, and stronger agents eventually saturate them. We argue that a benchmark should instead aim to be self-scaling: its tasks and oracles are created at evaluation time, so no content exists in advance to leak, and its difficulty is set by the participating agents…",
-    "authors": [
-      "Wei Minn",
-      "Zhensu Sun",
-      "Lwin Khin Shar",
-      "David Lo"
-    ],
-    "author_count": 4,
-    "upvotes": 20,
-    "likes": 0,
-    "github_url": "https://github.com/sweduel/SWE-Duel",
-    "github_stars": 4,
-    "hf_url": "https://huggingface.co/papers/2610.12569",
-    "arxiv_id": "2610.12569",
-    "digest": {
-      "problem": "静态编码基准发布即固定，任务会泄漏进训练数据并被更强 agent 饱和，无法长期提供可信信号。",
-      "method": [
-        "Red–Blue 对抗竞技场：任务与 oracle 在评测时由参赛 agent 现场生成，无预存内容可泄漏。",
-        "Red 经三会话生成新功能并埋入隐蔽 bug，通过三道执行门与盲修复验证后才入库。",
-        "Blue 在不知有 bug 的情况下审查 PR，三套测试全过才获胜，双方交换角色。"
-      ],
-      "results": [
-        "11 个 (model, harness) 参与、15 仓库 5 语言、1500 回合的循环赛。",
-        "GPT-5.5 + Codex CLI 最强解题者，修复其审查缺陷的 98.3%，排名第一。",
-        "Claude Opus 4.8 + mini-swe-agent 最强出题者，Red 胜率 27.3%；同族新版本任务击败固定解题者 42.9% vs 4.0%。"
-      ],
-      "takeaways": [
-        "用 agent 互出题、执行门验证的竞技场，可作为抗泄漏、难度随能力自增的评测范式。",
-        "出题能力与解题能力可分离，评测工具应同时报告 Red 与 Blue 两类指标。"
-      ],
-      "limitations": "任务难度受作者自身找 bug 能力上限约束；最强 Red 27.3% 攻击成功率具双用途安全风险。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "ExpertCrowd/ec-swe",
-    "sub_title": "datasets · source=hf_datasets_swe · score=61.8",
+    "sub_title": "datasets · source=hf_datasets_swe · score=62.2",
     "url_title": "expertcrowdec-swe",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://huggingface.co/datasets/ExpertCrowd/ec-swe",
@@ -2066,10 +1994,10 @@
     "category": "datasets",
     "published_at": "2026-10-14T09:44:14Z",
     "first_seen_at": "2026-10-13T21:54:00Z",
-    "score": 61.8,
+    "score": 62.2,
     "scores": {
       "relevance": 95.0,
-      "popularity": 20.0,
+      "popularity": 22.0,
       "freshness": 31.5,
       "impact": 40.0
     },
@@ -2097,5 +2025,76 @@
     "hf_url": "",
     "arxiv_id": "",
     "digest": null
+  },
+  {
+    "title": "Beyond the Verdict: Agentic Code Judging with Verifiable Feedback",
+    "sub_title": "papers · source=arxiv_cs_ai · score=61.6",
+    "url_title": "beyond-the-verdict-agentic-code-judging-with-verifiable-feedback",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.18760",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-15T04:00:00Z",
+    "first_seen_at": "2026-10-14T10:21:53Z",
+    "score": 61.6,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 21.0,
+      "freshness": 39.7,
+      "impact": 55.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "代码生成",
+      "评测基准"
+    ],
+    "summary_zh": "面向竞赛编程的智能体代码评判，提供可验证反馈以指导选择与修订。",
+    "reason_zh": "核心为编程智能体的代码验证与反馈。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Test-time scaling for large language models (LLMs) can involve generating multiple candidate solutions for selection or revising an earlier attempt. To guide selection and revision, we need a verifier that can estimate candidate correctness and provide evidence of failure. In competitive programming, however, official judging systems provide authoritative…",
+    "authors": [
+      "Zheye Deng",
+      "Sha Li",
+      "Changlong Yu",
+      "Xin Liu",
+      "Qin Lu",
+      "Priyanka Nigam"
+    ],
+    "author_count": 7,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "https://github.com/horizon-llm/IOI2026",
+    "github_stars": 2,
+    "hf_url": "https://huggingface.co/papers/2610.18760",
+    "arxiv_id": "2610.18760",
+    "digest": {
+      "problem": "竞赛编程中官方评测只给判定、不解释失败原因，且提交次数有限，无法为候选程序的筛选与修正提供可验证的反馈。",
+      "method": [
+        "提出单候选验证任务：仅凭题面与源码判定是否通过，并为疑似失败生成可执行反例。",
+        "构建 USACO-Judge 基准，含人类与多个 LLM 的通过/未通过程序及官方测试标签。",
+        "训练 Arbiter：35B MoE 智能体验证器，用 GRPO 强化学习，奖励可执行反例并做长度控制。"
+      ],
+      "results": [
+        "反例成功率从 40.61% 提升到 62.67%，USACO-Judge 二分类判定准确率从 71.41% 升到 87.41%。",
+        "35B Arbiter 在 UOJ-Bench 与 USACO-Judge 上超过部分非智能体大模型（最高 1.6T 参数）。",
+        "IOI 2026 案例中，Arbiter 引导 GPT-OSS-120B 达 385.46 期望分，超过 361.12 金牌线。"
+      ],
+      "takeaways": [
+        "为代码生成工具加入可执行反例反馈，比单纯判定更能指导筛选与修正。",
+        "小模型经智能体强化学习可逼近大模型验证性能，适合作为低成本验证器。"
+      ],
+      "limitations": "反例只能证明失败、不能证明通过；诊断文本未被直接评分，反例成功只是诊断质量的代理指标。",
+      "basis": "fulltext"
+    }
   }
 ]
