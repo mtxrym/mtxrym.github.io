@@ -1,7 +1,7 @@
 [
   {
     "title": "Self-Evolving Coding Agents via Harness-Policy Optimization",
-    "sub_title": "papers · source=arxiv_cs_cl · score=82.5",
+    "sub_title": "papers · source=arxiv_cs_cl · score=82.7",
     "url_title": "self-evolving-coding-agents-via-harness-policy-optimization",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.22791",
@@ -14,10 +14,10 @@
     "category": "papers",
     "published_at": "2026-10-19T04:00:00Z",
     "first_seen_at": "2026-10-19T10:58:40Z",
-    "score": 82.5,
+    "score": 82.7,
     "scores": {
       "relevance": 95.0,
-      "popularity": 47.7,
+      "popularity": 48.4,
       "freshness": 100.0,
       "impact": 55.0
     },
@@ -45,7 +45,7 @@
       "Hao Cheng"
     ],
     "author_count": 8,
-    "upvotes": 38,
+    "upvotes": 40,
     "likes": 0,
     "github_url": "https://github.com/MSR-Orchard/Self-HPO",
     "github_stars": 15,
@@ -287,6 +287,78 @@
         "把生成 harness 当作数据引擎，回收成功与失败轨迹，可形成数据—训练—验证的闭环。"
       ],
       "limitations": "原文未明确列出局限；需注意数据集规模按各来源单位统计、不可直接比较，且部分来源覆盖度依赖可用运行时。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "StopLoss: Teaching Agents to Predict Failure and Stop Early",
+    "sub_title": "papers · source=arxiv_cs_ai · score=73.1",
+    "url_title": "stoploss-teaching-agents-to-predict-failure-and-stop-early",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.25525",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-20T04:00:00Z",
+    "first_seen_at": "2026-10-20T10:12:21Z",
+    "score": 73.1,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 25.4,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-bench",
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "测试与验证"
+    ],
+    "summary_zh": "训练小型外部监控器预测编程智能体运行将失败并提前终止",
+    "reason_zh": "直接服务编程智能体的失败预测与资源节省",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Coding agents keep working on runs that will fail verification, and asking a frontier model to watch for this is expensive in its own right. We introduce StopLoss, a small external monitor that learns failure recognition from completed trajectories and their verifier outcomes. The name is inspired by the stop-loss order in finance: StopLoss ends a run early…",
+    "authors": [
+      "Jiarong Liang",
+      "Xueguang Ma",
+      "Dongfu Jiang",
+      "Yuxuan Zhang",
+      "Ping Nie",
+      "Wenhu Chen"
+    ],
+    "author_count": 6,
+    "upvotes": 6,
+    "likes": 0,
+    "github_url": "https://github.com/TIGER-AI-Lab/StopLoss",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.25525",
+    "arxiv_id": "2610.25525",
+    "digest": {
+      "problem": "编码智能体常在注定失败的运行上持续消耗算力，而用前沿大模型做监控本身成本高昂，早停需同时具备判别力与低成本。",
+      "method": [
+        "用已完成轨迹的验证结果反向标注早期窗口，训练7B–8B小模型预测失败。",
+        "单次前向读取最近三步动作与观测，从logit直接读出Abort概率，不改执行器。",
+        "在成功轨迹上校准阈值，分数越界即中止运行。"
+      ],
+      "results": [
+        "Verified/Luna上保留99.0%成功运行，每次求解成本降4.5%；Pro上降24.2%–30.6%，Qwen3-8B达48.1%。",
+        "每次检查约$0.00024，比GPT评委低9–74倍；Pro/Luna上捕获50.7%失败运行，评委最多20次。",
+        "训练使Qwen2.5-7B tier AUC从0.491升至0.622，首个检查点step 5即有信号。"
+      ],
+      "takeaways": [
+        "小模型+结果监督可做廉价失败预测，早停收益能覆盖监控开销。",
+        "评估早停须同时计监控成本与误杀成功运行，单看AUC会误导。"
+      ],
+      "limitations": "仅用GPT轨迹训练、仅限Python任务，Pro仅覆盖三个仓库，跨执行器与阈值迁移待验证。",
       "basis": "fulltext"
     }
   },
@@ -1149,6 +1221,77 @@
     }
   },
   {
+    "title": "HSPR: Recovering Software-Agent Benchmark Scores via Hierarchical Posterior Inference",
+    "sub_title": "papers · source=arxiv_cs_ai · score=67.7",
+    "url_title": "hspr-recovering-software-agent-benchmark-scores-via-hierarchical-posterior-infer",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.24611",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-20T04:00:00Z",
+    "first_seen_at": "2026-10-20T10:12:21Z",
+    "score": 67.7,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 23.3,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-bench",
+      "software agent"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "用分层后验推断从少量任务子集恢复软件智能体基准分数。",
+    "reason_zh": "面向软件智能体基准评测的高效评分方法。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Evaluating software agents on a full benchmark is expensive. A small task subset can preserve agent rankings while yielding inaccurate scores. Historical responses provide useful structure, but tasks with identical source responses can have different outcomes for a new target agent. We introduce Hierarchical Score Posterior Recovery (HSPR), which combines…",
+    "authors": [
+      "Wanyi Chen",
+      "Wanqin Shen",
+      "Yuanchen Shi",
+      "Zhensu Sun",
+      "Fang Kong"
+    ],
+    "author_count": 5,
+    "upvotes": 5,
+    "likes": 0,
+    "github_url": "https://github.com/wanyichen06/HSPR",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.24611",
+    "arxiv_id": "2610.24611",
+    "digest": {
+      "problem": "完整跑软件 agent 基准评测成本高，小任务子集虽能保持排序却给出不准确分数，需从少量执行恢复全基准分数。",
+      "method": [
+        "用源响应拟合的 item 参数与残差因子建模目标潜在响应状态。",
+        "按源响应签名分组，组内成功率设为不确定 Beta 先验并做共轭更新。",
+        "以后验引导选任务，准则等于全分数后验方差的一步期望下降。"
+      ],
+      "results": [
+        "10% 预算下四个 SWE-bench 任务库中三个 MAE 最低、四个 MaxErr 均最低。",
+        "Lite MAE 1.927pp、Pro 2.098pp，优于 ATLAS-port 的 2.689pp 与 7.736pp。",
+        "去掉组不确定性或改用非自适应查询，macro MAE 均上升。"
+      ],
+      "takeaways": [
+        "低预算评测应同时优化任务选择与分数估计器，而非只取子集均值。",
+        "利用历史响应分组可让单次观测外推到同组未测任务。"
+      ],
+      "limitations": "仅在 SWE-bench 家族四个任务库验证，模型族或脚手架大幅变化时泛化性未知；后验依赖响应模型假设。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Arctic-SWE: Revisiting the Long Horizon Agent Training by Modeling-System Co-Design",
     "sub_title": "papers · source=arxiv_cs_cl · score=67.5",
     "url_title": "arctic-swe-revisiting-the-long-horizon-agent-training-by-modeling-system-co-desi",
@@ -1409,7 +1552,7 @@
       "Charlotte Siska"
     ],
     "author_count": 11,
-    "upvotes": 0,
+    "upvotes": 1,
     "likes": 0,
     "github_url": "https://github.com/microsoft/TokenEconomizer",
     "github_stars": 2,
@@ -1432,77 +1575,6 @@
         "成本控制可做成不改模型和 agent 循环的外部控制器，便于插拔。"
       ],
       "limitations": "实验依赖基准评分器提供成功信号；固定策略组合的节省并不叠加，需权衡质量。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "HSPR: Recovering Software-Agent Benchmark Scores via Hierarchical Posterior Inference",
-    "sub_title": "papers · source=arxiv_cs_ai · score=66.6",
-    "url_title": "hspr-recovering-software-agent-benchmark-scores-via-hierarchical-posterior-infer",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.24611",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-20T04:00:00Z",
-    "first_seen_at": "2026-10-20T10:12:21Z",
-    "score": 66.6,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 18.1,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "swe-bench",
-      "software agent"
-    ],
-    "topics": [
-      "评测基准",
-      "编程智能体"
-    ],
-    "summary_zh": "用分层后验推断从少量任务子集恢复软件智能体基准分数。",
-    "reason_zh": "面向软件智能体基准评测的高效评分方法。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Evaluating software agents on a full benchmark is expensive. A small task subset can preserve agent rankings while yielding inaccurate scores. Historical responses provide useful structure, but tasks with identical source responses can have different outcomes for a new target agent. We introduce Hierarchical Score Posterior Recovery (HSPR), which combines…",
-    "authors": [
-      "Wanyi Chen",
-      "Wanqin Shen",
-      "Yuanchen Shi",
-      "Zhensu Sun",
-      "Fang Kong"
-    ],
-    "author_count": 5,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "https://github.com/wanyichen06/HSPR",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.24611",
-    "arxiv_id": "2610.24611",
-    "digest": {
-      "problem": "完整跑软件 agent 基准评测成本高，小任务子集虽能保持排序却给出不准确分数，需从少量执行恢复全基准分数。",
-      "method": [
-        "用源响应拟合的 item 参数与残差因子建模目标潜在响应状态。",
-        "按源响应签名分组，组内成功率设为不确定 Beta 先验并做共轭更新。",
-        "以后验引导选任务，准则等于全分数后验方差的一步期望下降。"
-      ],
-      "results": [
-        "10% 预算下四个 SWE-bench 任务库中三个 MAE 最低、四个 MaxErr 均最低。",
-        "Lite MAE 1.927pp、Pro 2.098pp，优于 ATLAS-port 的 2.689pp 与 7.736pp。",
-        "去掉组不确定性或改用非自适应查询，macro MAE 均上升。"
-      ],
-      "takeaways": [
-        "低预算评测应同时优化任务选择与分数估计器，而非只取子集均值。",
-        "利用历史响应分组可让单次观测外推到同组未测任务。"
-      ],
-      "limitations": "仅在 SWE-bench 家族四个任务库验证，模型族或脚手架大幅变化时泛化性未知；后验依赖响应模型假设。",
       "basis": "fulltext"
     }
   },
@@ -2067,75 +2139,6 @@
         "用持久化证书状态替代自由轨迹，能减少无效检查并提升结论校准。"
       ],
       "limitations": "与抽象解释的对应仅是结构性的；并发构建证书、模型续写轨迹的一致性均未覆盖。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Vibenix: Agentic Software Packaging and Maintenance with Nix",
-    "sub_title": "papers · source=arxiv_cs_se · score=65.5",
-    "url_title": "vibenix-agentic-software-packaging-and-maintenance-with-nix",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.24712",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-20T04:00:00Z",
-    "first_seen_at": "2026-10-20T10:12:21Z",
-    "score": 65.5,
-    "scores": {
-      "relevance": 80.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 55.0
-    },
-    "keywords": [],
-    "topics": [
-      "编程智能体",
-      "其他"
-    ],
-    "summary_zh": "Vibenix 用智能体结合 Nix 自动完成软件打包与维护。",
-    "reason_zh": "编程智能体用于软件打包维护任务。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Implicit dependencies, uncontrolled network access, and other build-environment impurities create intransparent software supply chains. Identifying every dependency affecting a build is a difficult task. Functional package management addresses this through reproducible packaging, ensuring software relies exclusively on declared, hermetically isolated…",
-    "authors": [
-      "Martim Monis",
-      "Martin Schwaighofer",
-      "Nuno Saavedra",
-      "Alexandra Mendes",
-      "Rene Mayrhofer",
-      "Jo\\~ao F. Ferreira"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.24712",
-    "digest": {
-      "problem": "Nix 等密封构建系统能保障软件供应链安全，但编写 Nix 打包表达式复杂耗时、学习曲线陡峭，阻碍开发者采用。",
-      "method": [
-        "用 LLM 迭代生成 Nix 打包表达式，通过规则引导的构建-修复反馈循环自动修正失败。",
-        "构建后采用 evaluator-optimizer 模式做功能正确性精炼，并支持已有包的维护模式。",
-        "构建 NixBench 与 NixBench-Repair 两个打包与维护评测数据集。"
-      ],
-      "results": [
-        "NixBench 466 个打包任务中，Claude Haiku 4.5 下 95.3% 可构建，单次生成工具仅 5.6%。",
-        "100 个包人工验证中 47% 初始功能正确，构建后精炼提升 35 个百分点。",
-        "NixBench-Repair 维护任务成功率达 87.6%。"
-      ],
-      "takeaways": [
-        "对 DSL/配置类生成任务，执行反馈驱动的迭代修复远优于单次生成。",
-        "构建成功不等于功能正确，需加入运行时语义验证与精炼环节。"
-      ],
-      "limitations": "功能正确性依赖人工验证，初始正确率仅 47%；结果主要基于单一模型 Claude Haiku 4.5。",
       "basis": "fulltext"
     }
   }
