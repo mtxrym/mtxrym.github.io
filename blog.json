@@ -72,8 +72,79 @@
     }
   },
   {
+    "title": "Training the Whole Agent, Not Just the Model",
+    "sub_title": "papers · source=arxiv_cs_se · score=77.2",
+    "url_title": "training-the-whole-agent-not-just-the-model",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.28069",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-21T04:00:00Z",
+    "first_seen_at": "2026-10-21T10:20:38Z",
+    "score": 77.2,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "swe-bench",
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "HarnessAdapt-RL在强化学习中同时训练策略并适配编程智能体框架",
+    "reason_zh": "核心是编程智能体训练方法",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Training coding agents typically updates the policy while keeping the harness fixed. During training, trajectories reveal flawed repair strategies and interaction problems that vary across tasks and change as the policy learns. We introduce HarnessAdapt-RL, which trains the policy and adapts its harness during reinforcement learning. For flawed repair…",
+    "authors": [
+      "Lingxiao Tang",
+      "Wei Tao",
+      "Yiwen Guo",
+      "Lingfeng Bao"
+    ],
+    "author_count": 4,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "https://github.com/lingxiaotang/HarnessAdapt-RL",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2610.28069",
+    "arxiv_id": "2610.28069",
+    "digest": {
+      "problem": "训练编码 agent 时通常只更新策略而固定 harness，但轨迹暴露的修复策略缺陷和交互问题随任务与策略变化，固定 harness 无法持续适配。",
+      "method": [
+        "用冻结 teacher 从当前策略轨迹生成机制级技能，只讲修复机理、不给具体代码答案。",
+        "另一 teacher 针对跨任务复现的交互问题演化工具与 hook，仅当 pass rate 或 trainable rate 提升且不降低另一项时采纳。",
+        "策略用 GRPO 在适配后 harness 上训练，新轨迹再驱动下一轮 harness 演化。"
+      ],
+      "results": [
+        "9B 基座下 pass@1 较 GRPO 在 SWE-bench Verified、Multilingual、Pro 分别提升 9.8、12.6、6.4 个百分点。",
+        "平均 pass@1 达 44.9%，高于 GRPO 的 35.3% 和 OpenHands-GRPO 的 39.0%。",
+        "部署时移除演化出的工具与 hook 会使 pass@1 最多下降 7.7 个百分点。"
+      ],
+      "takeaways": [
+        "训练编码 agent 应把 harness 当作可学习组件与策略共同演化，而非固定脚手架。",
+        "训练期技能应讲机理而非给答案，否则移除后性能反而低于 GRPO。"
+      ],
+      "limitations": "仅验证 SWE-bench 类软件修复任务与单一 9B 模型；每种配置只训练一次，候选采纳规则非显著性检验。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "EdgeKernelBench: Unified LLM-Driven Kernel Generation for Edge Backends",
-    "sub_title": "papers · source=arxiv_cs_lg · score=74.5",
+    "sub_title": "papers · source=arxiv_cs_lg · score=74.7",
     "url_title": "edgekernelbench-unified-llm-driven-kernel-generation-for-edge-backends",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.24648",
@@ -86,10 +157,10 @@
     "category": "papers",
     "published_at": "2026-10-21T04:00:00Z",
     "first_seen_at": "2026-10-20T10:12:21Z",
-    "score": 74.5,
+    "score": 74.7,
     "scores": {
       "relevance": 88.0,
-      "popularity": 32.4,
+      "popularity": 33.4,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -116,7 +187,7 @@
       "Huan Wang"
     ],
     "author_count": 6,
-    "upvotes": 11,
+    "upvotes": 12,
     "likes": 0,
     "github_url": "https://github.com/pillor9/EdgeKernelBench",
     "github_stars": 4,
@@ -652,75 +723,6 @@
     }
   },
   {
-    "title": "Training the Whole Agent, Not Just the Model",
-    "sub_title": "papers · source=arxiv_cs_se · score=69.0",
-    "url_title": "training-the-whole-agent-not-just-the-model",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.28069",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-21T04:00:00Z",
-    "first_seen_at": "2026-10-21T10:20:38Z",
-    "score": 69.0,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [
-      "swe-bench",
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理"
-    ],
-    "summary_zh": "HarnessAdapt-RL在强化学习中同时训练策略并适配编程智能体框架",
-    "reason_zh": "核心是编程智能体训练方法",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "Training coding agents typically updates the policy while keeping the harness fixed. During training, trajectories reveal flawed repair strategies and interaction problems that vary across tasks and change as the policy learns. We introduce HarnessAdapt-RL, which trains the policy and adapts its harness during reinforcement learning. For flawed repair…",
-    "authors": [
-      "Lingxiao Tang",
-      "Wei Tao",
-      "Yiwen Guo",
-      "Lingfeng Bao"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.28069",
-    "digest": {
-      "problem": "训练编码 agent 时通常只更新策略而固定 harness，但轨迹暴露的修复策略缺陷和交互问题随任务与策略变化，固定 harness 无法持续适配。",
-      "method": [
-        "用冻结 teacher 从当前策略轨迹生成机制级技能，只讲修复机理、不给具体代码答案。",
-        "另一 teacher 针对跨任务复现的交互问题演化工具与 hook，仅当 pass rate 或 trainable rate 提升且不降低另一项时采纳。",
-        "策略用 GRPO 在适配后 harness 上训练，新轨迹再驱动下一轮 harness 演化。"
-      ],
-      "results": [
-        "9B 基座下 pass@1 较 GRPO 在 SWE-bench Verified、Multilingual、Pro 分别提升 9.8、12.6、6.4 个百分点。",
-        "平均 pass@1 达 44.9%，高于 GRPO 的 35.3% 和 OpenHands-GRPO 的 39.0%。",
-        "部署时移除演化出的工具与 hook 会使 pass@1 最多下降 7.7 个百分点。"
-      ],
-      "takeaways": [
-        "训练编码 agent 应把 harness 当作可学习组件与策略共同演化，而非固定脚手架。",
-        "训练期技能应讲机理而非给答案，否则移除后性能反而低于 GRPO。"
-      ],
-      "limitations": "仅验证 SWE-bench 类软件修复任务与单一 9B 模型；每种配置只训练一次，候选采纳规则非显著性检验。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "Lean4AgenticRL: Advancing Agentic RL with Verifiable Multi-level Process Rewards",
     "sub_title": "papers · source=arxiv_cs_lg · score=69.0",
     "url_title": "lean4agenticrl-advancing-agentic-rl-with-verifiable-multi-level-process-rewards",
@@ -1148,6 +1150,75 @@
     }
   },
   {
+    "title": "Unsupervised Tool Evolution for Coding Agents in Data-Lake Analytics",
+    "sub_title": "papers · source=arxiv_cs_ai · score=67.2",
+    "url_title": "unsupervised-tool-evolution-for-coding-agents-in-data-lake-analytics",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.27327",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-21T04:00:00Z",
+    "first_seen_at": "2026-10-21T10:20:38Z",
+    "score": 67.2,
+    "scores": {
+      "relevance": 82.0,
+      "popularity": 31.2,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "为数据湖分析场景的编程智能体无监督演化可复用工具",
+    "reason_zh": "编程智能体的工具演化，属智能体框架技术",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Coding agents can answer analytical questions over a data lake by discovering, cleaning, and joining the relevant data. However, they discard this work after each question and redo it from scratch for the next one. Tool evolution, which automatically builds and refines reusable tools across tasks, is a natural fit for this repetition. Since a ground-truth…",
+    "authors": [
+      "Yuqing Yang",
+      "Yurong Liu",
+      "Deqing Fu",
+      "Manav Garg",
+      "Sravan Babu Bodapati",
+      "Fatma Ozcan"
+    ],
+    "author_count": 8,
+    "upvotes": 10,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.27327",
+    "arxiv_id": "2610.27327",
+    "digest": {
+      "problem": "Coding agent 每次回答数据湖分析问题都从零探索、清洗、连接数据，重复劳动且步骤预算紧张时准确率低；数据湖问答缺少 ground-truth 标签，难以监督式构建可复用工具。",
+      "method": [
+        "TEAL 离线演化工具库：Explorer 从数据湖本身提议工具，Critic 从 Worker 轨迹找瓶颈，Skill Writer 维护使用说明。",
+        "无标签验证：重跑 Worker，仅当工具被调用、不增加步骤、答案变化有轨迹证据支持时才保留改动。",
+        "TEAL-Q 用少量种子问题合成可回答的难题，供无真实问题时演化工具库。"
+      ],
+      "results": [
+        "15 步预算下 Sonnet-5 在 KramaBench 提升 9.3 分、LakeQA 提升 21.7 分，四个 Worker 均提升。",
+        "Sonnet-5 的 LakeQA 库在 20 步演化、30 步部署得 68.3，高于 baseline 59.6 和 30 步直接演化的 64.2。",
+        "50 个合成问题演化的库与真实问题相当；库迁移到 Google ADK、Codex CLI、Prime Agent 最高提升 16.3 分。"
+      ],
+      "takeaways": [
+        "把重复的数据探索与清洗固化为带预计算产物的可调用工具，比让 agent 每步手动搜索更省步骤、更稳定。",
+        "无标签时可用重跑行为加轨迹证据做工具验收，紧预算反而提供更有效的演化反馈信号。"
+      ],
+      "limitations": "工具库加长每步 prompt、增加输入 token，且 Worker 每步推理更多，带来额外开销。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "SWE-at-Scale: Scalable Issue Synthesis from Historical Bug Fixes",
     "sub_title": "papers · source=arxiv_cs_se · score=67.0",
     "url_title": "swe-at-scale-scalable-issue-synthesis-from-historical-bug-fixes",
@@ -1294,71 +1365,69 @@
     }
   },
   {
-    "title": "Unsupervised Tool Evolution for Coding Agents in Data-Lake Analytics",
-    "sub_title": "papers · source=arxiv_cs_ai · score=66.7",
-    "url_title": "unsupervised-tool-evolution-for-coding-agents-in-data-lake-analytics",
+    "title": "Good Judgment, Bad Advice: Decision-Model Controllers Raise Agent Cost Without Improving Success",
+    "sub_title": "papers · source=arxiv_cs_ai · score=66.5",
+    "url_title": "good-judgment-bad-advice-decision-model-controllers-raise-agent-cost-without-imp",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.27327",
+    "external_url": "https://arxiv.org/abs/2610.24649",
     "source_id": "arxiv_cs_ai",
     "source_ids": [
       "arxiv_cs_ai",
+      "arxiv_cs_lg",
       "hf_daily_papers"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
     "published_at": "2026-10-21T04:00:00Z",
-    "first_seen_at": "2026-10-21T10:20:38Z",
-    "score": 66.7,
+    "first_seen_at": "2026-10-20T10:12:21Z",
+    "score": 66.5,
     "scores": {
-      "relevance": 82.0,
-      "popularity": 28.6,
+      "relevance": 72.0,
+      "popularity": 32.4,
       "freshness": 100.0,
-      "impact": 0.0
+      "impact": 40.0
     },
     "keywords": [
-      "coding agent"
+      "terminal-bench"
     ],
     "topics": [
       "编程智能体",
-      "代码生成"
+      "开发者与工具研究"
     ],
-    "summary_zh": "为数据湖分析场景的编程智能体无监督演化可复用工具",
-    "reason_zh": "编程智能体的工具演化，属智能体框架技术",
+    "summary_zh": "在 Terminal-Bench 上研究决策模型控制器对终端编程智能体成本与成功率的影响。",
+    "reason_zh": "编程智能体脚手架实证研究，偏成本分析。",
     "relevance_source": "llm",
-    "signals": [],
-    "summary": "Coding agents can answer analytical questions over a data lake by discovering, cleaning, and joining the relevant data. However, they discard this work after each question and redo it from scratch for the next one. Tool evolution, which automatically builds and refines reusable tools across tasks, is a natural fit for this repetition. Since a ground-truth…",
-    "authors": [
-      "Yuqing Yang",
-      "Yurong Liu",
-      "Deqing Fu",
-      "Manav Garg",
-      "Sravan Babu Bodapati",
-      "Fatma Ozcan"
+    "signals": [
+      "open_source_code"
     ],
-    "author_count": 8,
-    "upvotes": 8,
+    "summary": "Agent scaffolds increasingly delegate small decisions (whether to stop, verify, or change approach) to cheaper models. We ask whether a typed decision model, Jev 1.13, consulted only at deterministic decision points, makes a Claude Sonnet 5.5 terminal agent cheaper without making it worse. In a pre-specified study on Terminal-Bench 2.1, we hold one agent…",
+    "authors": [
+      "Naman Vats"
+    ],
+    "author_count": 1,
+    "upvotes": 11,
     "likes": 0,
-    "github_url": "",
+    "github_url": "https://github.com/namanvats/decision-model-controllers",
     "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.27327",
-    "arxiv_id": "2610.27327",
+    "hf_url": "https://huggingface.co/papers/2610.24649",
+    "arxiv_id": "2610.24649",
     "digest": {
-      "problem": "Coding agent 每次回答数据湖分析问题都从零探索、清洗、连接数据，重复劳动且步骤预算紧张时准确率低；数据湖问答缺少 ground-truth 标签，难以监督式构建可复用工具。",
+      "problem": "Agent 脚手架把停止、验证、换策略等小决策交给廉价模型，但这类控制器是否真能降低终端 agent 成本、又不损害成功率，缺少端到端验证。",
       "method": [
-        "TEAL 离线演化工具库：Explorer 从数据湖本身提议工具，Critic 从 Worker 轨迹找瓶颈，Skill Writer 维护使用说明。",
-        "无标签验证：重跑 Worker，仅当工具被调用、不增加步骤、答案变化有轨迹证据支持时才保留改动。",
-        "TEAL-Q 用少量种子问题合成可回答的难题，供无真实问题时演化工具库。"
+        "固定同一 agent loop，仅替换控制器：无控制器、规则、小 LLM、Jev 1.13、安慰剂五组对照。",
+        "在 Terminal-Bench 2.1 的 21 个留出任务上做预注册、安慰剂对照实验，共 315 次试验。",
+        "离线回放决策状态，分别评估排序质量（AUROC）与校准（ECE），再对照在线成本。"
       ],
       "results": [
-        "15 步预算下 Sonnet-5 在 KramaBench 提升 9.3 分、LakeQA 提升 21.7 分，四个 Worker 均提升。",
-        "Sonnet-5 的 LakeQA 库在 20 步演化、30 步部署得 68.3，高于 baseline 59.6 和 30 步直接演化的 64.2。",
-        "50 个合成问题演化的库与真实问题相当；库迁移到 Google ADK、Codex CLI、Prime Agent 最高提升 16.3 分。"
+        "Jev 使每次尝试成本上升 19%（几何均值比 1.19，95% CI 1.02–1.36），通过率同为 73.0%。",
+        "Jev 比小 LLM 控制器便宜（比值 0.81），但比安慰剂贵 22%（1.22，95% CI 1.08–1.39）。",
+        "离线 Q-finish 排序 Jev 的 AUROC 0.78，高于规则 0.62 和小 LLM 0.60，但校准差：平均完成概率 0.50，实际 87% 通过。"
       ],
       "takeaways": [
-        "把重复的数据探索与清洗固化为带预计算产物的可调用工具，比让 agent 每步手动搜索更省步骤、更稳定。",
-        "无标签时可用重跑行为加轨迹证据做工具验收，紧预算反而提供更有效的演化反馈信号。"
+        "控制器应端到端按成本评估，并与规则和安慰剂对照，不能只看判断准确率。",
+        "关键在把概率映射为动作的策略：需按基率设阈值，并提供真正会被使用的停止动作。"
       ],
-      "limitations": "工具库加长每步 prompt、增加输入 token，且 Worker 每步推理更多，带来额外开销。",
+      "limitations": "仅 21 个任务（14 个 easy），通过率区间约 ±11–13pp；只测一个推理模型和一个决策模型，宿主未固定。",
       "basis": "fulltext"
     }
   },
@@ -1501,73 +1570,6 @@
         "用规则检查器定位可复现的学习信号，比逐轮 Monte Carlo 估计成功率更高效。"
       ],
       "limitations": "仅训练 4B 模型，任务限于开源 Python/Go 仓库和单一 bash 工具的最小 harness；规则检查器覆盖范围限制可教行为。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Good Judgment, Bad Advice: Decision-Model Controllers Raise Agent Cost Without Improving Success",
-    "sub_title": "papers · source=arxiv_cs_ai · score=66.2",
-    "url_title": "good-judgment-bad-advice-decision-model-controllers-raise-agent-cost-without-imp",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.24649",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-21T04:00:00Z",
-    "first_seen_at": "2026-10-20T10:12:21Z",
-    "score": 66.2,
-    "scores": {
-      "relevance": 72.0,
-      "popularity": 31.2,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "terminal-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "开发者与工具研究"
-    ],
-    "summary_zh": "在 Terminal-Bench 上研究决策模型控制器对终端编程智能体成本与成功率的影响。",
-    "reason_zh": "编程智能体脚手架实证研究，偏成本分析。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Agent scaffolds increasingly delegate small decisions (whether to stop, verify, or change approach) to cheaper models. We ask whether a typed decision model, Jev 1.13, consulted only at deterministic decision points, makes a Claude Sonnet 5.5 terminal agent cheaper without making it worse. In a pre-specified study on Terminal-Bench 2.1, we hold one agent…",
-    "authors": [
-      "Naman Vats"
-    ],
-    "author_count": 1,
-    "upvotes": 10,
-    "likes": 0,
-    "github_url": "https://github.com/namanvats/decision-model-controllers",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.24649",
-    "arxiv_id": "2610.24649",
-    "digest": {
-      "problem": "Agent 脚手架把停止、验证、换策略等小决策交给廉价模型，但这类控制器是否真能降低终端 agent 成本、又不损害成功率，缺少端到端验证。",
-      "method": [
-        "固定同一 agent loop，仅替换控制器：无控制器、规则、小 LLM、Jev 1.13、安慰剂五组对照。",
-        "在 Terminal-Bench 2.1 的 21 个留出任务上做预注册、安慰剂对照实验，共 315 次试验。",
-        "离线回放决策状态，分别评估排序质量（AUROC）与校准（ECE），再对照在线成本。"
-      ],
-      "results": [
-        "Jev 使每次尝试成本上升 19%（几何均值比 1.19，95% CI 1.02–1.36），通过率同为 73.0%。",
-        "Jev 比小 LLM 控制器便宜（比值 0.81），但比安慰剂贵 22%（1.22，95% CI 1.08–1.39）。",
-        "离线 Q-finish 排序 Jev 的 AUROC 0.78，高于规则 0.62 和小 LLM 0.60，但校准差：平均完成概率 0.50，实际 87% 通过。"
-      ],
-      "takeaways": [
-        "控制器应端到端按成本评估，并与规则和安慰剂对照，不能只看判断准确率。",
-        "关键在把概率映射为动作的策略：需按基率设阈值，并提供真正会被使用的停止动作。"
-      ],
-      "limitations": "仅 21 个任务（14 个 easy），通过率区间约 ±11–13pp；只测一个推理模型和一个决策模型，宿主未固定。",
       "basis": "fulltext"
     }
   },
