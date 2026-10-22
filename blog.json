@@ -1,5 +1,76 @@
 [
   {
+    "title": "Training the Whole Agent, Not Just the Model",
+    "sub_title": "papers · source=arxiv_cs_se · score=75.6",
+    "url_title": "training-the-whole-agent-not-just-the-model",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.28069",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-21T04:00:00Z",
+    "first_seen_at": "2026-10-21T10:20:38Z",
+    "score": 75.6,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 33.4,
+      "freshness": 79.4,
+      "impact": 55.0
+    },
+    "keywords": [
+      "swe-bench",
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "HarnessAdapt-RL在强化学习中同时训练策略并适配编程智能体框架",
+    "reason_zh": "核心是编程智能体训练方法",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "Training coding agents typically updates the policy while keeping the harness fixed. During training, trajectories reveal flawed repair strategies and interaction problems that vary across tasks and change as the policy learns. We introduce HarnessAdapt-RL, which trains the policy and adapts its harness during reinforcement learning. For flawed repair…",
+    "authors": [
+      "Lingxiao Tang",
+      "Wei Tao",
+      "Yiwen Guo",
+      "Lingfeng Bao"
+    ],
+    "author_count": 4,
+    "upvotes": 12,
+    "likes": 0,
+    "github_url": "https://github.com/lingxiaotang/HarnessAdapt-RL",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2610.28069",
+    "arxiv_id": "2610.28069",
+    "digest": {
+      "problem": "训练编码 agent 时通常只更新策略而固定 harness，但轨迹暴露的修复策略缺陷和交互问题随任务与策略变化，固定 harness 无法持续适配。",
+      "method": [
+        "用冻结 teacher 从当前策略轨迹生成机制级技能，只讲修复机理、不给具体代码答案。",
+        "另一 teacher 针对跨任务复现的交互问题演化工具与 hook，仅当 pass rate 或 trainable rate 提升且不降低另一项时采纳。",
+        "策略用 GRPO 在适配后 harness 上训练，新轨迹再驱动下一轮 harness 演化。"
+      ],
+      "results": [
+        "9B 基座下 pass@1 较 GRPO 在 SWE-bench Verified、Multilingual、Pro 分别提升 9.8、12.6、6.4 个百分点。",
+        "平均 pass@1 达 44.9%，高于 GRPO 的 35.3% 和 OpenHands-GRPO 的 39.0%。",
+        "部署时移除演化出的工具与 hook 会使 pass@1 最多下降 7.7 个百分点。"
+      ],
+      "takeaways": [
+        "训练编码 agent 应把 harness 当作可学习组件与策略共同演化，而非固定脚手架。",
+        "训练期技能应讲机理而非给答案，否则移除后性能反而低于 GRPO。"
+      ],
+      "limitations": "仅验证 SWE-bench 类软件修复任务与单一 9B 模型；每种配置只训练一次，候选采纳规则非显著性检验。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Self-Evolving Coding Agents via Harness-Policy Optimization",
     "sub_title": "papers · source=arxiv_cs_cl · score=75.4",
     "url_title": "self-evolving-coding-agents-via-harness-policy-optimization",
@@ -72,77 +143,6 @@
     }
   },
   {
-    "title": "Training the Whole Agent, Not Just the Model",
-    "sub_title": "papers · source=arxiv_cs_se · score=75.3",
-    "url_title": "training-the-whole-agent-not-just-the-model",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.28069",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-21T04:00:00Z",
-    "first_seen_at": "2026-10-21T10:20:38Z",
-    "score": 75.3,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 32.4,
-      "freshness": 79.4,
-      "impact": 55.0
-    },
-    "keywords": [
-      "swe-bench",
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理"
-    ],
-    "summary_zh": "HarnessAdapt-RL在强化学习中同时训练策略并适配编程智能体框架",
-    "reason_zh": "核心是编程智能体训练方法",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Training coding agents typically updates the policy while keeping the harness fixed. During training, trajectories reveal flawed repair strategies and interaction problems that vary across tasks and change as the policy learns. We introduce HarnessAdapt-RL, which trains the policy and adapts its harness during reinforcement learning. For flawed repair…",
-    "authors": [
-      "Lingxiao Tang",
-      "Wei Tao",
-      "Yiwen Guo",
-      "Lingfeng Bao"
-    ],
-    "author_count": 4,
-    "upvotes": 11,
-    "likes": 0,
-    "github_url": "https://github.com/lingxiaotang/HarnessAdapt-RL",
-    "github_stars": 1,
-    "hf_url": "https://huggingface.co/papers/2610.28069",
-    "arxiv_id": "2610.28069",
-    "digest": {
-      "problem": "训练编码 agent 时通常只更新策略而固定 harness，但轨迹暴露的修复策略缺陷和交互问题随任务与策略变化，固定 harness 无法持续适配。",
-      "method": [
-        "用冻结 teacher 从当前策略轨迹生成机制级技能，只讲修复机理、不给具体代码答案。",
-        "另一 teacher 针对跨任务复现的交互问题演化工具与 hook，仅当 pass rate 或 trainable rate 提升且不降低另一项时采纳。",
-        "策略用 GRPO 在适配后 harness 上训练，新轨迹再驱动下一轮 harness 演化。"
-      ],
-      "results": [
-        "9B 基座下 pass@1 较 GRPO 在 SWE-bench Verified、Multilingual、Pro 分别提升 9.8、12.6、6.4 个百分点。",
-        "平均 pass@1 达 44.9%，高于 GRPO 的 35.3% 和 OpenHands-GRPO 的 39.0%。",
-        "部署时移除演化出的工具与 hook 会使 pass@1 最多下降 7.7 个百分点。"
-      ],
-      "takeaways": [
-        "训练编码 agent 应把 harness 当作可学习组件与策略共同演化，而非固定脚手架。",
-        "训练期技能应讲机理而非给答案，否则移除后性能反而低于 GRPO。"
-      ],
-      "limitations": "仅验证 SWE-bench 类软件修复任务与单一 9B 模型；每种配置只训练一次，候选采纳规则非显著性检验。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "duc-anh-2002/SWE-Misbehavior",
     "sub_title": "datasets · source=hf_datasets_swe · score=74.0",
     "url_title": "duc-anh-2002swe-misbehavior",
@@ -154,7 +154,7 @@
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-10-22T04:00:44Z",
+    "published_at": "2026-10-22T16:52:38Z",
     "first_seen_at": "2026-10-22T10:20:22Z",
     "score": 74.0,
     "scores": {
@@ -404,6 +404,78 @@
     }
   },
   {
+    "title": "AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics",
+    "sub_title": "papers · source=hf_daily_papers · score=70.9",
+    "url_title": "agenticroborl-bringing-coding-agent-post-training-to-agentic-robotics",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.28589",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-20T00:00:00Z",
+    "first_seen_at": "2026-10-22T10:20:22Z",
+    "score": 70.9,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 39.7,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "code generation",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "将编程智能体的后训练方法迁移到机器人智能体规划器",
+    "reason_zh": "核心是编程智能体后训练技术跨域应用",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Agentic robotics systems combine planners with robot harnesses to perform complex manipulation tasks. Recent work improves these systems through better harnesses and external memory, but relies on powerful closed-source models as planners and does not improve the planners' own capabilities. In contrast, coding agents have improved substantially by…",
+    "authors": [
+      "Xinxin Liu",
+      "Bingxin Xu",
+      "Wenrui Bao",
+      "Ming Li",
+      "Wentao Bao",
+      "Chen Chen"
+    ],
+    "author_count": 7,
+    "upvotes": 20,
+    "likes": 0,
+    "github_url": "https://github.com/xinxinliu-ai/AgenticRoboRL",
+    "github_stars": 11,
+    "hf_url": "https://huggingface.co/papers/2610.28589",
+    "arxiv_id": "2610.28589",
+    "digest": {
+      "problem": "机器人智能体依赖强闭源模型作规划器，仅靠改进 harness 和外部记忆，未提升规划器自身能力。",
+      "method": [
+        "用成功轨迹做 SFT，再用多轮 RL 以任务成功为唯一奖励微调规划器。",
+        "在模型调用边界记录交互，harness 专用 adapter 将调用与 episode 结果关联。",
+        "只训练规划器，VLA 与执行组件保持冻结，兼容 VLA 技能调用与控制代码生成。"
+      ],
+      "results": [
+        "LIBERO-PRO 上 9B 规划器成功率从 18.1% 升至 71.0%，接近 Codex(GPT-5.5) 带记忆的 72.1%。",
+        "SFT 单独达 65.1%；同一 checkpoint 在 LIBERO-Plus 无额外训练达 72.2%，原模型 19.2%。",
+        "CaP-X harness 上成功率从 2.7% 提升到 28.5%。"
+      ],
+      "takeaways": [
+        "后训练规划器比换更强闭源模型或加外部记忆更划算，9B 可逼近大模型带记忆表现。",
+        "训练接口放在模型调用层而非底层动作层，可复用同一 RL 流程适配不同机器人 harness。"
+      ],
+      "limitations": "仅在 LIBERO 系列仿真基准与两个 harness 上验证，真实机器人场景未评估。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "EdgeKernelBench: Unified LLM-Driven Kernel Generation for Edge Backends",
     "sub_title": "papers · source=arxiv_cs_lg · score=70.8",
     "url_title": "edgekernelbench-unified-llm-driven-kernel-generation-for-edge-backends",
@@ -475,74 +547,76 @@
     }
   },
   {
-    "title": "AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics",
-    "sub_title": "papers · source=hf_daily_papers · score=70.7",
-    "url_title": "agenticroborl-bringing-coding-agent-post-training-to-agentic-robotics",
+    "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
+    "sub_title": "papers · source=arxiv_cs_se · score=70.7",
+    "url_title": "verifierbench-benchmarking-the-generation-of-executable-verifiers-for-llm-agents",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.28589",
-    "source_id": "hf_daily_papers",
+    "external_url": "https://arxiv.org/abs/2610.28679",
+    "source_id": "arxiv_cs_se",
     "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
       "hf_daily_papers"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-20T00:00:00Z",
+    "published_at": "2026-10-22T04:00:00Z",
     "first_seen_at": "2026-10-22T10:20:22Z",
     "score": 70.7,
     "scores": {
       "relevance": 78.0,
-      "popularity": 38.4,
+      "popularity": 21.0,
       "freshness": 100.0,
-      "impact": 40.0
+      "impact": 75.0
     },
     "keywords": [
-      "coding agent",
-      "code generation",
-      "codex"
+      "test case"
     ],
     "topics": [
+      "评测基准",
       "编程智能体",
-      "模型训练与推理"
+      "测试与验证"
     ],
-    "summary_zh": "将编程智能体的后训练方法迁移到机器人智能体规划器",
-    "reason_zh": "核心是编程智能体后训练技术跨域应用",
+    "summary_zh": "提出VerifierBench，评测智能体为任务生成可执行验证器的能力",
+    "reason_zh": "智能体验证器生成基准，与编程验证相关",
     "relevance_source": "llm",
     "signals": [
+      "new_benchmark",
       "open_source_code"
     ],
-    "summary": "Agentic robotics systems combine planners with robot harnesses to perform complex manipulation tasks. Recent work improves these systems through better harnesses and external memory, but relies on powerful closed-source models as planners and does not improve the planners' own capabilities. In contrast, coding agents have improved substantially by…",
+    "summary": "Agents need reliable ways to validate their outputs, both when completing tasks and when filtering synthetic training data. We study verifier generation: from the instruction and environment available for solving a task, an agent writes an executable verifier that must accept every valid solution and reject invalid ones. We introduce VerifierBench, a…",
     "authors": [
-      "Xinxin Liu",
-      "Bingxin Xu",
-      "Wenrui Bao",
-      "Ming Li",
-      "Wentao Bao",
-      "Chen Chen"
+      "Jianing Yin",
+      "Ziyi Chen",
+      "Hao Wang",
+      "Yiyou Sun",
+      "Zijian Jin",
+      "Dawn Song"
     ],
     "author_count": 7,
-    "upvotes": 18,
+    "upvotes": 4,
     "likes": 0,
-    "github_url": "https://github.com/xinxinliu-ai/AgenticRoboRL",
-    "github_stars": 11,
-    "hf_url": "https://huggingface.co/papers/2610.28589",
-    "arxiv_id": "2610.28589",
+    "github_url": "https://github.com/DwanZhang-AI/verifier-suite",
+    "github_stars": 3,
+    "hf_url": "https://huggingface.co/papers/2610.28679",
+    "arxiv_id": "2610.28679",
     "digest": {
-      "problem": "机器人智能体依赖强闭源模型作规划器，仅靠改进 harness 和外部记忆，未提升规划器自身能力。",
+      "problem": "LLM agent 需要可执行 verifier 来判定任务输出是否正确，但 agent 生成的 verifier 可能误判，影响任务完成与合成训练数据筛选。",
       "method": [
-        "用成功轨迹做 SFT，再用多轮 RL 以任务成功为唯一奖励微调规划器。",
-        "在模型调用边界记录交互，harness 专用 adapter 将调用与 episode 结果关联。",
-        "只训练规划器，VLA 与执行组件保持冻结，兼容 VLA 技能调用与控制代码生成。"
+        "构建 VerifierBench：222 个任务、4,993 个隐藏测试用例，含有效变体与攻击。",
+        "提出 Verifier4Verifier（V4V）六项审计，筛除源 verifier 与测试用例缺陷。",
+        "在统一 harness 下评测 19 个模型，并比较 17 种模型–harness 配置。"
       ],
       "results": [
-        "LIBERO-PRO 上 9B 规划器成功率从 18.1% 升至 71.0%，接近 Codex(GPT-5.5) 带记忆的 72.1%。",
-        "SFT 单独达 65.1%；同一 checkpoint 在 LIBERO-Plus 无额外训练达 72.2%，原模型 19.2%。",
-        "CaP-X harness 上成功率从 2.7% 提升到 28.5%。"
+        "BAnorm 仅 10.6–62.1，GPT-6-astra 最高 62.1，Claude Opus 4.8 为 54.0。",
+        "所有模型 TPR（21.1%–70.2%）均低于 TNR（79.2%–96.3%）。",
+        "all-reject verifier 贡献 87.9–96.0% 的误拒；Claude Code 使 Opus 4.8 提升 12.2 分。"
       ],
       "takeaways": [
-        "后训练规划器比换更强闭源模型或加外部记忆更划算，9B 可逼近大模型带记忆表现。",
-        "训练接口放在模型调用层而非底层动作层，可复用同一 RL 流程适配不同机器人 harness。"
+        "评测 verifier 需同时测其接受正确解与任务允许的其他解，而非只看拒绝率。",
+        "agent 自测常与 verifier 共享错误假设，应强制验证至少一个完整正确解通过。"
       ],
-      "limitations": "仅在 LIBERO 系列仿真基准与两个 harness 上验证，真实机器人场景未评估。",
+      "limitations": "分数仅反映与保留参考 verifier 在有限构造用例上的一致；跨 harness 差异未隔离组件，排名无重复生成或显著性检验。",
       "basis": "fulltext"
     }
   },
@@ -1538,6 +1612,79 @@
     }
   },
   {
+    "title": "Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild?",
+    "sub_title": "papers · source=arxiv_cs_cl · score=65.7",
+    "url_title": "automating-ml-for-science-can-frontier-agents-climb-scientific-hills-in-the-wild",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.28763",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-22T04:00:00Z",
+    "first_seen_at": "2026-10-22T10:20:22Z",
+    "score": 65.7,
+    "scores": {
+      "relevance": 70.0,
+      "popularity": 33.4,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "codex",
+      "github"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出 Agent4Sci 长程测试平台，衡量前沿编程智能体改进科学 ML 基准模型的能力。",
+    "reason_zh": "编程智能体在科学 ML 任务上的能力评测。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Frontier coding agents are increasingly framed as end-to-end automated researchers, and ML for science offers a demanding test of that promise: improving a scientific model often requires domain insight beyond routine ML engineering. We introduce Agent4Sci, a long-horizon testbed for measuring how far today's agents can improve the published best models on…",
+    "authors": [
+      "Ming Zhong",
+      "Stacy Li",
+      "Nicholas Carlini",
+      "Matthew Jagielski"
+    ],
+    "author_count": 4,
+    "upvotes": 12,
+    "likes": 0,
+    "github_url": "https://github.com/maszhongming/agent4sci",
+    "github_stars": 2,
+    "hf_url": "https://huggingface.co/papers/2610.28763",
+    "arxiv_id": "2610.28763",
+    "digest": {
+      "problem": "前沿编程 agent 被宣传为端到端自动科研，但在真实科学 ML 任务上能否超越已发表最优模型、是否产生研究级洞见尚不清楚。",
+      "method": [
+        "构建 Agent4Sci：20 个科学 ML benchmark、25 个任务、11 个领域，人工复现并标准化环境。",
+        "三阶段协议：爬坡 agent 仅见训练/验证集，独立评估 agent 跑留出测试集，审计 agent 查学术不端。",
+        "加入研究构思、实验管理、定时清单等轻量插件技能，不改评估协议。"
+      ],
+      "results": [
+        "四个前沿 agent 在全部 20 个 benchmark 上均超过已发表最优，Claude Opus 平均相对提升 10.4%，Codex 4.4%。",
+        "审计未发现学术不端；但提升主要来自调参、换骨干、加辅助损失等 ML 工程技巧。",
+        "插件技能使 Claude Opus 从 10.4% 升至 20.1%，Codex 从 4.4% 升至 8.1%。"
+      ],
+      "takeaways": [
+        "当前 agent 能自动爬科学指标山，但靠工程套路而非领域洞见，别高估其科研能力。",
+        "给 agent 加构思与实验管理技能可显著提升收益，值得在工具链中尝试。"
+      ],
+      "limitations": "非排行榜，长程运行方差大；仅测单 agent 默认框架；插件技能可能对领域和 Claude 系过拟合；无人类研究者基线。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "SWE-at-Scale: Scalable Issue Synthesis from Historical Bug Fixes",
     "sub_title": "papers · source=arxiv_cs_se · score=65.7",
     "url_title": "swe-at-scale-scalable-issue-synthesis-from-historical-bug-fixes",
@@ -1607,79 +1754,6 @@
         "把 bug 逻辑显式写成自然语言模式再落地，可显著提升任务可用率与难度"
       ],
       "limitations": "训练数据来自既有修复数据集，需过滤仓库重叠；合成任务依赖测试套件能触发 Pass-to-Fail 才被保留。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild?",
-    "sub_title": "papers · source=arxiv_cs_cl · score=65.5",
-    "url_title": "automating-ml-for-science-can-frontier-agents-climb-scientific-hills-in-the-wild",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.28763",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "arxiv_cs_ai",
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-22T04:00:00Z",
-    "first_seen_at": "2026-10-22T10:20:22Z",
-    "score": 65.5,
-    "scores": {
-      "relevance": 70.0,
-      "popularity": 32.4,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "codex",
-      "github"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "提出 Agent4Sci 长程测试平台，衡量前沿编程智能体改进科学 ML 基准模型的能力。",
-    "reason_zh": "编程智能体在科学 ML 任务上的能力评测。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Frontier coding agents are increasingly framed as end-to-end automated researchers, and ML for science offers a demanding test of that promise: improving a scientific model often requires domain insight beyond routine ML engineering. We introduce Agent4Sci, a long-horizon testbed for measuring how far today's agents can improve the published best models on…",
-    "authors": [
-      "Ming Zhong",
-      "Stacy Li",
-      "Nicholas Carlini",
-      "Matthew Jagielski"
-    ],
-    "author_count": 4,
-    "upvotes": 11,
-    "likes": 0,
-    "github_url": "https://github.com/maszhongming/agent4sci",
-    "github_stars": 1,
-    "hf_url": "https://huggingface.co/papers/2610.28763",
-    "arxiv_id": "2610.28763",
-    "digest": {
-      "problem": "前沿编程 agent 被宣传为端到端自动科研，但在真实科学 ML 任务上能否超越已发表最优模型、是否产生研究级洞见尚不清楚。",
-      "method": [
-        "构建 Agent4Sci：20 个科学 ML benchmark、25 个任务、11 个领域，人工复现并标准化环境。",
-        "三阶段协议：爬坡 agent 仅见训练/验证集，独立评估 agent 跑留出测试集，审计 agent 查学术不端。",
-        "加入研究构思、实验管理、定时清单等轻量插件技能，不改评估协议。"
-      ],
-      "results": [
-        "四个前沿 agent 在全部 20 个 benchmark 上均超过已发表最优，Claude Opus 平均相对提升 10.4%，Codex 4.4%。",
-        "审计未发现学术不端；但提升主要来自调参、换骨干、加辅助损失等 ML 工程技巧。",
-        "插件技能使 Claude Opus 从 10.4% 升至 20.1%，Codex 从 4.4% 升至 8.1%。"
-      ],
-      "takeaways": [
-        "当前 agent 能自动爬科学指标山，但靠工程套路而非领域洞见，别高估其科研能力。",
-        "给 agent 加构思与实验管理技能可显著提升收益，值得在工具链中尝试。"
-      ],
-      "limitations": "非排行榜，长程运行方差大；仅测单 agent 默认框架；插件技能可能对领域和 Claude 系过拟合；无人类研究者基线。",
       "basis": "fulltext"
     }
   },
@@ -2034,71 +2108,6 @@
         "仅靠父节点历史分数排序不够，diff本身的内容信号能带来额外增益。"
       ],
       "limitations": "打分器为单次投影8维的线性模型，系数24步固定，仅验证Claude Sonnet 4.5与GPT-4o及两个基准。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "AutoFraming: Synthesizing Dynamic Frames of C Code with LLMs",
-    "sub_title": "papers · source=arxiv_cs_ai · score=64.0",
-    "url_title": "autoframing-synthesizing-dynamic-frames-of-c-code-with-llms",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.29046",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-22T04:00:00Z",
-    "first_seen_at": "2026-10-22T10:20:22Z",
-    "score": 64.0,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "测试与验证"
-    ],
-    "summary_zh": "用 LLM 为 C 代码合成动态 frame 条件形式化规约",
-    "reason_zh": "LLM 生成代码形式化规约，属代码理解验证",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "Large language models (LLMs) have shown considerable promise in synthesizing formal specifications from source code. However, existing approaches primarily focus on functional contracts and loop invariants, while largely neglecting frame conditions, which specify the memory locations that may or may not be modified during execution and constitute an…",
-    "authors": [
-      "Han Zhou",
-      "Yu Luo",
-      "Dianxiang Xu"
-    ],
-    "author_count": 3,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.29046",
-    "digest": {
-      "problem": "现有 LLM 生成 ACSL 规范主要关注功能契约与循环不变式，忽视 frame condition（内存修改范围与分离约束），导致验证通过但契约过弱、调用方无法安全复用。",
-      "method": [
-        "用 code property graph 提取调用者可见根、访问窗口、干扰指针对、写集位置与依赖足迹。",
-        "将分析结果确定性投影为 \\separated 前置条件与 assigns…\\from 子句组成的 frame 骨架。",
-        "LLM 仅负责补全外围契约并用 Frama-C 反馈修复，且必须保留投影出的 frame 约束。"
-      ],
-      "results": [
-        "84 个真实系统函数上 92.9% 生成无错 frame 规范，相对 SOTA 提升 179%。",
-        "51 个学术基准函数上无错率从 80.4% 提升到 96.1%。",
-        "作为辅助组件接入 Preguss、AutoSpec 等框架，frame 生成性能最高提升 61.9%。"
-      ],
-      "takeaways": [
-        "frame 条件应从程序分析确定性导出，而非让 LLM 从源码猜测。",
-        "验证通过不等于契约完整，需单独度量 frame 的分离与依赖信息。"
-      ],
-      "limitations": "投影约束允许等价或更强的重写，可能改变证明负担；访问窗口无法在函数入口表达时只能取近似。",
       "basis": "fulltext"
     }
   }
