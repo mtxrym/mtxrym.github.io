@@ -143,6 +143,80 @@
     }
   },
   {
+    "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
+    "sub_title": "papers · source=arxiv_cs_se · score=65.0",
+    "url_title": "verifierbench-benchmarking-the-generation-of-executable-verifiers-for-llm-agents",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.28679",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-22T04:00:00Z",
+    "first_seen_at": "2026-10-22T10:20:22Z",
+    "score": 65.0,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 42.4,
+      "freshness": 50.0,
+      "impact": 75.0
+    },
+    "keywords": [
+      "test case"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "测试与验证"
+    ],
+    "summary_zh": "提出VerifierBench，评测智能体为任务生成可执行验证器的能力",
+    "reason_zh": "智能体验证器生成基准，与编程验证相关",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Agents need reliable ways to validate their outputs, both when completing tasks and when filtering synthetic training data. We study verifier generation: from the instruction and environment available for solving a task, an agent writes an executable verifier that must accept every valid solution and reject invalid ones. We introduce VerifierBench, a…",
+    "authors": [
+      "Jianing Yin",
+      "Ziyi Chen",
+      "Hao Wang",
+      "Yiyou Sun",
+      "Zijian Jin",
+      "Dawn Song"
+    ],
+    "author_count": 7,
+    "upvotes": 25,
+    "likes": 0,
+    "github_url": "https://github.com/DwanZhang-AI/verifier-suite",
+    "github_stars": 3,
+    "hf_url": "https://huggingface.co/papers/2610.28679",
+    "arxiv_id": "2610.28679",
+    "digest": {
+      "problem": "LLM agent 需要可执行 verifier 来判定任务输出是否正确，但 agent 生成的 verifier 可能误判，影响任务完成与合成训练数据筛选。",
+      "method": [
+        "构建 VerifierBench：222 个任务、4,993 个隐藏测试用例，含有效变体与攻击。",
+        "提出 Verifier4Verifier（V4V）六项审计，筛除源 verifier 与测试用例缺陷。",
+        "在统一 harness 下评测 19 个模型，并比较 17 种模型–harness 配置。"
+      ],
+      "results": [
+        "BAnorm 仅 10.6–62.1，GPT-6-astra 最高 62.1，Claude Opus 4.8 为 54.0。",
+        "所有模型 TPR（21.1%–70.2%）均低于 TNR（79.2%–96.3%）。",
+        "all-reject verifier 贡献 87.9–96.0% 的误拒；Claude Code 使 Opus 4.8 提升 12.2 分。"
+      ],
+      "takeaways": [
+        "评测 verifier 需同时测其接受正确解与任务允许的其他解，而非只看拒绝率。",
+        "agent 自测常与 verifier 共享错误假设，应强制验证至少一个完整正确解通过。"
+      ],
+      "limitations": "分数仅反映与保留参考 verifier 在有限构造用例上的一致；跨 harness 差异未隔离组件，排名无重复生成或显著性检验。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "duc-anh-2002/SWE-Misbehavior",
     "sub_title": "datasets · source=hf_datasets_swe · score=64.8",
     "url_title": "duc-anh-2002swe-misbehavior",
@@ -187,80 +261,6 @@
     "hf_url": "",
     "arxiv_id": "",
     "digest": null
-  },
-  {
-    "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=64.8",
-    "url_title": "verifierbench-benchmarking-the-generation-of-executable-verifiers-for-llm-agents",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.28679",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-22T04:00:00Z",
-    "first_seen_at": "2026-10-22T10:20:22Z",
-    "score": 64.8,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 41.4,
-      "freshness": 50.0,
-      "impact": 75.0
-    },
-    "keywords": [
-      "test case"
-    ],
-    "topics": [
-      "评测基准",
-      "编程智能体",
-      "测试与验证"
-    ],
-    "summary_zh": "提出VerifierBench，评测智能体为任务生成可执行验证器的能力",
-    "reason_zh": "智能体验证器生成基准，与编程验证相关",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "Agents need reliable ways to validate their outputs, both when completing tasks and when filtering synthetic training data. We study verifier generation: from the instruction and environment available for solving a task, an agent writes an executable verifier that must accept every valid solution and reject invalid ones. We introduce VerifierBench, a…",
-    "authors": [
-      "Jianing Yin",
-      "Ziyi Chen",
-      "Hao Wang",
-      "Yiyou Sun",
-      "Zijian Jin",
-      "Dawn Song"
-    ],
-    "author_count": 7,
-    "upvotes": 23,
-    "likes": 0,
-    "github_url": "https://github.com/DwanZhang-AI/verifier-suite",
-    "github_stars": 3,
-    "hf_url": "https://huggingface.co/papers/2610.28679",
-    "arxiv_id": "2610.28679",
-    "digest": {
-      "problem": "LLM agent 需要可执行 verifier 来判定任务输出是否正确，但 agent 生成的 verifier 可能误判，影响任务完成与合成训练数据筛选。",
-      "method": [
-        "构建 VerifierBench：222 个任务、4,993 个隐藏测试用例，含有效变体与攻击。",
-        "提出 Verifier4Verifier（V4V）六项审计，筛除源 verifier 与测试用例缺陷。",
-        "在统一 harness 下评测 19 个模型，并比较 17 种模型–harness 配置。"
-      ],
-      "results": [
-        "BAnorm 仅 10.6–62.1，GPT-6-astra 最高 62.1，Claude Opus 4.8 为 54.0。",
-        "所有模型 TPR（21.1%–70.2%）均低于 TNR（79.2%–96.3%）。",
-        "all-reject verifier 贡献 87.9–96.0% 的误拒；Claude Code 使 Opus 4.8 提升 12.2 分。"
-      ],
-      "takeaways": [
-        "评测 verifier 需同时测其接受正确解与任务允许的其他解，而非只看拒绝率。",
-        "agent 自测常与 verifier 共享错误假设，应强制验证至少一个完整正确解通过。"
-      ],
-      "limitations": "分数仅反映与保留参考 verifier 在有限构造用例上的一致；跨 harness 差异未隔离组件，排名无重复生成或显著性检验。",
-      "basis": "fulltext"
-    }
   },
   {
     "title": "Benchmarking Coding Agents for System-Level Performance Optimization",
@@ -350,7 +350,7 @@
     "score": 63.1,
     "scores": {
       "relevance": 78.0,
-      "popularity": 50.4,
+      "popularity": 50.7,
       "freshness": 50.0,
       "impact": 40.0
     },
@@ -379,10 +379,10 @@
       "Chen Chen"
     ],
     "author_count": 7,
-    "upvotes": 47,
+    "upvotes": 48,
     "likes": 0,
     "github_url": "https://github.com/xinxinliu-ai/AgenticRoboRL",
-    "github_stars": 19,
+    "github_stars": 21,
     "hf_url": "https://huggingface.co/papers/2610.28589",
     "arxiv_id": "2610.28589",
     "digest": {
@@ -550,7 +550,7 @@
   },
   {
     "title": "IQuest-Q1: Advancing Foundation Capabilities for Agentic CLI Systems",
-    "sub_title": "papers · source=arxiv_cs_cl · score=61.7",
+    "sub_title": "papers · source=arxiv_cs_cl · score=61.8",
     "url_title": "iquest-q1-advancing-foundation-capabilities-for-agentic-cli-systems",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.30949",
@@ -563,10 +563,10 @@
     "category": "papers",
     "published_at": "2026-10-24T04:00:00Z",
     "first_seen_at": "2026-10-23T10:15:44Z",
-    "score": 61.7,
+    "score": 61.8,
     "scores": {
       "relevance": 60.0,
-      "popularity": 59.2,
+      "popularity": 59.6,
       "freshness": 79.4,
       "impact": 40.0
     },
@@ -593,7 +593,7 @@
       "Chuan Shi"
     ],
     "author_count": 177,
-    "upvotes": 93,
+    "upvotes": 96,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -1690,7 +1690,7 @@
   },
   {
     "title": "SplatLab: Autonomous Scientific Discovery for 3DGS Research",
-    "sub_title": "papers · source=arxiv_cs_ai · score=58.0",
+    "sub_title": "papers · source=arxiv_cs_ai · score=58.3",
     "url_title": "splatlab-autonomous-scientific-discovery-for-3dgs-research",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.30468",
@@ -1703,10 +1703,10 @@
     "category": "papers",
     "published_at": "2026-10-23T04:00:00Z",
     "first_seen_at": "2026-10-23T10:15:44Z",
-    "score": 58.0,
+    "score": 58.3,
     "scores": {
       "relevance": 72.0,
-      "popularity": 27.1,
+      "popularity": 28.6,
       "freshness": 63.0,
       "impact": 40.0
     },
@@ -1727,7 +1727,7 @@
       "Manmohan Chandraker"
     ],
     "author_count": 2,
-    "upvotes": 7,
+    "upvotes": 8,
     "likes": 0,
     "github_url": "https://github.com/seemandhar/SplatLab",
     "github_stars": 10,
@@ -1873,7 +1873,7 @@
   },
   {
     "title": "Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild?",
-    "sub_title": "papers · source=arxiv_cs_cl · score=57.7",
+    "sub_title": "papers · source=arxiv_cs_cl · score=57.8",
     "url_title": "automating-ml-for-science-can-frontier-agents-climb-scientific-hills-in-the-wild",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.28763",
@@ -1888,10 +1888,10 @@
     "category": "papers",
     "published_at": "2026-10-22T04:00:00Z",
     "first_seen_at": "2026-10-22T10:20:22Z",
-    "score": 57.7,
+    "score": 57.8,
     "scores": {
       "relevance": 70.0,
-      "popularity": 43.4,
+      "popularity": 43.9,
       "freshness": 50.0,
       "impact": 40.0
     },
@@ -1918,7 +1918,7 @@
       "Matthew Jagielski"
     ],
     "author_count": 4,
-    "upvotes": 27,
+    "upvotes": 28,
     "likes": 0,
     "github_url": "https://github.com/maszhongming/agent4sci",
     "github_stars": 9,
