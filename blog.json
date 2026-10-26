@@ -975,6 +975,77 @@
     }
   },
   {
+    "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
+    "sub_title": "papers · source=arxiv_cs_ai · score=64.2",
+    "url_title": "paperformalizer-author-in-the-loop-autoformalization-of-research-papers-in-lean",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.31810",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-26T04:00:00Z",
+    "first_seen_at": "2026-10-26T11:18:31Z",
+    "score": 64.2,
+    "scores": {
+      "relevance": 72.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "claude code",
+      "codex"
+    ],
+    "topics": [
+      "代码理解与检索",
+      "测试与验证",
+      "编程智能体"
+    ],
+    "summary_zh": "用 Lean 智能体流水线将论文 LaTeX 形式化并验证证明漏洞",
+    "reason_zh": "形式化验证智能体，与代码/证明生成相关但偏数学",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Even a carefully proofread paper can leave small gaps in its proofs or its stated assumptions. We introduce PaperFormalizer, a Lean-based agentic pipeline that helps authors find and close such gaps in their own papers and turn each paper into a Lean-verified version. Starting from the LaTeX source, PaperFormalizer transcribes the paper into a dependency…",
+    "authors": [
+      "Jiyuan Tan",
+      "Vasilis Syrgkanis",
+      "Jose Blanchet"
+    ],
+    "author_count": 3,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.31810",
+    "arxiv_id": "2610.31810",
+    "digest": {
+      "problem": "研究论文的证明常含边界情形、缺失正则条件等小漏洞，人工用 Lean 形式化需数周，而全自动形式化无法处理语义歧义与修复意图。",
+      "method": [
+        "将 LaTeX 转成语句依赖图，按忠实性、歧义、正确性逐节点审查并提出最小修复。",
+        "规划后复用 Mathlib、领域库与个人工具包，分脚手架、证明填充、链接六阶段形式化。",
+        "作者在环：歧义解读、影响主结果的修复、工具包晋升等决策由作者在网页上确认。"
+      ],
+      "results": [
+        "案例论文 7 个结果全部 Lean 证明，无 sorry 与额外公理，其中 5 个原陈述不成立并被修复。",
+        "该 Lean 开发含 136 个文件约 26,000 行，另复用工具包 Foundations 13 个模块约 2,500 行。",
+        "另两篇共享论文：最优传输 12 个结果全部按原样证明；神经因果模型 29 个中证明 20 个、反驳 2 个。"
+      ],
+      "takeaways": [
+        "形式化应把语义歧义与修复决策交还作者，工具只给建议，避免证明作者未意图的命题。",
+        "个人工具包随论文积累可复用，后续论文形式化成本递减，值得在项目中沉淀可复用引理。"
+      ],
+      "limitations": "仅在三篇作者自著论文上做案例研究，未与其他自动形式化系统做定量对比。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Beyond Coverage and Mutation: A Blind-Spot Analysis of LLM-Generated Unit Tests",
     "sub_title": "papers · source=arxiv_cs_se · score=64.0",
     "url_title": "beyond-coverage-and-mutation-a-blind-spot-analysis-of-llm-generated-unit-tests",
@@ -1183,77 +1254,6 @@
         "agent 自测常与 verifier 共享错误假设，应强制验证至少一个完整正确解通过。"
       ],
       "limitations": "分数仅反映与保留参考 verifier 在有限构造用例上的一致；跨 harness 差异未隔离组件，排名无重复生成或显著性检验。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
-    "sub_title": "papers · source=arxiv_cs_ai · score=62.9",
-    "url_title": "paperformalizer-author-in-the-loop-autoformalization-of-research-papers-in-lean",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.31810",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-26T04:00:00Z",
-    "first_seen_at": "2026-10-26T11:18:31Z",
-    "score": 62.9,
-    "scores": {
-      "relevance": 72.0,
-      "popularity": 14.3,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "claude code",
-      "codex"
-    ],
-    "topics": [
-      "代码理解与检索",
-      "测试与验证",
-      "编程智能体"
-    ],
-    "summary_zh": "用 Lean 智能体流水线将论文 LaTeX 形式化并验证证明漏洞",
-    "reason_zh": "形式化验证智能体，与代码/证明生成相关但偏数学",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Even a carefully proofread paper can leave small gaps in its proofs or its stated assumptions. We introduce PaperFormalizer, a Lean-based agentic pipeline that helps authors find and close such gaps in their own papers and turn each paper into a Lean-verified version. Starting from the LaTeX source, PaperFormalizer transcribes the paper into a dependency…",
-    "authors": [
-      "Jiyuan Tan",
-      "Vasilis Syrgkanis",
-      "Jose Blanchet"
-    ],
-    "author_count": 3,
-    "upvotes": 2,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.31810",
-    "arxiv_id": "2610.31810",
-    "digest": {
-      "problem": "研究论文的证明常含边界情形、缺失正则条件等小漏洞，人工用 Lean 形式化需数周，而全自动形式化无法处理语义歧义与修复意图。",
-      "method": [
-        "将 LaTeX 转成语句依赖图，按忠实性、歧义、正确性逐节点审查并提出最小修复。",
-        "规划后复用 Mathlib、领域库与个人工具包，分脚手架、证明填充、链接六阶段形式化。",
-        "作者在环：歧义解读、影响主结果的修复、工具包晋升等决策由作者在网页上确认。"
-      ],
-      "results": [
-        "案例论文 7 个结果全部 Lean 证明，无 sorry 与额外公理，其中 5 个原陈述不成立并被修复。",
-        "该 Lean 开发含 136 个文件约 26,000 行，另复用工具包 Foundations 13 个模块约 2,500 行。",
-        "另两篇共享论文：最优传输 12 个结果全部按原样证明；神经因果模型 29 个中证明 20 个、反驳 2 个。"
-      ],
-      "takeaways": [
-        "形式化应把语义歧义与修复决策交还作者，工具只给建议，避免证明作者未意图的命题。",
-        "个人工具包随论文积累可复用，后续论文形式化成本递减，值得在项目中沉淀可复用引理。"
-      ],
-      "limitations": "仅在三篇作者自著论文上做案例研究，未与其他自动形式化系统做定量对比。",
       "basis": "fulltext"
     }
   },
