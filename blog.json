@@ -1465,6 +1465,69 @@
     }
   },
   {
+    "title": "Beyond Benchmarks: Can Small Open-Weight Models Get Real Coding Work Done?",
+    "sub_title": "papers · source=arxiv_cs_se · score=66.1",
+    "url_title": "beyond-benchmarks-can-small-open-weight-models-get-real-coding-work-done",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.34241",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-27T04:00:00Z",
+    "first_seen_at": "2026-10-27T10:42:58Z",
+    "score": 66.1,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 18.1,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "代码生成",
+      "开发者与工具研究",
+      "模型训练与推理"
+    ],
+    "summary_zh": "实证报告小开源模型在真实编码任务中的部署与工具调用差异。",
+    "reason_zh": "聚焦小模型完成真实编码工作的工程实践。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Making an open-weight language model generate text is not the same as making it finish coding work. This retrospective empirical systems experience report follows my engineering work from July to October 2026 across coding clients, model-specific serving recipes, vLLM, SGLang, llama.cpp, and MLX. Models behind a nominally compatible endpoint still differed…",
+    "authors": [
+      "Vaibhav Jain"
+    ],
+    "author_count": 1,
+    "upvotes": 3,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.34241",
+    "arxiv_id": "2610.34241",
+    "digest": {
+      "problem": "开源小模型能生成文本，却未必能完成真实编码任务；从模型可服务到代码通过验证之间存在多层工程鸿沟。",
+      "method": [
+        "区分四级进展：可服务、文本连贯、工具调用被执行、任务验证通过",
+        "记录多运行时（vLLM、SGLang、llama.cpp、MLX）的部署配方与集成问题",
+        "用隐藏行为检查做委托研究，固定 Claude Opus 5.5 作为父代理"
+      ],
+      "results": [
+        "冷前缀请求首 token 中位约 69.4 秒，高复用请求 2.8 秒（观察性）",
+        "45 次试验中直接编码 15/15，量化 Qwen3-Coder 30B-A3B 委托 12/15 与 14/15",
+        "第二套 15 任务：直接编码 45/45，Nemotron Cascade 2 委托 12/45，Qwen3-Coder 委托 0/45"
+      ],
+      "takeaways": [
+        "兼容 API 不等于行为兼容，需把客户端、翻译层、模板与工具执行作为一条路径测试",
+        "缓存前缀连续性直接影响长会话可用性，提示词变动会破坏 KV 复用"
+      ],
+      "limitations": "为个人回顾性案例研究，记录私有不可复核，未汇总研究、不排名模型或运行时。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Do AI Coding Agents Write Infrastructure as Code Like Humans? An Empirical Study of GitHub Pull Requests",
     "sub_title": "papers · source=arxiv_cs_se · score=66.0",
     "url_title": "do-ai-coding-agents-write-infrastructure-as-code-like-humans-an-empirical-study-",
@@ -1945,7 +2008,7 @@
   },
   {
     "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
-    "sub_title": "papers · source=arxiv_cs_ai · score=65.1",
+    "sub_title": "papers · source=arxiv_cs_ai · score=65.7",
     "url_title": "paperformalizer-author-in-the-loop-autoformalization-of-research-papers-in-lean",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.31810",
@@ -1958,10 +2021,10 @@
     "category": "papers",
     "published_at": "2026-10-27T04:00:00Z",
     "first_seen_at": "2026-10-26T11:18:31Z",
-    "score": 65.1,
+    "score": 65.7,
     "scores": {
       "relevance": 72.0,
-      "popularity": 25.4,
+      "popularity": 28.6,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -1988,7 +2051,7 @@
       "Jose Blanchet"
     ],
     "author_count": 3,
-    "upvotes": 6,
+    "upvotes": 8,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -2011,77 +2074,6 @@
         "个人工具包随论文积累可复用，后续论文形式化成本递减，值得在项目中沉淀可复用引理。"
       ],
       "limitations": "仅在三篇作者自著论文上做案例研究，未与其他自动形式化系统做定量对比。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Training the Whole Agent, Not Just the Model",
-    "sub_title": "papers · source=arxiv_cs_se · score=65.1",
-    "url_title": "training-the-whole-agent-not-just-the-model",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.28069",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-21T04:00:00Z",
-    "first_seen_at": "2026-10-21T10:20:38Z",
-    "score": 65.1,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 35.3,
-      "freshness": 25.0,
-      "impact": 55.0
-    },
-    "keywords": [
-      "swe-bench",
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理"
-    ],
-    "summary_zh": "HarnessAdapt-RL在强化学习中同时训练策略并适配编程智能体框架",
-    "reason_zh": "核心是编程智能体训练方法",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code",
-      "sota"
-    ],
-    "summary": "Training coding agents typically updates the policy while keeping the harness fixed. During training, trajectories reveal flawed repair strategies and interaction problems that vary across tasks and change as the policy learns. We introduce HarnessAdapt-RL, which trains the policy and adapts its harness during reinforcement learning. For flawed repair…",
-    "authors": [
-      "Lingxiao Tang",
-      "Wei Tao",
-      "Yiwen Guo",
-      "Lingfeng Bao"
-    ],
-    "author_count": 4,
-    "upvotes": 14,
-    "likes": 0,
-    "github_url": "https://github.com/lingxiaotang/HarnessAdapt-RL",
-    "github_stars": 1,
-    "hf_url": "https://huggingface.co/papers/2610.28069",
-    "arxiv_id": "2610.28069",
-    "digest": {
-      "problem": "训练编码 agent 时通常只更新策略而固定 harness，但轨迹暴露的修复策略缺陷和交互问题随任务与策略变化，固定 harness 无法持续适配。",
-      "method": [
-        "用冻结 teacher 从当前策略轨迹生成机制级技能，只讲修复机理、不给具体代码答案。",
-        "另一 teacher 针对跨任务复现的交互问题演化工具与 hook，仅当 pass rate 或 trainable rate 提升且不降低另一项时采纳。",
-        "策略用 GRPO 在适配后 harness 上训练，新轨迹再驱动下一轮 harness 演化。"
-      ],
-      "results": [
-        "9B 基座下 pass@1 较 GRPO 在 SWE-bench Verified、Multilingual、Pro 分别提升 9.8、12.6、6.4 个百分点。",
-        "平均 pass@1 达 44.9%，高于 GRPO 的 35.3% 和 OpenHands-GRPO 的 39.0%。",
-        "部署时移除演化出的工具与 hook 会使 pass@1 最多下降 7.7 个百分点。"
-      ],
-      "takeaways": [
-        "训练编码 agent 应把 harness 当作可学习组件与策略共同演化，而非固定脚手架。",
-        "训练期技能应讲机理而非给答案，否则移除后性能反而低于 GRPO。"
-      ],
-      "limitations": "仅验证 SWE-bench 类软件修复任务与单一 9B 模型；每种配置只训练一次，候选采纳规则非显著性检验。",
       "basis": "fulltext"
     }
   }
