@@ -1256,6 +1256,69 @@
     }
   },
   {
+    "title": "Beyond Benchmarks: Can Small Open-Weight Models Get Real Coding Work Done?",
+    "sub_title": "papers · source=arxiv_cs_se · score=66.7",
+    "url_title": "beyond-benchmarks-can-small-open-weight-models-get-real-coding-work-done",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.34241",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-27T04:00:00Z",
+    "first_seen_at": "2026-10-27T10:42:58Z",
+    "score": 66.7,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "代码生成",
+      "开发者与工具研究",
+      "模型训练与推理"
+    ],
+    "summary_zh": "实证报告小开源模型在真实编码任务中的部署与工具调用差异。",
+    "reason_zh": "聚焦小模型完成真实编码工作的工程实践。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Making an open-weight language model generate text is not the same as making it finish coding work. This retrospective empirical systems experience report follows my engineering work from July to October 2026 across coding clients, model-specific serving recipes, vLLM, SGLang, llama.cpp, and MLX. Models behind a nominally compatible endpoint still differed…",
+    "authors": [
+      "Vaibhav Jain"
+    ],
+    "author_count": 1,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.34241",
+    "arxiv_id": "2610.34241",
+    "digest": {
+      "problem": "开源小模型能生成文本，却未必能完成真实编码任务；从模型可服务到代码通过验证之间存在多层工程鸿沟。",
+      "method": [
+        "区分四级进展：可服务、文本连贯、工具调用被执行、任务验证通过",
+        "记录多运行时（vLLM、SGLang、llama.cpp、MLX）的部署配方与集成问题",
+        "用隐藏行为检查做委托研究，固定 Claude Opus 5.5 作为父代理"
+      ],
+      "results": [
+        "冷前缀请求首 token 中位约 69.4 秒，高复用请求 2.8 秒（观察性）",
+        "45 次试验中直接编码 15/15，量化 Qwen3-Coder 30B-A3B 委托 12/15 与 14/15",
+        "第二套 15 任务：直接编码 45/45，Nemotron Cascade 2 委托 12/45，Qwen3-Coder 委托 0/45"
+      ],
+      "takeaways": [
+        "兼容 API 不等于行为兼容，需把客户端、翻译层、模板与工具执行作为一条路径测试",
+        "缓存前缀连续性直接影响长会话可用性，提示词变动会破坏 KV 复用"
+      ],
+      "limitations": "为个人回顾性案例研究，记录私有不可复核，未汇总研究、不排名模型或运行时。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Cross-Platform Application Migration to HarmonyOS: An Agentic Pipeline with Artifact-Derived Verification",
     "sub_title": "papers · source=arxiv_cs_se · score=66.5",
     "url_title": "cross-platform-application-migration-to-harmonyos-an-agentic-pipeline-with-artif",
@@ -1461,69 +1524,6 @@
         "AI 归属规范尚未统一：提交信息多禁止署名，PR 则多要求披露 AI 使用。"
       ],
       "limitations": "仅覆盖 ≥1,000 星的热门仓库；AI 标记只捕获部分工具；模型与人工在主题分类上一致性有限。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Beyond Benchmarks: Can Small Open-Weight Models Get Real Coding Work Done?",
-    "sub_title": "papers · source=arxiv_cs_se · score=66.1",
-    "url_title": "beyond-benchmarks-can-small-open-weight-models-get-real-coding-work-done",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.34241",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-27T04:00:00Z",
-    "first_seen_at": "2026-10-27T10:42:58Z",
-    "score": 66.1,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 18.1,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "开发者与工具研究",
-      "模型训练与推理"
-    ],
-    "summary_zh": "实证报告小开源模型在真实编码任务中的部署与工具调用差异。",
-    "reason_zh": "聚焦小模型完成真实编码工作的工程实践。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Making an open-weight language model generate text is not the same as making it finish coding work. This retrospective empirical systems experience report follows my engineering work from July to October 2026 across coding clients, model-specific serving recipes, vLLM, SGLang, llama.cpp, and MLX. Models behind a nominally compatible endpoint still differed…",
-    "authors": [
-      "Vaibhav Jain"
-    ],
-    "author_count": 1,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.34241",
-    "arxiv_id": "2610.34241",
-    "digest": {
-      "problem": "开源小模型能生成文本，却未必能完成真实编码任务；从模型可服务到代码通过验证之间存在多层工程鸿沟。",
-      "method": [
-        "区分四级进展：可服务、文本连贯、工具调用被执行、任务验证通过",
-        "记录多运行时（vLLM、SGLang、llama.cpp、MLX）的部署配方与集成问题",
-        "用隐藏行为检查做委托研究，固定 Claude Opus 5.5 作为父代理"
-      ],
-      "results": [
-        "冷前缀请求首 token 中位约 69.4 秒，高复用请求 2.8 秒（观察性）",
-        "45 次试验中直接编码 15/15，量化 Qwen3-Coder 30B-A3B 委托 12/15 与 14/15",
-        "第二套 15 任务：直接编码 45/45，Nemotron Cascade 2 委托 12/45，Qwen3-Coder 委托 0/45"
-      ],
-      "takeaways": [
-        "兼容 API 不等于行为兼容，需把客户端、翻译层、模板与工具执行作为一条路径测试",
-        "缓存前缀连续性直接影响长会话可用性，提示词变动会破坏 KV 复用"
-      ],
-      "limitations": "为个人回顾性案例研究，记录私有不可复核，未汇总研究、不排名模型或运行时。",
       "basis": "fulltext"
     }
   },
