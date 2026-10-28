@@ -1,0 +1,45 @@
+name: Trending Probe
+
+# 在 GitHub 的运行环境里试抓全部热榜源，结果写进运行摘要（Summary）。
+# 改动抓取器后推到分支即可看到哪些源可用，不部署、不提交任何数据。
+on:
+  push:
+    branches-ignore:
+      - master
+      - main
+    paths:
+      - 'src/trending/**'
+      - 'scripts/fetch_trending.py'
+      - 'config/trending_sources.yaml'
+      - '.github/workflows/trending-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch all trending sources
+        run: python scripts/fetch_trending.py --out "$RUNNER_TEMP/trending" --summary "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload fetched data
+        uses: actions/upload-artifact@v4
+        with:
+          name: trending-data
+          path: ${{ runner.temp }}/trending
+          retention-days: 3

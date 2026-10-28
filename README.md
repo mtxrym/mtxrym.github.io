@@ -6,6 +6,7 @@
 - 网页：<https://mtxrym.github.io/>（支持“添加到主屏幕”，离线可看）
 - Android App：[Releases](https://github.com/mtxrym/mtxrym.github.io/releases/latest) 下载 `ai-coding-feed.apk`（源码见 [`android/`](android/)）
 - 原始数据：[`blog.json`](https://mtxrym.github.io/blog.json)、[`data/status.json`](https://mtxrym.github.io/data/status.json)
+- 热榜聚合：<https://mtxrym.github.io/trending/>（微博、知乎、百度、头条、GitHub、Hacker News、华尔街见闻等，见[下文](#热榜聚合trending)）
 
 ## 数据更新策略
 
@@ -52,6 +53,23 @@
 - 质量抽检：24 篇解读中出现的 256 个数字全部能在原文中找到
 - 配置：`config/update_policy.yaml` 的 `llm.digest` 一节
 
+## 热榜聚合（/trending/）
+
+参照 [NewsNow](https://github.com/ourongxing/newsnow)（MIT）复刻的多平台热榜，源列表和抓取逻辑移植自该项目，用 Python 重写。
+
+- **页面**：<https://mtxrym.github.io/trending/>，按 最热 / 实时 / 国内 / 国际 / 科技 / 财经 / 体育 分栏，支持搜索、收藏常看的源（“关注”栏目，存在浏览器本地）
+- **接口**（静态 JSON）：
+  - [`/trending/data/index.json`](https://mtxrym.github.io/trending/data/index.json)：各源的名称、栏目、抓取状态、条数、错误信息
+  - [`/trending/data/all.json`](https://mtxrym.github.io/trending/data/all.json)：全部源及条目
+  - `/trending/data/<id>.json`：单个源，相当于 NewsNow 的 `/api/s?id=<id>`；条目字段为 `id / title / url`，可选 `info`（热度、分数等）、`hover`（摘要）、`time`（UTC）
+- **刷新**：部署工作流每 30 分钟定时运行一次，部署前现抓（数据不入库，不产生提交）。GitHub 定时任务常有延迟，做不到 NewsNow 那样的分钟级实时
+- **容错**：单个源失败时沿用线上上一版数据（标记“旧数据”）；整体失败也不影响部署
+- **抓取原则**：只发普通的公开请求，UA 如实标明身份；不伪造 cookie、签名、来源页，不处理反爬验证，被拒绝就如实显示为“暂时拿不到”。
+  因此 NewsNow 里依赖这些手段的源会失败（如微博、抖音、雪球、财联社、B 站热门视频），酷安（需要伪造 App 签名）没有移植。
+  `tests/test_trending.py` 会检查抓取代码里没有这类请求头
+- **配置**：数据源在 [`config/trending_sources.yaml`](config/trending_sources.yaml)，抓取器在 [`src/trending/`](src/trending/)，两边按 id 对应
+- **排查**：`python scripts/fetch_trending.py --only weibo,zhihu --dry-run`；改动抓取器后推到分支，`Trending Probe` 工作流会在 GitHub 运行环境里试抓全部源，结果在运行摘要里
+
 数据源在 [`config/sources.yaml`](config/sources.yaml) 中维护：
 
 | 数据源 | 说明 |
@@ -92,6 +110,7 @@ python scripts/eval_relevance.py --llm          # 识别准确率评测（需要
 python scripts/generate_blog_json.py            # 抓取并生成数据
 python scripts/generate_blog_json.py --dry-run  # 只打印结果，不写文件
 python scripts/trending_ai_coding.py --sources arxiv_cs_se   # 排查单个数据源
+python scripts/fetch_trending.py                # 抓取热榜，写入 trending/data/（预览 /trending/）
 python -m http.server 8000                      # 预览网页：http://localhost:8000
 ```
 
@@ -100,7 +119,8 @@ python -m http.server 8000                      # 预览网页：http://localhos
 | 工作流 | 触发 | 作用 |
 | --- | --- | --- |
 | `update-content.yml` | 定时（见上表）/ 手动 | 跑测试 → 生成数据 → 有变化时提交到 `master` |
-| `deploy-pages.yml` | 推送到 `master` / 数据更新完成后 / 手动 | 部署 GitHub Pages |
+| `deploy-pages.yml` | 推送到 `master` / 数据更新完成后 / 每 30 分钟 / 手动 | 抓取热榜 → 部署 GitHub Pages |
+| `trending-probe.yml` | 热榜抓取代码有改动的分支推送 / 手动 | 在 GitHub 运行环境里试抓全部热榜源，结果写进运行摘要 |
 | `android.yml` | `android/` 有改动 / 手动 | 单元测试 → 构建 APK → 发布 Release |
 
 > 数据更新用 `GITHUB_TOKEN` 推送，这类推送不会触发其他工作流的 `push` 事件，
@@ -118,6 +138,8 @@ data/status.json · data/archive.json   数据源状态、历史库（生成）
 data/llm_cache.json · data/digests.json 模型判定缓存、论文解读缓存（生成）
 config/update_policy.yaml             更新策略
 config/sources.yaml                   数据源
+config/trending_sources.yaml          热榜数据源
+trending/                             热榜页面（data/ 由部署工作流生成，不入库）
 src/                                  抓取、相关性、打分、合并逻辑
 scripts/                              命令行入口
 tests/                                单元测试
