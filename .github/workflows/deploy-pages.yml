@@ -12,6 +12,9 @@ on:
       - Update AI Coding Feed
     types:
       - completed
+  # 热榜（/trending/）不入库，每次部署时现抓；定时部署让热榜保持新鲜
+  schedule:
+    - cron: '7,37 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -36,6 +39,25 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # 单个源失败时沿用线上上一版数据；整步失败也不影响部署（页面会提示数据加载失败）
+      - name: Fetch trending
+        continue-on-error: true
+        timeout-minutes: 6
+        run: >-
+          python scripts/fetch_trending.py
+          --out trending/data
+          --fallback-base https://mtxrym.github.io/trending/data
+          --summary "$GITHUB_STEP_SUMMARY"
 
       - name: Upload static site artifact
         uses: actions/upload-pages-artifact@v3

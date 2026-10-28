@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>热榜聚合</title>
+  <meta name="description" content="微博、知乎、百度、头条、B 站、GitHub、Hacker News、华尔街见闻等数十个平台的热榜，定时聚合在一页。">
+  <meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0e13" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="trending.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="back" href="../" title="返回 AI Coding 资讯看板">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+        <span>AI Coding</span>
+      </a>
+      <h1>热榜聚合</h1>
+      <span id="meta" class="meta" aria-live="polite">加载中…</span>
+    </div>
+    <div class="wrap toolbar">
+      <nav id="tabs" class="tabs" role="tablist" aria-label="栏目"></nav>
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4-4" /></svg>
+        <input id="query" type="search" placeholder="搜索标题" autocomplete="off" aria-label="搜索标题">
+      </label>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p id="notice" class="notice" hidden></p>
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <details id="unavailable" class="unavailable" hidden>
+      <summary></summary>
+      <ul></ul>
+    </details>
+  </main>
+
+  <footer class="wrap foot">
+    <p>
+      数据随 GitHub Actions 定时抓取（约每 30 分钟，GitHub 定时任务常有延迟），不是实时数据。
+      源列表与抓取逻辑移植自 <a href="https://github.com/ourongxing/newsnow" target="_blank" rel="noopener noreferrer">NewsNow</a>（MIT），
+      只发普通公开请求，需要登录、签名或反爬验证的源会显示为暂不可用。
+    </p>
+    <p class="api">
+      接口：<a href="data/index.json"><code>/trending/data/index.json</code></a> 各源状态 ·
+      <a href="data/all.json"><code>all.json</code></a> 全部条目 ·
+      <code>/trending/data/&lt;id&gt;.json</code> 单个源
+    </p>
+  </footer>
+
+  <script src="trending.js" defer></script>
+</body>
+</html>
