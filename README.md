@@ -71,7 +71,7 @@
   - `/trending/data/<id>.json`：单个源，相当于 NewsNow 的 `/api/s?id=<id>`
   - 条目字段：`id / title / url`，可选 `info`（热度、分数等）、`hover`（摘要）、`time`（UTC）、`first_seen`（首次上榜时间）、`rank_delta`（名次变化，正数为上升）
 - **抓取原则**：只发普通的公开请求，UA 如实标明身份；不伪造 cookie、签名、来源页，不处理反爬验证，被拒绝就如实显示为“暂时拿不到”。
-  因此 NewsNow 里依赖这些手段的源会失败（如抖音、雪球、财联社、B 站热门视频），酷安（需要伪造 App 签名）没有移植。
+  因此 NewsNow 里依赖这些手段的源会失败（如微博、抖音、雪球、财联社、B 站热门视频），酷安（需要伪造 App 签名）没有移植。
   `tests/test_trending.py` 会检查抓取代码里没有这类请求头
 - **配置**：数据源在 [`config/trending_sources.yaml`](config/trending_sources.yaml)，抓取器在 [`src/trending/`](src/trending/)，两边按 id 对应
 - **排查**：`python scripts/fetch_trending.py --only weibo,zhihu --dry-run`；改动抓取器后推到分支，`Trending Probe` 工作流会在 GitHub 运行环境里试抓全部源，结果在运行摘要里
