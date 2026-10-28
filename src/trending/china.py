@@ -12,10 +12,23 @@ from .core import FetchError, Http, Item, compact_number, extract_json_after, fe
 
 @fetcher("weibo")
 def weibo(http: Http) -> list[Item]:
+    # 先试网页端的公开 JSON 接口，再试热搜榜页面；都需要登录态时如实失败
+    try:
+        res = http.json("https://weibo.com/ajax/side/hotSearch")
+        items = [
+            Item(id=k["word"], title=k.get("note") or k["word"],
+                 url=f"https://s.weibo.com/weibo?q={quote('#' + k['word'] + '#')}",
+                 info=" ".join(x for x in (compact_number(k["num"]) if k.get("num") else "", k.get("label_name", "")) if x))
+            for k in (res.get("data") or {}).get("realtime") or []
+            if not k.get("is_ad")
+        ]
+        if items:
+            return items
+    except FetchError:
+        pass
     base = "https://s.weibo.com"
-    url = f"{base}/top/summary?cate=realtimehot"
-    page = http.text(url)
-    items: list[Item] = []
+    page = http.text(f"{base}/top/summary?cate=realtimehot")
+    items = []
     for row in soup(page).select("#pl_top_realtimehot table tbody tr")[1:]:
         link = next((a for a in row.select("td.td-02 a") if "javascript:void(0)" not in (a.get("href") or "")), None)
         if not link or not link.get("href"):
@@ -194,16 +207,13 @@ def nowcoder(http: Http) -> list[Item]:
 
 @fetcher("douban")
 def douban(http: Http) -> list[Item]:
-    res = http.json("https://m.douban.com/rexxar/api/v2/subject/recent_hot/movie",
-                    headers={"Accept": "application/json"})
-    items: list[Item] = []
-    for m in res["items"]:
-        rating = (m.get("rating") or {}).get("value")
-        subtitle = m.get("card_subtitle", "")
-        info = " / ".join(subtitle.split(" / ")[:2])
-        items.append(Item(id=str(m["id"]), title=m["title"], url=f"https://movie.douban.com/subject/{m['id']}",
-                          info=f"{rating}分 · {info}" if rating else info, hover=subtitle))
-    return items
+    # movie.douban.com 选电影页用的公开接口（“热门”标签）
+    res = http.json("https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=50&page_start=0")
+    return [
+        Item(id=str(m["id"]), title=m["title"], url=m.get("url") or f"https://movie.douban.com/subject/{m['id']}",
+             info=" · ".join(x for x in (f"{m['rate']}分" if m.get("rate") else "", "新片" if m.get("is_new") else "") if x))
+        for m in res["subjects"]
+    ]
 
 
 _QQVIDEO_BODY = {

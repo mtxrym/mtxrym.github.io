@@ -6,13 +6,16 @@
   all.json     index.json + 每个源的条目（页面一次性加载）
   <id>.json    单个源的条目，相当于 NewsNow 的 /api/s?id=<id>
 
-单个源失败时，如果给了 --fallback-base，会取线上上一版数据顶上（标记为 stale），页面不会突然变空。
+给了 --previous（上一版 all.json 的地址或路径）时：
+  - 每个条目带 first_seen（首次上榜时间），本轮新出现的条目 first_seen 等于本次生成时间；
+  - 热榜类条目带 rank_delta（与上一轮相比的名次变化，正数为上升）；
+  - 本轮失败的源沿用上一版数据，标记为 stale，页面不会突然变空。
 脚本只在自身出错时以非零退出；数据源失败只记录在状态里，不影响部署。
 
 用法：
   python scripts/fetch_trending.py                       # 全部抓取，写入 trending/data/
   python scripts/fetch_trending.py --only weibo,zhihu --dry-run
-  python scripts/fetch_trending.py --fallback-base https://mtxrym.github.io/trending/data --summary "$GITHUB_STEP_SUMMARY"
+  python scripts/fetch_trending.py --previous https://mtxrym.github.io/trending/data/all.json --summary "$GITHUB_STEP_SUMMARY"
 """
 
 from __future__ import annotations
@@ -51,6 +54,7 @@ def run_one(meta: SourceMeta, timeout: float) -> dict[str, Any]:
         "column": meta.column,
         "type": meta.type,
         "home": meta.home,
+        "color": meta.color,
         "interval": meta.interval,
         "note": meta.note,
         "status": "error",
@@ -71,15 +75,49 @@ def run_one(meta: SourceMeta, timeout: float) -> dict[str, Any]:
     return result
 
 
-def apply_fallback(result: dict[str, Any], base: str) -> None:
-    """失败的源用线上上一版数据顶上。"""
+def load_previous(location: str) -> dict[str, Any] | None:
+    """读取上一版 all.json（URL 或本地路径）；拿不到就当作没有上一版。"""
+    if not location:
+        return None
     try:
-        resp = requests.get(f"{base.rstrip('/')}/{result['id']}.json", timeout=10)
-        previous = resp.json() if resp.ok else None
-    except (requests.RequestException, ValueError):
-        previous = None
-    if previous and previous.get("items"):
-        result.update(status="stale", items=previous["items"], updated_at=previous.get("updated_at"))
+        if location.startswith(("http://", "https://")):
+            resp = requests.get(location, timeout=15)
+            if not resp.ok:
+                return None
+            data = resp.json()
+        else:
+            data = json.loads(Path(location).read_text(encoding="utf-8"))
+    except (requests.RequestException, OSError, ValueError):
+        return None
+    return data if isinstance(data, dict) and isinstance(data.get("sources"), list) else None
+
+
+def annotate(results: list[dict[str, Any]], previous: dict[str, Any] | None, generated_at: str) -> None:
+    """对照上一版：补 first_seen / rank_delta，失败的源用上一版数据顶上。"""
+    prev_sources = {s.get("id"): s for s in (previous or {}).get("sources", []) if isinstance(s, dict)}
+    for result in results:
+        prev = prev_sources.get(result["id"]) or {}
+        prev_items = [it for it in prev.get("items") or [] if isinstance(it, dict) and it.get("id")]
+        if result["status"] == "error":
+            if prev_items:
+                for item in prev_items:
+                    item.pop("rank_delta", None)
+                result.update(status="stale", items=prev_items, updated_at=prev.get("updated_at"))
+            continue
+        if not previous:
+            continue
+        # 上一版没有 first_seen（旧数据）时，用上一版的生成时间，避免把老条目都当成新上榜
+        fallback_seen = previous.get("generated_at") or prev.get("updated_at") or generated_at
+        prev_index = {it["id"]: (i, it) for i, it in enumerate(prev_items)}
+        for i, item in enumerate(result["items"]):
+            hit = prev_index.get(item["id"])
+            if hit is None:
+                item["first_seen"] = generated_at
+                continue
+            old_rank, old_item = hit
+            item["first_seen"] = old_item.get("first_seen") or fallback_seen
+            if result["type"] == "hottest" and old_rank != i:
+                item["rank_delta"] = old_rank - i
 
 
 def summary_markdown(results: list[dict[str, Any]], generated_at: str) -> str:
@@ -87,15 +125,16 @@ def summary_markdown(results: list[dict[str, Any]], generated_at: str) -> str:
     lines = [
         f"### 热榜抓取：{ok}/{len(results)} 个源成功（{generated_at}）",
         "",
-        "| 状态 | 数据源 | 栏目 | 条数 | 耗时 | 错误 |",
-        "| --- | --- | --- | ---: | ---: | --- |",
+        "| 状态 | 数据源 | 栏目 | 条数 | 新上榜 | 耗时 | 错误 |",
+        "| --- | --- | --- | ---: | ---: | ---: | --- |",
     ]
     icon = {"ok": "✅", "stale": "🟡 旧数据", "error": "❌"}
     for r in sorted(results, key=lambda r: (r["status"] != "ok", r["column"], r["id"])):
         error = (r["error"] or "").replace("|", "\\|")
+        fresh = sum(it.get("first_seen") == generated_at for it in r["items"]) if r["status"] == "ok" else 0
         lines.append(
             f"| {icon[r['status']]} | {r['label']} (`{r['id']}`) | {COLUMNS[r['column']]} | "
-            f"{len(r['items'])} | {r['elapsed_ms'] / 1000:.1f}s | {error} |"
+            f"{len(r['items'])} | {fresh} | {r['elapsed_ms'] / 1000:.1f}s | {error} |"
         )
     return "\n".join(lines) + "\n"
 
@@ -106,7 +145,7 @@ def main() -> int:
     parser.add_argument("--only", default="", help="只抓这些源（逗号分隔的 id）")
     parser.add_argument("--workers", type=int, default=12)
     parser.add_argument("--timeout", type=float, default=10.0, help="单次请求超时（秒）")
-    parser.add_argument("--fallback-base", default="", help="失败时读取上一版数据的地址，如 https://mtxrym.github.io/trending/data")
+    parser.add_argument("--previous", default="", help="上一版 all.json 的地址或路径，如 https://mtxrym.github.io/trending/data/all.json")
     parser.add_argument("--summary", default="", help="追加 Markdown 汇总表到这个文件（GitHub Actions 用 $GITHUB_STEP_SUMMARY）")
     parser.add_argument("--dry-run", action="store_true", help="只打印结果，不写文件")
     args = parser.parse_args()
@@ -122,13 +161,13 @@ def main() -> int:
             raise SystemExit(f"未知数据源：{', '.join(sorted(unknown))}")
         sources = [s for s in sources if s.id in wanted]
 
+    previous = load_previous(args.previous)
     generated_at = now_iso()
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         results = list(pool.map(lambda meta: run_one(meta, args.timeout), sources))
+    annotate(results, previous, generated_at)
 
     for result in results:
-        if result["status"] == "error" and args.fallback_base:
-            apply_fallback(result, args.fallback_base)
         tag = {"ok": "[ok]   ", "stale": "[stale]", "error": "[fail] "}[result["status"]]
         detail = f"{len(result['items'])} 条" if result["status"] == "ok" else result["error"]
         print(f"{tag} {result['id']:24} {result['elapsed_ms'] / 1000:5.1f}s  {detail}", file=sys.stderr)
@@ -139,7 +178,8 @@ def main() -> int:
         "stale": sum(r["status"] == "stale" for r in results),
         "error": sum(r["status"] == "error" for r in results),
     }
-    print(f"热榜：{totals['ok']}/{totals['total']} 个源成功，{totals['stale']} 个用旧数据，{totals['error']} 个失败", file=sys.stderr)
+    print(f"热榜：{totals['ok']}/{totals['total']} 个源成功，{totals['stale']} 个用旧数据，{totals['error']} 个失败"
+          f"（上一版：{previous.get('generated_at') if previous else '无'}）", file=sys.stderr)
 
     if args.summary:
         with open(args.summary, "a", encoding="utf-8") as fh:
@@ -148,7 +188,13 @@ def main() -> int:
         return 0
 
     args.out.mkdir(parents=True, exist_ok=True)
-    head = {"generated_at": generated_at, "attribution": ATTRIBUTION, "columns": COLUMNS, "totals": totals}
+    head = {
+        "generated_at": generated_at,
+        "previous_generated_at": previous.get("generated_at") if previous else None,
+        "attribution": ATTRIBUTION,
+        "columns": COLUMNS,
+        "totals": totals,
+    }
     index = {**head, "sources": [{k: v for k, v in r.items() if k != "items"} | {"count": len(r["items"])} for r in results]}
     dump(args.out / "index.json", index)
     dump(args.out / "all.json", {**head, "sources": results})

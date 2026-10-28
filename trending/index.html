@@ -4,27 +4,36 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>热榜聚合</title>
-  <meta name="description" content="微博、知乎、百度、头条、B 站、GitHub、Hacker News、华尔街见闻等数十个平台的热榜，定时聚合在一页。">
+  <meta name="description" content="知乎、百度、头条、B 站、GitHub、Hacker News、华尔街见闻等数十个平台的热榜，每小时聚合在一页，可收藏常看的源和条目。">
   <meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0c0e13" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="trending.css">
+  <script>
+    // 尽早应用主题，避免闪烁
+    try { var t = (JSON.parse(localStorage.getItem('trending:prefs')) || {}).theme; if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
-<body>
+<body data-page="home">
   <header class="top">
     <div class="wrap top-inner">
       <a class="back" href="../" title="返回 AI Coding 资讯看板">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
-        <span>AI Coding</span>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg><span>AI Coding</span>
       </a>
-      <h1>热榜聚合</h1>
+      <nav class="nav" aria-label="页面">
+        <a href="./" aria-current="page">热榜</a>
+        <a href="favorites.html">我的收藏 <span id="fav-count" class="count"></span></a>
+      </nav>
       <span id="meta" class="meta" aria-live="polite">加载中…</span>
+      <button id="theme" class="icon-btn" type="button" title="切换深色 / 浅色" aria-label="切换深色 / 浅色">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
+      </button>
     </div>
     <div class="wrap toolbar">
       <nav id="tabs" class="tabs" role="tablist" aria-label="栏目"></nav>
       <label class="search">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4-4" /></svg>
-        <input id="query" type="search" placeholder="搜索标题" autocomplete="off" aria-label="搜索标题">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4-4" /></svg>
+        <input id="query" type="search" placeholder="搜索标题" autocomplete="off" aria-label="搜索标题"><kbd>/</kbd>
       </label>
     </div>
   </header>
@@ -40,17 +49,21 @@
 
   <footer class="wrap foot">
     <p>
-      数据随 GitHub Actions 定时抓取（约每 30 分钟，GitHub 定时任务常有延迟），不是实时数据。
+      每小时由 GitHub Actions 抓取一次（GitHub 定时任务可能延迟），“新”表示本轮新上榜，↑↓ 是与上一轮相比的名次变化。
       源列表与抓取逻辑移植自 <a href="https://github.com/ourongxing/newsnow" target="_blank" rel="noopener noreferrer">NewsNow</a>（MIT），
       只发普通公开请求，需要登录、签名或反爬验证的源会显示为暂不可用。
     </p>
-    <p class="api">
+    <p>
       接口：<a href="data/index.json"><code>/trending/data/index.json</code></a> 各源状态 ·
       <a href="data/all.json"><code>all.json</code></a> 全部条目 ·
       <code>/trending/data/&lt;id&gt;.json</code> 单个源
     </p>
   </footer>
 
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <button id="to-top" class="to-top" type="button" title="回到顶部" aria-label="回到顶部">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" /></svg>
+  </button>
   <script src="trending.js" defer></script>
 </body>
 </html>

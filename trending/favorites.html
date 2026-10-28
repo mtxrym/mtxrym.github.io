@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我的收藏 · 热榜聚合</title>
+  <meta name="description" content="收藏的热榜源与条目。">
+  <meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0e13" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="trending.css">
+  <script>
+    try { var t = (JSON.parse(localStorage.getItem('trending:prefs')) || {}).theme; if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body data-page="favorites">
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="back" href="../" title="返回 AI Coding 资讯看板">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg><span>AI Coding</span>
+      </a>
+      <nav class="nav" aria-label="页面">
+        <a href="./">热榜</a>
+        <a href="favorites.html" aria-current="page">我的收藏 <span id="fav-count" class="count"></span></a>
+      </nav>
+      <span id="meta" class="meta" aria-live="polite">加载中…</span>
+      <button id="theme" class="icon-btn" type="button" title="切换深色 / 浅色" aria-label="切换深色 / 浅色">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
+      </button>
+    </div>
+    <div class="wrap toolbar">
+      <label class="search">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4-4" /></svg>
+        <input id="query" type="search" placeholder="搜索收藏" autocomplete="off" aria-label="搜索收藏"><kbd>/</kbd>
+      </label>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p id="notice" class="notice" hidden></p>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>收藏的源 <span id="src-count" class="hint"></span></h2>
+        <span class="hint">在热榜页点卡片右上角的 ☆ 收藏，这里可以调整顺序</span>
+      </div>
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>收藏的条目 <span id="item-count" class="hint"></span></h2>
+        <span class="hint">鼠标移到条目上点书签图标收藏，条目下榜后仍会保留</span>
+        <div class="tools">
+          <button id="export" class="btn" type="button" title="导出收藏的源和条目（JSON 文件）">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" /></svg>导出
+          </button>
+          <button id="import" class="btn" type="button" title="从导出的 JSON 文件导入（与现有收藏合并）">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5M5 20h14" /></svg>导入
+          </button>
+          <input id="import-file" type="file" accept="application/json,.json" hidden>
+        </div>
+      </div>
+      <ul id="saved" class="saved"></ul>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>收藏保存在当前浏览器（本地存储），清除浏览器数据会丢失；换设备或备份请用“导出 / 导入”。</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <button id="to-top" class="to-top" type="button" title="回到顶部" aria-label="回到顶部">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" /></svg>
+  </button>
+  <script src="trending.js" defer></script>
+</body>
+</html>

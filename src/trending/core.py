@@ -27,6 +27,7 @@ CST = ZoneInfo("Asia/Shanghai")
 USER_AGENT = "mtxrym-trending/1.0 (+https://mtxrym.github.io/trending/)"
 COLUMNS = {"china": "国内", "world": "国际", "tech": "科技", "finance": "财经", "sports": "体育"}
 TYPES = {"hottest", "realtime", ""}
+COLORS = {"red", "orange", "green", "emerald", "teal", "blue", "indigo", "slate", "gray"}
 MAX_ITEMS = 50
 
 
@@ -49,6 +50,7 @@ class SourceMeta:
     type: str = ""
     interval: int = 10
     note: str = ""
+    color: str = "gray"
 
     @property
     def label(self) -> str:
@@ -69,11 +71,14 @@ def load_sources(path: Path = CONFIG_FILE) -> list[SourceMeta]:
             type=str(entry.get("type") or ""),
             interval=int(entry.get("interval") or 10),
             note=str(entry.get("note") or ""),
+            color=str(entry.get("color") or "gray"),
         )
         if meta.id in seen:
             raise ValueError(f"重复的数据源 id：{meta.id}")
         if meta.column not in COLUMNS:
             raise ValueError(f"{meta.id}：未知栏目 {meta.column}")
+        if meta.color not in COLORS:
+            raise ValueError(f"{meta.id}：未知配色 {meta.color}")
         if meta.type not in TYPES:
             raise ValueError(f"{meta.id}：未知类型 {meta.type}")
         seen.add(meta.id)
@@ -120,7 +125,7 @@ def normalize(items: list[Item]) -> list[Item]:
         seen.add(key)
         item.id, item.title, item.url = key, title, url
         item.info = clean(item.info)
-        item.hover = clean(item.hover)[:300]
+        item.hover = clean(item.hover)[:160]
         result.append(item)
         if len(result) >= MAX_ITEMS:
             break
