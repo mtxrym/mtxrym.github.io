@@ -161,10 +161,84 @@ class FetcherParsingTest(unittest.TestCase):
         [item] = FETCHERS["hupu"](FakeHttp({"https://bbs.hupu.com/": page}))
         self.assertEqual((item.title, item.url), ("热帖标题", "https://bbs.hupu.com/123.html"))
 
+    def test_douban_public_endpoint(self):
+        http = FakeHttp({"https://movie.douban.com/j/search_subjects": {"subjects": [
+            {"id": "1", "title": "电影", "rate": "7.5", "url": "https://movie.douban.com/subject/1/", "is_new": True},
+            {"id": "2", "title": "无评分", "rate": "", "url": "https://movie.douban.com/subject/2/"},
+        ]}})
+        items = FETCHERS["douban"](http)
+        self.assertEqual([(i.title, i.info) for i in items], [("电影", "7.5分 · 新片"), ("无评分", "")])
+
+    def test_weibo_uses_public_json_and_skips_ads(self):
+        http = FakeHttp({"https://weibo.com/ajax/side/hotSearch": {"data": {"realtime": [
+            {"word": "话题", "num": 1234567, "label_name": "热"},
+            {"word": "广告", "is_ad": 1},
+        ]}}})
+        [item] = FETCHERS["weibo"](http)
+        self.assertEqual((item.title, item.info), ("话题", "123.5万 热"))
+        self.assertTrue(item.url.startswith("https://s.weibo.com/weibo?q=%23"))
+
+    def test_weibo_falls_back_to_html_page(self):
+        page = """<div id="pl_top_realtimehot"><table><tbody><tr><td>表头</td></tr>
+                  <tr><td class="td-02"><a href="/weibo?q=x">榜单话题</a><span>99999</span></td><td class="td-03">新</td></tr>
+                  </tbody></table></div>"""
+        http = FakeHttp({"https://weibo.com/ajax/side/hotSearch": {"ok": -100}, "https://s.weibo.com/": page})
+        [item] = FETCHERS["weibo"](http)
+        self.assertEqual((item.title, item.url, item.info), ("榜单话题", "https://s.weibo.com/weibo?q=x", "99999 新"))
+
     def test_cls_rejection_is_reported_clearly(self):
         http = FakeHttp({"https://www.cls.cn/": {"errno": 50001, "msg": "sign error"}})
         with self.assertRaisesRegex(FetchError, "签名"):
             FETCHERS["cls-hot"](http)
+
+
+class AnnotateTest(unittest.TestCase):
+    GEN = "2026-10-28T08:00:00Z"
+    PREV = "2026-10-28T07:00:00Z"
+
+    def result(self, status="ok", items=(), type_="hottest", sid="s"):
+        return {"id": sid, "type": type_, "status": status, "items": [dict(i) for i in items], "updated_at": None}
+
+    def test_new_items_rank_changes_and_carried_first_seen(self):
+        from scripts.fetch_trending import annotate
+
+        previous = {"generated_at": self.PREV, "sources": [{"id": "s", "items": [
+            {"id": "a", "title": "A", "url": "u", "first_seen": "2026-10-28T05:00:00Z"},
+            {"id": "b", "title": "B", "url": "u"},  # 旧数据没有 first_seen
+        ]}]}
+        results = [self.result(items=[{"id": "b"}, {"id": "c"}, {"id": "a"}])]
+        annotate(results, previous, self.GEN)
+        b, c, a = results[0]["items"]
+        self.assertEqual(b, {"id": "b", "first_seen": self.PREV, "rank_delta": 1})
+        self.assertEqual(c, {"id": "c", "first_seen": self.GEN})
+        self.assertEqual(a, {"id": "a", "first_seen": "2026-10-28T05:00:00Z", "rank_delta": -2})
+
+    def test_rank_delta_only_for_hottest(self):
+        from scripts.fetch_trending import annotate
+
+        previous = {"generated_at": self.PREV, "sources": [{"id": "s", "items": [{"id": "a"}, {"id": "b"}]}]}
+        results = [self.result(type_="realtime", items=[{"id": "b"}, {"id": "a"}])]
+        annotate(results, previous, self.GEN)
+        self.assertNotIn("rank_delta", results[0]["items"][0])
+
+    def test_failed_source_falls_back_to_previous_items(self):
+        from scripts.fetch_trending import annotate
+
+        previous = {"generated_at": self.PREV, "sources": [{"id": "s", "updated_at": self.PREV, "items": [
+            {"id": "a", "title": "A", "url": "u", "first_seen": self.PREV, "rank_delta": 3}]}]}
+        results = [self.result(status="error")]
+        annotate(results, previous, self.GEN)
+        self.assertEqual(results[0]["status"], "stale")
+        self.assertEqual(results[0]["updated_at"], self.PREV)
+        self.assertEqual(results[0]["items"], [{"id": "a", "title": "A", "url": "u", "first_seen": self.PREV}])
+
+    def test_without_previous_nothing_is_marked(self):
+        from scripts.fetch_trending import annotate
+
+        results = [self.result(items=[{"id": "a"}]), self.result(status="error", sid="t")]
+        annotate(results, None, self.GEN)
+        self.assertEqual(results[0]["items"], [{"id": "a"}])
+        self.assertEqual(results[1]["status"], "error")
 
 
 class FetchScriptTest(unittest.TestCase):

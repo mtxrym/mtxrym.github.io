@@ -9,68 +9,69 @@
 #   type          hottest 热榜（按热度排名）/ realtime 实时（按时间倒序）/ 留空为普通列表
 #   interval      上游建议的刷新间隔（分钟），仅作展示参考；本站统一随 GitHub Actions 定时刷新
 #   home          来源首页
+#   color         卡片配色（沿用 NewsNow：red / orange / green / emerald / teal / blue / indigo / slate / gray）
 #   note          备注
 #
 # 只发普通的公开请求：如实标明身份的 UA，不伪造 cookie / 签名 / 来源页，不处理反爬验证，
 # 被拒绝就如实记为失败。NewsNow 里依赖这些手段的源（如酷安需要伪造 App 签名）没有移植。
 sources:
   # ---------------- 国内 ----------------
-  - {id: weibo, name: 微博, title: 实时热搜, column: china, type: hottest, interval: 2, home: "https://weibo.com"}
-  - {id: zhihu, name: 知乎, column: china, type: hottest, interval: 10, home: "https://www.zhihu.com"}
-  - {id: baidu, name: 百度热搜, column: china, type: hottest, interval: 10, home: "https://www.baidu.com"}
-  - {id: douyin, name: 抖音, column: china, type: hottest, interval: 10, home: "https://www.douyin.com"}
-  - {id: toutiao, name: 今日头条, column: china, type: hottest, interval: 10, home: "https://www.toutiao.com"}
-  - {id: bilibili-hot-search, name: 哔哩哔哩, title: 热搜, column: china, type: hottest, interval: 10, home: "https://www.bilibili.com"}
-  - {id: bilibili-hot-video, name: 哔哩哔哩, title: 热门视频, column: china, type: hottest, interval: 10, home: "https://www.bilibili.com", note: NewsNow 在 Cloudflare 上禁用}
-  - {id: bilibili-ranking, name: 哔哩哔哩, title: 排行榜, column: china, type: hottest, interval: 30, home: "https://www.bilibili.com", note: NewsNow 在 Cloudflare 上禁用}
-  - {id: kuaishou, name: 快手, column: china, type: hottest, interval: 10, home: "https://www.kuaishou.com", note: NewsNow 在 Cloudflare 上禁用}
-  - {id: tieba, name: 百度贴吧, title: 热议, column: china, type: hottest, interval: 10, home: "https://tieba.baidu.com"}
-  - {id: thepaper, name: 澎湃新闻, title: 热榜, column: china, type: hottest, interval: 30, home: "https://www.thepaper.cn"}
-  - {id: ifeng, name: 凤凰网, title: 热点资讯, column: china, type: hottest, interval: 10, home: "https://www.ifeng.com"}
-  - {id: tencent-hot, name: 腾讯新闻, title: 综合早报, column: china, type: hottest, interval: 30, home: "https://news.qq.com/tag/aEWqxLtdgmQ="}
-  - {id: nowcoder, name: 牛客, column: china, type: hottest, interval: 10, home: "https://www.nowcoder.com"}
-  - {id: douban, name: 豆瓣, title: 热门电影, column: china, type: hottest, interval: 10, home: "https://www.douban.com"}
-  - {id: qqvideo-tv-hotsearch, name: 腾讯视频, title: 热搜榜, column: china, type: hottest, interval: 30, home: "https://v.qq.com/channel/tv"}
-  - {id: iqiyi-hot-ranklist, name: 爱奇艺, title: 热播榜, column: china, type: hottest, interval: 30, home: "https://www.iqiyi.com"}
-  - {id: freebuf, name: Freebuf, title: 网络安全, column: china, type: hottest, interval: 10, home: "https://www.freebuf.com/"}
-  - {id: chongbuluo-hot, name: 虫部落, title: 最热, column: china, type: hottest, interval: 30, home: "https://www.chongbuluo.com/forum.php?mod=guide&view=hot"}
-  - {id: chongbuluo-latest, name: 虫部落, title: 最新, column: china, interval: 30, home: "https://www.chongbuluo.com/forum.php?mod=guide&view=newthread"}
+  - {id: weibo, name: 微博, title: 实时热搜, column: china, type: hottest, interval: 2, home: "https://weibo.com", color: red}
+  - {id: zhihu, name: 知乎, column: china, type: hottest, interval: 10, home: "https://www.zhihu.com", color: blue}
+  - {id: baidu, name: 百度热搜, column: china, type: hottest, interval: 10, home: "https://www.baidu.com", color: blue}
+  - {id: douyin, name: 抖音, column: china, type: hottest, interval: 10, home: "https://www.douyin.com", color: gray}
+  - {id: toutiao, name: 今日头条, column: china, type: hottest, interval: 10, home: "https://www.toutiao.com", color: red}
+  - {id: bilibili-hot-search, name: 哔哩哔哩, title: 热搜, column: china, type: hottest, interval: 10, home: "https://www.bilibili.com", color: blue}
+  - {id: bilibili-hot-video, name: 哔哩哔哩, title: 热门视频, column: china, type: hottest, interval: 10, home: "https://www.bilibili.com", note: NewsNow 在 Cloudflare 上禁用, color: blue}
+  - {id: bilibili-ranking, name: 哔哩哔哩, title: 排行榜, column: china, type: hottest, interval: 30, home: "https://www.bilibili.com", note: NewsNow 在 Cloudflare 上禁用, color: blue}
+  - {id: kuaishou, name: 快手, column: china, type: hottest, interval: 10, home: "https://www.kuaishou.com", note: NewsNow 在 Cloudflare 上禁用, color: orange}
+  - {id: tieba, name: 百度贴吧, title: 热议, column: china, type: hottest, interval: 10, home: "https://tieba.baidu.com", color: blue}
+  - {id: thepaper, name: 澎湃新闻, title: 热榜, column: china, type: hottest, interval: 30, home: "https://www.thepaper.cn", color: gray}
+  - {id: ifeng, name: 凤凰网, title: 热点资讯, column: china, type: hottest, interval: 10, home: "https://www.ifeng.com", color: red}
+  - {id: tencent-hot, name: 腾讯新闻, title: 综合早报, column: china, type: hottest, interval: 30, home: "https://news.qq.com/tag/aEWqxLtdgmQ=", color: blue}
+  - {id: nowcoder, name: 牛客, column: china, type: hottest, interval: 10, home: "https://www.nowcoder.com", color: blue}
+  - {id: douban, name: 豆瓣, title: 热门电影, column: china, type: hottest, interval: 10, home: "https://www.douban.com", color: green}
+  - {id: qqvideo-tv-hotsearch, name: 腾讯视频, title: 热搜榜, column: china, type: hottest, interval: 30, home: "https://v.qq.com/channel/tv", color: blue}
+  - {id: iqiyi-hot-ranklist, name: 爱奇艺, title: 热播榜, column: china, type: hottest, interval: 30, home: "https://www.iqiyi.com", color: green}
+  - {id: freebuf, name: Freebuf, title: 网络安全, column: china, type: hottest, interval: 10, home: "https://www.freebuf.com/", color: green}
+  - {id: chongbuluo-hot, name: 虫部落, title: 最热, column: china, type: hottest, interval: 30, home: "https://www.chongbuluo.com/forum.php?mod=guide&view=hot", color: green}
+  - {id: chongbuluo-latest, name: 虫部落, title: 最新, column: china, interval: 30, home: "https://www.chongbuluo.com/forum.php?mod=guide&view=newthread", color: green}
 
   # ---------------- 国际 ----------------
-  - {id: zaobao, name: 联合早报, column: world, type: realtime, interval: 30, home: "https://www.zaobao.com", note: 来自第三方网站早晨报}
-  - {id: sputniknewscn, name: 卫星通讯社, column: world, interval: 10, home: "https://sputniknews.cn"}
-  - {id: cankaoxiaoxi, name: 参考消息, column: world, interval: 30, home: "https://china.cankaoxiaoxi.com"}
-  - {id: kaopu, name: 靠谱新闻, column: world, interval: 30, home: "https://kaopu.news/", note: 不一定靠谱，多看多思考}
-  - {id: steam, name: Steam, title: 在线人数, column: world, type: hottest, interval: 10, home: "https://store.steampowered.com"}
+  - {id: zaobao, name: 联合早报, column: world, type: realtime, interval: 30, home: "https://www.zaobao.com", note: 来自第三方网站早晨报, color: red}
+  - {id: sputniknewscn, name: 卫星通讯社, column: world, interval: 10, home: "https://sputniknews.cn", color: orange}
+  - {id: cankaoxiaoxi, name: 参考消息, column: world, interval: 30, home: "https://china.cankaoxiaoxi.com", color: red}
+  - {id: kaopu, name: 靠谱新闻, column: world, interval: 30, home: "https://kaopu.news/", note: 不一定靠谱，多看多思考, color: gray}
+  - {id: steam, name: Steam, title: 在线人数, column: world, type: hottest, interval: 10, home: "https://store.steampowered.com", color: blue}
 
   # ---------------- 科技 ----------------
-  - {id: github-trending-today, name: GitHub, title: Trending 今日, column: tech, type: hottest, interval: 10, home: "https://github.com/trending"}
-  - {id: hackernews, name: Hacker News, column: tech, type: hottest, interval: 10, home: "https://news.ycombinator.com/"}
-  - {id: producthunt, name: Product Hunt, column: tech, type: hottest, interval: 10, home: "https://www.producthunt.com/"}
-  - {id: v2ex-share, name: V2EX, title: 最新分享, column: tech, interval: 10, home: "https://v2ex.com/"}
-  - {id: ithome, name: IT之家, column: tech, type: realtime, interval: 10, home: "https://www.ithome.com"}
-  - {id: juejin, name: 稀土掘金, column: tech, type: hottest, interval: 10, home: "https://juejin.cn"}
-  - {id: sspai, name: 少数派, column: tech, type: hottest, interval: 10, home: "https://sspai.com"}
-  - {id: 36kr-quick, name: 36氪, title: 快讯, column: tech, type: realtime, interval: 10, home: "https://36kr.com", note: NewsNow 在 Cloudflare 上禁用}
-  - {id: 36kr-renqi, name: 36氪, title: 人气榜, column: tech, type: hottest, interval: 10, home: "https://36kr.com", note: NewsNow 在 Cloudflare 上禁用}
-  - {id: aihot, name: AIHOT, column: tech, type: realtime, interval: 5, home: "https://aihot.news/all"}
-  - {id: solidot, name: Solidot, column: tech, interval: 60, home: "https://solidot.org"}
-  - {id: pcbeta-windows11, name: 远景论坛, title: Win11, column: tech, type: realtime, interval: 5, home: "https://bbs.pcbeta.com"}
+  - {id: github-trending-today, name: GitHub, title: Trending 今日, column: tech, type: hottest, interval: 10, home: "https://github.com/trending", color: gray}
+  - {id: hackernews, name: Hacker News, column: tech, type: hottest, interval: 10, home: "https://news.ycombinator.com/", color: orange}
+  - {id: producthunt, name: Product Hunt, column: tech, type: hottest, interval: 10, home: "https://www.producthunt.com/", color: red}
+  - {id: v2ex-share, name: V2EX, title: 最新分享, column: tech, interval: 10, home: "https://v2ex.com/", color: slate}
+  - {id: ithome, name: IT之家, column: tech, type: realtime, interval: 10, home: "https://www.ithome.com", color: red}
+  - {id: juejin, name: 稀土掘金, column: tech, type: hottest, interval: 10, home: "https://juejin.cn", color: blue}
+  - {id: sspai, name: 少数派, column: tech, type: hottest, interval: 10, home: "https://sspai.com", color: red}
+  - {id: 36kr-quick, name: 36氪, title: 快讯, column: tech, type: realtime, interval: 10, home: "https://36kr.com", note: NewsNow 在 Cloudflare 上禁用, color: blue}
+  - {id: 36kr-renqi, name: 36氪, title: 人气榜, column: tech, type: hottest, interval: 10, home: "https://36kr.com", note: NewsNow 在 Cloudflare 上禁用, color: blue}
+  - {id: aihot, name: AIHOT, column: tech, type: realtime, interval: 5, home: "https://aihot.news/all", color: blue}
+  - {id: solidot, name: Solidot, column: tech, interval: 60, home: "https://solidot.org", color: teal}
+  - {id: pcbeta-windows11, name: 远景论坛, title: Win11, column: tech, type: realtime, interval: 5, home: "https://bbs.pcbeta.com", color: blue}
 
   # ---------------- 财经 ----------------
-  - {id: wallstreetcn-quick, name: 华尔街见闻, title: 快讯, column: finance, type: realtime, interval: 5, home: "https://wallstreetcn.com/"}
-  - {id: wallstreetcn-news, name: 华尔街见闻, title: 最新, column: finance, interval: 30, home: "https://wallstreetcn.com/"}
-  - {id: wallstreetcn-hot, name: 华尔街见闻, title: 最热, column: finance, type: hottest, interval: 30, home: "https://wallstreetcn.com/"}
-  - {id: cls-telegraph, name: 财联社, title: 电报, column: finance, type: realtime, interval: 5, home: "https://www.cls.cn"}
-  - {id: cls-depth, name: 财联社, title: 深度, column: finance, interval: 10, home: "https://www.cls.cn"}
-  - {id: cls-hot, name: 财联社, title: 热门, column: finance, type: hottest, interval: 10, home: "https://www.cls.cn"}
-  - {id: jin10, name: 金十数据, column: finance, type: realtime, interval: 10, home: "https://www.jin10.com"}
-  - {id: xueqiu-hotstock, name: 雪球, title: 热门股票, column: finance, type: hottest, interval: 2, home: "https://xueqiu.com"}
-  - {id: gelonghui, name: 格隆汇, title: 事件, column: finance, type: realtime, interval: 2, home: "https://www.gelonghui.com"}
-  - {id: fastbull-express, name: 法布财经, title: 快讯, column: finance, type: realtime, interval: 2, home: "https://www.fastbull.cn"}
-  - {id: fastbull-news, name: 法布财经, title: 头条, column: finance, interval: 30, home: "https://www.fastbull.cn"}
-  - {id: mktnews-flash, name: MKTNews, title: 快讯, column: finance, interval: 2, home: "https://mktnews.net"}
+  - {id: wallstreetcn-quick, name: 华尔街见闻, title: 快讯, column: finance, type: realtime, interval: 5, home: "https://wallstreetcn.com/", color: blue}
+  - {id: wallstreetcn-news, name: 华尔街见闻, title: 最新, column: finance, interval: 30, home: "https://wallstreetcn.com/", color: blue}
+  - {id: wallstreetcn-hot, name: 华尔街见闻, title: 最热, column: finance, type: hottest, interval: 30, home: "https://wallstreetcn.com/", color: blue}
+  - {id: cls-telegraph, name: 财联社, title: 电报, column: finance, type: realtime, interval: 5, home: "https://www.cls.cn", color: red}
+  - {id: cls-depth, name: 财联社, title: 深度, column: finance, interval: 10, home: "https://www.cls.cn", color: red}
+  - {id: cls-hot, name: 财联社, title: 热门, column: finance, type: hottest, interval: 10, home: "https://www.cls.cn", color: red}
+  - {id: jin10, name: 金十数据, column: finance, type: realtime, interval: 10, home: "https://www.jin10.com", color: blue}
+  - {id: xueqiu-hotstock, name: 雪球, title: 热门股票, column: finance, type: hottest, interval: 2, home: "https://xueqiu.com", color: blue}
+  - {id: gelonghui, name: 格隆汇, title: 事件, column: finance, type: realtime, interval: 2, home: "https://www.gelonghui.com", color: blue}
+  - {id: fastbull-express, name: 法布财经, title: 快讯, column: finance, type: realtime, interval: 2, home: "https://www.fastbull.cn", color: emerald}
+  - {id: fastbull-news, name: 法布财经, title: 头条, column: finance, interval: 30, home: "https://www.fastbull.cn", color: emerald}
+  - {id: mktnews-flash, name: MKTNews, title: 快讯, column: finance, interval: 2, home: "https://mktnews.net", color: indigo}
 
   # ---------------- 体育 ----------------
-  - {id: hupu, name: 虎扑, title: 主干道热帖, column: sports, type: hottest, interval: 10, home: "https://hupu.com"}
-  - {id: dongqiudi, name: 懂球帝, title: 头条, column: sports, type: realtime, interval: 10, home: "https://www.dongqiudi.com"}
+  - {id: hupu, name: 虎扑, title: 主干道热帖, column: sports, type: hottest, interval: 10, home: "https://hupu.com", color: red}
+  - {id: dongqiudi, name: 懂球帝, title: 头条, column: sports, type: realtime, interval: 10, home: "https://www.dongqiudi.com", color: green}
