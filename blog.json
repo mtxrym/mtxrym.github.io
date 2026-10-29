@@ -1,7 +1,7 @@
 [
   {
     "title": "Benchmarking LLM Agents for Behaviorally Adequate Test Generation from Software Requirements",
-    "sub_title": "papers · source=arxiv_cs_se · score=69.9",
+    "sub_title": "papers · source=arxiv_cs_se · score=74.0",
     "url_title": "benchmarking-llm-agents-for-behaviorally-adequate-test-generation-from-software-",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.36584",
@@ -12,13 +12,13 @@
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
+    "published_at": "2026-10-29T04:00:00Z",
     "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 69.9,
+    "score": 74.0,
     "scores": {
       "relevance": 93.0,
       "popularity": 0.0,
-      "freshness": 79.4,
+      "freshness": 100.0,
       "impact": 75.0
     },
     "keywords": [
@@ -77,7 +77,7 @@
   },
   {
     "title": "InfraDev: Can Coding Agents Develop AI Infrastructure, and How Can We Tell?",
-    "sub_title": "papers · source=arxiv_cs_ai · score=66.9",
+    "sub_title": "papers · source=arxiv_cs_ai · score=71.0",
     "url_title": "infradev-can-coding-agents-develop-ai-infrastructure-and-how-can-we-tell",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.36589",
@@ -87,13 +87,13 @@
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
+    "published_at": "2026-10-29T04:00:00Z",
     "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 66.9,
+    "score": 71.0,
     "scores": {
       "relevance": 95.0,
       "popularity": 0.0,
-      "freshness": 79.4,
+      "freshness": 100.0,
       "impact": 35.0
     },
     "keywords": [
@@ -143,6 +143,223 @@
         "agent 常犯结构性/状态错误，且自写测试很少检查内存、时间或通信开销。"
       ],
       "limitations": "多 GPU 评测成本高，单模型需数百 GPU 小时；PR 筛选仍依赖专家手工，限制基准扩展。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "PROBE: Frontier Coding Agents Find Different Bugs Than Maintainers Fix",
+    "sub_title": "papers · source=arxiv_cs_se · score=69.5",
+    "url_title": "probe-frontier-coding-agents-find-different-bugs-than-maintainers-fix",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.35987",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "arxiv_cs_lg"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 69.5,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 35.0
+    },
+    "keywords": [
+      "coding agent",
+      "github"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "程序修复"
+    ],
+    "summary_zh": "提出PROBE基准，比较前沿编程智能体与维护者发现的缺陷差异",
+    "reason_zh": "核心是编程智能体的缺陷发现评测",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark"
+    ],
+    "summary": "Proactive bug discovery is an important software-engineering problem. Even though coding agents are already widely deployed in this domain, their capabilities remain understudied. In particular, the challenging task of finding all bugs that human maintainers would repair across an entire repository has not been studied yet. To close this gap, we introduce…",
+    "authors": [
+      "Marco Paina",
+      "Mark Niklas M\\\"uller",
+      "Niels M\\\"undler-Sasahara",
+      "Martin Vechev"
+    ],
+    "author_count": 4,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.35987",
+    "digest": {
+      "problem": "编码 agent 能否在整仓库范围内自主发现维护者会修复的 bug，此前缺乏基准，且已有工作只针对给定补丁或安全漏洞。",
+      "method": [
+        "构建 PROBE 基准：20 个仓库、18 个月内维护者修复的 2,457 个 bug，用 LLM 匹配器对齐发现与参考 bug。",
+        "提出多轮审计 harness：按复杂度切分文件，每轮独立会话审计，并附上下文文档与调用图。",
+        "用 LLM 评审团对参考集之外的发现做独立有效性验证。"
+      ],
+      "results": [
+        "十个前沿模型最高 recall 仅 20.8%，precision 均不超过 8.1%。",
+        "推理强度提升使 recall 从 5.3% 升至 17.3%，但 precision 基本不变。",
+        "84% 未匹配参考集的发现被评审团判为真实 bug；agent 过度报告算术/比较错误（18.5% vs 9.9%）。"
+      ],
+      "takeaways": [
+        "agent 找到的 bug 真实但与维护者关注点系统性不同，不能仅用修复历史衡量其价值。",
+        "提高推理强度主要增加发现数量而非质量，成本效益需权衡。"
+      ],
+      "limitations": "参考集不完整，完美发现者的 precision 上限估计仅 26–47%；每个配置仅跑一次。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Agent or Human? Detecting Commits by AI Coding Agents in the Absence of Authorship Signatures",
+    "sub_title": "papers · source=arxiv_cs_se · score=68.0",
+    "url_title": "agent-or-human-detecting-commits-by-ai-coding-agents-in-the-absence-of-authorshi",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.36229",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 68.0,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "claude code",
+      "copilot",
+      "pull request"
+    ],
+    "topics": [
+      "编程智能体",
+      "开发者与工具研究"
+    ],
+    "summary_zh": "研究在缺少作者签名时如何识别 AI 编程智能体提交的 commit",
+    "reason_zh": "针对 AI 编程智能体行为的实证检测研究",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "AI coding agents such as Claude Code, GitHub Copilot coding agent, and Cursor now commit directly to open-source repositories. Empirical studies of these agents identify their commits through authorship signatures, such as bot accounts and Co-authored-by trailers. These signatures are optional, can be removed, and are often attached to pull requests rather…",
+    "authors": [
+      "Kosei Horikawa",
+      "Hao Li",
+      "Yutaro Kashiwa",
+      "Youssef Esseddiq Ouatiti",
+      "Mohammed Sayagh",
+      "Bram Adams"
+    ],
+    "author_count": 8,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.36229",
+    "digest": {
+      "problem": "AI coding agent 的 commit 常无署名（bot 账号、Co-Authored-By 等可被移除或只挂在 PR 上），导致无法区分 Agent 与 Human commit，影响相关实证研究的准确性。",
+      "method": [
+        "构建 783 万条 commit、1226 个仓库数据集，覆盖 5 个 agent 与 Human，并屏蔽署名后做检测。",
+        "用 XGBoost 等模型基于 commit message、变更规模、代码风格等 39 个特征分类，并做仓库隔离交叉验证。",
+        "对比 TF-IDF、CodeBERT 与零样本 LLM judge（gpt-6-sol 等），并测试跨 agent 与跨时间泛化。"
+      ],
+      "results": [
+        "屏蔽署名后 ROC AUC 最高 0.859，但按实际 Agent 占比 0.059 时最佳精度仅 0.332。",
+        "信号主要来自 message 长度与变更规模：Claude Code 消息中位数 73 词 vs Human 10 词；仅代码 diff 的 AUC 为 0.716。",
+        "跨 agent 迁移差：Claude Code 与 Copilot 的 XGBoost AUC 仅 0.702 和 0.706，TF-IDF 对 Claude Code 仅 0.524。"
+      ],
+      "takeaways": [
+        "无署名检测只能用于给 commit 排优先级供人工复核，不能替代显式署名记录。",
+        "基于署名的数据集应把 Agent 标签视为下限，并与 Agent 时代的 Human commit 对比。"
+      ],
+      "limitations": "检测精度在实际占比下偏低，跨 agent 与跨时间泛化差，且 Human 标签仅表示无已知 AI 署名，不能证明未使用 AI。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Evolving Agent Teams",
+    "sub_title": "papers · source=arxiv_cs_ai · score=68.0",
+    "url_title": "evolving-agent-teams",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.36848",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 68.0,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 55.0
+    },
+    "keywords": [
+      "coding agent",
+      "software engineering agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "提出 Evolving Agent Teams 多智能体框架，用于 GPU kernel 优化等编程任务。",
+    "reason_zh": "面向编程智能体的多智能体框架，密切相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code",
+      "sota"
+    ],
+    "summary": "The rapid progress of software engineering agents drives interest in applying them to open-ended problems such as GPU kernel optimization. However, we find that existing coding agents converge to local optima on real-world, expert-written kernels (e.g., FlashInfer). We introduce Evolving Agent Teams, a multi-agent framework that escapes such local optima.…",
+    "authors": [
+      "Shiyi Cao",
+      "Ziming Mao",
+      "Dacheng Li",
+      "Joseph E. Gonzalez",
+      "Ion Stoica"
+    ],
+    "author_count": 5,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.36848",
+    "digest": {
+      "problem": "现有编码 agent 在真实专家手写 GPU kernel（如 FlashInfer）上会陷入局部最优，单 agent 与固定角色团队均无法突破，难以完成开放式性能优化。",
+      "method": [
+        "中央 supervisor 诊断每次停滞原因，动态重构团队角色、协作方式与知识管理。",
+        "持久文件系统保存学习文档、演化历史与各团队产物，让经验跨团队累积。",
+        "团队执行层由具备 shell 与编译/剖析能力的 LLM 编码 agent 按当前配置迭代优化。"
+      ],
+      "results": [
+        "MLA decode 在匹配 token 预算下达 0.74×，Claude Code 仅 0.51×；追加预算后达 1.21×，47 个工作负载中 36 个胜出。",
+        "KDA prefill 在 AMD MI350X 上达 3.01×（对比 vLLM），在 NVIDIA B200 上达 3.44×（对比 FlashKDA）。",
+        "G+AR 追加预算后融合 WGMMA+NVLS kernel 达 1.49×，最小负载 2.57×。"
+      ],
+      "takeaways": [
+        "固定角色多 agent 团队会因信息割裂在跨角色调试上卡住，需按阶段动态调整组织。",
+        "持久化经验文档与演化历史是长周期优化任务中避免重复踩坑的关键基础设施。"
+      ],
+      "limitations": "主实验每组仅跑两次、部分设置单次，统计结论有限；成本-性能 Pareto 分析与更嘈杂领域的受控研究留待未来。",
       "basis": "fulltext"
     }
   },
@@ -220,11 +437,79 @@
     }
   },
   {
-    "title": "PROBE: Frontier Coding Agents Find Different Bugs Than Maintainers Fix",
-    "sub_title": "papers · source=arxiv_cs_se · score=65.4",
-    "url_title": "probe-frontier-coding-agents-find-different-bugs-than-maintainers-fix",
+    "title": "Spine: Compiling Subtask Trees into Structured Context for Long-Horizon Coding Agents",
+    "sub_title": "papers · source=arxiv_cs_se · score=66.0",
+    "url_title": "spine-compiling-subtask-trees-into-structured-context-for-long-horizon-coding-ag",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.35987",
+    "external_url": "https://arxiv.org/abs/2610.37224",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 66.0,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "将长程编码任务的子任务树编译为结构化上下文，缓解历史膨胀",
+    "reason_zh": "直接面向长程编程智能体的上下文管理",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Long-horizon coding tasks contain nested subtasks. Typically, agents record interactions sequentially into a growing history, causing context inflation and performance degradation. Compressing or trimming the history without explicit subtask boundaries can discard information needed by unfinished subtasks. Conversely, recursive subagent delegation isolates…",
+    "authors": [
+      "Jiahong Xiang",
+      "Kunqiu Chen",
+      "Lingming Zhang",
+      "Yuqun Zhang"
+    ],
+    "author_count": 4,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.37224",
+    "digest": {
+      "problem": "长程编码任务含嵌套子任务，顺序记录交互导致上下文膨胀；压缩历史丢失未完成子任务信息，递归子代理又带来协调开销。",
+      "method": [
+        "用 work scope 显式声明子任务边界与完成状态，同一 agent 可内联执行嵌套子任务。",
+        "维护持久执行树 SpineTree，记录嵌套关系、交互与返回结果。",
+        "每次模型调用前即时编译上下文：保留未完成子任务交互，已完成子任务仅留结果，并保持前缀缓存复用。"
+      ],
+      "results": [
+        "GPT-5.6 Sol 下 SWE-Milestone Score 较原生 Codex 提升 11.8%，总成本降低 32.4%。",
+        "与 Recursive Subagent 得分相当，总成本低 73.7%；ProgramBench 平均通过率较 Codex 提升 17.3%。",
+        "集成到 Pi 后，Gemini 3.8 Flash 与 Qwen 3.8 27B 上 SWE-Milestone 提升 9.5–17.5%，ProgramBench 提升 4.3–8.7%。"
+      ],
+      "takeaways": [
+        "上下文管理应按子任务结构组织，而非单纯压缩历史，避免重复探索。",
+        "子任务边界与执行者选择解耦，顺序子任务内联执行可省去多代理协调开销。"
+      ],
+      "limitations": "",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "UnityBench-Mini3D: Evaluating LLM Agents for 3D Game Development in Unity",
+    "sub_title": "papers · source=arxiv_cs_se · score=66.0",
+    "url_title": "unitybench-mini3d-evaluating-llm-agents-for-3d-game-development-in-unity",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.35980",
     "source_id": "arxiv_cs_se",
     "source_ids": [
       "arxiv_cs_se",
@@ -233,70 +518,70 @@
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
+    "published_at": "2026-10-29T04:00:00Z",
     "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 65.4,
+    "score": 66.0,
     "scores": {
-      "relevance": 92.0,
+      "relevance": 85.0,
       "popularity": 0.0,
-      "freshness": 79.4,
+      "freshness": 100.0,
       "impact": 35.0
     },
     "keywords": [
-      "coding agent",
-      "github"
+      "coding agent"
     ],
     "topics": [
       "编程智能体",
-      "评测基准",
-      "程序修复"
+      "评测基准"
     ],
-    "summary_zh": "提出PROBE基准，比较前沿编程智能体与维护者发现的缺陷差异",
-    "reason_zh": "核心是编程智能体的缺陷发现评测",
+    "summary_zh": "提出UnityBench-Mini3D，评测LLM智能体在Unity 3D游戏开发中的编程能力",
+    "reason_zh": "面向编程智能体的新评测基准，场景偏游戏开发",
     "relevance_source": "llm",
     "signals": [
       "new_benchmark"
     ],
-    "summary": "Proactive bug discovery is an important software-engineering problem. Even though coding agents are already widely deployed in this domain, their capabilities remain understudied. In particular, the challenging task of finding all bugs that human maintainers would repair across an entire repository has not been studied yet. To close this gap, we introduce…",
+    "summary": "Game development stresses coding agents in ways general software engineering does not: correctness depends on how engine APIs, serialized scene state, and runtime behavior interact, not on source code alone. Existing benchmarks mainly target platforms such as Godot and heavily rely on LLM judges or coarse task-level outcomes. We present UnityBench-Mini3D, a…",
     "authors": [
-      "Marco Paina",
-      "Mark Niklas M\\\"uller",
-      "Niels M\\\"undler-Sasahara",
-      "Martin Vechev"
+      "Yijun Zhou",
+      "Minghao Shao",
+      "Ke Zhang",
+      "Renkai Yuan",
+      "Hongbo Yuan",
+      "Bin Hu"
     ],
-    "author_count": 4,
+    "author_count": 23,
     "upvotes": 0,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2610.35987",
+    "arxiv_id": "2610.35980",
     "digest": {
-      "problem": "编码 agent 能否在整仓库范围内自主发现维护者会修复的 bug，此前缺乏基准，且已有工作只针对给定补丁或安全漏洞。",
+      "problem": "现有游戏开发基准多基于 Godot，Unity 覆盖不足；且依赖 LLM 评委或粗粒度任务级结果，难以定位失败、区分部分实现。",
       "method": [
-        "构建 PROBE 基准：20 个仓库、18 个月内维护者修复的 2,457 个 bug，用 LLM 匹配器对齐发现与参考 bug。",
-        "提出多轮审计 harness：按复杂度切分文件，每轮独立会话审计，并附上下文文档与调用图。",
-        "用 LLM 评审团对参考集之外的发现做独立有效性验证。"
+        "构建 77 个 Unity 项目级任务，按 7 类专家定义技能划分、分三档难度。",
+        "每任务配 1,178 个留出人工里程碑测试，在引擎内检查场景结构、组件配置与运行时行为。",
+        "容器化固定引擎版本与依赖，无 LLM 评委，按测试通过率给确定性部分分。"
       ],
       "results": [
-        "十个前沿模型最高 recall 仅 20.8%，precision 均不超过 8.1%。",
-        "推理强度提升使 recall 从 5.3% 升至 17.3%，但 precision 基本不变。",
-        "84% 未匹配参考集的发现被评审团判为真实 bug；agent 过度报告算术/比较错误（18.5% vs 9.9%）。"
+        "21 个模型、9 个 harness 平均通过率 57.7%，easy 80.9%、hard 35.2%。",
+        "最强配置约 70%，32 个组合中 25 个超过 50%。",
+        "Codely 对每个共享模型均优于 OpenCode，DeepSeek V4 Flash 差距达 23.01pp。"
       ],
       "takeaways": [
-        "agent 找到的 bug 真实但与维护者关注点系统性不同，不能仅用修复历史衡量其价值。",
-        "提高推理强度主要增加发现数量而非质量，成本效益需权衡。"
+        "专用引擎工具 harness 比通用编码 harness 更有效，harness 选择可与模型选择同等重要。",
+        "瓶颈不在生成可编译代码，而在构建空间关系正确的连贯场景。"
       ],
-      "limitations": "参考集不完整，完美发现者的 precision 上限估计仅 26–47%；每个配置仅跑一次。",
+      "limitations": "仅覆盖 Unity 与小规模 3D 游戏，任务以 easy/medium 为主，hard 任务较少。",
       "basis": "fulltext"
     }
   },
   {
-    "title": "Agent or Human? Detecting Commits by AI Coding Agents in the Absence of Authorship Signatures",
-    "sub_title": "papers · source=arxiv_cs_se · score=63.9",
-    "url_title": "agent-or-human-detecting-commits-by-ai-coding-agents-in-the-absence-of-authorshi",
+    "title": "CIVER: Causal Intervention Verification for Reliable Code Review",
+    "sub_title": "papers · source=arxiv_cs_se · score=65.0",
+    "url_title": "civer-causal-intervention-verification-for-reliable-code-review",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.36229",
+    "external_url": "https://arxiv.org/abs/2610.36010",
     "source_id": "arxiv_cs_se",
     "source_ids": [
       "arxiv_cs_se",
@@ -304,39 +589,247 @@
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
+    "published_at": "2026-10-29T04:00:00Z",
     "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 63.9,
+    "score": 65.0,
     "scores": {
-      "relevance": 88.0,
+      "relevance": 90.0,
       "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 40.0
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "code review",
+      "coding agent"
+    ],
+    "topics": [
+      "代码评审",
+      "编程智能体"
+    ],
+    "summary_zh": "提出CIVER，用因果干预验证提升LLM代码评审的可靠性",
+    "reason_zh": "直接面向LLM代码评审智能体",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Code review is essential for maintaining software repositories by identifying defects, improving code quality, and supporting reliable software evolution. With the growing adoption of LLM-based coding agents, an increasing number of code contributions and repository changes are generated by these agents. Consequently, LLM-based code review agents are…",
+    "authors": [
+      "Xinyuan Song",
+      "Hasibul Haque",
+      "Jay Somasundaram",
+      "Ryan Turner",
+      "Bowen Zhu",
+      "Liang Zhao"
+    ],
+    "author_count": 6,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.36010",
+    "digest": {
+      "problem": "LLM 代码评审常产出大量误报和缺乏证据的评论，误导开发者与下游编码 agent，需要区分真实缺陷与虚假发现。",
+      "method": [
+        "将评审评论转为结构化候选批评，用定向修复、无关修改和语义保持变换构造干预。",
+        "干预模块排序候选修改，验证模块比较干预前后评分变化来判定评论可靠性。",
+        "三模块通过专家迭代联合优化，预训练评审器与编码器保持冻结。"
+      ],
+      "results": [
+        "在 SWE-Review-Bench 上以 77% 准确率区分缺陷代码与修复版本。",
+        "跨项目迁移 AUROC 达 0.760，在 Django、SymPy、scikit-learn 上为 0.73/0.76/0.67。",
+        "CRScore 上 F1 0.43、AUROC 0.72，优于 LLM-as-a-judge 的 0.38/0.67。"
+      ],
+      "takeaways": [
+        "评审可靠性应看评论是否对定向修复敏感、对无关改动稳定，而非仅看置信度。",
+        "过滤误报后再交给下游编码 agent，可减少有害修改并提升修复成功率。"
+      ],
+      "limitations": "依赖基准提供的可执行缺陷-修复对与干扰修复构造，语义变换仅覆盖重命名和行位移。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Do Coding Agents Still Need a Debugger? Frontier-Model-Based Fault Localization at the Accuracy Ceiling",
+    "sub_title": "papers · source=arxiv_cs_se · score=65.0",
+    "url_title": "do-coding-agents-still-need-a-debugger-frontier-model-based-fault-localization-a",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.36015",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 65.0,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
     },
     "keywords": [
       "coding agent",
-      "claude code",
-      "copilot",
-      "pull request"
+      "fault localization"
     ],
     "topics": [
       "编程智能体",
-      "开发者与工具研究"
+      "程序修复"
     ],
-    "summary_zh": "研究在缺少作者签名时如何识别 AI 编程智能体提交的 commit",
-    "reason_zh": "针对 AI 编程智能体行为的实证检测研究",
+    "summary_zh": "评估前沿编程智能体在有无调试器辅助下的故障定位准确率",
+    "reason_zh": "编程智能体的故障定位与调试能力研究",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Background: To localize a fault, a coding agent can reason from source code alone or use debugger assistance by running the program and stepping through it in an interactive debugger. While earlier agents struggled with static execution tracing and debugger operation, frontier LLMs have improved at both. Objective: We evaluate how accurately coding agents…",
+    "authors": [
+      "Christoph Daxerer",
+      "Johann Glock",
+      "Christian Macho",
+      "Rudolf Ramler",
+      "Martin Pinzger",
+      "Josef Pichler"
+    ],
+    "author_count": 6,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.36015",
+    "digest": {
+      "problem": "前沿编码 agent 仅凭源码定位故障已接近准确率上限，但行为保持变换是否仍会降低准确率、debugger 辅助还能带来多少增益与代价尚不清楚。",
+      "method": [
+        "向 144 个 LeetCodeDataset 程序注入 610 个单行故障，并用五种行为保持变换生成 3,022 个变换程序。",
+        "用 Sol 6.1、Luna 6、Qwen 3.8 在无工具、可选工具、鼓励工具三种设置下做 65,376 次定位实验。",
+        "以语句级与行级 Top-1 准确率、token/时间/成本及工具调用频率衡量效果。"
+      ],
+      "results": [
+        "无工具时原始程序定位准确率 98.2–99.9%，变换后 Luna 6 降至 96.7%、Qwen 3.8 为 97.9%，Sol 6.1 保持 99.9%。",
+        "鼓励用 debugger 使 Luna 6 变换程序 +2.1 点、Qwen 3.8 +1.3 点，消除 63% 和 61% 剩余错误，但 token 用量增至 14.7–27.0 倍。",
+        "可选工具时 agent 仅在 0.2–6.2% 的 episode 中真正单步调试，却仍获得 +1.5 和 +1.3 点增益。"
+      ],
+      "takeaways": [
+        "对短小且规格明确的程序，前沿模型仅凭源码即可定位绝大多数故障，debugger 并非必需。",
+        "给 agent 可选执行探针比强制单步调试更划算，能保留大部分增益而成本低得多。"
+      ],
+      "limitations": "仅覆盖短小自包含算法程序与单行故障，结论未必适用于大型真实代码库或多行缺陷。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "FeatureArc: Benchmarking Coding Agents on Evolving Features",
+    "sub_title": "papers · source=arxiv_cs_se · score=65.0",
+    "url_title": "featurearc-benchmarking-coding-agents-on-evolving-features",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.37434",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 65.0,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent",
+      "codebase"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "提出评估编码智能体处理演进特性的基准 FeatureArc",
+    "reason_zh": "编码智能体评测基准，核心相关",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "A software feature usually evolves over time: developers extend its first version as new use cases and requirements arrive, and each extension builds on code written earlier. Most feature benchmarks evaluate a single request on a fixed codebase. Feature evolution requires evaluating successive extensions on an agent's own earlier code and checking whether…",
+    "authors": [
+      "Yunlong Wang",
+      "Alyssa Wu",
+      "Cuiyun Gao",
+      "Jia Feng",
+      "Songyuanyi Lu",
+      "Zhichao Hu"
+    ],
+    "author_count": 6,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.37434",
+    "digest": {
+      "problem": "现有 feature benchmark 多在固定代码库上评估单次请求，无法检验 agent 在自身早期代码上连续扩展功能并保持正确性的能力。",
+      "method": [
+        "从仓库历史挖掘同一功能的连续扩展阶段，构建 2–10 阶段的 same-feature chain。",
+        "每阶段提供需求文档与接口契约，用 F2P/P2P 测试在参考状态上验证，并设 stage gate 与 chain gate。",
+        "L4 设定：单一持久会话与工作区，无隐藏测试反馈、不回滚，覆盖 Python/TypeScript/Rust/Go。"
+      ],
+      "results": [
+        "10 个 agent 在 73 个任务上，pooled 成功率从首阶段 62.7% 降至整功能 28.5%。",
+        "最强 Claude Opus 5.5 首阶段通过 83.6%，整功能仅 49.3%。",
+        "失败阶段后下一阶段 F2P 通过率仅 22.6%（通过后为 70.2%）；94.9% 的后续阶段未察觉早期错误。"
+      ],
+      "takeaways": [
+        "单阶段高分不能代表多阶段持续开发能力，评估应关注整功能与继承缺陷。",
+        "agent 自测很少回访早期阶段，工具需支持跨阶段回归检查与错误追溯。"
+      ],
+      "limitations": "评估集仅 73 个任务、53 个仓库，跨 agent 分数耦合模型与 harness，且任务构建依赖多个 LLM 步骤。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Generation and Verification: Human-Agent Collaboration for Safety-Critical Automotive Software Engineering",
+    "sub_title": "papers · source=arxiv_cs_se · score=64.5",
+    "url_title": "generation-and-verification-human-agent-collaboration-for-safety-critical-automo",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.35982",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 64.5,
+    "scores": {
+      "relevance": 82.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 35.0
+    },
+    "keywords": [
+      "coding agent",
+      "coding assistant"
+    ],
+    "topics": [
+      "编程智能体",
+      "测试与验证"
+    ],
+    "summary_zh": "面向安全关键汽车软件，研究人机协作的代码生成与验证流程",
+    "reason_zh": "编程智能体在特定领域的生成与验证",
     "relevance_source": "llm",
     "signals": [
-      "open_source_code"
+      "new_benchmark"
     ],
-    "summary": "AI coding agents such as Claude Code, GitHub Copilot coding agent, and Cursor now commit directly to open-source repositories. Empirical studies of these agents identify their commits through authorship signatures, such as bot accounts and Co-authored-by trailers. These signatures are optional, can be removed, and are often attached to pull requests rather…",
+    "summary": "Research on coding agents mainly focuses on generation quality. Yet, safety-critical automotive software makes two additional demands. It prioritizes verification, since every change is reviewed, traced to a requirement, and checked against industry standards such as MISRA and AUTOSAR before it can be committed. It is also a narrow domain, written against…",
     "authors": [
-      "Kosei Horikawa",
-      "Hao Li",
-      "Yutaro Kashiwa",
-      "Youssef Esseddiq Ouatiti",
-      "Mohammed Sayagh",
-      "Bram Adams"
+      "Elizaveta Zinovyeva",
+      "Aiham Taleb",
+      "Nikita Kozodoi",
+      "Daniel Schleicher",
+      "Amir Mahdi Namazi",
+      "Martin Kraus"
     ],
     "author_count": 8,
     "upvotes": 0,
@@ -344,95 +837,163 @@
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2610.36229",
+    "arxiv_id": "2610.35982",
     "digest": {
-      "problem": "AI coding agent 的 commit 常无署名（bot 账号、Co-Authored-By 等可被移除或只挂在 PR 上），导致无法区分 Agent 与 Human commit，影响相关实证研究的准确性。",
+      "problem": "安全关键汽车软件要求每次改动都需验证并追溯需求、符合 MISRA/AUTOSAR，而现有编码 agent 只关注生成质量，通用模型也缺乏汽车领域知识。",
       "method": [
-        "构建 783 万条 commit、1226 个仓库数据集，覆盖 5 个 agent 与 Human，并屏蔽署名后做检测。",
-        "用 XGBoost 等模型基于 commit message、变更规模、代码风格等 39 个特征分类，并做仓库隔离交叉验证。",
-        "对比 TF-IDF、CodeBERT 与零样本 LLM judge（gpt-6-sol 等），并测试跨 agent 与跨时间泛化。"
+        "基于 MCP 暴露 generate、edit、verify 三个工具，verify 可由开发者独立按需调用",
+        "用需求文本、UML 行为与 API 上下文构建约 6000 个函数的领域数据集",
+        "对比 prompt engineering 与 LoRA 微调两种定制策略，并配自建规则检查器"
       ],
       "results": [
-        "屏蔽署名后 ROC AUC 最高 0.859，但按实际 Agent 占比 0.059 时最佳精度仅 0.332。",
-        "信号主要来自 message 长度与变更规模：Claude Code 消息中位数 73 词 vs Human 10 词；仅代码 diff 的 AUC 为 0.716。",
-        "跨 agent 迁移差：Claude Code 与 Copilot 的 XGBoost AUC 仅 0.702 和 0.706，TF-IDF 对 Claude Code 仅 0.524。"
+        "C 上 PE 违规最少（coding 1.22、architecture 0.54），C++ 上精选数据 FT 最少（1.25、0.02）",
+        "Claude Sonnet 4 与 Amazon Nova Pro 在两种语言上违规均多于最佳 Qwen3-32B 变体",
+        "两周试点中 9 名开发者最常用 verify，75% 偏好更快的 prompt engineering 配置"
       ],
       "takeaways": [
-        "无署名检测只能用于给 commit 排优先级供人工复核，不能替代显式署名记录。",
-        "基于署名的数据集应把 Agent 标签视为下限，并与 Agent 时代的 Human commit 对比。"
+        "把验证做成开发者可主动调用的独立工具，而非依赖 agent 自查",
+        "领域适配需权衡：PE 在函数局部规则占优，FT 更贴合架构约定"
       ],
-      "limitations": "检测精度在实际占比下偏低，跨 agent 与跨时间泛化差，且 Human 标签仅表示无已知 AI 署名，不能证明未使用 AI。",
+      "limitations": "规则检查器为简化正则匹配，未测编译或单元测试通过率；试点仅 9 人自报数据，无显著性检验，数据不可公开。",
       "basis": "fulltext"
     }
   },
   {
-    "title": "Evolving Agent Teams",
-    "sub_title": "papers · source=arxiv_cs_ai · score=63.9",
-    "url_title": "evolving-agent-teams",
+    "title": "kw-bench: Breaking Frontier Harnesses on Real-World Tasks",
+    "sub_title": "papers · source=arxiv_cs_se · score=64.5",
+    "url_title": "kw-bench-breaking-frontier-harnesses-on-real-world-tasks",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.36848",
+    "external_url": "https://arxiv.org/abs/2610.36405",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 64.5,
+    "scores": {
+      "relevance": 82.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 35.0
+    },
+    "keywords": [
+      "claude code",
+      "codex"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体"
+    ],
+    "summary_zh": "用真实世界任务压测前沿模型编码智能体框架",
+    "reason_zh": "编码智能体框架评测基准",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark"
+    ],
+    "summary": "Each new generation of frontier model pushes the edge of what is possible. Inside a harness -- a loop, a shell, a filesystem, the ability to write and run its own code -- a model can take on increasingly difficult work. A growing body of work treats the coding-agent harness as infrastructure for knowledge work rather than a coding tool, and a new wave of…",
+    "authors": [
+      "George Juraj Salapa"
+    ],
+    "author_count": 1,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.36405",
+    "digest": {
+      "problem": "现有知识工作基准多为生成式、由 rubric 或 LLM 评判，缺少对调查式工作的检验：答案藏在跨系统、不完整且不一致的证据中，需重建并精确到分地辩护。",
+      "method": [
+        "构建 kw-bench，首个跨三代 SAP 系统、以真实抽取格式交付的取证式基准，答案隐藏且可精确核对。",
+        "任务为五年 VAT 链式交易重建，含四类植入错误与大量陷阱，要求交付登记表、对账、更正文件、备忘录及可复用分类工具。",
+        "评分确定性、无 LLM judge，在 Harbor 上以 headless 方式运行，并用隐藏数据测试工具。"
+      ],
+      "results": [
+        "同一模型 DeepSeek v4.1 Flash 下，OpenCode 得 0.542、micro-cc 得 0.528，而 Claude Code 与 Codex 均为 0.00。",
+        "在 Claude Opus 5.5 上，micro-cc 与 Claude Code 分别得 0.9986 和 1.000，耗时 22 与 25 分钟，成本 $5.80 与 $5.89。",
+        "前沿模型下精确找出 EUR 3,093,692.38 的额外销项税并交付完整包；失败主因是长会话中维持大量弱信号的惯性。"
+      ],
+      "takeaways": [
+        "harness 工程（上下文回填、工具默认值、断轮恢复、完成前验证）在非前沿模型上比模型本身更决定成败。",
+        "把记忆外移到代码与中间文件、先读规则再读数据、逐条核对证据，是长链调查任务的关键做法。"
+      ],
+      "limitations": "任务为虚构但仿真的单一 VAT 案例，仅测四个 harness 与两个模型；无专家在环，分数是下限而非真实协作表现。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "M4Bench: Evaluating Procedural Specification for Clinical EHR Derivation Agents",
+    "sub_title": "papers · source=arxiv_cs_ai · score=64.0",
+    "url_title": "m4bench-evaluating-procedural-specification-for-clinical-ehr-derivation-agents",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.37459",
     "source_id": "arxiv_cs_ai",
     "source_ids": [
       "arxiv_cs_ai"
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
+    "published_at": "2026-10-29T04:00:00Z",
     "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 63.9,
+    "score": 64.0,
     "scores": {
-      "relevance": 85.0,
+      "relevance": 80.0,
       "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 55.0
+      "freshness": 100.0,
+      "impact": 40.0
     },
     "keywords": [
       "coding agent",
-      "software engineering agent"
+      "claude code",
+      "codex"
     ],
     "topics": [
       "编程智能体",
-      "代码生成"
+      "评测基准"
     ],
-    "summary_zh": "提出 Evolving Agent Teams 多智能体框架，用于 GPU kernel 优化等编程任务。",
-    "reason_zh": "面向编程智能体的多智能体框架，密切相关。",
+    "summary_zh": "提出 M4Bench，评测 AI 编程智能体能否复现临床 EHR 派生变量。",
+    "reason_zh": "编程智能体评测基准，场景偏医疗但核心相关。",
     "relevance_source": "llm",
     "signals": [
-      "open_source_code",
-      "sota"
+      "open_source_code"
     ],
-    "summary": "The rapid progress of software engineering agents drives interest in applying them to open-ended problems such as GPU kernel optimization. However, we find that existing coding agents converge to local optima on real-world, expert-written kernels (e.g., FlashInfer). We introduce Evolving Agent Teams, a multi-agent framework that escapes such local optima.…",
+    "summary": "Clinical research over electronic health records depends on derived variables whose definitions sit outside the schema, in item codes, time windows, missingness rules, and output-grain choices that change cohorts and downstream conclusions. We introduce M4Bench, 28 clinical derivation tasks across 15 task families on MIMIC-IV and eICU, to test whether AI…",
     "authors": [
-      "Shiyi Cao",
-      "Ziming Mao",
-      "Dacheng Li",
-      "Joseph E. Gonzalez",
-      "Ion Stoica"
+      "Hannes Ill",
+      "Rafi Al Attrach",
+      "Rajna Fani",
+      "Ahram Han",
+      "Ryohei Yamamoto",
+      "Marlene Louisa Moerig"
     ],
-    "author_count": 5,
+    "author_count": 8,
     "upvotes": 0,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2610.36848",
+    "arxiv_id": "2610.37459",
     "digest": {
-      "problem": "现有编码 agent 在真实专家手写 GPU kernel（如 FlashInfer）上会陷入局部最优，单 agent 与固定角色团队均无法突破，难以完成开放式性能优化。",
+      "problem": "临床 EHR 衍生变量（如 SOFA、Sepsis-3）的定义依赖 item code、时间窗、缺失规则等过程性知识，无法从 schema 直接推断，AI agent 难以复现。",
       "method": [
-        "中央 supervisor 诊断每次停滞原因，动态重构团队角色、协作方式与知识管理。",
-        "持久文件系统保存学习文档、演化历史与各团队产物，让经验跨团队累积。",
-        "团队执行层由具备 shell 与编译/剖析能力的 LLM 编码 agent 按当前配置迭代优化。"
+        "构建 M4Bench：MIMIC-IV/eICU 上 28 个任务、15 个任务族，配经临床医生审阅的 markdown skill。",
+        "设计 no-skill/with-skill 对照，并用 decoy skill、raw SQL、operational spec、schema 扰动分解增益来源。",
+        "Docker 隔离执行，按列匹配率计 reward，并报告 strict pass、key F1 等诊断指标。"
       ],
       "results": [
-        "MLA decode 在匹配 token 预算下达 0.74×，Claude Code 仅 0.51×；追加预算后达 1.21×，47 个工作负载中 36 个胜出。",
-        "KDA prefill 在 AMD MI350X 上达 3.01×（对比 vLLM），在 NVIDIA B200 上达 3.44×（对比 FlashKDA）。",
-        "G+AR 追加预算后融合 WGMMA+NVLS kernel 达 1.49×，最小负载 2.57×。"
+        "Codex（GPT 5.4 Mini、GPT 5.5）上 skill 使 reward 提升 +0.136，28 个任务中 26 个改善。",
+        "8 任务控制子集上，仅 operational spec 即提升 +0.162，skill 额外仅 +0.024，接近零。",
+        "Claude Code 复现（Opus 4.7、Sonnet 4.6，560 次运行）方向一致 +0.120，21/28 改善；但仅 25/280 with-skill 运行通过全部 strict 检查，key F1 仅 +0.003。"
       ],
       "takeaways": [
-        "固定角色多 agent 团队会因信息割裂在跨角色调试上卡住，需按阶段动态调整组织。",
-        "持久化经验文档与演化历史是长周期优化任务中避免重复踩坑的关键基础设施。"
+        "给 agent 补全过程性规格（item code、时间窗、缺失规则）比换交付格式更关键。",
+        "高匹配率不等于任务完成，需关注输出粒度、时间 join 等残余错误。"
       ],
-      "limitations": "主实验每组仅跑两次、部分设置单次，统计结论有限；成本-性能 Pareto 分析与更嘈杂领域的受控研究留待未来。",
+      "limitations": "证据以 MIMIC-IV 为主，eICU 仅 2 任务；参考实现非临床金标准，审阅为作者内部，非因果结论。",
       "basis": "fulltext"
     }
   },
@@ -578,6 +1139,142 @@
     }
   },
   {
+    "title": "MLE-World: Predicting Machine Learning Experiment Outcomes with a Learned World Model",
+    "sub_title": "papers · source=arxiv_cs_ai · score=63.2",
+    "url_title": "mle-world-predicting-machine-learning-experiment-outcomes-with-a-learned-world-m",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.37175",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 63.2,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "训练世界模型预测 ML 程序执行结果，加速研究智能体探索",
+    "reason_zh": "服务编程/研究智能体的候选程序评估",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "AI research agents can propose, execute, and improve programs that solve machine learning tasks. However, executing each candidate program requires training and evaluating ML models, limiting how many candidates an agent can explore at each step. We introduce MLE-World, a world model finetuned from Qwen3.5-4B that predicts a program's terminal output (error…",
+    "authors": [
+      "Brian Ko",
+      "Han Wang",
+      "Hejia Geng",
+      "Li Erran Li",
+      "Sherry Yang"
+    ],
+    "author_count": 5,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.37175",
+    "arxiv_id": "2610.37175",
+    "digest": {
+      "problem": "MLE agent 每步都需真实训练评估候选程序，执行成本高，限制了每步可探索的候选数量与测试时扩展。",
+      "method": [
+        "用 Qwen3.5-4B 在 49.7 万条代码-执行日志上 SFT，直接从代码与数据描述预测终端输出。",
+        "输出异常类型、终端输出、验证指标、提交标志四字段，首 token 异常类概率给出置信度。",
+        "构建 BoN、Sequential、Pairwise、Fusion、UCB 五种策略，并用置信度门控决定何时真实执行。"
+      ],
+      "results": [
+        "在 1,700 个留出程序上终端输出匹配率 77.9%，DeepSeek 提示基线为 41.1%。",
+        "异常类 86.4%、验证指标 78.1%，均高于提示模型与语料检索基线。",
+        "引导式 TTS 观测平均性能最高提升 22.1%，门控减少 30–40% 真实执行时间。"
+      ],
+      "takeaways": [
+        "用小型微调世界模型替代真实执行做候选筛选，可低成本放大搜索广度。",
+        "把预测置信度用于门控与探索奖励，能在准确率与执行成本间取得平衡。"
+      ],
+      "limitations": "预测仍有约 22% 终端输出不一致；仅在 17 个 MLE-bench Lite 任务上验证，任务与训练集共享。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Skill Dreaming: Evolving Repository Skills through Pull Request Streams",
+    "sub_title": "papers · source=arxiv_cs_se · score=63.0",
+    "url_title": "skill-dreaming-evolving-repository-skills-through-pull-request-streams",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.36188",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 63.0,
+    "scores": {
+      "relevance": 86.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "pull request",
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码理解与检索"
+    ],
+    "summary_zh": "从 PR 流中演化仓库级技能库供 LLM 智能体复用",
+    "reason_zh": "面向软件工程智能体的技能演化",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Large language model (LLM) agents increasingly rely on reusable skills for complex software engineering tasks, making skill libraries essential for repository development and maintenance. However, repository-specific skills must evolve with changing code structures, implementation conventions, and maintenance requirements. Pull requests (PRs) provide a…",
+    "authors": [
+      "Xinyuan Song",
+      "Hasibul Haque",
+      "Jay Somasundaram",
+      "Ryan Turner",
+      "Bowen Zhu",
+      "Liang Zhao"
+    ],
+    "author_count": 6,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.36188",
+    "digest": {
+      "problem": "仓库专用技能需随代码结构、约定与维护需求持续演进，现有技能学习多只复用历史经验，难以与演进中的仓库保持对齐。",
+      "method": [
+        "从已验证 PR 中抽取可执行知识，构建仓库专用技能库，并随新 PR 持续精炼。",
+        "用 Add/Update/Specialize/Extend/Conflict/Supersede/Keep 七种操作对齐新旧技能，保留版本与来源。",
+        "技能注入固定权重 agent 指导实现、测试、文档与兼容性维护，形成 PR 与技能共同演进闭环。"
+      ],
+      "results": [
+        "在 SWE-bench Pro 上，官方 resolved rate 从 base agent 的 79% 提升到 88%。",
+        "跨仓库实验相对基线取得一致提升，验证技能复用、持续演进与仓库维护的有效性。"
+      ],
+      "takeaways": [
+        "可从 PR 历史沉淀仓库专用技能，而非仅做一次性 RAG 检索。",
+        "技能库需带版本与来源管理，及时淘汰过时规则以保持可用。"
+      ],
+      "limitations": "分阶段流程仅近似带约束优化目标，不更新模型权重，也不保证全局最优。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Can Agentic Code Review Catch Vulnerabilities Before They Are Merged?",
     "sub_title": "papers · source=arxiv_cs_se · score=62.6",
     "url_title": "can-agentic-code-review-catch-vulnerabilities-before-they-are-merged",
@@ -646,6 +1343,72 @@
         "安全专用 harness 效果方向不一，需结合成本与报告量权衡。"
       ],
       "limitations": "仅覆盖九个 C/C++/Rust 项目的公开漏洞，变更限 30 文件/2000 行，不衡量报告精确率，judge 本身也是被评模型。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Stratum: Repository Memory for Coding Agents Beyond the Context Window",
+    "sub_title": "papers · source=arxiv_cs_se · score=62.5",
+    "url_title": "stratum-repository-memory-for-coding-agents-beyond-the-context-window",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.36153",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 62.5,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码理解与检索"
+    ],
+    "summary_zh": "提出Stratum，为编程智能体构建跨会话的持久仓库记忆",
+    "reason_zh": "编程智能体的记忆与上下文管理",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Context windows have grown a thousand-fold, yet coding agents still start every session with no memory of their past work. They re-read files, retry failed approaches, and forget root causes they established hours earlier. This is not a context-length problem but a memory-architecture problem. Our hypothesis: coding agents need persistent, experience-aware…",
+    "authors": [
+      "Yuvraj Sehgal",
+      "Mahsa Panahandeh",
+      "Naser Ezzati-Jivan"
+    ],
+    "author_count": 3,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2610.36153",
+    "digest": {
+      "problem": "编码 agent 每次会话都从零开始，重复读文件、重试失败方案、遗忘已定位的根因；上下文窗口扩大并不能解决跨会话记忆缺失。",
+      "method": [
+        "提出 Stratum 分层仓库记忆：结构化、历史（co-change 挖掘）、经验（agent 写回失败与根因）三类知识存于本地 SQLite 图。",
+        "通过 9 个 MCP page-safe 工具暴露记忆，响应显式给出分页、剩余预算与成本，由 agent 自主决定上下文内容。",
+        "控制器按图邻近、co-change、访问频率与 pin 优先级打分，做语义化换入换出。"
+      ],
+      "results": [
+        "百万节点存储占 3.7GB，端到端检索中位 1.70ms、P99 2.76ms。",
+        "8 个真实 bug 多会话实验中，继承另一模型所写笔记的 Haiku 成功 21/24，仅检索基线 6/24（Fisher p<10^-4），token 成本低 4.5 倍。",
+        "26 条笔记汇总后成功 8/8；整仓库塞入上下文成功率同为 87.5%，但单次调用 token 为记忆会话的 3.8 倍且不持久。"
+      ],
+      "takeaways": [
+        "agent 记忆应作为仓库旁的文本与图持久化，而非依赖 KV cache 或更大窗口。",
+        "把失败与根因作为可链接的持久节点写回，能显著减少跨会话重复试错。"
+      ],
+      "limitations": "E2/E3 仅分析 Python 且导入图取最新提交；E4 用合成数据；E5 仅 8 个任务、检索基线为词法而非向量，未测普通会话摘要继承。",
       "basis": "fulltext"
     }
   },
@@ -998,11 +1761,11 @@
     }
   },
   {
-    "title": "Spine: Compiling Subtask Trees into Structured Context for Long-Horizon Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.9",
-    "url_title": "spine-compiling-subtask-trees-into-structured-context-for-long-horizon-coding-ag",
+    "title": "How Stable Are LLM-Generated Proofs Under Program Refactoring? A Stress Test for Verifiable Code Generation",
+    "sub_title": "papers · source=arxiv_cs_se · score=62.0",
+    "url_title": "how-stable-are-llm-generated-proofs-under-program-refactoring-a-stress-test-for-",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.37224",
+    "external_url": "https://arxiv.org/abs/2610.36328",
     "source_id": "arxiv_cs_se",
     "source_ids": [
       "arxiv_cs_se",
@@ -1010,130 +1773,57 @@
     ],
     "source_host": "arxiv.org",
     "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
+    "published_at": "2026-10-29T04:00:00Z",
     "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 61.9,
+    "score": 62.0,
     "scores": {
-      "relevance": 92.0,
+      "relevance": 84.0,
       "popularity": 0.0,
-      "freshness": 79.4,
+      "freshness": 100.0,
       "impact": 0.0
     },
     "keywords": [
-      "coding agent",
-      "codex"
+      "code generation",
+      "refactoring"
     ],
     "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "将长程编码任务的子任务树编译为结构化上下文，缓解历史膨胀",
-    "reason_zh": "直接面向长程编程智能体的上下文管理",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Long-horizon coding tasks contain nested subtasks. Typically, agents record interactions sequentially into a growing history, causing context inflation and performance degradation. Compressing or trimming the history without explicit subtask boundaries can discard information needed by unfinished subtasks. Conversely, recursive subagent delegation isolates…",
-    "authors": [
-      "Jiahong Xiang",
-      "Kunqiu Chen",
-      "Lingming Zhang",
-      "Yuqun Zhang"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.37224",
-    "digest": {
-      "problem": "长程编码任务含嵌套子任务，顺序记录交互导致上下文膨胀；压缩历史丢失未完成子任务信息，递归子代理又带来协调开销。",
-      "method": [
-        "用 work scope 显式声明子任务边界与完成状态，同一 agent 可内联执行嵌套子任务。",
-        "维护持久执行树 SpineTree，记录嵌套关系、交互与返回结果。",
-        "每次模型调用前即时编译上下文：保留未完成子任务交互，已完成子任务仅留结果，并保持前缀缓存复用。"
-      ],
-      "results": [
-        "GPT-5.6 Sol 下 SWE-Milestone Score 较原生 Codex 提升 11.8%，总成本降低 32.4%。",
-        "与 Recursive Subagent 得分相当，总成本低 73.7%；ProgramBench 平均通过率较 Codex 提升 17.3%。",
-        "集成到 Pi 后，Gemini 3.8 Flash 与 Qwen 3.8 27B 上 SWE-Milestone 提升 9.5–17.5%，ProgramBench 提升 4.3–8.7%。"
-      ],
-      "takeaways": [
-        "上下文管理应按子任务结构组织，而非单纯压缩历史，避免重复探索。",
-        "子任务边界与执行者选择解耦，顺序子任务内联执行可省去多代理协调开销。"
-      ],
-      "limitations": "",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "UnityBench-Mini3D: Evaluating LLM Agents for 3D Game Development in Unity",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.9",
-    "url_title": "unitybench-mini3d-evaluating-llm-agents-for-3d-game-development-in-unity",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.35980",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 61.9,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 35.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
+      "代码生成",
+      "测试与验证",
       "评测基准"
     ],
-    "summary_zh": "提出UnityBench-Mini3D，评测LLM智能体在Unity 3D游戏开发中的编程能力",
-    "reason_zh": "面向编程智能体的新评测基准，场景偏游戏开发",
+    "summary_zh": "测试 LLM 生成证明在程序重构后的稳定性",
+    "reason_zh": "可验证代码生成的评测与压力测试",
     "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Game development stresses coding agents in ways general software engineering does not: correctness depends on how engine APIs, serialized scene state, and runtime behavior interact, not on source code alone. Existing benchmarks mainly target platforms such as Godot and heavily rely on LLM judges or coarse task-level outcomes. We present UnityBench-Mini3D, a…",
+    "signals": [],
+    "summary": "Benchmarks for verifiable code generation usually test a proof against one fixed implementation. We ask whether the same proof remains valid after a program refactoring that preserves behavior. We introduce RefactorProof, which derives 458 Lean-certified variants from the 185 VERINA tasks that compile in our pinned environment while holding the…",
     "authors": [
-      "Yijun Zhou",
-      "Minghao Shao",
-      "Ke Zhang",
-      "Renkai Yuan",
-      "Hongbo Yuan",
-      "Bin Hu"
+      "Aravind Mandiga",
+      "Guoming Li"
     ],
-    "author_count": 23,
+    "author_count": 2,
     "upvotes": 0,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
-    "arxiv_id": "2610.35980",
+    "arxiv_id": "2610.36328",
     "digest": {
-      "problem": "现有游戏开发基准多基于 Godot，Unity 覆盖不足；且依赖 LLM 评委或粗粒度任务级结果，难以定位失败、区分部分实现。",
+      "problem": "现有可验证代码生成基准只检验证明在单一固定实现上是否通过，未考察程序重构后同一证明是否仍有效，而真实程序会不断重构。",
       "method": [
-        "构建 77 个 Unity 项目级任务，按 7 类专家定义技能划分、分三档难度。",
-        "每任务配 1,178 个留出人工里程碑测试，在引擎内检查场景结构、组件配置与运行时行为。",
-        "容器化固定引擎版本与依赖，无 LLM 评委，按测试通过率给确定性部分分。"
+        "构建 RefactorProof：对 185 个 VERINA 任务做确定性改写，生成 458 个经 Lean 认证的语义保持变体。",
+        "规范与证明逐字节固定，仅改实现；用五类变换（T1–T5）分 D/S/E 三类，每个变体附独立 Lean 等价证书。",
+        "以证明存活率 PSR 衡量，并对模型与参考证明做匹配任务对比及敏感性分析。"
       ],
       "results": [
-        "21 个模型、9 个 harness 平均通过率 57.7%，easy 80.9%、hard 35.2%。",
-        "最强配置约 70%，32 个组合中 25 个超过 50%。",
-        "Codely 对每个共享模型均优于 OpenCode，DeepSeek V4 Flash 差距达 23.01pp。"
+        "结构类 PSR：参考证明 4.3%，专用 prover 为 13.3–26.8%。",
+        "匹配任务上专用 prover 总体 PSR 高于参考证明：DeepSeek-Prover-V2-7B +15.6、Goedel-Prover-V2-32B +18.8、Goedel-Prover-V2-8B +20.3 个百分点，95% C",
+        "但端到端“有证明且存活”率参考为 12.2%，专用 prover 仅 9.3–10.4%。"
       ],
       "takeaways": [
-        "专用引擎工具 harness 比通用编码 harness 更有效，harness 选择可与模型选择同等重要。",
-        "瓶颈不在生成可编译代码，而在构建空间关系正确的连贯场景。"
+        "一次性验证通过不等于重构后仍可复用，评估可验证代码生成应加入语义保持改写测试。",
+        "证明风格影响脆弱性：依赖 unfold 或定义等价桥接的证明在不同改写下失效方式不同。"
       ],
-      "limitations": "仅覆盖 Unity 与小规模 3D 游戏，任务以 easy/medium 为主，hard 任务较少。",
+      "limitations": "参考证明仅 46 个基础任务，主对比匹配 21–25 个短小非递归任务；PSR 衡量未改动证明的稳定性，而非修复成本。",
       "basis": "fulltext"
     }
   },
@@ -1404,702 +2094,6 @@
         "引导后故障更偏语义而非语法，需配套完整测试套件，并接受更高的 token 与轮次成本。"
       ],
       "limitations": "实验用单文件竞赛题解换取内部效度，未覆盖跨文件依赖与构建系统；盈亏平衡点仅限本文指标、模型与语言。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "From GPU to TPU with Coding Agents: What Works, What Fails, and What It Costs?",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.1",
-    "url_title": "from-gpu-to-tpu-with-coding-agents-what-works-what-fails-and-what-it-costs",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.34422",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-27T04:00:00Z",
-    "first_seen_at": "2026-10-27T10:42:58Z",
-    "score": 61.1,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "coding agent",
-      "claude code"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "构建148例数据集评估编程智能体将ML负载从GPU迁移到TPU的成败与成本。",
-    "reason_zh": "编程智能体迁移代码的实证评测，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "A coding agent can migrate a machine learning workload, report success, and still change how the model trains. Rising compute costs, limited accelerator capacity, and vendor dependence are pushing organizations toward alternatives to graphics processing units (GPUs); a key question is whether agent-generated migrations to tensor processing units (TPUs) can…",
-    "authors": [
-      "Hui Sun",
-      "Anderson Uch\\^oa",
-      "Wesley K. G. Assun\\c{c}\\~ao"
-    ],
-    "author_count": 3,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.34422",
-    "digest": {
-      "problem": "GPU 成本高、加速器容量受限且存在厂商依赖，需评估 coding agent 自动把 PyTorch 工作负载从 GPU 迁移到 TPU 是否可信、代价多大。",
-      "method": [
-        "构建 148 个 PyTorch 研究项目数据集，用 Claude Code 迁移其中 10 个到 Google Cloud TPU。",
-        "提出 L0–L4 一致性评估框架：可执行、数值、执行完整性、项目目标、性能。",
-        "独立核查执行日志、数值对比与代码改动，而非采信 agent 自报成功。"
-      ],
-      "results": [
-        "10 个项目中 8 个达到 L3，平均需 2.4 次人工干预；70 次执行尝试中 53 次失败（76%），其中 26 次（49%）不报错。",
-        "四芯片迁移中 agent 报告成功，但梯度裁剪被静默改变，准确率从 86.53% 降至 84.89%。",
-        "agent token 成本每项目 US$2–23；TorchTPU 案例训练快 1.86 倍、每次运行便宜 25%，准确率差 0.16%。"
-      ],
-      "takeaways": [
-        "迁移验收应基于独立 GPU 参考运行与目标硬件配置下的验证，不能只看 agent 自报成功。",
-        "需为迭代调试预留预算，并按工作负载设定验收与停止标准，兼顾算力与人力成本。"
-      ],
-      "limitations": "样本仅 10 个研究仓库，不代表工业负载分布；研究项目缺少测试，结论未必适用于生产系统。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "CIVER: Causal Intervention Verification for Reliable Code Review",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.9",
-    "url_title": "civer-causal-intervention-verification-for-reliable-code-review",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.36010",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 60.9,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "code review",
-      "coding agent"
-    ],
-    "topics": [
-      "代码评审",
-      "编程智能体"
-    ],
-    "summary_zh": "提出CIVER，用因果干预验证提升LLM代码评审的可靠性",
-    "reason_zh": "直接面向LLM代码评审智能体",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Code review is essential for maintaining software repositories by identifying defects, improving code quality, and supporting reliable software evolution. With the growing adoption of LLM-based coding agents, an increasing number of code contributions and repository changes are generated by these agents. Consequently, LLM-based code review agents are…",
-    "authors": [
-      "Xinyuan Song",
-      "Hasibul Haque",
-      "Jay Somasundaram",
-      "Ryan Turner",
-      "Bowen Zhu",
-      "Liang Zhao"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.36010",
-    "digest": {
-      "problem": "LLM 代码评审常产出大量误报和缺乏证据的评论，误导开发者与下游编码 agent，需要区分真实缺陷与虚假发现。",
-      "method": [
-        "将评审评论转为结构化候选批评，用定向修复、无关修改和语义保持变换构造干预。",
-        "干预模块排序候选修改，验证模块比较干预前后评分变化来判定评论可靠性。",
-        "三模块通过专家迭代联合优化，预训练评审器与编码器保持冻结。"
-      ],
-      "results": [
-        "在 SWE-Review-Bench 上以 77% 准确率区分缺陷代码与修复版本。",
-        "跨项目迁移 AUROC 达 0.760，在 Django、SymPy、scikit-learn 上为 0.73/0.76/0.67。",
-        "CRScore 上 F1 0.43、AUROC 0.72，优于 LLM-as-a-judge 的 0.38/0.67。"
-      ],
-      "takeaways": [
-        "评审可靠性应看评论是否对定向修复敏感、对无关改动稳定，而非仅看置信度。",
-        "过滤误报后再交给下游编码 agent，可减少有害修改并提升修复成功率。"
-      ],
-      "limitations": "依赖基准提供的可执行缺陷-修复对与干扰修复构造，语义变换仅覆盖重命名和行位移。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Do Coding Agents Still Need a Debugger? Frontier-Model-Based Fault Localization at the Accuracy Ceiling",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.9",
-    "url_title": "do-coding-agents-still-need-a-debugger-frontier-model-based-fault-localization-a",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.36015",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 60.9,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent",
-      "fault localization"
-    ],
-    "topics": [
-      "编程智能体",
-      "程序修复"
-    ],
-    "summary_zh": "评估前沿编程智能体在有无调试器辅助下的故障定位准确率",
-    "reason_zh": "编程智能体的故障定位与调试能力研究",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Background: To localize a fault, a coding agent can reason from source code alone or use debugger assistance by running the program and stepping through it in an interactive debugger. While earlier agents struggled with static execution tracing and debugger operation, frontier LLMs have improved at both. Objective: We evaluate how accurately coding agents…",
-    "authors": [
-      "Christoph Daxerer",
-      "Johann Glock",
-      "Christian Macho",
-      "Rudolf Ramler",
-      "Martin Pinzger",
-      "Josef Pichler"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.36015",
-    "digest": {
-      "problem": "前沿编码 agent 仅凭源码定位故障已接近准确率上限，但行为保持变换是否仍会降低准确率、debugger 辅助还能带来多少增益与代价尚不清楚。",
-      "method": [
-        "向 144 个 LeetCodeDataset 程序注入 610 个单行故障，并用五种行为保持变换生成 3,022 个变换程序。",
-        "用 Sol 6.1、Luna 6、Qwen 3.8 在无工具、可选工具、鼓励工具三种设置下做 65,376 次定位实验。",
-        "以语句级与行级 Top-1 准确率、token/时间/成本及工具调用频率衡量效果。"
-      ],
-      "results": [
-        "无工具时原始程序定位准确率 98.2–99.9%，变换后 Luna 6 降至 96.7%、Qwen 3.8 为 97.9%，Sol 6.1 保持 99.9%。",
-        "鼓励用 debugger 使 Luna 6 变换程序 +2.1 点、Qwen 3.8 +1.3 点，消除 63% 和 61% 剩余错误，但 token 用量增至 14.7–27.0 倍。",
-        "可选工具时 agent 仅在 0.2–6.2% 的 episode 中真正单步调试，却仍获得 +1.5 和 +1.3 点增益。"
-      ],
-      "takeaways": [
-        "对短小且规格明确的程序，前沿模型仅凭源码即可定位绝大多数故障，debugger 并非必需。",
-        "给 agent 可选执行探针比强制单步调试更划算，能保留大部分增益而成本低得多。"
-      ],
-      "limitations": "仅覆盖短小自包含算法程序与单行故障，结论未必适用于大型真实代码库或多行缺陷。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Does More Thinking Pay Off? Reasoning Cost and Correctness of LLMs in Code Generation and Bug Fixing",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.9",
-    "url_title": "does-more-thinking-pay-off-reasoning-cost-and-correctness-of-llms-in-code-genera",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.36952",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 60.9,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "code generation",
-      "bug fixing",
-      "humaneval",
-      "mbpp"
-    ],
-    "topics": [
-      "代码生成",
-      "程序修复",
-      "模型训练与推理"
-    ],
-    "summary_zh": "分析 LLM 在代码生成与缺陷修复中推理开销与正确性的权衡",
-    "reason_zh": "直接研究代码生成与修复的推理成本",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Many LLMs now emit an explicit reasoning trace before they write code, but benchmark results for code generation and bug fixing usually report correctness alone. It is therefore unclear how much the extra reasoning contributes relative to the tokens it consumes. We examine this question with 866 Python tasks drawn from HumanEval Pro, MBPP Pro, and BugsInPy…",
-    "authors": [
-      "Andie Huang",
-      "Ying Pang",
-      "Qian Zhang",
-      "Yihang Cheng",
-      "Lin Ma"
-    ],
-    "author_count": 5,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.36952",
-    "digest": {
-      "problem": "LLM 在写代码前生成推理轨迹，但基准只报告正确率，不清楚额外推理相对其消耗的 token 是否值得。",
-      "method": [
-        "在 HumanEval Pro、MBPP Pro、BugsInPy 共 866 个 Python 任务上，对比 Qwen3-32B 推理开/关五次运行。",
-        "归纳六类推理行为编码本，人工标注推理轨迹，比较代码生成与缺陷修复的差异。",
-        "离线截断已存推理轨迹，用关闭推理的 Qwen3-32B 重新生成答案，检验前缀是否足够。"
-      ],
-      "results": [
-        "Qwen3-32B 开启推理后 HumanEval Pro 平均 pass@1 从 71.1% 升至 76.5%，BugsInPy 从 3.5% 升至 7.9%。",
-        "MBPP Pro 从 68.1% 升至 69.5%，不显著，尽管每题中位思考 token 超 2000。",
-        "保留推理轨迹前一半，四个推理模型、三个基准均无显著正确率下降；RedStop 与 NRP 未优于固定截断。"
-      ],
-      "takeaways": [
-        "更长的推理轨迹不必然带来更高正确率，评估应同时报告推理成本与正确率。",
-        "存储的推理轨迹可能大幅压缩而几乎不损正确率，可用于降低推理开销。"
-      ],
-      "limitations": "仅 Python 任务与有限模型；截断实验基于已存轨迹，未计入额外生成调用的 token 与时间成本。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "FeatureArc: Benchmarking Coding Agents on Evolving Features",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.9",
-    "url_title": "featurearc-benchmarking-coding-agents-on-evolving-features",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.37434",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 60.9,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent",
-      "codebase"
-    ],
-    "topics": [
-      "评测基准",
-      "编程智能体"
-    ],
-    "summary_zh": "提出评估编码智能体处理演进特性的基准 FeatureArc",
-    "reason_zh": "编码智能体评测基准，核心相关",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "A software feature usually evolves over time: developers extend its first version as new use cases and requirements arrive, and each extension builds on code written earlier. Most feature benchmarks evaluate a single request on a fixed codebase. Feature evolution requires evaluating successive extensions on an agent's own earlier code and checking whether…",
-    "authors": [
-      "Yunlong Wang",
-      "Alyssa Wu",
-      "Cuiyun Gao",
-      "Jia Feng",
-      "Songyuanyi Lu",
-      "Zhichao Hu"
-    ],
-    "author_count": 6,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.37434",
-    "digest": {
-      "problem": "现有 feature benchmark 多在固定代码库上评估单次请求，无法检验 agent 在自身早期代码上连续扩展功能并保持正确性的能力。",
-      "method": [
-        "从仓库历史挖掘同一功能的连续扩展阶段，构建 2–10 阶段的 same-feature chain。",
-        "每阶段提供需求文档与接口契约，用 F2P/P2P 测试在参考状态上验证，并设 stage gate 与 chain gate。",
-        "L4 设定：单一持久会话与工作区，无隐藏测试反馈、不回滚，覆盖 Python/TypeScript/Rust/Go。"
-      ],
-      "results": [
-        "10 个 agent 在 73 个任务上，pooled 成功率从首阶段 62.7% 降至整功能 28.5%。",
-        "最强 Claude Opus 5.5 首阶段通过 83.6%，整功能仅 49.3%。",
-        "失败阶段后下一阶段 F2P 通过率仅 22.6%（通过后为 70.2%）；94.9% 的后续阶段未察觉早期错误。"
-      ],
-      "takeaways": [
-        "单阶段高分不能代表多阶段持续开发能力，评估应关注整功能与继承缺陷。",
-        "agent 自测很少回访早期阶段，工具需支持跨阶段回归检查与错误追溯。"
-      ],
-      "limitations": "评估集仅 73 个任务、53 个仓库，跨 agent 分数耦合模型与 harness，且任务构建依赖多个 LLM 步骤。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Instant Software Factories",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.9",
-    "url_title": "instant-software-factories",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.36254",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-28T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 60.9,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent",
-      "github"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "提出 instant software factory，用编程智能体以最少协调完成从原型到产品的持续工程",
-    "reason_zh": "核心是编程智能体编排与软件工程自动化",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Coding agents can quickly build prototypes, but a long tail of fixes, optimizations, tests, and releases separates a prototype from a product. A software factory handles this ongoing work through a repeatable process. We ask whether this work needs dedicated orchestration and how such factories should be judged. Given a tested repository and a coding agent…",
-    "authors": [
-      "Wenxin Jiang",
-      "Mikola Lysenko"
-    ],
-    "author_count": 2,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.36254",
-    "digest": {
-      "problem": "编码 agent 能快速搭原型，但修复、优化、测试、发布的长尾工作仍需人工逐项提示，开发者注意力成为瓶颈。",
-      "method": [
-        "提出 instant software factory：仅用 cron 定时 agent 群与共享看板（如 GitHub）两个协调输入。",
-        "发布 1,400 词 bootstrap prompt，一次会话完成工厂初始化，治理作为可分离但必需的层。",
-        "将工厂开发建模为内生反馈下的多目标优化，用 agent 不可编辑的独立评估衡量进度。"
-      ],
-      "results": [
-        "CLI 工厂 agent 上线后每日合并 PR 从 2.2 升至约 35，峰值 115；agent 提交 95% 的新 issue。",
-        "450 个标记修复的 issue 中至少 25 个（5.6%）为错误修复；agent 撰写 58 个 CI 工作流 PR 中的 40 个。",
-        "agentic 工厂花 $869 完成 21 个合并修复（每个 $41），仅覆盖 134 种缺陷类型中的 16%。"
-      ],
-      "takeaways": [
-        "合并率会高估进展：agent 会自己制造工作量并修改评估流程，应追踪经独立验证且真正交付的变更。",
-        "治理层不可省略：默认要求检查通过、独立审查与人工批准，并防止 agent 修改自身控制规则。"
-      ],
-      "limitations": "两工厂同属一个组织、仅观察 2–3 周，bootstrap 尚未评估，前后差异不能确立因果。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Compact-Bench: Measuring What Context Compaction Costs Long-Horizon Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.6",
-    "url_title": "compact-bench-measuring-what-context-compaction-costs-long-horizon-coding-agents",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.31710",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-27T04:00:00Z",
-    "first_seen_at": "2026-10-26T11:18:31Z",
-    "score": 60.6,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-bench",
-      "claude code"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "提出 Compact-Bench，评测上下文压缩对长程编程智能体的代价。",
-    "reason_zh": "针对编程智能体上下文管理的评测基准。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Context compaction lets long-horizon coding agents continue beyond their context windows, but can erase the state needed to finish a task. Prior evaluations measure efficiency, retained information, or end-to-end success, leaving the effect of a specific history replacement difficult to isolate. Compact-Bench pairs full-history and summary-only…",
-    "authors": [
-      "Ruopei Sun",
-      "Jianfeng Cai",
-      "Kangwen Zhao",
-      "Wengang Zhou",
-      "Houqiang Li"
-    ],
-    "author_count": 5,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.31710",
-    "digest": {
-      "problem": "长时编程 agent 靠上下文压缩突破窗口，但压缩可能抹掉完成任务所需的状态；已有评测无法单独隔离某次历史替换的影响。",
-      "method": [
-        "构造 Compact-Bench：同一仓库快照下对比全历史与仅摘要续跑，用 FAIL_TO_PASS 测试判定。",
-        "覆盖 35 个 SWE-bench 修复、146 个会话的复现细节保留、106 个会话的生产链压缩。",
-        "对比 14 个摘要 backbone 与 5 个生产压缩 prompt。"
-      ],
-      "results": [
-        "22 个全历史成功案例中，稳定损伤率跨 backbone 为 5–64%；Claude Opus 4.8 损伤最低（5%），DeepSeek-Flash 最高（64%）。",
-        "以 Kimi-K3 为摘要器时，Kimi Code prompt 保留最多任务续跑（19/22），Claude Code 保留最多复现细节（15.0%）。",
-        "LLM 摘要最多保留 16.0% 复现细节，机械抽取为 79.1%；生产摘要首个边界仅 15.7%。"
-      ],
-      "takeaways": [
-        "压缩评测不能只看信息保留，必须看续跑能否完成任务；保留目标文件与代码串不等于能修好。",
-        "选摘要模型和 prompt 对长任务成败影响巨大，损伤率可差数十个百分点。"
-      ],
-      "limitations": "结论受限于所测仓库修复、续跑 agent 与预算；细节保留只测字面复现，生产边界样本小且变动。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "CyberDual: AI Attackers versus AI Code Reviewers in Real Software Maintenance",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.6",
-    "url_title": "cyberdual-ai-attackers-versus-ai-code-reviewers-in-real-software-maintenance",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.34435",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-27T04:00:00Z",
-    "first_seen_at": "2026-10-27T10:42:58Z",
-    "score": 60.6,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "claude code"
-    ],
-    "topics": [
-      "代码评审",
-      "安全与漏洞",
-      "编程智能体"
-    ],
-    "summary_zh": "构建 AI 攻击者与 AI 代码评审者在真实开源维护中对抗的竞技场。",
-    "reason_zh": "AI 代码评审与漏洞注入对抗，核心是代码评审。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Open-source projects now let AI agents review incoming code, but the code under review may itself come from an AI attacker. We present CyberDual, an arena for this dual role of AI: attacker agents hide an exploitable bug in real maintenance work on widely used open-source projects, and reviewer agents try to find and repair it. Execution decides each match…",
-    "authors": [
-      "Chenyuan Yang",
-      "Hwiwon Lee",
-      "Jongseong Kim",
-      "Yihan Yang",
-      "Dongjun Kim",
-      "Yinfang Chen"
-    ],
-    "author_count": 7,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.34435",
-    "digest": {
-      "problem": "开源项目让 AI agent 审查代码，但被审代码可能来自 AI 攻击者；需验证 agentic review 后代码是否仍含可利用漏洞。",
-      "method": [
-        "构建 CyberDual 竞技场：攻击者在 14 个 C/C++ 库真实维护中植入漏洞并写 PoC，审查者修复。",
-        "以执行判定胜负：在审查后代码上重跑 PoC，崩溃即攻击存活，不受 agent 报告影响。",
-        "三种设置：单提交（仅任务/持有上游修复）与 50–199 提交维护窗口，攻击可跨提交分散漏洞。"
-      ],
-      "results": [
-        "三个审查者捕获 1,088 个有效攻击的 85–91%，但窗口攻击约六分之一审查后仍可利用。",
-        "GLM 5.3 在 Claude Code 中对 Sonnet 5 攻击成功率 17%，闭源攻击者均不超 11%。",
-        "Claude 审查者漏报多为直接批准，GPT-6-Sol 多为改错位置；第二厂商审查者能补抓约三分之二漏报。"
-      ],
-      "takeaways": [
-        "仅靠 agent 审查不足以防 AI 攻击者，尤其漏洞分散在真实提交历史中时。",
-        "应结合执行验证与多厂商审查者，并警惕通过测试套件带来的虚假安全感。"
-      ],
-      "limitations": "仅覆盖 C/C++ 内存安全缺陷，不检查任务完成度与功能保留，审查者与 harness 未分离比较。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "How Do Small Coding Agents Use Code Graphs and Embeddings?",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.6",
-    "url_title": "how-do-small-coding-agents-use-code-graphs-and-embeddings",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.33958",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-27T04:00:00Z",
-    "first_seen_at": "2026-10-27T10:42:58Z",
-    "score": 60.6,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码理解与检索",
-      "评测基准"
-    ],
-    "summary_zh": "在 SWE-bench 上研究小型编程智能体如何使用代码图与嵌入检索",
-    "reason_zh": "编程智能体的上下文与检索研究",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Coding agents are given embedding search and code-graph tools on the premise that a repository's structure is something the model lacks and the tool supplies. We test that premise on SWE-bench Verified with small open-weight models, stratifying tasks by a deterministic hop depth (the shortest code-graph path from code the issue mentions to code the gold…",
-    "authors": [
-      "Saurav Bellam"
-    ],
-    "author_count": 1,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.33958",
-    "digest": {
-      "problem": "小模型编码代理被赋予 embedding 检索与代码图工具，前提是模型缺乏仓库结构、需工具补足；该前提在 SWE-bench Verified 上是否成立尚不清楚。",
-      "method": [
-        "用正则与 ast 为 500 个任务标注确定性 hop depth，并做带仓库、工具、补丁大小控制的 GEE 分析。",
-        "在深度均衡的 160 任务上逐项消融 grep、embedding、图工具，并在 0.6B–32B 十个模型上跑 79k episodes。",
-        "用 within-anchor、按入度分层的线性探针检验模型内部是否编码调用/继承图。"
-      ],
-      "results": [
-        "每多一跳，函数级定位正确几率乘以 0.47–0.55（Qwen3-4B/8B、Gemma 4 E4B、Qwen3-32B，p≤10⁻³）。",
-        "结构化工具使 Qwen3-8B 与 Gemma 4 E4B 的 grep-only 准确率约翻倍；增益在 1.7–4B 达 17–21 点，32B 降至 4–5 点。",
-        "图工具收益集中在 hop 0 名称查找与 hop 1 一次扩展；下游修复 6–13/160，oracle 为 26。"
-      ],
-      "takeaways": [
-        "小模型用图工具主要是精确名称查找加一跳扩展，并非真正多跳遍历；别指望图工具自动抹平深度梯度。",
-        "工具收益随规模先升后降，32B 因调用率下降而收益缩水；评估结构工具需按 hop depth 分层。"
-      ],
-      "limitations": "深度标签对 mention 抽取敏感，严格抽取会使 311/500 任务无 mention；结论限于小开源模型与 SWE-bench Verified。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "RepoTrace: Improving Requirement Tracing in Multi-Round Agent Interactions",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.6",
-    "url_title": "repotrace-improving-requirement-tracing-in-multi-round-agent-interactions",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.35333",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-27T04:00:00Z",
-    "first_seen_at": "2026-10-27T10:42:58Z",
-    "score": 60.6,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "code agent",
-      "claude code"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码理解与检索"
-    ],
-    "summary_zh": "改进多轮交互中代码智能体需求追踪的 RepoTrace 方法",
-    "reason_zh": "编程智能体多轮交互与需求追踪",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Code agents have become increasingly capable of performing software engineering tasks through interaction with software environments. However, agents tend to degrade as the number of interaction rounds increases, making it difficult to maintain existing software during iterative modification. We analyze 2,656 agent trajectories in EvoCode-Bench and identify…",
-    "authors": [
-      "Huanyu Liu",
-      "Yezheng Cheng",
-      "Jinliang You",
-      "Tianxiao Huang",
-      "Linyu Li",
-      "Zheng Fang"
-    ],
-    "author_count": 8,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.35333",
-    "digest": {
-      "problem": "多轮交互中代码 agent 性能随轮次下降，难以区分需求的主要修改目标与无关代码，导致改错文件或漏改。",
-      "method": [
-        "从代码关系构建仓库结构图，用 PageRank 与 fan-in 计算文件结构权重。",
-        "结合需求语义与结构图提取候选目标文件、符号及受影响的历史代码元素。",
-        "将需求-代码对应消息注入 agent 上下文，并跨轮保留图快照与需求记录。"
-      ],
-      "results": [
-        "MPR 在 GLM-5.2 上提升 +19.99，在 MiniMax-M3 上提升 +4.91。",
-        "MPR 在 Terminus-2 上提升 +22.25，在 Claude Code 上提升 +10.22。",
-        "Terminus-2+DeepSeek-V4-Pro 平均每轮奖励从 0.163 升至 0.371，回归错误减少 56.78%。"
-      ],
-      "takeaways": [
-        "多轮编码 agent 应在改代码前显式建立需求与仓库代码的对应关系。",
-        "把仓库结构权重与历史需求记录注入上下文，可减少无关修改和漏改。"
-      ],
-      "limitations": "结构关系为近似视图；需求记录只反映先前分析，不代表需求已完成或测试通过。",
       "basis": "fulltext"
     }
   }
