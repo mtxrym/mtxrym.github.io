@@ -998,6 +998,73 @@
     }
   },
   {
+    "title": "MLE-World: Predicting Machine Learning Experiment Outcomes with a Learned World Model",
+    "sub_title": "papers · source=arxiv_cs_ai · score=63.7",
+    "url_title": "mle-world-predicting-machine-learning-experiment-outcomes-with-a-learned-world-m",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.37175",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-29T04:00:00Z",
+    "first_seen_at": "2026-10-28T11:27:20Z",
+    "score": 63.7,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 23.3,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "训练世界模型预测 ML 程序执行结果，加速研究智能体探索",
+    "reason_zh": "服务编程/研究智能体的候选程序评估",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "AI research agents can propose, execute, and improve programs that solve machine learning tasks. However, executing each candidate program requires training and evaluating ML models, limiting how many candidates an agent can explore at each step. We introduce MLE-World, a world model finetuned from Qwen3.5-4B that predicts a program's terminal output (error…",
+    "authors": [
+      "Brian Ko",
+      "Han Wang",
+      "Hejia Geng",
+      "Li Erran Li",
+      "Sherry Yang"
+    ],
+    "author_count": 5,
+    "upvotes": 5,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.37175",
+    "arxiv_id": "2610.37175",
+    "digest": {
+      "problem": "MLE agent 每步都需真实训练评估候选程序，执行成本高，限制了每步可探索的候选数量与测试时扩展。",
+      "method": [
+        "用 Qwen3.5-4B 在 49.7 万条代码-执行日志上 SFT，直接从代码与数据描述预测终端输出。",
+        "输出异常类型、终端输出、验证指标、提交标志四字段，首 token 异常类概率给出置信度。",
+        "构建 BoN、Sequential、Pairwise、Fusion、UCB 五种策略，并用置信度门控决定何时真实执行。"
+      ],
+      "results": [
+        "在 1,700 个留出程序上终端输出匹配率 77.9%，DeepSeek 提示基线为 41.1%。",
+        "异常类 86.4%、验证指标 78.1%，均高于提示模型与语料检索基线。",
+        "引导式 TTS 观测平均性能最高提升 22.1%，门控减少 30–40% 真实执行时间。"
+      ],
+      "takeaways": [
+        "用小型微调世界模型替代真实执行做候选筛选，可低成本放大搜索广度。",
+        "把预测置信度用于门控与探索奖励，能在准确率与执行成本间取得平衡。"
+      ],
+      "limitations": "预测仍有约 22% 终端输出不一致；仅在 17 个 MLE-bench Lite 任务上验证，任务与训练集共享。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "SWE-Shift: Evaluating Coding Agents in Evolving Workspaces",
     "sub_title": "papers · source=arxiv_cs_cl · score=63.6",
     "url_title": "swe-shift-evaluating-coding-agents-in-evolving-workspaces",
@@ -1135,73 +1202,6 @@
         "在全新环境重放脚本是保证实例可复现的关键，不能只信 agent 自报结果。"
       ],
       "limitations": "执行成功不等于有效；人工抽查 40 个实例发现 6 个检查脚本有缺陷，仍需人工核验。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "MLE-World: Predicting Machine Learning Experiment Outcomes with a Learned World Model",
-    "sub_title": "papers · source=arxiv_cs_ai · score=63.2",
-    "url_title": "mle-world-predicting-machine-learning-experiment-outcomes-with-a-learned-world-m",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.37175",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai",
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-29T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 63.2,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 21.0,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理"
-    ],
-    "summary_zh": "训练世界模型预测 ML 程序执行结果，加速研究智能体探索",
-    "reason_zh": "服务编程/研究智能体的候选程序评估",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "AI research agents can propose, execute, and improve programs that solve machine learning tasks. However, executing each candidate program requires training and evaluating ML models, limiting how many candidates an agent can explore at each step. We introduce MLE-World, a world model finetuned from Qwen3.5-4B that predicts a program's terminal output (error…",
-    "authors": [
-      "Brian Ko",
-      "Han Wang",
-      "Hejia Geng",
-      "Li Erran Li",
-      "Sherry Yang"
-    ],
-    "author_count": 5,
-    "upvotes": 4,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.37175",
-    "arxiv_id": "2610.37175",
-    "digest": {
-      "problem": "MLE agent 每步都需真实训练评估候选程序，执行成本高，限制了每步可探索的候选数量与测试时扩展。",
-      "method": [
-        "用 Qwen3.5-4B 在 49.7 万条代码-执行日志上 SFT，直接从代码与数据描述预测终端输出。",
-        "输出异常类型、终端输出、验证指标、提交标志四字段，首 token 异常类概率给出置信度。",
-        "构建 BoN、Sequential、Pairwise、Fusion、UCB 五种策略，并用置信度门控决定何时真实执行。"
-      ],
-      "results": [
-        "在 1,700 个留出程序上终端输出匹配率 77.9%，DeepSeek 提示基线为 41.1%。",
-        "异常类 86.4%、验证指标 78.1%，均高于提示模型与语料检索基线。",
-        "引导式 TTS 观测平均性能最高提升 22.1%，门控减少 30–40% 真实执行时间。"
-      ],
-      "takeaways": [
-        "用小型微调世界模型替代真实执行做候选筛选，可低成本放大搜索广度。",
-        "把预测置信度用于门控与探索奖励，能在准确率与执行成本间取得平衡。"
-      ],
-      "limitations": "预测仍有约 22% 终端输出不一致；仅在 17 个 MLE-bench Lite 任务上验证，任务与训练集共享。",
       "basis": "fulltext"
     }
   },
@@ -1828,6 +1828,69 @@
     }
   },
   {
+    "title": "Beyond Benchmarks: Can Small Open-Weight Models Get Real Coding Work Done?",
+    "sub_title": "papers · source=arxiv_cs_se · score=62.0",
+    "url_title": "beyond-benchmarks-can-small-open-weight-models-get-real-coding-work-done",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.34241",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-27T04:00:00Z",
+    "first_seen_at": "2026-10-27T10:42:58Z",
+    "score": 62.0,
+    "scores": {
+      "relevance": 85.0,
+      "popularity": 34.4,
+      "freshness": 63.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "代码生成",
+      "开发者与工具研究",
+      "模型训练与推理"
+    ],
+    "summary_zh": "实证报告小开源模型在真实编码任务中的部署与工具调用差异。",
+    "reason_zh": "聚焦小模型完成真实编码工作的工程实践。",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Making an open-weight language model generate text is not the same as making it finish coding work. This retrospective empirical systems experience report follows my engineering work from July to October 2026 across coding clients, model-specific serving recipes, vLLM, SGLang, llama.cpp, and MLX. Models behind a nominally compatible endpoint still differed…",
+    "authors": [
+      "Vaibhav Jain"
+    ],
+    "author_count": 1,
+    "upvotes": 13,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.34241",
+    "arxiv_id": "2610.34241",
+    "digest": {
+      "problem": "开源小模型能生成文本，却未必能完成真实编码任务；从模型可服务到代码通过验证之间存在多层工程鸿沟。",
+      "method": [
+        "区分四级进展：可服务、文本连贯、工具调用被执行、任务验证通过",
+        "记录多运行时（vLLM、SGLang、llama.cpp、MLX）的部署配方与集成问题",
+        "用隐藏行为检查做委托研究，固定 Claude Opus 5.5 作为父代理"
+      ],
+      "results": [
+        "冷前缀请求首 token 中位约 69.4 秒，高复用请求 2.8 秒（观察性）",
+        "45 次试验中直接编码 15/15，量化 Qwen3-Coder 30B-A3B 委托 12/15 与 14/15",
+        "第二套 15 任务：直接编码 45/45，Nemotron Cascade 2 委托 12/45，Qwen3-Coder 委托 0/45"
+      ],
+      "takeaways": [
+        "兼容 API 不等于行为兼容，需把客户端、翻译层、模板与工具执行作为一条路径测试",
+        "缓存前缀连续性直接影响长会话可用性，提示词变动会破坏 KV 复用"
+      ],
+      "limitations": "为个人回顾性案例研究，记录私有不可复核，未汇总研究、不排名模型或运行时。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Your Wish Is My Commit: Over-Compliant Refactoring in AI Coding Agents",
     "sub_title": "papers · source=arxiv_cs_se · score=61.9",
     "url_title": "your-wish-is-my-commit-over-compliant-refactoring-in-ai-coding-agents",
@@ -1893,69 +1956,6 @@
         "早停不等于稳健：agent 可能在声明完成后又恢复编辑，应检测声明与动作不一致。"
       ],
       "limitations": "实验使用刻意施压的半对抗模拟用户，非典型会话；停止检测依赖关键词分类器（F1=0.818）。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Beyond Benchmarks: Can Small Open-Weight Models Get Real Coding Work Done?",
-    "sub_title": "papers · source=arxiv_cs_se · score=61.8",
-    "url_title": "beyond-benchmarks-can-small-open-weight-models-get-real-coding-work-done",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.34241",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-27T04:00:00Z",
-    "first_seen_at": "2026-10-27T10:42:58Z",
-    "score": 61.8,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 33.4,
-      "freshness": 63.0,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "开发者与工具研究",
-      "模型训练与推理"
-    ],
-    "summary_zh": "实证报告小开源模型在真实编码任务中的部署与工具调用差异。",
-    "reason_zh": "聚焦小模型完成真实编码工作的工程实践。",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Making an open-weight language model generate text is not the same as making it finish coding work. This retrospective empirical systems experience report follows my engineering work from July to October 2026 across coding clients, model-specific serving recipes, vLLM, SGLang, llama.cpp, and MLX. Models behind a nominally compatible endpoint still differed…",
-    "authors": [
-      "Vaibhav Jain"
-    ],
-    "author_count": 1,
-    "upvotes": 12,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.34241",
-    "arxiv_id": "2610.34241",
-    "digest": {
-      "problem": "开源小模型能生成文本，却未必能完成真实编码任务；从模型可服务到代码通过验证之间存在多层工程鸿沟。",
-      "method": [
-        "区分四级进展：可服务、文本连贯、工具调用被执行、任务验证通过",
-        "记录多运行时（vLLM、SGLang、llama.cpp、MLX）的部署配方与集成问题",
-        "用隐藏行为检查做委托研究，固定 Claude Opus 5.5 作为父代理"
-      ],
-      "results": [
-        "冷前缀请求首 token 中位约 69.4 秒，高复用请求 2.8 秒（观察性）",
-        "45 次试验中直接编码 15/15，量化 Qwen3-Coder 30B-A3B 委托 12/15 与 14/15",
-        "第二套 15 任务：直接编码 45/45，Nemotron Cascade 2 委托 12/45，Qwen3-Coder 委托 0/45"
-      ],
-      "takeaways": [
-        "兼容 API 不等于行为兼容，需把客户端、翻译层、模板与工具执行作为一条路径测试",
-        "缓存前缀连续性直接影响长会话可用性，提示词变动会破坏 KV 复用"
-      ],
-      "limitations": "为个人回顾性案例研究，记录私有不可复核，未汇总研究、不排名模型或运行时。",
       "basis": "fulltext"
     }
   },
