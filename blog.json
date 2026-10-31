@@ -1,7 +1,7 @@
 [
   {
     "title": "Co-Design Bench: Multimodal Collaborative Coding Evaluation for Agentic Models",
-    "sub_title": "papers · source=hf_daily_papers · score=77.2",
+    "sub_title": "papers · source=hf_daily_papers · score=77.3",
     "url_title": "co-design-bench-multimodal-collaborative-coding-evaluation-for-agentic-models",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.35138",
@@ -13,10 +13,10 @@
     "category": "papers",
     "published_at": "2026-10-26T00:00:00Z",
     "first_seen_at": "2026-10-30T11:28:48Z",
-    "score": 77.2,
+    "score": 77.3,
     "scores": {
       "relevance": 92.0,
-      "popularity": 39.0,
+      "popularity": 39.7,
       "freshness": 79.4,
       "impact": 75.0
     },
@@ -45,7 +45,7 @@
       "Zhixun Li"
     ],
     "author_count": 16,
-    "upvotes": 19,
+    "upvotes": 20,
     "likes": 0,
     "github_url": "https://github.com/Wiselnn570/Co-Design-Bench",
     "github_stars": 34,
@@ -88,7 +88,7 @@
     "score": 73.8,
     "scores": {
       "relevance": 85.0,
-      "popularity": 49.4,
+      "popularity": 49.5,
       "freshness": 79.4,
       "impact": 55.0
     },
@@ -114,10 +114,10 @@
       "Jiayi Dai"
     ],
     "author_count": 16,
-    "upvotes": 20,
+    "upvotes": 22,
     "likes": 0,
     "github_url": "https://github.com/tettethu/VibeGame",
-    "github_stars": 294,
+    "github_stars": 297,
     "hf_url": "https://huggingface.co/papers/2610.33106",
     "arxiv_id": "2610.33106",
     "digest": {
@@ -214,6 +214,52 @@
       "limitations": "测试覆盖评估在 Multilingual 子集 FPR 达 30.1%，误报仍偏高；经验积累依赖人工标注的历史数据。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "noodcon/SWE-DockerLess",
+    "sub_title": "datasets · source=hf_datasets_swe · score=71.2",
+    "url_title": "noodconswe-dockerless",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/noodcon/SWE-DockerLess",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-31T02:34:02Z",
+    "first_seen_at": "2026-10-31T16:11:58Z",
+    "score": 71.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 6.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "swe-bench"
+    ],
+    "topics": [
+      "评测基准",
+      "编程智能体",
+      "测试与验证"
+    ],
+    "summary_zh": "构建无需 Docker 的 SWE-bench 兼容基准，用 pytest 复现实例。",
+    "reason_zh": "SWE-bench 类编程智能体评测基准，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "SWE-DockerLess A SWE-bench-shaped benchmark that needs no Docker, no network and no prebuilt image. Every row carries its own repo snapshot, so an instance is reproduced by writing files to a temp directory, git init, git apply and running pytest. Rows are byte-for-byte SWE-bench compatible: same field names, same FAIL_TO_PASS / PASS_TO_PASS JSON-string…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 1,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "MUSE: Multi-Level Memory with Selective Runtime Injection for Scientific Coding Agents",
@@ -810,6 +856,50 @@
       "open_source_code"
     ],
     "summary": "Gemma 4 SWE-agent SFT trajectories (harness-week-2) Multi-turn software-engineering agent trajectories for supervised fine-tuning of Gemma 4 (E2B / E4B). Each record is one real GitHub issue solved by a teacher agent (Claude Code, claude-sonnet-5-5, claude-opus-5-5) inside an isolated checkout at the issue's base commit. The final patch was then checked by…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 1,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
+    "title": "TMaxxx/open-instruct-swe-smith",
+    "sub_title": "datasets · source=hf_datasets_swe · score=65.1",
+    "url_title": "tmaxxxopen-instruct-swe-smith",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/TMaxxx/open-instruct-swe-smith",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-30T20:47:37Z",
+    "first_seen_at": "2026-10-31T16:11:58Z",
+    "score": 65.1,
+    "scores": {
+      "relevance": 88.0,
+      "popularity": 6.0,
+      "freshness": 79.4,
+      "impact": 40.0
+    },
+    "keywords": [],
+    "topics": [
+      "训练数据",
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "将 SWE-Smith 数据整理为 open-instruct 格式，用于训练编程智能体。",
+    "reason_zh": "面向 SWE 智能体训练的数据集，高度相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "💻 Code · 🤗 Models & Data · 📜 Paper · 📓 Blog [!NOTE] For full information, go check out the Tmax paper here. SWE-Smith - Open Instruct formatted This is swe-smith formatted for use with our fork of open-instruct. For more information and the original data, you should check out the original source. Release collection…",
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
@@ -1909,145 +1999,6 @@
         "仅按重构误差选择分解会选错，需以行为保持和干预效果评估表示质量。"
       ],
       "limitations": "仅限单一合成列表执行任务、每条件单一种子、训练预算受限，且结果依赖模型家族，未验证真实仓库代码。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "When Modernization Breaks Working Code: A Single-File Study of LLMs on Legacy PHP",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.9",
-    "url_title": "when-modernization-breaks-working-code-a-single-file-study-of-llms-on-legacy-php",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.40269",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-30T04:00:00Z",
-    "first_seen_at": "2026-10-30T11:28:48Z",
-    "score": 60.9,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "topics": [
-      "代码生成",
-      "代码理解与检索",
-      "评测基准"
-    ],
-    "summary_zh": "研究五个 LLM 单文件现代化遗留 PHP 代码，用隐藏行为检查评估",
-    "reason_zh": "核心是LLM代码现代化与行为保持评测",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Pasting a legacy file into an LLM and asking it to \"modernize this\" is an easy shortcut. But is the result better than leaving the code alone? In this paper, we study this single-file setting with five LLMs, each asked to modernize 100 WordPress 4.0 PHP files to PHP 8.3 while preserving behavior, with no project context or execution feedback. We evaluate…",
-    "authors": [
-      "Afridi Mahmud",
-      "Abid Hasan Khondaker",
-      "Sadif Ahmed",
-      "Md Nafiu Rahman",
-      "Rifat Shahriyar"
-    ],
-    "author_count": 5,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.40269",
-    "digest": {
-      "problem": "开发者常把单个遗留 PHP 文件交给 LLM 直接现代化，但缺少项目上下文与执行反馈时，输出是否优于不改动原文件尚不清楚。",
-      "method": [
-        "五个 LLM 各将 100 个 WordPress 4.0 PHP 文件迁移到 PHP 8.3，要求保持行为，无项目上下文与反馈。",
-        "用 630 个隐藏 PHPUnit 检查对比原文件与 Rector，区分必需、弃用、可选改动，并分类回归原因。"
-      ],
-      "results": [
-        "原文件 83/100 全部通过；最好的 Claude Sonnet 4 仅 59，Rector 82；各 LLM 破坏 32–51 个可用文件，最多修复 10 个。",
-        "仅 37 项（7%）改动为 PHP 8.3 必需；在无需必需改动的兼容文件中，LLM 破坏 36–60%，Rector 仅 8%。",
-        "66–81% 的回归检查来自文件无法加载，常因新增类型声明违反 PHP 规则，如 __set() 返回 mixed。"
-      ],
-      "takeaways": [
-        "评估现代化应对比不改动基线，并分开报告现代化得分与行为保持。",
-        "把首次输出当草稿，先 lint 再加载依赖与行为检查；重点审查新增类型声明。"
-      ],
-      "limitations": "仅五个模型版本、单一指令、一个仓库的 100 个目的性抽样文件，每文件仅生成一次，结论不宜外推。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Agent or Human? Detecting Commits by AI Coding Agents in the Absence of Authorship Signatures",
-    "sub_title": "papers · source=arxiv_cs_se · score=60.6",
-    "url_title": "agent-or-human-detecting-commits-by-ai-coding-agents-in-the-absence-of-authorshi",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.36229",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-29T04:00:00Z",
-    "first_seen_at": "2026-10-28T11:27:20Z",
-    "score": 60.6,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "claude code",
-      "copilot",
-      "pull request"
-    ],
-    "topics": [
-      "编程智能体",
-      "开发者与工具研究"
-    ],
-    "summary_zh": "研究在缺少作者签名时如何识别 AI 编程智能体提交的 commit",
-    "reason_zh": "针对 AI 编程智能体行为的实证检测研究",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "AI coding agents such as Claude Code, GitHub Copilot coding agent, and Cursor now commit directly to open-source repositories. Empirical studies of these agents identify their commits through authorship signatures, such as bot accounts and Co-authored-by trailers. These signatures are optional, can be removed, and are often attached to pull requests rather…",
-    "authors": [
-      "Kosei Horikawa",
-      "Hao Li",
-      "Yutaro Kashiwa",
-      "Youssef Esseddiq Ouatiti",
-      "Mohammed Sayagh",
-      "Bram Adams"
-    ],
-    "author_count": 8,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.36229",
-    "digest": {
-      "problem": "AI coding agent 的 commit 常无署名（bot 账号、Co-Authored-By 等可被移除或只挂在 PR 上），导致无法区分 Agent 与 Human commit，影响相关实证研究的准确性。",
-      "method": [
-        "构建 783 万条 commit、1226 个仓库数据集，覆盖 5 个 agent 与 Human，并屏蔽署名后做检测。",
-        "用 XGBoost 等模型基于 commit message、变更规模、代码风格等 39 个特征分类，并做仓库隔离交叉验证。",
-        "对比 TF-IDF、CodeBERT 与零样本 LLM judge（gpt-6-sol 等），并测试跨 agent 与跨时间泛化。"
-      ],
-      "results": [
-        "屏蔽署名后 ROC AUC 最高 0.859，但按实际 Agent 占比 0.059 时最佳精度仅 0.332。",
-        "信号主要来自 message 长度与变更规模：Claude Code 消息中位数 73 词 vs Human 10 词；仅代码 diff 的 AUC 为 0.716。",
-        "跨 agent 迁移差：Claude Code 与 Copilot 的 XGBoost AUC 仅 0.702 和 0.706，TF-IDF 对 Claude Code 仅 0.524。"
-      ],
-      "takeaways": [
-        "无署名检测只能用于给 commit 排优先级供人工复核，不能替代显式署名记录。",
-        "基于署名的数据集应把 Agent 标签视为下限，并与 Agent 时代的 Human commit 对比。"
-      ],
-      "limitations": "检测精度在实际占比下偏低，跨 agent 与跨时间泛化差，且 Human 标签仅表示无已知 AI 署名，不能证明未使用 AI。",
       "basis": "fulltext"
     }
   }
