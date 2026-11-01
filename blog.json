@@ -48,7 +48,7 @@
     "upvotes": 20,
     "likes": 0,
     "github_url": "https://github.com/Wiselnn570/Co-Design-Bench",
-    "github_stars": 42,
+    "github_stars": 46,
     "hf_url": "https://huggingface.co/papers/2610.35138",
     "arxiv_id": "2610.35138",
     "digest": {
@@ -88,7 +88,7 @@
     "score": 70.5,
     "scores": {
       "relevance": 85.0,
-      "popularity": 49.5,
+      "popularity": 49.6,
       "freshness": 63.0,
       "impact": 55.0
     },
@@ -114,10 +114,10 @@
       "Jiayi Dai"
     ],
     "author_count": 16,
-    "upvotes": 22,
+    "upvotes": 23,
     "likes": 0,
     "github_url": "https://github.com/tettethu/VibeGame",
-    "github_stars": 297,
+    "github_stars": 300,
     "hf_url": "https://huggingface.co/papers/2610.33106",
     "arxiv_id": "2610.33106",
     "digest": {
@@ -978,6 +978,52 @@
       "limitations": "仅覆盖构建单个物体的Blender程序，未涉及CAD、游戏引擎、动画及美学质量评估。",
       "basis": "fulltext"
     }
+  },
+  {
+    "title": "code-philia/Req2Test-Bench",
+    "sub_title": "datasets · source=hf_datasets_code · score=61.2",
+    "url_title": "code-philiareq2test-bench",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/code-philia/Req2Test-Bench",
+    "source_id": "hf_datasets_code",
+    "source_ids": [
+      "hf_datasets_code"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-10-29T06:38:38Z",
+    "first_seen_at": "2026-11-01T21:16:19Z",
+    "score": 61.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 6.0,
+      "freshness": 50.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "test generation"
+    ],
+    "topics": [
+      "测试与验证",
+      "评测基准",
+      "代码生成"
+    ],
+    "summary_zh": "Req2Test-Bench：从 Gherkin 需求生成可执行测试的基准，含 5086 实例。",
+    "reason_zh": "面向需求到测试生成的编程智能体评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Req2Test-Bench Code | Paper | Leaderboard | Documentation Dataset Summary Req2Test-Bench is a benchmark for requirement-to-test generation in real software projects. It collects 5,086 execution-validated instances from 8 real-world projects in 5 programming languages. Its eval split has 2,051 instances. Each instance is one Scenario of a project's Gherkin…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 1,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
   },
   {
     "title": "InfraDev: Can Coding Agents Develop AI Infrastructure, and How Can We Tell?",
@@ -1904,76 +1950,6 @@
         "轨迹蒸馏成lesson可压缩上下文，同时保留补丁实现细节供最终调和。"
       ],
       "limitations": "结果依赖底层LLM，不同模型下最强探索agent不同；基线被移除PoV后设置改变，结论可能随模型、提示或采样波动。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "LASSO: An LLM-Agent Synthesized System for SQL Validation",
-    "sub_title": "papers · source=arxiv_cs_se · score=58.1",
-    "url_title": "lasso-an-llm-agent-synthesized-system-for-sql-validation",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.38294",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-30T04:00:00Z",
-    "first_seen_at": "2026-10-30T11:28:48Z",
-    "score": 58.1,
-    "scores": {
-      "relevance": 88.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 15.0
-    },
-    "keywords": [
-      "agentic coding",
-      "code generation",
-      "text-to-sql",
-      "test case"
-    ],
-    "topics": [
-      "代码生成",
-      "测试与验证",
-      "编程智能体"
-    ],
-    "summary_zh": "用 LLM 智能体合成多个测试数据集以验证 text-to-SQL 查询正确性",
-    "reason_zh": "面向 SQL 生成代码的测试验证，属 AI 编程核心",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "The rise of Large Language Models (LLMs) has significantly advanced text-to-SQL capabilities, but generated queries may have errors. Test datasets are important for catching errors, but having only one or a few test datasets leaves many bugs undetected. Effective testing requires multiple test datasets that can expose subtle semantic bugs and edge cases.…",
-    "authors": [
-      "Shreyas Jadhav",
-      "S. Sudarshan"
-    ],
-    "author_count": 2,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2610.38294",
-    "digest": {
-      "problem": "LLM 生成的 SQL 查询常有语义错误，单一测试数据集难以暴露边界与 NULL 等隐蔽 bug；基于 SMT 约束求解的测试数据生成慢且难扩展。",
-      "method": [
-        "用 LLM agentic coding 构建 LASSO，以大量小型命令式 Attack Strategy 按语义错误类型定向生成数据集。",
-        "尽量少用 SMT 求解器，优先快速启发式数据生成，并保留基线非空数据集。",
-        "以大规模初始测试用例、规则与工作流、回归套件驱动迭代，防止硬编码与回退。"
-      ],
-      "results": [
-        "构建含 36,042 条清洗后查询对的统一基准，来自 BIRD、Calcite、Cubes、LeetCode、Literature、XDataBM、TPC-H、LargeJoin 八个套件。",
-        "在多个基准上优于 XData、SpotIT、ParSEval、Polygon，能证明更多查询非等价且运行时间显著更短。",
-        "约 10k 行代码由单人借助 Gemini 3.1–3.8 与 Claude Opus 4.6 在 5 个月内生成。"
-      ],
-      "takeaways": [
-        "为 agent 提供清晰架构、分文件策略与强测试套件，可显著提升 LLM 生成代码质量。",
-        "用规则与工作流约束 agent 避免硬编码、随机数据和改测试脚本等捷径。"
-      ],
-      "limitations": "人工审查可能漏掉部分硬编码；评估依赖将非确定性查询改写为确定性并适配 SQLite。",
       "basis": "fulltext"
     }
   }
