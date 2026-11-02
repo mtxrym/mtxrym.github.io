@@ -1,5 +1,78 @@
 [
   {
+    "title": "When Requirements Interact: Scaling Long-Horizon Coding via Interdependent Specifications",
+    "sub_title": "papers · source=arxiv_cs_se · score=73.2",
+    "url_title": "when-requirements-interact-scaling-long-horizon-coding-via-interdependent-specif",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2610.40256",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_cl",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-10-30T04:00:00Z",
+    "first_seen_at": "2026-10-30T11:28:48Z",
+    "score": 73.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 28.6,
+      "freshness": 100.0,
+      "impact": 15.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准",
+      "代码生成"
+    ],
+    "summary_zh": "构建相互依赖的多维规格任务，评测长程编程智能体能力",
+    "reason_zh": "核心是编程智能体长程任务与基准",
+    "relevance_source": "llm",
+    "signals": [
+      "sota"
+    ],
+    "summary": "To succeed in real-world long-horizon software development, coding agents must satisfy multi-dimensional task specifications, such as interface compatibility and error handling, and do so without breaking existing dependencies. However, current works lack specification in both quantity and diversity, often emphasizing primary goals while ignoring complex…",
+    "authors": [
+      "Yishuo Cai",
+      "Minzheng Wang",
+      "Liang Zhao",
+      "Linghao Zhang",
+      "Lei Li",
+      "Shicheng Li"
+    ],
+    "author_count": 8,
+    "upvotes": 8,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2610.40256",
+    "arxiv_id": "2610.40256",
+    "digest": {
+      "problem": "现有编码任务规格数量与多样性不足，只强调主目标而忽略接口兼容、状态一致、错误处理等约束，导致 agent 在真实长周期开发中失败。",
+      "method": [
+        "从真实 commit/issue/PR 挖掘规格种子，合成 agent 迭代生成相互依赖的规格与可执行测试。",
+        "设计耦合约束使满足一个需求会限制其他需求，迫使 agent 联合推理而非逐项打勾。",
+        "review agent 用多模型轨迹审查测试，过滤假阳性/假阴性并修复任务与验证器。"
+      ],
+      "results": [
+        "构建 4,670 个训练任务、覆盖 2,865 个仓库；RL 后 DeepSWE-v1.1 从 12.39% 升至 25.30%（MiMo-V2.5）。",
+        "MiMo-V2.6-Flash-SFT 平均分 67.60%，优于 SWE-PI 的 64.66% 与 MiMo Coding 的 64.09%。",
+        "CodeSpecWeave-Bench 含 100 任务、1,044 条规格，前沿模型通过率 44.0%–74.0%。"
+      ],
+      "takeaways": [
+        "训练数据应显式设计相互依赖的规格，而非堆叠独立检查项，才能提升长周期跨文件推理。",
+        "高质量验证器需用多模型执行轨迹审查，仅静态检查测试无法发现交互缺陷。"
+      ],
+      "limitations": "RL 训练算力开销大；每个任务需独立容器与 Kubernetes 调度；高质量任务依赖强模型多轮过滤，候选淘汰率高。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "vishalxyzabc7527/gemma4-swe-agent-sft-harness",
     "sub_title": "datasets · source=hf_datasets_swe · score=72.7",
     "url_title": "vishalxyzabc7527gemma4-swe-agent-sft-harness",
@@ -50,7 +123,7 @@
   },
   {
     "title": "Co-Design Bench: Multimodal Collaborative Coding Evaluation for Agentic Models",
-    "sub_title": "papers · source=hf_daily_papers · score=72.0",
+    "sub_title": "papers · source=hf_daily_papers · score=72.1",
     "url_title": "co-design-bench-multimodal-collaborative-coding-evaluation-for-agentic-models",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.35138",
@@ -62,10 +135,10 @@
     "category": "papers",
     "published_at": "2026-10-26T00:00:00Z",
     "first_seen_at": "2026-10-30T11:28:48Z",
-    "score": 72.0,
+    "score": 72.1,
     "scores": {
       "relevance": 92.0,
-      "popularity": 42.4,
+      "popularity": 42.9,
       "freshness": 50.0,
       "impact": 75.0
     },
@@ -94,10 +167,10 @@
       "Zhixun Li"
     ],
     "author_count": 16,
-    "upvotes": 25,
+    "upvotes": 26,
     "likes": 0,
     "github_url": "https://github.com/Wiselnn570/Co-Design-Bench",
-    "github_stars": 52,
+    "github_stars": 62,
     "hf_url": "https://huggingface.co/papers/2610.35138",
     "arxiv_id": "2610.35138",
     "digest": {
@@ -117,79 +190,6 @@
         "agentic 执行方式会大幅改变测得完成度，基准比较需固定执行框架。"
       ],
       "limitations": "评估依赖 LLM 评判与证据审计，仍可能存在判断误差；任务来自特定会话分布。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "When Requirements Interact: Scaling Long-Horizon Coding via Interdependent Specifications",
-    "sub_title": "papers · source=arxiv_cs_se · score=71.7",
-    "url_title": "when-requirements-interact-scaling-long-horizon-coding-via-interdependent-specif",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2610.40256",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_cl",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-10-30T04:00:00Z",
-    "first_seen_at": "2026-10-30T11:28:48Z",
-    "score": 71.7,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 21.0,
-      "freshness": 100.0,
-      "impact": 15.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "代码生成"
-    ],
-    "summary_zh": "构建相互依赖的多维规格任务，评测长程编程智能体能力",
-    "reason_zh": "核心是编程智能体长程任务与基准",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "To succeed in real-world long-horizon software development, coding agents must satisfy multi-dimensional task specifications, such as interface compatibility and error handling, and do so without breaking existing dependencies. However, current works lack specification in both quantity and diversity, often emphasizing primary goals while ignoring complex…",
-    "authors": [
-      "Yishuo Cai",
-      "Minzheng Wang",
-      "Liang Zhao",
-      "Linghao Zhang",
-      "Lei Li",
-      "Shicheng Li"
-    ],
-    "author_count": 8,
-    "upvotes": 4,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2610.40256",
-    "arxiv_id": "2610.40256",
-    "digest": {
-      "problem": "现有编码任务规格数量与多样性不足，只强调主目标而忽略接口兼容、状态一致、错误处理等约束，导致 agent 在真实长周期开发中失败。",
-      "method": [
-        "从真实 commit/issue/PR 挖掘规格种子，合成 agent 迭代生成相互依赖的规格与可执行测试。",
-        "设计耦合约束使满足一个需求会限制其他需求，迫使 agent 联合推理而非逐项打勾。",
-        "review agent 用多模型轨迹审查测试，过滤假阳性/假阴性并修复任务与验证器。"
-      ],
-      "results": [
-        "构建 4,670 个训练任务、覆盖 2,865 个仓库；RL 后 DeepSWE-v1.1 从 12.39% 升至 25.30%（MiMo-V2.5）。",
-        "MiMo-V2.6-Flash-SFT 平均分 67.60%，优于 SWE-PI 的 64.66% 与 MiMo Coding 的 64.09%。",
-        "CodeSpecWeave-Bench 含 100 任务、1,044 条规格，前沿模型通过率 44.0%–74.0%。"
-      ],
-      "takeaways": [
-        "训练数据应显式设计相互依赖的规格，而非堆叠独立检查项，才能提升长周期跨文件推理。",
-        "高质量验证器需用多模型执行轨迹审查，仅静态检查测试无法发现交互缺陷。"
-      ],
-      "limitations": "RL 训练算力开销大；每个任务需独立容器与 Kubernetes 调度；高质量任务依赖强模型多轮过滤，候选淘汰率高。",
       "basis": "fulltext"
     }
   },
@@ -312,7 +312,7 @@
   },
   {
     "title": "VibeGame: Prompt-to-Game Development with AI-Native Engine and Self-Evolving Adversarial Agent Team",
-    "sub_title": "papers · source=hf_daily_papers · score=67.9",
+    "sub_title": "papers · source=hf_daily_papers · score=68.1",
     "url_title": "vibegame-prompt-to-game-development-with-ai-native-engine-and-self-evolving-adve",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.33106",
@@ -324,10 +324,10 @@
     "category": "papers",
     "published_at": "2026-10-22T00:00:00Z",
     "first_seen_at": "2026-10-30T11:28:48Z",
-    "score": 67.9,
+    "score": 68.1,
     "scores": {
       "relevance": 85.0,
-      "popularity": 49.7,
+      "popularity": 50.6,
       "freshness": 50.0,
       "impact": 55.0
     },
@@ -353,10 +353,10 @@
       "Jiayi Dai"
     ],
     "author_count": 16,
-    "upvotes": 35,
+    "upvotes": 38,
     "likes": 0,
     "github_url": "https://github.com/tettethu/VibeGame",
-    "github_stars": 306,
+    "github_stars": 337,
     "hf_url": "https://huggingface.co/papers/2610.33106",
     "arxiv_id": "2610.33106",
     "digest": {
