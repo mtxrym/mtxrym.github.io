@@ -1,7 +1,7 @@
 [
   {
     "title": "CrossSWE: Benchmarking Cross-Repository Joint Development for Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_se · score=78.8",
+    "sub_title": "papers · source=arxiv_cs_se · score=78.9",
     "url_title": "crossswe-benchmarking-cross-repository-joint-development-for-coding-agents",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2611.01484",
@@ -14,10 +14,10 @@
     "category": "papers",
     "published_at": "2026-11-03T05:00:00Z",
     "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 78.8,
+    "score": 78.9,
     "scores": {
       "relevance": 95.0,
-      "popularity": 39.0,
+      "popularity": 39.7,
       "freshness": 100.0,
       "impact": 35.0
     },
@@ -44,7 +44,7 @@
       "Haotian Lin"
     ],
     "author_count": 7,
-    "upvotes": 19,
+    "upvotes": 20,
     "likes": 0,
     "github_url": "",
     "github_stars": 0,
@@ -67,6 +67,78 @@
         "应重点保障多仓库补丁间接口一致性，而非仅单仓库正确。"
       ],
       "limitations": "171 个实例中 165 个仅涉及两个仓库，大规模多仓库网络覆盖有限；仓库由基准预先给定，未考察仓库发现。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training",
+    "sub_title": "papers · source=arxiv_cs_se · score=75.3",
+    "url_title": "swe-trail-history-guided-trajectory-collection-for-coding-agent-training",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.02074",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-03T05:00:00Z",
+    "first_seen_at": "2026-11-03T12:53:31Z",
+    "score": 75.3,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 46.3,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [
+      "coding agent",
+      "swe-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据",
+      "模型训练与推理"
+    ],
+    "summary_zh": "提出SWE-Trail，用历史引导收集编程智能体轨迹用于训练",
+    "reason_zh": "编程智能体训练轨迹数据收集，核心相关",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Coding agents solve repository issues through long sequences of exploration, editing, and validation. These trajectories are increasingly used as post-training data, so how they are collected shapes what the trained model learns. A common approach is to sample multiple trajectories independently for each issue and then select or curate them. However, as…",
+    "authors": [
+      "Ziming Li",
+      "Lu Yu",
+      "Jiatan Huang",
+      "Qing Cui",
+      "Jun Zhou",
+      "Chuxu Zhang"
+    ],
+    "author_count": 6,
+    "upvotes": 34,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2611.02074",
+    "arxiv_id": "2611.02074",
+    "digest": {
+      "problem": "独立采样多条编码轨迹训练时，后续轨迹越来越冗余，重复探索相同修复目标，浪费采集算力且训练价值下降。",
+      "method": [
+        "用历史轨迹编译检测器，识别新 rollout 中值得额外采集的状态，历史不进入 agent 上下文。",
+        "到达该状态时由 agent 从普通上下文提出候选动作，SWE-Trail 从同一 checkpoint 短暂执行并选优。",
+        "仅保留选中路线，保持轨迹为 agent 原生连续生成，避免训练-测试不匹配。"
+      ],
+      "results": [
+        "124B Ling-3.0-flash-base 学生模型上，H5 较独立采样在 SWE-bench Multilingual 和 SWE-bench Pro 分别提升 2.33 和 1.60 个百分点。",
+        "无历史的 H0 虽产生更多成功轨迹，但 Multilingual 仅提升 0.11 点，说明增益来自历史引导而非采集成功率。",
+        "Qwen3-14B-Base 上 H5 分别提升 3.11 和 2.42 点，增益可跨学生模型泛化。"
+      ],
+      "takeaways": [
+        "采集训练轨迹时，历史应指导“在哪多花采集预算”，而非作为建议喂给 agent，以免测试时缺失。",
+        "随机化检测位置或路线保留均低于 H5，说明历史引导的定位与基于执行证据的选择都关键。"
+      ],
+      "limitations": "H10 比 H5 多耗 12.9% 记录 token，仅换来 0.22/0.14 点提升；每条轨迹最多一次比较，历史规模收益递减。",
       "basis": "fulltext"
     }
   },
@@ -217,6 +289,76 @@
     }
   },
   {
+    "title": "Can Coding Agents Sustain Continual Evolution without Forgetting?",
+    "sub_title": "papers · source=arxiv_cs_se · score=73.2",
+    "url_title": "can-coding-agents-sustain-continual-evolution-without-forgetting",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.03219",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-03T05:00:00Z",
+    "first_seen_at": "2026-11-03T12:53:31Z",
+    "score": 73.2,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 21.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "swe-bench"
+    ],
+    "topics": [
+      "编程智能体",
+      "模型训练与推理"
+    ],
+    "summary_zh": "研究编程智能体在持续多任务演化中能否避免遗忘。",
+    "reason_zh": "核心为编程智能体的持续演化能力。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Recently, harness self-evolution has emerged as an important paradigm for improving agent performance. Prior studies show that evolving the agent harness can effectively enhance agent capabilities without modifying the foundation model's parameters. We find that existing approaches largely study agent evolution on a single task. In practice, coding agents…",
+    "authors": [
+      "Shangziqi Zhao",
+      "Yitong Zhang",
+      "Jia Li"
+    ],
+    "author_count": 3,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "https://github.com/THU-Agent/continual-harness-evolution",
+    "github_stars": 1,
+    "hf_url": "https://huggingface.co/papers/2611.03219",
+    "arxiv_id": "2611.03219",
+    "digest": {
+      "problem": "现有 harness 自进化方法只在单一任务上验证，而编码 agent 实际需跨多种软件工程任务持续进化，是否会灾难性遗忘尚不清楚。",
+      "method": [
+        "提出 continual harness self-evolution 设定，将三个数据集组织成六个跨任务进化方向。",
+        "用 AHE 与 Meta-Harness 两种方法在 Mini-SWE-Agent 上做持续进化实验。",
+        "人工分析 520 条轨迹，归纳 verification、workflow、budget 三类 harness 冲突。"
+      ],
+      "results": [
+        "单数据集进化均显著提升：AHE 在 SWE-Bench 从 82.0% 升至 96.0%，Meta-Harness 达 94.0%。",
+        "跨任务进化严重遗忘：SWE→SWT 五轮后 AHE、Meta-Harness 在 SWE-Bench 分别降 100% 和 98%。",
+        "Meta-Harness 在 FeatureBench 进化后 SWE-Bench 从 94.0% 降至 32.0%，相对下降 66%。"
+      ],
+      "takeaways": [
+        "harness 自进化不能只针对单一任务，需显式防止对旧任务能力的覆盖。",
+        "任务相关性影响遗忘程度，跨差异大的任务类型进化时需更谨慎。"
+      ],
+      "limitations": "实验仅用 DeepSeek-V4-Flash-0731 与两个进化方法，数据集为随机采样子集，规模有限。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "DistDebug-Bench: Can LLM Agents Diagnose Bugs in Distributed Systems?",
     "sub_title": "papers · source=arxiv_cs_se · score=73.0",
     "url_title": "distdebug-bench-can-llm-agents-diagnose-bugs-in-distributed-systems",
@@ -284,78 +426,6 @@
         "评测应直接考察根因定位而非仅看补丁生成，工具使用范围需一致。"
       ],
       "limitations": "基准来自公开历史 bug，存在预训练泄漏风险；人工标注仍是扩展瓶颈。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training",
-    "sub_title": "papers · source=arxiv_cs_se · score=72.7",
-    "url_title": "swe-trail-history-guided-trajectory-collection-for-coding-agent-training",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.02074",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-03T05:00:00Z",
-    "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 72.7,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 33.4,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "训练数据",
-      "模型训练与推理"
-    ],
-    "summary_zh": "提出SWE-Trail，用历史引导收集编程智能体轨迹用于训练",
-    "reason_zh": "编程智能体训练轨迹数据收集，核心相关",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Coding agents solve repository issues through long sequences of exploration, editing, and validation. These trajectories are increasingly used as post-training data, so how they are collected shapes what the trained model learns. A common approach is to sample multiple trajectories independently for each issue and then select or curate them. However, as…",
-    "authors": [
-      "Ziming Li",
-      "Lu Yu",
-      "Jiatan Huang",
-      "Qing Cui",
-      "Jun Zhou",
-      "Chuxu Zhang"
-    ],
-    "author_count": 6,
-    "upvotes": 12,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2611.02074",
-    "arxiv_id": "2611.02074",
-    "digest": {
-      "problem": "独立采样多条编码轨迹训练时，后续轨迹越来越冗余，重复探索相同修复目标，浪费采集算力且训练价值下降。",
-      "method": [
-        "用历史轨迹编译检测器，识别新 rollout 中值得额外采集的状态，历史不进入 agent 上下文。",
-        "到达该状态时由 agent 从普通上下文提出候选动作，SWE-Trail 从同一 checkpoint 短暂执行并选优。",
-        "仅保留选中路线，保持轨迹为 agent 原生连续生成，避免训练-测试不匹配。"
-      ],
-      "results": [
-        "124B Ling-3.0-flash-base 学生模型上，H5 较独立采样在 SWE-bench Multilingual 和 SWE-bench Pro 分别提升 2.33 和 1.60 个百分点。",
-        "无历史的 H0 虽产生更多成功轨迹，但 Multilingual 仅提升 0.11 点，说明增益来自历史引导而非采集成功率。",
-        "Qwen3-14B-Base 上 H5 分别提升 3.11 和 2.42 点，增益可跨学生模型泛化。"
-      ],
-      "takeaways": [
-        "采集训练轨迹时，历史应指导“在哪多花采集预算”，而非作为建议喂给 agent，以免测试时缺失。",
-        "随机化检测位置或路线保留均低于 H5，说明历史引导的定位与基于执行证据的选择都关键。"
-      ],
-      "limitations": "H10 比 H5 多耗 12.9% 记录 token，仅换来 0.22/0.14 点提升；每条轨迹最多一次比较，历史规模收益递减。",
       "basis": "fulltext"
     }
   },
@@ -1073,76 +1143,6 @@
     }
   },
   {
-    "title": "Can Coding Agents Sustain Continual Evolution without Forgetting?",
-    "sub_title": "papers · source=arxiv_cs_se · score=69.0",
-    "url_title": "can-coding-agents-sustain-continual-evolution-without-forgetting",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.03219",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_ai",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-03T05:00:00Z",
-    "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 69.0,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 100.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent",
-      "swe-bench"
-    ],
-    "topics": [
-      "编程智能体",
-      "模型训练与推理"
-    ],
-    "summary_zh": "研究编程智能体在持续多任务演化中能否避免遗忘。",
-    "reason_zh": "核心为编程智能体的持续演化能力。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Recently, harness self-evolution has emerged as an important paradigm for improving agent performance. Prior studies show that evolving the agent harness can effectively enhance agent capabilities without modifying the foundation model's parameters. We find that existing approaches largely study agent evolution on a single task. In practice, coding agents…",
-    "authors": [
-      "Shangziqi Zhao",
-      "Yitong Zhang",
-      "Jia Li"
-    ],
-    "author_count": 3,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "https://github.com/THU-Agent/continual-harness-evolution",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2611.03219",
-    "arxiv_id": "2611.03219",
-    "digest": {
-      "problem": "现有 harness 自进化方法只在单一任务上验证，而编码 agent 实际需跨多种软件工程任务持续进化，是否会灾难性遗忘尚不清楚。",
-      "method": [
-        "提出 continual harness self-evolution 设定，将三个数据集组织成六个跨任务进化方向。",
-        "用 AHE 与 Meta-Harness 两种方法在 Mini-SWE-Agent 上做持续进化实验。",
-        "人工分析 520 条轨迹，归纳 verification、workflow、budget 三类 harness 冲突。"
-      ],
-      "results": [
-        "单数据集进化均显著提升：AHE 在 SWE-Bench 从 82.0% 升至 96.0%，Meta-Harness 达 94.0%。",
-        "跨任务进化严重遗忘：SWE→SWT 五轮后 AHE、Meta-Harness 在 SWE-Bench 分别降 100% 和 98%。",
-        "Meta-Harness 在 FeatureBench 进化后 SWE-Bench 从 94.0% 降至 32.0%，相对下降 66%。"
-      ],
-      "takeaways": [
-        "harness 自进化不能只针对单一任务，需显式防止对旧任务能力的覆盖。",
-        "任务相关性影响遗忘程度，跨差异大的任务类型进化时需更谨慎。"
-      ],
-      "limitations": "实验仅用 DeepSeek-V4-Flash-0731 与两个进化方法，数据集为随机采样子集，规模有限。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "vishalxyzabc7527/gemma4-swe-agent-sft-harness",
     "sub_title": "datasets · source=hf_datasets_swe · score=68.6",
     "url_title": "vishalxyzabc7527gemma4-swe-agent-sft-harness",
@@ -1262,6 +1262,72 @@
         "评测需联合考察模型与 harness，并报告多次运行结果以应对波动。"
       ],
       "limitations": "任务由 LLM 合成，依赖会话日志质量与重复投票去随机性；CropEnterprise 不公开，复现受限。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Advances in Agentic Computer Graphics",
+    "sub_title": "papers · source=hf_daily_papers · score=68.1",
+    "url_title": "advances-in-agentic-computer-graphics",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.01860",
+    "source_id": "hf_daily_papers",
+    "source_ids": [
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-01T00:00:00Z",
+    "first_seen_at": "2026-11-03T12:53:31Z",
+    "score": 68.1,
+    "scores": {
+      "relevance": 72.0,
+      "popularity": 60.4,
+      "freshness": 100.0,
+      "impact": 0.0
+    },
+    "keywords": [],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "综述 LLM 智能体生成并迭代优化图形学代码的新范式",
+    "reason_zh": "智能体生成代码，但限于图形学场景",
+    "relevance_source": "llm",
+    "signals": [],
+    "summary": "Computer graphics is built on code. Large language model (LLM) agents can now generate graphics code and iteratively refine it through various feedback. This capability opens the door to a potentially new paradigm of computer graphics, with graphics algorithms increasingly built around agentic systems to automate progressively complex tasks. Over the past…",
+    "authors": [
+      "Hengyu Liu",
+      "Jihyeon Je",
+      "Ruiqi Wang",
+      "Mingxuan Wu",
+      "Haven Feng",
+      "Qixing Huang"
+    ],
+    "author_count": 14,
+    "upvotes": 102,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2611.01860",
+    "arxiv_id": "2611.01860",
+    "digest": {
+      "problem": "agentic graphics 研究快速增长且术语不统一，人工综述难以跟上，跨任务系统设计难以比较。",
+      "method": [
+        "提出四维统一分类法：specification、base model、harness、graphics interface and tooling。",
+        "构建 agentic 文献系统，自动检索、阅读论文并按分类法标注，保留证据记录。",
+        "基于分类法综合分析 2D、静态 3D、动态 3D 图形任务的设计模式与趋势。"
+      ],
+      "results": [
+        "收集语料超过 300 篇论文（截至 2026 年 9 月），显示该领域近乎指数增长。",
+        "多数系统使用 off-the-shelf 基座模型，针对图形任务的监督或强化后训练探索较少。",
+        "harness 设计多样性显著高于基座模型选择；code 与结构化规格是主要交互形式。"
+      ],
+      "takeaways": [
+        "构建图形 agent 时，harness 的规划、反馈与记忆设计比换基座模型更具差异化空间。",
+        "优先采用 code 或结构化规格作为 agent 与图形环境交互的接口，便于验证与迭代。"
+      ],
+      "limitations": "原文未给出分类法标注的一致性或文献系统检索质量的定量评估结果。",
       "basis": "fulltext"
     }
   },
@@ -1683,72 +1749,6 @@
     }
   },
   {
-    "title": "Advances in Agentic Computer Graphics",
-    "sub_title": "papers · source=hf_daily_papers · score=66.1",
-    "url_title": "advances-in-agentic-computer-graphics",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.01860",
-    "source_id": "hf_daily_papers",
-    "source_ids": [
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-01T00:00:00Z",
-    "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 66.1,
-    "scores": {
-      "relevance": 72.0,
-      "popularity": 50.4,
-      "freshness": 100.0,
-      "impact": 0.0
-    },
-    "keywords": [],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "综述 LLM 智能体生成并迭代优化图形学代码的新范式",
-    "reason_zh": "智能体生成代码，但限于图形学场景",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Computer graphics is built on code. Large language model (LLM) agents can now generate graphics code and iteratively refine it through various feedback. This capability opens the door to a potentially new paradigm of computer graphics, with graphics algorithms increasingly built around agentic systems to automate progressively complex tasks. Over the past…",
-    "authors": [
-      "Hengyu Liu",
-      "Jihyeon Je",
-      "Ruiqi Wang",
-      "Mingxuan Wu",
-      "Haven Feng",
-      "Qixing Huang"
-    ],
-    "author_count": 14,
-    "upvotes": 47,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2611.01860",
-    "arxiv_id": "2611.01860",
-    "digest": {
-      "problem": "agentic graphics 研究快速增长且术语不统一，人工综述难以跟上，跨任务系统设计难以比较。",
-      "method": [
-        "提出四维统一分类法：specification、base model、harness、graphics interface and tooling。",
-        "构建 agentic 文献系统，自动检索、阅读论文并按分类法标注，保留证据记录。",
-        "基于分类法综合分析 2D、静态 3D、动态 3D 图形任务的设计模式与趋势。"
-      ],
-      "results": [
-        "收集语料超过 300 篇论文（截至 2026 年 9 月），显示该领域近乎指数增长。",
-        "多数系统使用 off-the-shelf 基座模型，针对图形任务的监督或强化后训练探索较少。",
-        "harness 设计多样性显著高于基座模型选择；code 与结构化规格是主要交互形式。"
-      ],
-      "takeaways": [
-        "构建图形 agent 时，harness 的规划、反馈与记忆设计比换基座模型更具差异化空间。",
-        "优先采用 code 或结构化规格作为 agent 与图形环境交互的接口，便于验证与迭代。"
-      ],
-      "limitations": "原文未给出分类法标注的一致性或文献系统检索质量的定量评估结果。",
-      "basis": "fulltext"
-    }
-  },
-  {
     "title": "VibeGame: Prompt-to-Game Development with AI-Native Engine and Self-Evolving Adversarial Agent Team",
     "sub_title": "papers · source=hf_daily_papers · score=66.1",
     "url_title": "vibegame-prompt-to-game-development-with-ai-native-engine-and-self-evolving-adve",
@@ -1956,7 +1956,7 @@
   },
   {
     "title": "CoworkOS:Scaling Agent Coworkers for Real-world Automation",
-    "sub_title": "papers · source=arxiv_cs_cl · score=65.4",
+    "sub_title": "papers · source=arxiv_cs_cl · score=65.7",
     "url_title": "coworkosscaling-agent-coworkers-for-real-world-automation",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2611.03178",
@@ -1970,10 +1970,10 @@
     "category": "papers",
     "published_at": "2026-11-03T05:00:00Z",
     "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 65.4,
+    "score": 65.7,
     "scores": {
       "relevance": 60.0,
-      "popularity": 56.8,
+      "popularity": 58.3,
       "freshness": 100.0,
       "impact": 40.0
     },
@@ -2000,10 +2000,10 @@
       "Guoqiang Wang"
     ],
     "author_count": 40,
-    "upvotes": 77,
+    "upvotes": 87,
     "likes": 0,
     "github_url": "https://github.com/RUC-NLPIR/CoworkOS",
-    "github_stars": 46,
+    "github_stars": 78,
     "hf_url": "https://huggingface.co/papers/2611.03178",
     "arxiv_id": "2611.03178",
     "digest": {
