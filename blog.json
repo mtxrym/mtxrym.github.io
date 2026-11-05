@@ -1,7 +1,7 @@
 [
   {
     "title": "Switch-SWE: Do Coding Agents Hold Focus When Switching Between Unfinished Tasks?",
-    "sub_title": "papers · source=arxiv_cs_cl · score=75.1",
+    "sub_title": "papers · source=arxiv_cs_cl · score=75.4",
     "url_title": "switch-swe-do-coding-agents-hold-focus-when-switching-between-unfinished-tasks",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2611.02017",
@@ -14,10 +14,10 @@
     "category": "papers",
     "published_at": "2026-11-03T05:00:00Z",
     "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 75.1,
+    "score": 75.4,
     "scores": {
       "relevance": 92.0,
-      "popularity": 28.6,
+      "popularity": 30.0,
       "freshness": 79.4,
       "impact": 75.0
     },
@@ -47,7 +47,7 @@
       "Haonan Zhao"
     ],
     "author_count": 10,
-    "upvotes": 6,
+    "upvotes": 9,
     "likes": 0,
     "github_url": "https://github.com/Miraclecsc/Switch-SWE",
     "github_stars": 26,
@@ -301,7 +301,7 @@
     ],
     "source_host": "huggingface.co",
     "category": "datasets",
-    "published_at": "2026-11-05T04:10:48Z",
+    "published_at": "2026-11-05T22:26:15Z",
     "first_seen_at": "2026-11-05T13:20:40Z",
     "score": 71.2,
     "scores": {
@@ -338,7 +338,7 @@
   },
   {
     "title": "\"Shall We Approve?\" Consequence-Aware Approval for Autonomous Coding Agents",
-    "sub_title": "papers · source=arxiv_cs_ai · score=70.6",
+    "sub_title": "papers · source=arxiv_cs_ai · score=70.9",
     "url_title": "shall-we-approve-consequence-aware-approval-for-autonomous-coding-agents",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2610.40753",
@@ -351,10 +351,10 @@
     "category": "papers",
     "published_at": "2026-11-02T05:00:00Z",
     "first_seen_at": "2026-11-02T13:41:18Z",
-    "score": 70.6,
+    "score": 70.9,
     "scores": {
       "relevance": 88.0,
-      "popularity": 33.4,
+      "popularity": 35.3,
       "freshness": 79.4,
       "impact": 40.0
     },
@@ -381,10 +381,10 @@
       "David Lo"
     ],
     "author_count": 6,
-    "upvotes": 12,
+    "upvotes": 14,
     "likes": 0,
     "github_url": "https://github.com/wudaoz/Caper",
-    "github_stars": 5,
+    "github_stars": 6,
     "hf_url": "https://huggingface.co/papers/2610.40753",
     "arxiv_id": "2610.40753",
     "digest": {
@@ -404,6 +404,77 @@
         "预执行需配合网络隔离与快照回滚，并把可操作原因反馈给 agent 以便重新规划。"
       ],
       "limitations": "仅覆盖 shell 命令；预执行中离开容器的网络等副作用无法回滚；只观察一次执行，未测试自适应攻击；LLM 判断存在波动。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Ask, Don't Equip: Question-Driven Coding Agents for Deep Kernel Optimization",
+    "sub_title": "papers · source=arxiv_cs_lg · score=70.0",
+    "url_title": "ask-dont-equip-question-driven-coding-agents-for-deep-kernel-optimization",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.03517",
+    "source_id": "arxiv_cs_lg",
+    "source_ids": [
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-03T05:00:00Z",
+    "first_seen_at": "2026-11-03T12:53:31Z",
+    "score": 70.0,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 0.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "提出问题驱动的编程智能体，用于GPU内核深度优化，替代脚本化或开放式智能体。",
+    "reason_zh": "核心是编程智能体做内核代码优化。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "LLM agents for GPU kernel optimization sit at two ends of a structure-freedom tradeoff. Scripted agents fix what the model does at each step, via a learned policy, an optimization menu, or fixed roles, and are sample-efficient where the recipe applies and stall where it does not. Open-ended agents let a self-directed model mutate a population of kernels and…",
+    "authors": [
+      "Gabriele Oliaro",
+      "Jaeseong Lee",
+      "Zhaoyuan Su",
+      "Sreeram Vennam",
+      "Zhihao Jia",
+      "Samyam Rajbhandari"
+    ],
+    "author_count": 6,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2611.03517",
+    "arxiv_id": "2611.03517",
+    "digest": {
+      "problem": "LLM 编码智能体优化 GPU kernel 时，脚本化智能体缺乏方向、开放式智能体试错成本高，两者都缺少关于性能差距所在的假设。",
+      "method": [
+        "提出 KernelSeek：通用编码智能体加最小 harness，用可验证目标（Stop hook 强制）替代脚本。",
+        "在停滞、声称极限或完成、异常大胜等决策点提出不含答案、可测量的短问题，并沉淀为可自问的问题库。",
+        "与 AVO 式进化搜索组合，把下一代指令改写为待验证的问题而非编辑指令。"
+      ],
+      "results": [
+        "同一 FA3 任务上，工具丰富的自主智能体 133 步后停在 0.50× FlashAttention-3，KernelSeek 达 1.13×。",
+        "产出无依赖的 fa3_hopper.cu 与 fa4_blackwell.cu，182 个场景全部正确，几何平均 1.16× FA3、1.46× FA4。",
+        "162 条人类消息对应 11.5K 次工具调用，最大增益均跟随改变系统层次或质疑极限的问题。"
+      ],
+      "takeaways": [
+        "给编码智能体的有效干预是提出可测量的假设性问题，而非堆叠工具或预消化信息。",
+        "用机械可验证的停止条件（逐场景量化）防止智能体过早宣称完成。"
+      ],
+      "limitations": "问题库 101 条核心条目中 72 条仅来自公开资料、尚未经该智能体实际验证；结论主要基于注意力 kernel 案例研究。",
       "basis": "fulltext"
     }
   },
@@ -2012,79 +2083,6 @@
         "高质量验证器需用多模型执行轨迹审查，仅静态检查测试无法发现交互缺陷。"
       ],
       "limitations": "RL 训练算力开销大；每个任务需独立容器与 Kubernetes 调度；高质量任务依赖强模型多轮过滤，候选淘汰率高。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Decentralized Multi-Agent Coordination and Communication in Shared Codebases",
-    "sub_title": "papers · source=arxiv_cs_cl · score=63.6",
-    "url_title": "decentralized-multi-agent-coordination-and-communication-in-shared-codebases",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.00314",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-03T05:00:00Z",
-    "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 63.6,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 35.0
-    },
-    "keywords": [
-      "codebase",
-      "coding agent",
-      "claude code"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准",
-      "代码生成"
-    ],
-    "summary_zh": "提出ParallACT基准，研究共享代码库中多编程智能体的去中心化协调与冲突。",
-    "reason_zh": "多编程智能体基准，核心AI编程。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark"
-    ],
-    "summary": "Coding agents working in shared repositories may receive separate, independently-motivated requests from human developers, creating a setting that is multi-agent by necessity. When this scenario happens, their individual implementations may work separately but conflict when combined. To study this setting, we introduce ParallACT, a benchmark of…",
-    "authors": [
-      "Rishabh Mediratta",
-      "Lingyun Xiao",
-      "Peter Stone",
-      "Joydeep Biswas",
-      "Elias Stengel-Eskin"
-    ],
-    "author_count": 5,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2611.00314",
-    "digest": {
-      "problem": "共享代码库中多个独立开发者各自委托编码 agent 并行改代码，彼此不知情，单独实现可用但合并后冲突，缺乏无编排器场景的评测。",
-      "method": [
-        "构建 ParallACT 基准：155 个实例，含 85 个矛盾型与 70 个互补型多 agent 编码任务。",
-        "以 SWE-Bench Pro 任务为需求 A，人工或 GPT 5.6 Sol 生成独立需求 B 及参考解、测试。",
-        "用健全性过滤确保单方解或简单拼接/Git merge 均无法通过联合测试。"
-      ],
-      "results": [
-        "单 agent oracle 在矛盾型达 62%、互补型 86%（Claude Opus 4.8），给测试后升至 98%/100%。",
-        "两个互不知情的 Claude Opus 4.8 agent 并行时联合通过率仅 16%（矛盾）和 57%（互补）。",
-        "告知存在同伴帮助不大；开放通信通道仅恢复少量性能且增加 token 成本。"
-      ],
-      "takeaways": [
-        "多 agent 编码的主要瓶颈是协调失败而非单 agent 能力不足。",
-        "仅提供通信通道不够，需设计消息读取时机与执行跟进机制。"
-      ],
-      "limitations": "仅研究两 agent 配对和小规模诊断性数据集，不能推断更大团队或真实冲突频率。",
       "basis": "fulltext"
     }
   }
