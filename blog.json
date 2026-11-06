@@ -500,6 +500,77 @@
     }
   },
   {
+    "title": "Ask, Don't Equip: Question-Driven Coding Agents for Deep Kernel Optimization",
+    "sub_title": "papers · source=arxiv_cs_lg · score=69.5",
+    "url_title": "ask-dont-equip-question-driven-coding-agents-for-deep-kernel-optimization",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.03517",
+    "source_id": "arxiv_cs_lg",
+    "source_ids": [
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-03T05:00:00Z",
+    "first_seen_at": "2026-11-03T12:53:31Z",
+    "score": 69.5,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 18.1,
+      "freshness": 79.4,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "提出问题驱动的编程智能体，用于GPU内核深度优化，替代脚本化或开放式智能体。",
+    "reason_zh": "核心是编程智能体做内核代码优化。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "LLM agents for GPU kernel optimization sit at two ends of a structure-freedom tradeoff. Scripted agents fix what the model does at each step, via a learned policy, an optimization menu, or fixed roles, and are sample-efficient where the recipe applies and stall where it does not. Open-ended agents let a self-directed model mutate a population of kernels and…",
+    "authors": [
+      "Gabriele Oliaro",
+      "Jaeseong Lee",
+      "Zhaoyuan Su",
+      "Sreeram Vennam",
+      "Zhihao Jia",
+      "Samyam Rajbhandari"
+    ],
+    "author_count": 6,
+    "upvotes": 3,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2611.03517",
+    "arxiv_id": "2611.03517",
+    "digest": {
+      "problem": "LLM 编码智能体优化 GPU kernel 时，脚本化智能体缺乏方向、开放式智能体试错成本高，两者都缺少关于性能差距所在的假设。",
+      "method": [
+        "提出 KernelSeek：通用编码智能体加最小 harness，用可验证目标（Stop hook 强制）替代脚本。",
+        "在停滞、声称极限或完成、异常大胜等决策点提出不含答案、可测量的短问题，并沉淀为可自问的问题库。",
+        "与 AVO 式进化搜索组合，把下一代指令改写为待验证的问题而非编辑指令。"
+      ],
+      "results": [
+        "同一 FA3 任务上，工具丰富的自主智能体 133 步后停在 0.50× FlashAttention-3，KernelSeek 达 1.13×。",
+        "产出无依赖的 fa3_hopper.cu 与 fa4_blackwell.cu，182 个场景全部正确，几何平均 1.16× FA3、1.46× FA4。",
+        "162 条人类消息对应 11.5K 次工具调用，最大增益均跟随改变系统层次或质疑极限的问题。"
+      ],
+      "takeaways": [
+        "给编码智能体的有效干预是提出可测量的假设性问题，而非堆叠工具或预消化信息。",
+        "用机械可验证的停止条件（逐场景量化）防止智能体过早宣称完成。"
+      ],
+      "limitations": "问题库 101 条核心条目中 72 条仅来自公开资料、尚未经该智能体实际验证；结论主要基于注意力 kernel 案例研究。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "tyfeng1997/gemma4-swe-deepseek-flash-max-verified-trials",
     "sub_title": "datasets · source=hf_datasets_swe · score=69.2",
     "url_title": "tyfeng1997gemma4-swe-deepseek-flash-max-verified-trials",
@@ -609,77 +680,6 @@
         "全文件 Apply 准确率最高但 token 开销大，复制主导负载适合投机解码优化。"
       ],
       "limitations": "可解性过滤依赖特定大模型，可能排除有效但困难的样本，使数据偏向这些模型可解的情形。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Ask, Don't Equip: Question-Driven Coding Agents for Deep Kernel Optimization",
-    "sub_title": "papers · source=arxiv_cs_lg · score=68.7",
-    "url_title": "ask-dont-equip-question-driven-coding-agents-for-deep-kernel-optimization",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.03517",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-03T05:00:00Z",
-    "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 68.7,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 14.3,
-      "freshness": 79.4,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "提出问题驱动的编程智能体，用于GPU内核深度优化，替代脚本化或开放式智能体。",
-    "reason_zh": "核心是编程智能体做内核代码优化。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "LLM agents for GPU kernel optimization sit at two ends of a structure-freedom tradeoff. Scripted agents fix what the model does at each step, via a learned policy, an optimization menu, or fixed roles, and are sample-efficient where the recipe applies and stall where it does not. Open-ended agents let a self-directed model mutate a population of kernels and…",
-    "authors": [
-      "Gabriele Oliaro",
-      "Jaeseong Lee",
-      "Zhaoyuan Su",
-      "Sreeram Vennam",
-      "Zhihao Jia",
-      "Samyam Rajbhandari"
-    ],
-    "author_count": 6,
-    "upvotes": 2,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2611.03517",
-    "arxiv_id": "2611.03517",
-    "digest": {
-      "problem": "LLM 编码智能体优化 GPU kernel 时，脚本化智能体缺乏方向、开放式智能体试错成本高，两者都缺少关于性能差距所在的假设。",
-      "method": [
-        "提出 KernelSeek：通用编码智能体加最小 harness，用可验证目标（Stop hook 强制）替代脚本。",
-        "在停滞、声称极限或完成、异常大胜等决策点提出不含答案、可测量的短问题，并沉淀为可自问的问题库。",
-        "与 AVO 式进化搜索组合，把下一代指令改写为待验证的问题而非编辑指令。"
-      ],
-      "results": [
-        "同一 FA3 任务上，工具丰富的自主智能体 133 步后停在 0.50× FlashAttention-3，KernelSeek 达 1.13×。",
-        "产出无依赖的 fa3_hopper.cu 与 fa4_blackwell.cu，182 个场景全部正确，几何平均 1.16× FA3、1.46× FA4。",
-        "162 条人类消息对应 11.5K 次工具调用，最大增益均跟随改变系统层次或质疑极限的问题。"
-      ],
-      "takeaways": [
-        "给编码智能体的有效干预是提出可测量的假设性问题，而非堆叠工具或预消化信息。",
-        "用机械可验证的停止条件（逐场景量化）防止智能体过早宣称完成。"
-      ],
-      "limitations": "问题库 101 条核心条目中 72 条仅来自公开资料、尚未经该智能体实际验证；结论主要基于注意力 kernel 案例研究。",
       "basis": "fulltext"
     }
   },
