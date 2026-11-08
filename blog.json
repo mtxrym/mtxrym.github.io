@@ -1,5 +1,79 @@
 [
   {
+    "title": "Switch-SWE: Do Coding Agents Hold Focus When Switching Between Unfinished Tasks?",
+    "sub_title": "papers · source=arxiv_cs_cl · score=67.7",
+    "url_title": "switch-swe-do-coding-agents-hold-focus-when-switching-between-unfinished-tasks",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.02017",
+    "source_id": "arxiv_cs_cl",
+    "source_ids": [
+      "arxiv_cs_cl",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-03T05:00:00Z",
+    "first_seen_at": "2026-11-03T12:53:31Z",
+    "score": 67.7,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 31.2,
+      "freshness": 39.7,
+      "impact": 75.0
+    },
+    "keywords": [
+      "coding agent",
+      "repository-level",
+      "github"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出Switch-SWE基准，评测编程智能体在未完成任务间切换后能否恢复上下文。",
+    "reason_zh": "核心是编程智能体评测基准。",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Software development sessions often involve several unfinished tasks rather than one issue carried through to completion. As coding agents take on repository-level development, they need to recover an earlier task's requirements and partial progress after intervening work. Existing repository-level benchmarks typically score one issue-to-patch episode and…",
+    "authors": [
+      "Shuochen Chang",
+      "Qianli Ma",
+      "Yibo Miao",
+      "Qingyang Liu",
+      "Bingjie Gao",
+      "Haonan Zhao"
+    ],
+    "author_count": 10,
+    "upvotes": 10,
+    "likes": 0,
+    "github_url": "https://github.com/Miraclecsc/Switch-SWE",
+    "github_stars": 26,
+    "hf_url": "https://huggingface.co/papers/2611.02017",
+    "arxiv_id": "2611.02017",
+    "digest": {
+      "problem": "现有仓库级基准只评测单次 issue-to-patch，无法衡量 coding agent 在同一仓库中处理其他未完成任务后，能否恢复并完成先前任务。",
+      "method": [
+        "构建 Switch-SWE：200 个多阶段任务，每个任务配对无中断与切换两种会话，仅评最终 focus patch。",
+        "切换会话插入同仓库 4 个未完成任务，按源码目录远近分 near/far 各 100 个。",
+        "提出插件式上下文管理模块，筛选任务相关历史并维护简洁任务状态摘要。"
+      ],
+      "results": [
+        "7 个 coding agent 在切换会话下 focus 任务解决率平均下降 11.5 个百分点，范围 6.0–15.0。",
+        "轨迹分析发现跨任务需求混淆与任务状态丢失是常见恢复失败行为。",
+        "在 OpenCode 上该模块使切换场景完成率提升 5.5–15.5 个百分点。"
+      ],
+      "takeaways": [
+        "代码持久化不等于任务可恢复，agent 需显式隔离任务历史并保存进度状态。",
+        "多任务会话中应主动维护任务级摘要，避免需求混淆与状态丢失。"
+      ],
+      "limitations": "仅覆盖 19 个 Python 仓库；上下文模块只在 OpenCode 上验证，未覆盖全部 agent。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Multi-step SWE: Can Coding Agents Keep Building on Their Own Code Over Long Horizons?",
     "sub_title": "papers · source=arxiv_cs_se · score=67.6",
     "url_title": "multi-step-swe-can-coding-agents-keep-building-on-their-own-code-over-long-horiz",
@@ -67,80 +141,6 @@
         "需为智能体提供可验证的公共检查，避免其仅凭自身预期判断完成。"
       ],
       "limitations": "任务仅 69 个，每步预算 2–4 小时，部分迁移任务开放网络，结论受模型与采样次数限制。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Switch-SWE: Do Coding Agents Hold Focus When Switching Between Unfinished Tasks?",
-    "sub_title": "papers · source=arxiv_cs_cl · score=67.4",
-    "url_title": "switch-swe-do-coding-agents-hold-focus-when-switching-between-unfinished-tasks",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.02017",
-    "source_id": "arxiv_cs_cl",
-    "source_ids": [
-      "arxiv_cs_cl",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-03T05:00:00Z",
-    "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 67.4,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 30.0,
-      "freshness": 39.7,
-      "impact": 75.0
-    },
-    "keywords": [
-      "coding agent",
-      "repository-level",
-      "github"
-    ],
-    "topics": [
-      "编程智能体",
-      "评测基准"
-    ],
-    "summary_zh": "提出Switch-SWE基准，评测编程智能体在未完成任务间切换后能否恢复上下文。",
-    "reason_zh": "核心是编程智能体评测基准。",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "Software development sessions often involve several unfinished tasks rather than one issue carried through to completion. As coding agents take on repository-level development, they need to recover an earlier task's requirements and partial progress after intervening work. Existing repository-level benchmarks typically score one issue-to-patch episode and…",
-    "authors": [
-      "Shuochen Chang",
-      "Qianli Ma",
-      "Yibo Miao",
-      "Qingyang Liu",
-      "Bingjie Gao",
-      "Haonan Zhao"
-    ],
-    "author_count": 10,
-    "upvotes": 9,
-    "likes": 0,
-    "github_url": "https://github.com/Miraclecsc/Switch-SWE",
-    "github_stars": 26,
-    "hf_url": "https://huggingface.co/papers/2611.02017",
-    "arxiv_id": "2611.02017",
-    "digest": {
-      "problem": "现有仓库级基准只评测单次 issue-to-patch，无法衡量 coding agent 在同一仓库中处理其他未完成任务后，能否恢复并完成先前任务。",
-      "method": [
-        "构建 Switch-SWE：200 个多阶段任务，每个任务配对无中断与切换两种会话，仅评最终 focus patch。",
-        "切换会话插入同仓库 4 个未完成任务，按源码目录远近分 near/far 各 100 个。",
-        "提出插件式上下文管理模块，筛选任务相关历史并维护简洁任务状态摘要。"
-      ],
-      "results": [
-        "7 个 coding agent 在切换会话下 focus 任务解决率平均下降 11.5 个百分点，范围 6.0–15.0。",
-        "轨迹分析发现跨任务需求混淆与任务状态丢失是常见恢复失败行为。",
-        "在 OpenCode 上该模块使切换场景完成率提升 5.5–15.5 个百分点。"
-      ],
-      "takeaways": [
-        "代码持久化不等于任务可恢复，agent 需显式隔离任务历史并保存进度状态。",
-        "多任务会话中应主动维护任务级摘要，避免需求混淆与状态丢失。"
-      ],
-      "limitations": "仅覆盖 19 个 Python 仓库；上下文模块只在 OpenCode 上验证，未覆盖全部 agent。",
       "basis": "fulltext"
     }
   },
