@@ -1,5 +1,51 @@
 [
   {
+    "title": "israellaguan/codex-tool-use-trajectories",
+    "sub_title": "datasets · source=hf_datasets_code · score=75.2",
+    "url_title": "israellaguancodex-tool-use-trajectories",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
+    "source_id": "hf_datasets_code",
+    "source_ids": [
+      "hf_datasets_code"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-11-08T18:42:50Z",
+    "first_seen_at": "2026-11-08T21:15:25Z",
+    "score": 75.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 26.0,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "codex",
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据"
+    ],
+    "summary_zh": "Codex 编程智能体的多步工具调用轨迹数据集，含 437 条运行记录与 314 条子智能体委派示例。",
+    "reason_zh": "直接为编程智能体提供训练数据，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Codex Tool-Use Trajectories Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted from raw session logs. trajectories: 437 agent runs (one per turn, or per segment of a turn that hit context compaction), each a full chat with tool calls and tool outputs. pairs: 314 delegation…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 12,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "Switch-SWE: Do Coding Agents Hold Focus When Switching Between Unfinished Tasks?",
     "sub_title": "papers · source=arxiv_cs_cl · score=67.7",
     "url_title": "switch-swe-do-coding-agents-hold-focus-when-switching-between-unfinished-tasks",
@@ -359,6 +405,77 @@
     }
   },
   {
+    "title": "Ask, Don't Equip: Question-Driven Coding Agents for Deep Kernel Optimization",
+    "sub_title": "papers · source=arxiv_cs_lg · score=64.2",
+    "url_title": "ask-dont-equip-question-driven-coding-agents-for-deep-kernel-optimization",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.03517",
+    "source_id": "arxiv_cs_lg",
+    "source_ids": [
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-03T05:00:00Z",
+    "first_seen_at": "2026-11-03T12:53:31Z",
+    "score": 64.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 21.0,
+      "freshness": 50.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "代码生成"
+    ],
+    "summary_zh": "提出问题驱动的编程智能体，用于GPU内核深度优化，替代脚本化或开放式智能体。",
+    "reason_zh": "核心是编程智能体做内核代码优化。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "LLM agents for GPU kernel optimization sit at two ends of a structure-freedom tradeoff. Scripted agents fix what the model does at each step, via a learned policy, an optimization menu, or fixed roles, and are sample-efficient where the recipe applies and stall where it does not. Open-ended agents let a self-directed model mutate a population of kernels and…",
+    "authors": [
+      "Gabriele Oliaro",
+      "Jaeseong Lee",
+      "Zhaoyuan Su",
+      "Sreeram Vennam",
+      "Zhihao Jia",
+      "Samyam Rajbhandari"
+    ],
+    "author_count": 6,
+    "upvotes": 4,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2611.03517",
+    "arxiv_id": "2611.03517",
+    "digest": {
+      "problem": "LLM 编码智能体优化 GPU kernel 时，脚本化智能体缺乏方向、开放式智能体试错成本高，两者都缺少关于性能差距所在的假设。",
+      "method": [
+        "提出 KernelSeek：通用编码智能体加最小 harness，用可验证目标（Stop hook 强制）替代脚本。",
+        "在停滞、声称极限或完成、异常大胜等决策点提出不含答案、可测量的短问题，并沉淀为可自问的问题库。",
+        "与 AVO 式进化搜索组合，把下一代指令改写为待验证的问题而非编辑指令。"
+      ],
+      "results": [
+        "同一 FA3 任务上，工具丰富的自主智能体 133 步后停在 0.50× FlashAttention-3，KernelSeek 达 1.13×。",
+        "产出无依赖的 fa3_hopper.cu 与 fa4_blackwell.cu，182 个场景全部正确，几何平均 1.16× FA3、1.46× FA4。",
+        "162 条人类消息对应 11.5K 次工具调用，最大增益均跟随改变系统层次或质疑极限的问题。"
+      ],
+      "takeaways": [
+        "给编码智能体的有效干预是提出可测量的假设性问题，而非堆叠工具或预消化信息。",
+        "用机械可验证的停止条件（逐场景量化）防止智能体过早宣称完成。"
+      ],
+      "limitations": "问题库 101 条核心条目中 72 条仅来自公开资料、尚未经该智能体实际验证；结论主要基于注意力 kernel 案例研究。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "XStack: A Benchmark for ML Repo Migration",
     "sub_title": "papers · source=arxiv_cs_ai · score=64.1",
     "url_title": "xstack-a-benchmark-for-ml-repo-migration",
@@ -424,77 +541,6 @@
         "评测需加判官与权重载入检查，防止指标造假或跑错实验带来的假阳性。"
       ],
       "limitations": "仅覆盖 PyTorch→JAX/TPU 单向迁移与 20 个仓库；判官本身为 GPT-5.6-sol，可能引入偏差。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Ask, Don't Equip: Question-Driven Coding Agents for Deep Kernel Optimization",
-    "sub_title": "papers · source=arxiv_cs_lg · score=63.6",
-    "url_title": "ask-dont-equip-question-driven-coding-agents-for-deep-kernel-optimization",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.03517",
-    "source_id": "arxiv_cs_lg",
-    "source_ids": [
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-03T05:00:00Z",
-    "first_seen_at": "2026-11-03T12:53:31Z",
-    "score": 63.6,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 18.1,
-      "freshness": 50.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "提出问题驱动的编程智能体，用于GPU内核深度优化，替代脚本化或开放式智能体。",
-    "reason_zh": "核心是编程智能体做内核代码优化。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "LLM agents for GPU kernel optimization sit at two ends of a structure-freedom tradeoff. Scripted agents fix what the model does at each step, via a learned policy, an optimization menu, or fixed roles, and are sample-efficient where the recipe applies and stall where it does not. Open-ended agents let a self-directed model mutate a population of kernels and…",
-    "authors": [
-      "Gabriele Oliaro",
-      "Jaeseong Lee",
-      "Zhaoyuan Su",
-      "Sreeram Vennam",
-      "Zhihao Jia",
-      "Samyam Rajbhandari"
-    ],
-    "author_count": 6,
-    "upvotes": 3,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2611.03517",
-    "arxiv_id": "2611.03517",
-    "digest": {
-      "problem": "LLM 编码智能体优化 GPU kernel 时，脚本化智能体缺乏方向、开放式智能体试错成本高，两者都缺少关于性能差距所在的假设。",
-      "method": [
-        "提出 KernelSeek：通用编码智能体加最小 harness，用可验证目标（Stop hook 强制）替代脚本。",
-        "在停滞、声称极限或完成、异常大胜等决策点提出不含答案、可测量的短问题，并沉淀为可自问的问题库。",
-        "与 AVO 式进化搜索组合，把下一代指令改写为待验证的问题而非编辑指令。"
-      ],
-      "results": [
-        "同一 FA3 任务上，工具丰富的自主智能体 133 步后停在 0.50× FlashAttention-3，KernelSeek 达 1.13×。",
-        "产出无依赖的 fa3_hopper.cu 与 fa4_blackwell.cu，182 个场景全部正确，几何平均 1.16× FA3、1.46× FA4。",
-        "162 条人类消息对应 11.5K 次工具调用，最大增益均跟随改变系统层次或质疑极限的问题。"
-      ],
-      "takeaways": [
-        "给编码智能体的有效干预是提出可测量的假设性问题，而非堆叠工具或预消化信息。",
-        "用机械可验证的停止条件（逐场景量化）防止智能体过早宣称完成。"
-      ],
-      "limitations": "问题库 101 条核心条目中 72 条仅来自公开资料、尚未经该智能体实际验证；结论主要基于注意力 kernel 案例研究。",
       "basis": "fulltext"
     }
   },
@@ -1932,72 +1978,6 @@
       ],
       "limitations": "标签有噪声，预算指标假设重型测试能捕获其覆盖的 bug，未实测 CI 分钟数。",
       "basis": "abstract"
-    }
-  },
-  {
-    "title": "Req2Rust: A Requirements-Guided Agent Harness for Project-Level C++-to-Rust Migration",
-    "sub_title": "papers · source=arxiv_cs_se · score=57.6",
-    "url_title": "req2rust-a-requirements-guided-agent-harness-for-project-level-c-to-rust-migrati",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.07442",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-06T05:00:00Z",
-    "first_seen_at": "2026-11-06T13:03:55Z",
-    "score": 57.6,
-    "scores": {
-      "relevance": 90.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 0.0
-    },
-    "keywords": [
-      "codebase"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "提出需求引导的智能体框架，将项目级 C++ 代码迁移为 Rust",
-    "reason_zh": "编程智能体完成代码迁移任务",
-    "relevance_source": "llm",
-    "signals": [],
-    "summary": "Memory-safety concerns make Rust an attractive target for modernizing legacy C/C++ systems, yet project-level C++ migration must balance semantic fidelity with Rust-oriented reconstruction. Source-structure-preserving migration can track low-level behavior, but it can also carry source-language organization, unsafe idioms, and project assumptions into Rust.…",
-    "authors": [
-      "Shengbo Wang",
-      "Mingwei Liu",
-      "Yuwen Chen",
-      "Yanlin Wang"
-    ],
-    "author_count": 4,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2611.07442",
-    "digest": {
-      "problem": "项目级 C++ 迁移到 Rust 需兼顾语义保真与 Rust 化重构，但 C++ 语义常隐含在对象模型、析构生命周期与构建约定中，现有 LLM 方法难以显式建模需保留的行为。",
-      "method": [
-        "先由源码、接口与构建证据生成语言中立的 MRS，显式记录需保留的外部行为与约束。",
-        "由 MRS 合成 RDS，规划文件、模块与实现单元，并落地为初始 Rust 项目。",
-        "以编译器、语义、unsafe 削减三类校验器报告驱动 agent 迭代精化项目。"
-      ],
-      "results": [
-        "通用 C++ 项目测试通过率由 ClaudeCode 的 69.5% 提升至 91.9%，两者均全部可编译。",
-        "Openharmony 模块通过率由 45.4% 提升至 87.9%，覆盖全部 10 类 C++ 特性。",
-        "消融显示语义校验贡献主要行为增益，unsafe 削减降低 unsafe 用量且不降通过率。"
-      ],
-      "takeaways": [
-        "迁移前应显式抽取需保留的行为契约，再决定 Rust 项目结构，避免逐片段直译。",
-        "把编译、语义与 unsafe 检查报告作为可执行反馈，形成闭环精化流程。"
-      ],
-      "limitations": "unsafe 率高于 ClaudeCode 基线（1.78% vs 0.31%），部分 unsafe 为 ABI/FFI 边界所必需；uriparser 上不及基线。",
-      "basis": "fulltext"
     }
   }
 ]
