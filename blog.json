@@ -1,7 +1,7 @@
 [
   {
     "title": "Longtail-SWE: High-Quality SWE Tasks for Underrepresented Languages",
-    "sub_title": "papers · source=arxiv_cs_se · score=78.8",
+    "sub_title": "papers · source=arxiv_cs_se · score=78.9",
     "url_title": "longtail-swe-high-quality-swe-tasks-for-underrepresented-languages",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2611.10304",
@@ -15,10 +15,10 @@
     "category": "papers",
     "published_at": "2026-11-10T05:00:00Z",
     "first_seen_at": "2026-11-10T13:37:59Z",
-    "score": 78.8,
+    "score": 78.9,
     "scores": {
       "relevance": 95.0,
-      "popularity": 39.7,
+      "popularity": 40.3,
       "freshness": 79.4,
       "impact": 75.0
     },
@@ -44,10 +44,10 @@
       "Alexander Golubev"
     ],
     "author_count": 3,
-    "upvotes": 20,
+    "upvotes": 21,
     "likes": 0,
     "github_url": "https://github.com/SWE-rebench/LongTail-SWE",
-    "github_stars": 2,
+    "github_stars": 3,
     "hf_url": "https://huggingface.co/papers/2611.10304",
     "arxiv_id": "2611.10304",
     "digest": {
@@ -72,7 +72,7 @@
   },
   {
     "title": "nebius/Longtail-SWE",
-    "sub_title": "datasets · source=hf_datasets_swe · score=73.8",
+    "sub_title": "datasets · source=hf_datasets_swe · score=73.4",
     "url_title": "nebiuslongtail-swe",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://huggingface.co/datasets/nebius/Longtail-SWE",
@@ -84,10 +84,10 @@
     "category": "datasets",
     "published_at": "2026-11-10T09:45:06Z",
     "first_seen_at": "2026-11-10T13:37:59Z",
-    "score": 73.8,
+    "score": 73.4,
     "scores": {
       "relevance": 95.0,
-      "popularity": 32.0,
+      "popularity": 30.0,
       "freshness": 79.4,
       "impact": 40.0
     },
@@ -187,6 +187,78 @@
         "部分分加 blockers/gates 能拉开模型差距，纯 pass/fail 会把多数模型压到 1–4%。"
       ],
       "limitations": "仅 24 个任务公开，其余留出；单一平台 harness 且非编码产品排名；LLM 判分虽少仍存偏差风险。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "Embodied First Exam",
+    "sub_title": "papers · source=arxiv_cs_ai · score=71.2",
+    "url_title": "embodied-first-exam",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.12177",
+    "source_id": "arxiv_cs_ai",
+    "source_ids": [
+      "arxiv_cs_ai",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-10T05:00:00Z",
+    "first_seen_at": "2026-11-10T13:37:59Z",
+    "score": 71.2,
+    "scores": {
+      "relevance": 75.0,
+      "popularity": 48.3,
+      "freshness": 100.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "coding agent",
+      "codex"
+    ],
+    "topics": [
+      "编程智能体",
+      "评测基准"
+    ],
+    "summary_zh": "提出Embodied First Exam基准，评测编程智能体控制机器人的能力",
+    "reason_zh": "编程智能体在具身场景的评测基准",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Early successes on agentic robotics point to a potential paradigm shift toward using coding agents to control robots. Existing robotics benchmarks are built around visuomotor policy learning, leaving it open whether coding agents can reliably control diverse robots under physical-world constraints. We therefore introduce the Embodied First Exam, a unified…",
+    "authors": [
+      "Kangrui Wang",
+      "Qineng Wang",
+      "Changhe Chen",
+      "Pingyue Zhang",
+      "Chi Gui",
+      "Feishi Wang"
+    ],
+    "author_count": 30,
+    "upvotes": 19,
+    "likes": 0,
+    "github_url": "https://github.com/mll-lab-nu/embodied-first-exam",
+    "github_stars": 259,
+    "hf_url": "https://huggingface.co/papers/2611.12177",
+    "arxiv_id": "2611.12177",
+    "digest": {
+      "problem": "现有机器人基准围绕视觉运动策略学习设计，无法判断编码智能体能否在物理约束下可靠控制多样机器人。",
+      "method": [
+        "构建EFE统一框架，含35套件1156任务、47种机器人，新增9套件覆盖空间推理、灵巧操作等。",
+        "每任务设Privileged、Standard、Realtime三种设置，分别测全状态+重置、仅传感器无重置、实时运行。",
+        "智能体可自选直接控制、写代码控制或训练策略，验证器在容器外评分。"
+      ],
+      "results": [
+        "最强GPT-6 Astra在Codex中Standard成功率34%，Privileged达77%，差距显著。",
+        "加入重置使成功率从28%升至53%，加精确状态升至45%，两者兼得68%。",
+        "Realtime更难：54个任务中63%无任何智能体解出，Standard为50%。"
+      ],
+      "takeaways": [
+        "物理约束（部分观测、无重置、实时）是编码智能体控制机器人的主要瓶颈，评测须区分设置。",
+        "重置比精确状态更能提升成功率，工具链应支持保存状态与重试机制。"
+      ],
+      "limitations": "失败阶段标签由智能体生成，与GPT-6 Astra同族，且无模拟器状态，根因分析结论有限。",
       "basis": "fulltext"
     }
   },
@@ -335,7 +407,7 @@
   },
   {
     "title": "InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure",
-    "sub_title": "papers · source=arxiv_cs_ai · score=69.1",
+    "sub_title": "papers · source=arxiv_cs_ai · score=69.5",
     "url_title": "infrarsi-harnessing-recursive-self-improvement-for-training-infrastructure",
     "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://arxiv.org/abs/2611.11558",
@@ -348,10 +420,10 @@
     "category": "papers",
     "published_at": "2026-11-10T05:00:00Z",
     "first_seen_at": "2026-11-10T13:37:59Z",
-    "score": 69.1,
+    "score": 69.5,
     "scores": {
       "relevance": 78.0,
-      "popularity": 43.4,
+      "popularity": 45.6,
       "freshness": 79.4,
       "impact": 55.0
     },
@@ -379,10 +451,10 @@
       "Boxun Li"
     ],
     "author_count": 11,
-    "upvotes": 27,
+    "upvotes": 32,
     "likes": 0,
     "github_url": "https://github.com/TokenRhythm/InfraRSI",
-    "github_stars": 18,
+    "github_stars": 26,
     "hf_url": "https://huggingface.co/papers/2611.11558",
     "arxiv_id": "2611.11558",
     "digest": {
@@ -624,7 +696,7 @@
   },
   {
     "title": "israellaguan/codex-tool-use-trajectories",
-    "sub_title": "datasets · source=hf_datasets_code · score=66.5",
+    "sub_title": "datasets · source=hf_datasets_code · score=66.8",
     "url_title": "israellaguancodex-tool-use-trajectories",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
@@ -636,10 +708,10 @@
     "category": "datasets",
     "published_at": "2026-11-08T18:42:50Z",
     "first_seen_at": "2026-11-08T21:15:25Z",
-    "score": 66.5,
+    "score": 66.8,
     "scores": {
       "relevance": 92.0,
-      "popularity": 32.5,
+      "popularity": 34.0,
       "freshness": 50.0,
       "impact": 40.0
     },
@@ -661,7 +733,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 41,
+    "likes": 42,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -1967,73 +2039,6 @@
         "凭据分层：管理凭据留宿主机，guest 只发短时、可撤销、窄范围令牌。"
       ],
       "limitations": "需 VM 资源与维护；guest 内令牌和网络访问仍有残余风险；未评估自身性能与切换成本。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Done Is Not Correct: Measuring Silent Failures and Self-Verification Calibration When LLM Agents Take CAD Actions",
-    "sub_title": "papers · source=arxiv_cs_se · score=62.4",
-    "url_title": "done-is-not-correct-measuring-silent-failures-and-self-verification-calibration-",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.10063",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_lg"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-10T05:00:00Z",
-    "first_seen_at": "2026-11-10T13:37:59Z",
-    "score": 62.4,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 0.0,
-      "freshness": 79.4,
-      "impact": 75.0
-    },
-    "keywords": [],
-    "topics": [
-      "评测基准",
-      "代码生成"
-    ],
-    "summary_zh": "发布CAD代码生成基准，测量静默失败与自验证校准",
-    "reason_zh": "LLM生成CAD代码的评测基准，偏特定场景",
-    "relevance_source": "llm",
-    "signals": [
-      "new_benchmark",
-      "open_source_code"
-    ],
-    "summary": "When a large language model (LLM) agent writes parametric CAD code from a natural-language specification, syntactic success decouples from semantic correctness. We release a benchmark and harness that measure this gap directly: 13 specification tasks whose every requirement maps to machine-checkable properties of the produced B-rep, measured by the kernel…",
-    "authors": [
-      "Carson Rodrigues",
-      "Clive Rodrigues",
-      "Aravind Reddy G"
-    ],
-    "author_count": 3,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2611.10063",
-    "digest": {
-      "problem": "LLM agent 写参数化 CAD 代码时，语法成功（能运行、能渲染）与语义正确（尺寸、约束、可制造性）脱节，agent 却常宣称完成，这种静默失败难以发现。",
-      "method": [
-        "发布 13 个机械规格任务、122 项机器可检查 B-rep 属性检查的基准与 harness，含参考解和校准门。",
-        "定义静默失败率：几何有效、agent 明确宣称完成、但至少一项语义检查失败；并测完成声明的校准。",
-        "对比 single-shot、带内核测量反馈的 tool-use、planner–coder–checker 三种架构，并做声明契约单变量消融。"
-      ],
-      "results": [
-        "single-shot 在 98% 尝试上宣称完成，静默失败率 14.1%（任务簇 CI [5.8, 24.4]）。",
-        "强制先测量再宣称的 tool-use 将静默失败降至 3.2%（McNemar p<10^-4），声明精确率从 64% 升至 96%。",
-        "消融显示改进来自声明契约而非反馈：旧契约下静默失败 14/156 对 5，精确率 68% 对 96%。"
-      ],
-      "takeaways": [
-        "CAD copilot 应拒绝在 agent 看到最终代码的内核测量前接受完成声明，这一契约成本低且收益可测。",
-        "口头置信度在 single-shot 下校准差（ECE 0.32），验证后对四个模型中三个变得有信息量。"
-      ],
-      "limitations": "仅 13 任务、122 检查，静默失败集中在两个任务；四模型无 OpenAI/Google；单专家审计且为共同作者；检查只是模型正确性筛查，非设计验证。",
       "basis": "fulltext"
     }
   }
