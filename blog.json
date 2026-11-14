@@ -1033,6 +1033,52 @@
     }
   },
   {
+    "title": "israellaguan/codex-tool-use-trajectories",
+    "sub_title": "datasets · source=hf_datasets_code · score=62.2",
+    "url_title": "israellaguancodex-tool-use-trajectories",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
+    "source_id": "hf_datasets_code",
+    "source_ids": [
+      "hf_datasets_code"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-11-08T18:42:50Z",
+    "first_seen_at": "2026-11-08T21:15:25Z",
+    "score": 62.2,
+    "scores": {
+      "relevance": 92.0,
+      "popularity": 36.0,
+      "freshness": 25.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "codex",
+      "coding agent"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据"
+    ],
+    "summary_zh": "Codex 编程智能体的多步工具调用轨迹数据集，含 437 条运行记录与 314 条子智能体委派示例。",
+    "reason_zh": "直接为编程智能体提供训练数据，核心相关。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Codex Tool-Use Trajectories Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted from raw session logs. trajectories: 437 agent runs (one per turn, or per segment of a turn that hit context compaction), each a full chat with tool calls and tool outputs. pairs: 314 delegation…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 48,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "Singularity-Bench: Can Agents Build Agents?",
     "sub_title": "papers · source=arxiv_cs_ai · score=61.9",
     "url_title": "singularity-bench-can-agents-build-agents",
@@ -1174,52 +1220,6 @@
       "limitations": "部分 GT facts 由模型辅助估计，Gemini 系在媒体任务上排名略高，无法完全排除偏好。",
       "basis": "fulltext"
     }
-  },
-  {
-    "title": "israellaguan/codex-tool-use-trajectories",
-    "sub_title": "datasets · source=hf_datasets_code · score=61.8",
-    "url_title": "israellaguancodex-tool-use-trajectories",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
-    "source_id": "hf_datasets_code",
-    "source_ids": [
-      "hf_datasets_code"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-11-08T18:42:50Z",
-    "first_seen_at": "2026-11-08T21:15:25Z",
-    "score": 61.8,
-    "scores": {
-      "relevance": 92.0,
-      "popularity": 34.0,
-      "freshness": 25.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "codex",
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "训练数据"
-    ],
-    "summary_zh": "Codex 编程智能体的多步工具调用轨迹数据集，含 437 条运行记录与 314 条子智能体委派示例。",
-    "reason_zh": "直接为编程智能体提供训练数据，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Codex Tool-Use Trajectories Multi-step tool-use trajectories from a coding agent (OpenAI Codex Desktop) working in a local Windows workspace, cleaned and redacted from raw session logs. trajectories: 437 agent runs (one per turn, or per segment of a turn that hit context compaction), each a full chat with tool calls and tool outputs. pairs: 314 delegation…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 47,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
   },
   {
     "title": "ExpertCrowd-SWE: Measuring Frontier Coding Agents on Expert-Authored Engineering Tasks in Unfamiliar Codebases",
@@ -1912,49 +1912,6 @@
     }
   },
   {
-    "title": "nvidia/Nemotron-Pretraining-Code-v3",
-    "sub_title": "datasets · source=hf_datasets_code · score=59.0",
-    "url_title": "nvidianemotron-pretraining-code-v3",
-    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Code-v3",
-    "source_id": "hf_datasets_code",
-    "source_ids": [
-      "hf_datasets_code"
-    ],
-    "source_host": "huggingface.co",
-    "category": "datasets",
-    "published_at": "2026-06-04T05:22:40Z",
-    "first_seen_at": "2026-11-07T11:49:38Z",
-    "score": 59.0,
-    "scores": {
-      "relevance": 95.0,
-      "popularity": 37.7,
-      "freshness": 0.0,
-      "impact": 40.0
-    },
-    "keywords": [],
-    "topics": [
-      "训练数据",
-      "模型训练与推理"
-    ],
-    "summary_zh": "NVIDIA 发布用于训练 Nemotron 3 的代码预训练数据集，提升 LLM 编程能力。",
-    "reason_zh": "代码大模型预训练数据，核心相关。",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "Nemotron-Pretraining-Code-v3 Dataset Description: The Nemotron-Pretraining-Code-v3 dataset is part of the Nemotron Pretraining Data collection of pretraining datasets. Designed for the NVIDIA Nemotron 3 family of LLMs, this dataset is intended to improve the coding capabilities of LLMs. The Nemotron-Pretraining-Code-v3 dataset contains the metadata…",
-    "authors": [],
-    "author_count": 0,
-    "upvotes": 0,
-    "likes": 76,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "",
-    "digest": null
-  },
-  {
     "title": "An Empirical Study of Maintainer-Identified AI Slop Pull Requests in Free and Open Source Software Projects",
     "sub_title": "papers · source=arxiv_cs_se · score=58.9",
     "url_title": "an-empirical-study-of-maintainer-identified-ai-slop-pull-requests-in-free-and-op",
@@ -2018,6 +1975,75 @@
         "贡献者应主动披露 AI 使用并关联 issue，避免一键提交增加维护负担。"
       ],
       "limitations": "仅覆盖热门成熟仓库且依赖维护者标记，结果为下界；两个仓库占约 42% 数据，趋势为相关性而非因果。",
+      "basis": "fulltext"
+    }
+  },
+  {
+    "title": "AnimWeb-Bench: Benchmarking Animated Webpage Code Generation from Videos",
+    "sub_title": "papers · source=arxiv_cs_se · score=58.8",
+    "url_title": "animweb-bench-benchmarking-animated-webpage-code-generation-from-videos",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.09769",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-09T05:00:00Z",
+    "first_seen_at": "2026-11-09T14:05:48Z",
+    "score": 58.8,
+    "scores": {
+      "relevance": 90.0,
+      "popularity": 0.0,
+      "freshness": 31.5,
+      "impact": 75.0
+    },
+    "keywords": [
+      "code generation",
+      "coding agent"
+    ],
+    "topics": [
+      "代码生成",
+      "评测基准"
+    ],
+    "summary_zh": "AnimWeb-Bench评测从视频生成动画网页代码的能力",
+    "reason_zh": "网页代码生成基准，核心AI编程评测",
+    "relevance_source": "llm",
+    "signals": [
+      "new_benchmark",
+      "open_source_code"
+    ],
+    "summary": "Animation is pervasive on the Web, the CSS animation property alone appears on over three-quarters of webpages. Yet existing webpage code generation benchmarks target static screenshots, user-triggered interactions, or isolated motion graphics, leaving the ability of multimodal large language models (MLLMs) and coding agents to reconstruct complete animated…",
+    "authors": [
+      "Zhongyi Zhang",
+      "Jingyu Xiao",
+      "Shuqing Li",
+      "Michael R. Lyu"
+    ],
+    "author_count": 4,
+    "upvotes": 0,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "2611.09769",
+    "digest": {
+      "problem": "现有网页代码生成基准只覆盖静态截图、用户触发交互或孤立动效，无法评估从视频重建完整动画网页的能力。",
+      "method": [
+        "构建 AnimWeb-Bench：124 个真实网页，覆盖 7 个领域、33 种动画类型，每例配参考视频与静态资源。",
+        "提出二维评估协议：Static Appearance Fidelity 比对对齐关键帧，Animation Fidelity 追踪组件轨迹并比较位置、尺寸、速度与外观。"
+      ],
+      "results": [
+        "最强模型 GPT-6 Astra 所有动画指标均低于 0.46，Velocity 为八项指标中最低。",
+        "所有模型动画分数均低于其静态分数，动画重建明显难于静态外观。",
+        "显式帧检查与渲染反馈可提升 coding agents 的重建质量；快速连续变化比离散状态切换更难复现。"
+      ],
+      "takeaways": [
+        "评估 AI 编程工具生成网页时，需单独衡量动画动态，不能只看静态截图相似度。",
+        "为 agent 提供抽帧检查与渲染反馈，是提升动画重建效果的有效手段。"
+      ],
+      "limitations": "",
       "basis": "fulltext"
     }
   }
