@@ -577,7 +577,7 @@
     "authors": [],
     "author_count": 0,
     "upvotes": 0,
-    "likes": 48,
+    "likes": 50,
     "github_url": "",
     "github_stars": 0,
     "hf_url": "",
@@ -956,7 +956,7 @@
     "score": 59.2,
     "scores": {
       "relevance": 75.0,
-      "popularity": 48.8,
+      "popularity": 48.9,
       "freshness": 39.7,
       "impact": 40.0
     },
@@ -987,7 +987,7 @@
     "upvotes": 28,
     "likes": 0,
     "github_url": "https://github.com/mll-lab-nu/embodied-first-exam",
-    "github_stars": 274,
+    "github_stars": 277,
     "hf_url": "https://huggingface.co/papers/2611.12177",
     "arxiv_id": "2611.12177",
     "digest": {
@@ -1625,6 +1625,54 @@
     }
   },
   {
+    "title": "nvidia/Nemotron-RL-Agentic-SWE-Pivot-v1",
+    "sub_title": "datasets · source=hf_datasets_swe · score=57.1",
+    "url_title": "nvidianemotron-rl-agentic-swe-pivot-v1",
+    "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://huggingface.co/datasets/nvidia/Nemotron-RL-Agentic-SWE-Pivot-v1",
+    "source_id": "hf_datasets_swe",
+    "source_ids": [
+      "hf_datasets_swe"
+    ],
+    "source_host": "huggingface.co",
+    "category": "datasets",
+    "published_at": "2026-09-29T05:43:48Z",
+    "first_seen_at": "2026-11-10T22:25:58Z",
+    "score": 57.1,
+    "scores": {
+      "relevance": 95.0,
+      "popularity": 28.0,
+      "freshness": 0.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "software engineering agent",
+      "github issue",
+      "github"
+    ],
+    "topics": [
+      "编程智能体",
+      "训练数据",
+      "模型训练与推理"
+    ],
+    "summary_zh": "NVIDIA 发布 SWE-RL 数据集，用 GitHub issue 训练真实软件工程智能体。",
+    "reason_zh": "直接服务编程智能体强化学习训练数据。",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "Dataset Description: The SWE-RL dataset provides GitHub issues for training and validating real-world software engineering agents using the OpenHands environment in NeMo Gym. The dataset is a refactored version of the SWE-Gym and R2E-Gym datasets to support the NeMo Gym input format. This dataset is released as part of NVIDIA NeMo Gym, a framework for…",
+    "authors": [],
+    "author_count": 0,
+    "upvotes": 0,
+    "likes": 16,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "",
+    "arxiv_id": "",
+    "digest": null
+  },
+  {
     "title": "nvidia/Nemotron-Pretraining-Code-v1",
     "sub_title": "datasets · source=hf_datasets_code · score=56.7",
     "url_title": "nvidianemotron-pretraining-code-v1",
@@ -1930,76 +1978,6 @@
         "规格驱动测试偏向产品工作流语义，代码驱动偏向输入鲁棒性，二者互补宜并用"
       ],
       "limitations": "ViBench 无 bug 真值，依赖 LLM 盲审；仅人工验证 25 个分层样本；效果依赖规格质量。",
-      "basis": "fulltext"
-    }
-  },
-  {
-    "title": "Where Autonomy Belongs: A Separation of Powers for Agentic Program Evolution",
-    "sub_title": "papers · source=arxiv_cs_ai · score=56.6",
-    "url_title": "where-autonomy-belongs-a-separation-of-powers-for-agentic-program-evolution",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.15309",
-    "source_id": "arxiv_cs_ai",
-    "source_ids": [
-      "arxiv_cs_ai"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-13T05:00:00Z",
-    "first_seen_at": "2026-11-13T13:15:57Z",
-    "score": 56.6,
-    "scores": {
-      "relevance": 85.0,
-      "popularity": 0.0,
-      "freshness": 63.0,
-      "impact": 15.0
-    },
-    "keywords": [
-      "coding agent"
-    ],
-    "topics": [
-      "编程智能体",
-      "代码生成"
-    ],
-    "summary_zh": "提出程序演化中治理、提议、评判三权分立的智能体架构",
-    "reason_zh": "LLM 驱动程序演化，核心是 AI 编程",
-    "relevance_source": "llm",
-    "signals": [
-      "sota"
-    ],
-    "summary": "LLM-driven program evolution rests on three decisions: govern directs the search from accumulated evidence, propose constructs the next candidate, and judge settles validity and fitness. All three appear in every system, and existing work splits into two lines over who makes each. Controller-centric systems strengthen govern and neglect the autonomy of…",
-    "authors": [
-      "Zhengyang Ai",
-      "Tong Liu",
-      "Jingxian Tang",
-      "Xiaobing Du",
-      "Tao Xiao",
-      "Fengshi Zhang"
-    ],
-    "author_count": 9,
-    "upvotes": 0,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "",
-    "arxiv_id": "2611.15309",
-    "digest": {
-      "problem": "LLM 驱动的程序进化中，govern、propose、judge 三项决策的自主权分配错位：控制器中心与 agent 中心两类系统各偏重一方，且都未保护 judge 的独立性，导致搜索上限受限、成本高、基准分数失真。",
-      "method": [
-        "提出 EvoTrias 三权分立架构：Structured Governance 管跨轮搜索，Open Proposal 由编码 agent 负责构造，Protected Judgment 用私有评估器裁决。",
-        "三平面仅通过类型化契约交换上下文胶囊、候选工件与归一化结果，运行时 hook 层强制边界。",
-        "以插件形式把现有编码 agent 变为进化系统，无需改动 agent 本身。"
-      ],
-      "results": [
-        "在 Math、ADRS、Frontier-CS 基准上超过 OpenEvolve、EvoX、AdaEvolve 及一/四 agent CORAL。",
-        "在 OR-Tools 的 680K 行 C++ 仓库上，端到端求解器质量最高提升 16.9%。",
-        "相比四 agent CORAL，在相同 wall-clock 预算下 token 成本降低约 64%。"
-      ],
-      "takeaways": [
-        "将搜索治理与评估从编码 agent 中剥离，可同时降低 token 成本并提升可扩展性。",
-        "评估器源码应保持私有，仅暴露归一化结果，避免搜索过拟合固定测试用例。"
-      ],
-      "limitations": "Frontier-CS 因算力限制仅用 GLM-5.2 跑一次最终 30 题，未重复实验。",
       "basis": "fulltext"
     }
   }
