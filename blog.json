@@ -454,7 +454,7 @@
   },
   {
     "title": "Tokenwave-AI/swe-cowork",
-    "sub_title": "datasets · source=hf_datasets_swe · score=65.8",
+    "sub_title": "datasets · source=hf_datasets_swe · score=65.4",
     "url_title": "tokenwave-aiswe-cowork",
     "top_image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     "external_url": "https://huggingface.co/datasets/Tokenwave-AI/swe-cowork",
@@ -466,10 +466,10 @@
     "category": "datasets",
     "published_at": "2026-11-17T17:02:19Z",
     "first_seen_at": "2026-11-17T14:42:46Z",
-    "score": 65.8,
+    "score": 65.4,
     "scores": {
       "relevance": 95.0,
-      "popularity": 32.0,
+      "popularity": 30.0,
       "freshness": 39.7,
       "impact": 40.0
     },
@@ -869,6 +869,75 @@
     }
   },
   {
+    "title": "Choosing Quantized Code LLMs by File Size and Energy per Solved Task",
+    "sub_title": "papers · source=arxiv_cs_se · score=59.2",
+    "url_title": "choosing-quantized-code-llms-by-file-size-and-energy-per-solved-task",
+    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+    "external_url": "https://arxiv.org/abs/2611.17605",
+    "source_id": "arxiv_cs_se",
+    "source_ids": [
+      "arxiv_cs_se",
+      "arxiv_cs_lg",
+      "hf_daily_papers"
+    ],
+    "source_host": "arxiv.org",
+    "category": "papers",
+    "published_at": "2026-11-16T05:00:00Z",
+    "first_seen_at": "2026-11-16T13:50:21Z",
+    "score": 59.2,
+    "scores": {
+      "relevance": 78.0,
+      "popularity": 18.1,
+      "freshness": 63.0,
+      "impact": 40.0
+    },
+    "keywords": [
+      "code llm",
+      "code assistant",
+      "humaneval"
+    ],
+    "topics": [
+      "模型训练与推理",
+      "开发者与工具研究"
+    ],
+    "summary_zh": "按文件大小与每解一题能耗选择量化代码LLM",
+    "reason_zh": "代码助手模型选型，偏工具实践",
+    "relevance_source": "llm",
+    "signals": [
+      "open_source_code"
+    ],
+    "summary": "A developer running a code assistant on a laptop downloads one model file, and local inference moves the energy of every request onto that machine. A common rule says a larger model at lower precision tends to beat a smaller one at higher precision. We ran 24 GGUF files of Qwen2.5-Coder at four sizes on a fanless MacBook Air M2 and priced each in energy per…",
+    "authors": [
+      "Aditi Patodiya"
+    ],
+    "author_count": 1,
+    "upvotes": 3,
+    "likes": 0,
+    "github_url": "",
+    "github_stars": 0,
+    "hf_url": "https://huggingface.co/papers/2611.17605",
+    "arxiv_id": "2611.17605",
+    "digest": {
+      "problem": "开发者在笔记本本地跑代码助手时，需在文件大小预算内选 GGUF 量化文件；常见“大模型低精度优于小模型高精度”规则未必在能耗上划算。",
+      "method": [
+        "在 MacBook Air M2 上测 24 个 Qwen2.5-Coder GGUF 文件，覆盖 4 种尺寸与多种 k-quant。",
+        "以每解决任务能耗（J/solve）为成本，用 542 个 EvalPlus 任务做配对精确检验。",
+        "对关键对比 3B-q4_K_M 与 7B-q2_K 做五组交替会话重复，并给出按 Ollama 列出文件大小的选择指南。"
+      ],
+      "results": [
+        "1 GB 和 2 GB 预算分别选 1.5B-q4_K_M 与 3B-q4_K_M，二者在所有核算下都处于正确率与能耗前沿。",
+        "3 GB 预算下 7B-q2_K 解 363 题，3B-q4_K_M 解 366 题，差异不显著（90% CI 上限仅 2.4 点）。",
+        "7B-q2_K 每解决任务能耗是 3B-q4_K_M 的 2.03 倍（整机口径 1.66–1.81 倍），HumanEval+ 重复比值为 1.925。"
+      ],
+      "takeaways": [
+        "选本地代码模型应看实测每解决任务能耗，而非标签位数或“大模型低精度”规则。",
+        "3B 以上 q4_K_M 与最高精度差距小于 3 点，是能耗与正确率的实用折中点。"
+      ],
+      "limitations": "仅测 Qwen2.5-Coder 一族、单台无风扇 M2 笔记本与贪心解码，多数文件只跑单会话，能耗结论需重复验证。",
+      "basis": "fulltext"
+    }
+  },
+  {
     "title": "Continuation-Guided LLM Evolution of Program Policies and Goal Compilers in Craftax",
     "sub_title": "papers · source=arxiv_cs_ai · score=59.1",
     "url_title": "continuation-guided-llm-evolution-of-program-policies-and-goal-compilers-in-craf",
@@ -1052,75 +1121,6 @@
     "hf_url": "",
     "arxiv_id": "",
     "digest": null
-  },
-  {
-    "title": "Choosing Quantized Code LLMs by File Size and Energy per Solved Task",
-    "sub_title": "papers · source=arxiv_cs_se · score=58.5",
-    "url_title": "choosing-quantized-code-llms-by-file-size-and-energy-per-solved-task",
-    "top_image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
-    "external_url": "https://arxiv.org/abs/2611.17605",
-    "source_id": "arxiv_cs_se",
-    "source_ids": [
-      "arxiv_cs_se",
-      "arxiv_cs_lg",
-      "hf_daily_papers"
-    ],
-    "source_host": "arxiv.org",
-    "category": "papers",
-    "published_at": "2026-11-16T05:00:00Z",
-    "first_seen_at": "2026-11-16T13:50:21Z",
-    "score": 58.5,
-    "scores": {
-      "relevance": 78.0,
-      "popularity": 14.3,
-      "freshness": 63.0,
-      "impact": 40.0
-    },
-    "keywords": [
-      "code llm",
-      "code assistant",
-      "humaneval"
-    ],
-    "topics": [
-      "模型训练与推理",
-      "开发者与工具研究"
-    ],
-    "summary_zh": "按文件大小与每解一题能耗选择量化代码LLM",
-    "reason_zh": "代码助手模型选型，偏工具实践",
-    "relevance_source": "llm",
-    "signals": [
-      "open_source_code"
-    ],
-    "summary": "A developer running a code assistant on a laptop downloads one model file, and local inference moves the energy of every request onto that machine. A common rule says a larger model at lower precision tends to beat a smaller one at higher precision. We ran 24 GGUF files of Qwen2.5-Coder at four sizes on a fanless MacBook Air M2 and priced each in energy per…",
-    "authors": [
-      "Aditi Patodiya"
-    ],
-    "author_count": 1,
-    "upvotes": 2,
-    "likes": 0,
-    "github_url": "",
-    "github_stars": 0,
-    "hf_url": "https://huggingface.co/papers/2611.17605",
-    "arxiv_id": "2611.17605",
-    "digest": {
-      "problem": "开发者在笔记本本地跑代码助手时，需在文件大小预算内选 GGUF 量化文件；常见“大模型低精度优于小模型高精度”规则未必在能耗上划算。",
-      "method": [
-        "在 MacBook Air M2 上测 24 个 Qwen2.5-Coder GGUF 文件，覆盖 4 种尺寸与多种 k-quant。",
-        "以每解决任务能耗（J/solve）为成本，用 542 个 EvalPlus 任务做配对精确检验。",
-        "对关键对比 3B-q4_K_M 与 7B-q2_K 做五组交替会话重复，并给出按 Ollama 列出文件大小的选择指南。"
-      ],
-      "results": [
-        "1 GB 和 2 GB 预算分别选 1.5B-q4_K_M 与 3B-q4_K_M，二者在所有核算下都处于正确率与能耗前沿。",
-        "3 GB 预算下 7B-q2_K 解 363 题，3B-q4_K_M 解 366 题，差异不显著（90% CI 上限仅 2.4 点）。",
-        "7B-q2_K 每解决任务能耗是 3B-q4_K_M 的 2.03 倍（整机口径 1.66–1.81 倍），HumanEval+ 重复比值为 1.925。"
-      ],
-      "takeaways": [
-        "选本地代码模型应看实测每解决任务能耗，而非标签位数或“大模型低精度”规则。",
-        "3B 以上 q4_K_M 与最高精度差距小于 3 点，是能耗与正确率的实用折中点。"
-      ],
-      "limitations": "仅测 Qwen2.5-Coder 一族、单台无风扇 M2 笔记本与贪心解码，多数文件只跑单会话，能耗结论需重复验证。",
-      "basis": "fulltext"
-    }
   },
   {
     "title": "Option-GRPO: Hierarchical RL Against AI Slop in Code Generation for Unseen SDKs",
